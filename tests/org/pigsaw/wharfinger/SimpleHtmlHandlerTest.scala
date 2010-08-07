@@ -71,5 +71,4 @@ class SimpleHtmlHandlerTest extends Spec with ShouldMatchers {
     val title = (html \\ "title").text
     title should include ("A mobile developer day too far")
   }
-  
 }

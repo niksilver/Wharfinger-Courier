@@ -35,6 +35,7 @@ object SimpleHtmlHandler {
 }
 
 object Preamble {
+
   class RichNodeSeq(ns:Seq[Node]) {
 
     def having(nodeBuilder:Node => NodeSeq) = {

@@ -72,7 +72,7 @@
       <file leaf-file-name="SimpleHtmlHandlerTest.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/SimpleHtmlHandlerTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="24" selection-start="2349" selection-end="2349" vertical-scroll-proportion="0.0">
+            <state line="50" column="0" selection-start="1571" selection-end="1571" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -81,7 +81,7 @@
       <file leaf-file-name="SimpleHtmlHandler.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/SimpleHtmlHandler.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="7" selection-start="554" selection-end="554" vertical-scroll-proportion="0.114922814">
+            <state line="39" column="0" selection-start="935" selection-end="935" vertical-scroll-proportion="0.25">
               <folding />
             </state>
           </provider>
@@ -129,6 +129,8 @@
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala" />
         <option value="$PROJECT_DIR$/src/org/ccil/cowan/tagsoup/TagSoupFactoryAdapter.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlTest.scala" />
+        <option value="$PROJECT_DIR$/.idea/artifacts/wharfinger_engine.xml" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/SimpleHtmlHandlerTest.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/SimpleHtmlHandler.scala" />
       </list>
@@ -337,15 +339,6 @@
     <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="org.pigsaw.wharfinger" />
-      <recent name="org.pigsaw.scalatest" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Documents and Settings\Nik\IdeaProjects\Wharfinger Courier\lib" />
-    </key>
   </component>
   <component name="RunManager" selected="ScalaTest.Wharfinger test">
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -572,7 +565,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24974412" sideWeight="0.6576433" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3312102" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3312102" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -655,69 +648,34 @@
         <state line="226" column="43" selection-start="9862" selection-end="9862" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/artifacts/wharfinger_engine.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="298" selection-end="298" vertical-scroll-proportion="0.1457976">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="120" column="19" selection-start="5806" selection-end="5806" vertical-scroll-proportion="0.9399293">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/SimpleHtmlHandlerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="24" selection-start="2349" selection-end="2349" vertical-scroll-proportion="0.0">
+        <state line="50" column="0" selection-start="1571" selection-end="1571" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/SimpleHtmlHandler.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="7" selection-start="554" selection-end="554" vertical-scroll-proportion="0.114922814">
+        <state line="39" column="0" selection-start="935" selection-end="935" vertical-scroll-proportion="0.25">
           <folding />
         </state>
       </provider>
     </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <UIState>
-          <splitter-proportions>
-            <SplitterProportionsDataImpl>
-              <option name="proportions">
-                <list>
-                  <option value="0.2" />
-                  <option value="0.5" />
-                </list>
-              </option>
-            </SplitterProportionsDataImpl>
-          </splitter-proportions>
-          <last-edited>wharfinger-engine</last-edited>
-          <settings />
-        </UIState>
-      </state>
-      <state key="Copyright.UI">
-        <UIState>
-          <splitter-proportions>
-            <SplitterProportionsDataImpl />
-          </splitter-proportions>
-        </UIState>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <UIState>
-          <splitter-proportions>
-            <SplitterProportionsDataImpl>
-              <option name="proportions">
-                <list>
-                  <option value="0.2" />
-                </list>
-              </option>
-            </SplitterProportionsDataImpl>
-          </splitter-proportions>
-          <last-edited>1.6</last-edited>
-        </UIState>
-      </state>
-      <state key="ScopeChooserConfigurable.UI">
-        <UIState>
-          <splitter-proportions>
-            <SplitterProportionsDataImpl />
-          </splitter-proportions>
-          <settings />
-        </UIState>
-      </state>
-    </states>
   </component>
 </project>
 

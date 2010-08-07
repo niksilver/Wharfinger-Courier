@@ -69,19 +69,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimpleHtmlHandlerTest.scala" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="SimpleHtmlHandlerTest.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/SimpleHtmlHandlerTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="17" selection-start="146" selection-end="146" vertical-scroll-proportion="0.15017667">
+            <state line="71" column="24" selection-start="2349" selection-end="2349" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimpleHtmlHandler.scala" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="SimpleHtmlHandler.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/SimpleHtmlHandler.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="0" selection-start="604" selection-end="604" vertical-scroll-proportion="0.0">
+            <state line="24" column="7" selection-start="554" selection-end="554" vertical-scroll-proportion="0.114922814">
               <folding />
             </state>
           </provider>
@@ -129,8 +129,8 @@
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala" />
         <option value="$PROJECT_DIR$/src/org/ccil/cowan/tagsoup/TagSoupFactoryAdapter.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlTest.scala" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/SimpleHtmlHandler.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/SimpleHtmlHandlerTest.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/SimpleHtmlHandler.scala" />
       </list>
     </option>
   </component>
@@ -183,6 +183,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -297,7 +298,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -312,7 +312,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -332,11 +332,11 @@
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="GoToClass.includeLibraries" value="false" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
+    <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -570,7 +570,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24974412" sideWeight="0.65923566" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24974412" sideWeight="0.6576433" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3312102" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -645,11 +645,6 @@
         <state line="29" column="0" selection-start="735" selection-end="735" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/SimpleHtmlHandler.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="604" selection-end="604" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/ccil/cowan/tagsoup/TagSoupFactoryAdapter.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="77" column="2" selection-start="2966" selection-end="2966" vertical-scroll-proportion="0.0" />
@@ -657,14 +652,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="226" column="43" selection-start="9862" selection-end="9862" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="226" column="43" selection-start="9862" selection-end="9862" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/SimpleHtmlHandlerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="17" selection-start="146" selection-end="146" vertical-scroll-proportion="0.15017667">
+        <state line="71" column="24" selection-start="2349" selection-end="2349" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/SimpleHtmlHandler.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="7" selection-start="554" selection-end="554" vertical-scroll-proportion="0.114922814">
           <folding />
         </state>
       </provider>

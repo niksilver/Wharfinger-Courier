@@ -48,4 +48,28 @@ class SimpleHtmlHandlerTest extends Spec with ShouldMatchers {
     def readURL = SimpleHtmlHandler.readFromURL("http://www.willnotresolve5432.com")
     evaluating(readURL) should produce [IOException]
   }
+
+  it("Should allow URL redirects to be resolved") {
+    val resolver = new URLResolver("http://bit.ly/9NQcyA")
+    resolver.URL should be ("http://www.mobileuserexperience.com/?p=896")
+  }
+
+  it("Should throw an IOException if URL redirect cannot be resolved") {
+    evaluating(new URLResolver("http://www.madeupdomain54321.com")) should produce [IOException]
+  }
+
+  /* This will not work due to Java's security.
+   *
+  it("Should resolve URLs across HTTP(S) boundaries") {
+    val resolver = new URLResolver("http://bit.ly/3hQYj")
+    resolver.URL should be ("https://www.google.com")
+  }
+  */
+
+  it("Should read HTML from a redirected URL") {
+    val html = SimpleHtmlHandler.readFromURL("http://bit.ly/9NQcyA")
+    val title = (html \\ "title").text
+    title should include ("A mobile developer day too far")
+  }
+  
 }

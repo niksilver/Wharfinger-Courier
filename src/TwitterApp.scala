@@ -10,7 +10,7 @@ import twitter4j.TwitterFactory
 
 object TwitterApp extends Application {
   println("I'm a running application...")
-  val twitter = new TwitterFactory().getInstance("pigsaw","Umberto2hard");
+  val twitter = new TwitterFactory().getInstance("pigsaw","-----");
 
   /* val statuses = twitter.getFriendsTimeline()
   println("Showing friends timeline...")

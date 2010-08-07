@@ -2,7 +2,7 @@ package org.pigsaw.wharfinger
 
 import org.ccil.cowan.tagsoup._
 import xml.{NodeSeq, Node}
-import java.net.URL
+import java.net.{HttpURLConnection, URL}
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,12 +14,16 @@ import java.net.URL
 
 object SimpleHtmlHandler {
 
+  /** Take HTML as a string and get a parsable XML Node.
+   */
   def readFromString(str: String): Node = {
     val reader = new java.io.StringReader(str)
     val parser = new TagSoupFactoryAdapter
     return parser load reader
   }
 
+  /** Fetch HTML from a URL and get a parsable XML Node.
+   */
   def readFromURL(url: String): Node = {
     val url_obj = new URL(url)
     val input = new java.io.InputStreamReader(url_obj.openStream)
@@ -39,4 +43,20 @@ object Preamble {
   }
 
   implicit def nodeSeq2RichNodeSeq(ns:NodeSeq) = new RichNodeSeq(ns)
+}
+
+/**
+ * Resolve a URL. Create a new instance using a URL string, then the field
+ * <code>URL</code> contains the actual URL after any redirects.
+ * Will not (apparently) resolve across HTTP/HTTPS boundaries; this is a
+ * security feature of Java. See
+ * http://stackoverflow.com/questions/1884230/java-doesnt-follow-redirect-in-urlconnection
+ * for more.
+ */
+class URLResolver(url: String) {
+  private val url_obj = new URL(url)
+  private val connection = url_obj.openConnection.asInstanceOf[HttpURLConnection]
+  connection.connect
+  connection.getInputStream
+  val URL = connection.getURL.toString
 }

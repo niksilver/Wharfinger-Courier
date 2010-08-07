@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="wharfinger-engine">
+    <output-path>$PROJECT_DIR$/out/artifacts/wharfinger-engine</output-path>
+    <root id="archive" name="wharfinger-engine.jar">
+      <element id="module-output" name="Twitter friends" />
+    </root>
+  </artifact>
+</component>

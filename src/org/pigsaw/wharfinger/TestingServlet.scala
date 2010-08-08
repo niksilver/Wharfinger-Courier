@@ -84,8 +84,15 @@ class TestingServlet extends HttpServlet {
 
       val pm = PMF.get.getPersistenceManager
       val query = pm.newQuery(classOf[Message])
-      try {
+      transaction (query) {
         query.deletePersistentAll
+      }
+      resp.getWriter.println("Deleted message")
+    }
+
+    def transaction(query: javax.jdo.Query)(block: Unit): Unit = {
+      try {
+        block
       }
       catch {
         case e => resp.getWriter.println("Exception: " + e.getMessage)
@@ -93,7 +100,6 @@ class TestingServlet extends HttpServlet {
       finally {
         query.closeAll
       }
-      resp.getWriter.println("Deleted message")
     }
   }
 }

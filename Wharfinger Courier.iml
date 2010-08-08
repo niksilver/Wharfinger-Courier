@@ -37,6 +37,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="Google App Engine" level="project" />
+    <orderEntry type="library" name="Classes from Eclipse" level="project" />
+    <orderEntry type="library" name="Google App Engine from Eclipse" level="project" />
   </component>
 </module>
 

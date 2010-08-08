@@ -1,6 +1,7 @@
 package org.pigsaw.wharfinger
 
 import javax.servlet.http.{HttpServletResponse, HttpServletRequest, HttpServlet}
+import scala.collection.JavaConversions._
 
 /**
  * Created by IntelliJ IDEA.
@@ -13,9 +14,12 @@ import javax.servlet.http.{HttpServletResponse, HttpServletRequest, HttpServlet}
 class TestingServlet extends HttpServlet {
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
 
-    req.getPathInfo match {
-      case "/gethtml" => testGetHtml
-      case "/redirectresolution" => testRedirectResolution
+    req.getPathInfo.tail.split('/')(0) match {
+      case "gethtml" => testGetHtml
+      case "redirectresolution" => testRedirectResolution
+      case "savemessage" => testSaveMessage(req.getPathInfo)
+      case "loadmessage" => testLoadMessage
+      case "deletemessage" => testDeleteMessage
       case _ => testBasicOutput
     }
 
@@ -36,8 +40,60 @@ class TestingServlet extends HttpServlet {
       val bitly_url = "http://bit.ly/9NQcyA"
       val resolver = new URLResolver(bitly_url)
       resp.getWriter.println("'" + bitly_url + "' resolves to '" + resolver.URL + "'")
-      
     }
 
+    def testSaveMessage(msg: String): Unit = {
+      resp.setContentType("text/plain")
+
+      val pm = PMF.get.getPersistenceManager
+      val query = pm.newQuery(classOf[Message])
+      try {
+        val message = new Message
+        message.setMessage(msg)
+        pm.makePersistent(message)
+      }
+      catch {
+        case e => resp.getWriter.println("Exception: " + e.getMessage)
+      }
+      finally {
+        query.closeAll
+      }
+
+      resp.getWriter.println("Message was set to '" + msg + "'")
+    }
+
+    def testLoadMessage: Unit = {
+      val pm = PMF.get.getPersistenceManager
+      val query = pm.newQuery(classOf[Message])
+      try {
+        val messages = query.execute.asInstanceOf[java.util.List[Message]]
+        val output = messages.size match {
+          case 0 => "No message saved"
+          case _ => "The message is '" + messages(0).getMessage + "'"
+        }
+        resp.setContentType("text/plain")
+        resp.getWriter.println(output)
+      }
+      finally {
+        query.closeAll
+      }
+    }
+
+    def testDeleteMessage: Unit = {
+      resp.setContentType("text/plain")
+
+      val pm = PMF.get.getPersistenceManager
+      val query = pm.newQuery(classOf[Message])
+      try {
+        query.deletePersistentAll
+      }
+      catch {
+        case e => resp.getWriter.println("Exception: " + e.getMessage)
+      }
+      finally {
+        query.closeAll
+      }
+      resp.getWriter.println("Deleted message")
+    }
   }
 }

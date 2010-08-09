@@ -8,8 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="" />
-    <ignored path="Wharfinger Courier.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path="Wharfinger Courier.iws" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +93,24 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="DeliciousNetworkHandlerTest.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DeliciousNetworkHandlerTest.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="0" selection-start="485" selection-end="485" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeliciousNetworkHandler.scala" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/DeliciousNetworkHandler.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="87" selection-start="599" selection-end="599" vertical-scroll-proportion="0.5106007">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="AppEngineGreeting.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/scalatest/AppEngineGreeting.scala">
           <provider selected="true" editor-type-id="text-editor">
@@ -102,10 +120,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestingServlet.scala" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="TestingServlet.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="0" selection-start="2879" selection-end="2879" vertical-scroll-proportion="0.9245283">
+            <state line="93" column="0" selection-start="2879" selection-end="2879" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -114,7 +132,7 @@
       <file leaf-file-name="Data.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="226" column="43" selection-start="9862" selection-end="9862" vertical-scroll-proportion="0.0">
+            <state line="270" column="0" selection-start="12225" selection-end="12225" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -134,14 +152,10 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Sometest.scala" />
-        <option value="$PROJECT_DIR$/src/TwitterApp.scala" />
-        <option value="$PROJECT_DIR$/src/AppEngineGreeting.scala" />
         <option value="$PROJECT_DIR$/src/MyServlet.java" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/scalatest/AppEngineGreeting.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MainServlet.scala" />
         <option value="$PROJECT_DIR$/lib/tagsoup-1.2/src/java/org/ccil/cowan/tagsoup/TagSoupFactoryAdapter.scala" />
-        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala" />
         <option value="$PROJECT_DIR$/src/org/ccil/cowan/tagsoup/TagSoupFactoryAdapter.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlTest.scala" />
         <option value="$PROJECT_DIR$/.idea/artifacts/wharfinger_engine.xml" />
@@ -150,6 +164,10 @@
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/SomeTest.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/SimpleHtmlHandler.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" />
+        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DeliciousNetworkHandler.scala" />
+        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala" />
+        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DeliciousNetworkHandlerTest.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/DeliciousNetworkHandler.scala" />
       </list>
     </option>
   </component>
@@ -202,22 +220,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger Courier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger Courier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -320,6 +322,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="wharfinger" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DeliciousNetworkHandler.scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pigsaw" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="scalatest" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -348,6 +380,22 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -589,7 +637,6 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -599,9 +646,10 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24974412" sideWeight="0.65923566" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3312102" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.3312102" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="23" y="505" width="977" height="226" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -673,21 +721,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/ccil/cowan/tagsoup/TagSoupFactoryAdapter.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="4" selection-start="2007" selection-end="2007" vertical-scroll-proportion="0.27444252">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/SimpleHtmlHandler.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="0" selection-start="1749" selection-end="1749" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="44" column="4" selection-start="2007" selection-end="2007" vertical-scroll-proportion="0.27444252" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/SimpleHtmlHandlerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="3" selection-start="1570" selection-end="1570" vertical-scroll-proportion="0.0">
+        <state line="49" column="3" selection-start="1570" selection-end="1570" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/scalatest/AppEngineGreeting.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="7" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="0" selection-start="2879" selection-end="2879" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/SimpleHtmlHandler.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="0" selection-start="1749" selection-end="1749" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="270" column="0" selection-start="12225" selection-end="12225" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -697,21 +756,16 @@
         <state line="29" column="0" selection-start="735" selection-end="735" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala">
+    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DeliciousNetworkHandlerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="226" column="43" selection-start="9862" selection-end="9862" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/scalatest/AppEngineGreeting.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="7" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0">
+        <state line="18" column="0" selection-start="485" selection-end="485" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/DeliciousNetworkHandler.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="0" selection-start="2879" selection-end="2879" vertical-scroll-proportion="0.9245283">
+        <state line="17" column="87" selection-start="599" selection-end="599" vertical-scroll-proportion="0.5106007">
           <folding />
         </state>
       </provider>

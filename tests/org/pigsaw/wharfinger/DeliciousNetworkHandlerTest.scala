@@ -2,7 +2,8 @@ package org.pigsaw.wharfinger
 
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.Spec
-import Preamble._
+import collection.mutable.ListBuffer
+//import Preamble._
 import xml.Node
 
 /**
@@ -16,12 +17,30 @@ import xml.Node
 class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
 
   describe("DeliciousNetworkHandler") {
-    it("Should return a list of bookmarks pairs") {
+
+    it("Should return a list of bookmarks") {
       val handler = new DeliciousNetworkHandler {
-        override def getHtml:Node = SimpleHtmlHandler.readFromString(Data.delicious_html)
+        override def readHtml():Node = SimpleHtmlHandler.readFromString(Data.delicious_html)
       }
       handler.bookmarks.size should be === (10)
-      (handler.bookmarks(0)).title should be ("Leeds 4-0 Lincoln (By Sean Markey, Aged 11) - LeedsUtdMAD")
+      val bookmark0 = handler.bookmarks(0)
+      bookmark0.title should be ("Leeds 4-0 Lincoln (By Sean Markey, Aged 11) - LeedsUtdMAD")
+      bookmark0.url should be ("http://www.leedsunited-mad.co.uk/news/tmnw/leeds_40_lincoln_by_sean_markey_aged_11_545231/index.shtml")
+      
+    }
+
+    it("Should process each bookmark") {
+      val processed_bookmarks = new ListBuffer[DeliciousBookmark]()
+      val handler = new DeliciousNetworkHandler {
+        override def readHtml():Node = SimpleHtmlHandler.readFromString(Data.delicious_html)
+        override def process(bookmark: DeliciousBookmark) {
+          processed_bookmarks += bookmark
+        }
+      }
+
+      processed_bookmarks.size should be === (10)
+      processed_bookmarks(0).title should be ("Leeds 4-0 Lincoln (By Sean Markey, Aged 11) - LeedsUtdMAD")
+      processed_bookmarks(9).title should be ("Slate Labs - Blog")
     }
   }
 }

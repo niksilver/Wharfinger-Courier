@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact name="Tagsoup library">
+    <output-path>$PROJECT_DIR$/../../workspace/Wharfinger Courier/war/WEB-INF/lib</output-path>
+    <root id="root">
+      <element id="dir-copy" path="$PROJECT_DIR$/lib" />
+    </root>
+  </artifact>
+</component>

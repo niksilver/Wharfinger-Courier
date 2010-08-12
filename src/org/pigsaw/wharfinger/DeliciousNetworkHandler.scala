@@ -12,8 +12,8 @@ import Preamble._
  */
 
 class DeliciousNetworkHandler {
-  val html:Node = SimpleHtmlHandler.readFromURL("http://delicious.com/network/nik.silver?setcount=100")
-  val bookmarks_html = html \\ "div" having (_ \ "@class" filter (_.text contains "bookmark "))
+  def getHtml:Node = SimpleHtmlHandler.readFromURL("http://delicious.com/network/nik.silver?setcount=100")
+  val bookmarks_html = getHtml \\ "div" having (_ \ "@class" filter (_.text contains "bookmark "))
   val bookmarks = for (bookmark <- bookmarks_html) yield {
     val link = bookmark \\ "a" having (_ \ "@class" filter (_.text contains "taggedlink"))
     new DeliciousBookmark(link.text)

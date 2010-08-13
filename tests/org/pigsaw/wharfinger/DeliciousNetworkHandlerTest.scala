@@ -24,23 +24,22 @@ class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
       }
       handler.bookmarks.size should be === (10)
       val bookmark0 = handler.bookmarks(0)
-      bookmark0.title should be ("Leeds 4-0 Lincoln (By Sean Markey, Aged 11) - LeedsUtdMAD")
       bookmark0.url should be ("http://www.leedsunited-mad.co.uk/news/tmnw/leeds_40_lincoln_by_sean_markey_aged_11_545231/index.shtml")
       
     }
 
     it("Should process each bookmark") {
-      val processed_bookmarks = new ListBuffer[DeliciousBookmark]()
+      val processed_bookmarks = new ListBuffer[ArticleURL]()
       val handler = new DeliciousNetworkHandler {
         override def readHtml():Node = SimpleHtmlHandler.readFromString(Data.delicious_html)
-        override def process(bookmark: DeliciousBookmark) {
+        override def process(bookmark: ArticleURL) {
           processed_bookmarks += bookmark
         }
       }
 
       processed_bookmarks.size should be === (10)
-      processed_bookmarks(0).title should be ("Leeds 4-0 Lincoln (By Sean Markey, Aged 11) - LeedsUtdMAD")
-      processed_bookmarks(9).title should be ("Slate Labs - Blog")
+      processed_bookmarks(0).url should be ("http://www.leedsunited-mad.co.uk/news/tmnw/leeds_40_lincoln_by_sean_markey_aged_11_545231/index.shtml")
+      processed_bookmarks(9).url should be ("http://labs.slate.com/blog/2010/08/welcome-to-slate-labs/")
     }
   }
 }

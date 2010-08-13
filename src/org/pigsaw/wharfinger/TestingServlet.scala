@@ -17,9 +17,10 @@ class TestingServlet extends HttpServlet {
     req.getPathInfo.tail.split('/')(0) match {
       case "gethtml" => testGetHtml
       case "redirectresolution" => testRedirectResolution
-      case "savemessage" => testSaveMessage(req.getPathInfo)
+      case "savemessage" => testSaveMessage(req.getPathInfo + ":" + req.getRequestURI)
       case "loadmessage" => testLoadMessage
       case "deletemessage" => testDeleteMessage
+      case "readdelicious" => testReadDelicious
       case _ => testBasicOutput
     }
 
@@ -67,6 +68,12 @@ class TestingServlet extends HttpServlet {
         }
         resp.getWriter.println(output)
       }
+    }
+
+    def testReadDelicious: Unit = {
+      resp.setContentType("text/plain")
+      new DeliciousNetworkHandler
+      resp.getWriter.println("Done")
     }
 
     def testDeleteMessage: Unit = {

@@ -2,7 +2,6 @@ package org.pigsaw.wharfinger
 
 import xml.Node
 import Preamble._
-import collection.immutable.List
 
 /**
  * On construction, a DeliciousNetworkHandler will fetch and parse
@@ -18,15 +17,16 @@ class DeliciousNetworkHandler {
   val bookmarks_html = readHtml() \\ "div" having (_ \ "@class" filter (_.text contains "bookmark "))
   val bookmarks = for (bookmark <- bookmarks_html) yield {
     val link = bookmark \\ "a" having (_ \ "@class" filter (_.text contains "taggedlink"))
-    new DeliciousBookmark(
-      title = link.text,
-      url = (link \ "@href").text)
+    new ArticleURL((link \ "@href").text)
   }
   bookmarks.foreach( process )
 
-  def process(bookmark:DeliciousBookmark) { }
+  /** Process a single bookmark. */
+  def process(bookmark: ArticleURL) {
+    val task = new QueueableTask("/fetchurl")
+    task += ("url" -> bookmark.url)
+    task.enqueue
+  }
 }
 
-class DeliciousBookmark(
-        val title: String,
-        val url: String)
+class ArticleURL(val url: String)

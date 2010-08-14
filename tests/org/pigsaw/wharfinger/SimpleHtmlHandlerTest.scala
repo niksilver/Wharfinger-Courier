@@ -3,7 +3,7 @@ package org.pigsaw.wharfinger
 import org.scalatest.Spec
 import org.scalatest.matchers.ShouldMatchers
 import Preamble._
-import java.io.IOException
+import java.io.{StringReader, IOException}
 
 /**
  * Created by IntelliJ IDEA.
@@ -19,13 +19,13 @@ class SimpleHtmlHandlerTest extends Spec with ShouldMatchers {
 
     it("Should read HTML text") {
       val str = "<a>This is the first level<b>This is the second level</b></a>"
-      val html = SimpleHtmlHandler.readFromString(str);
+      val html = HtmlNode(new StringReader(str));
       val message = (html \\ "b").text
       message should be ("This is the second level")
     }
 
     it("Should be able to use 'having' to limit to nodes which contain certain other node sequences") {
-      val html = SimpleHtmlHandler.readFromString(Data.instapaper_html)
+      val html = HtmlNode(new StringReader(Data.instapaper_html))
       val nodes = html \\ "li" having (_ \\ "@accesskey")
       
       nodes should have length (3)
@@ -38,14 +38,14 @@ class SimpleHtmlHandlerTest extends Spec with ShouldMatchers {
     }
 
     it("Should read HTML from a URL") {
-      val html = SimpleHtmlHandler.readFromURL("http://www.google.com")
+      val html = HtmlNode(new UrlReader("http://www.google.com"))
       val title = (html \\ "title").text
       title should be ("Google")
     }
   }
 
   it("Should handle reading from a problematic URL") {
-    def readURL = SimpleHtmlHandler.readFromURL("http://www.willnotresolve5432.com")
+    def readURL = HtmlNode(new UrlReader("http://www.willnotresolve5432.com"))
     evaluating(readURL) should produce [IOException]
   }
 
@@ -67,7 +67,7 @@ class SimpleHtmlHandlerTest extends Spec with ShouldMatchers {
   */
 
   it("Should read HTML from a redirected URL") {
-    val html = SimpleHtmlHandler.readFromURL("http://bit.ly/9NQcyA")
+    val html = HtmlNode(new UrlReader("http://bit.ly/9NQcyA"))
     val title = (html \\ "title").text
     title should include ("A mobile developer day too far")
   }

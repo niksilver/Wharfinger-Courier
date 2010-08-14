@@ -13,15 +13,15 @@ class DeliciousNetworkHandler(val reader: Reader) {
 
   val bookmarks = new ListBuffer[ArticleURL]()
 
-  def this() = this(new UrlReader("http://delicious.com/network/nik.silver?setcount=100"))
+  def this() = this(new URLReader("http://delicious.com/network/nik.silver?setcount=100"))
 
   /**Parse the HTML to create the bookmarks.
    */
   def parse() {
     val html = HtmlNode(reader)
-    val bookmarks_div =  html \\ "div" having (_ \ "@class" filter (_.text contains "bookmark "))
+    val bookmarks_div =  html \\ "div" containing (_ \ "@class" filter (_.text contains "bookmark "))
     for (bookmark <- bookmarks_div) {
-      val link = bookmark \\ "a" having (_ \ "@class" filter (_.text contains "taggedlink"))
+      val link = bookmark \\ "a" containing (_ \ "@class" filter (_.text contains "taggedlink"))
       val article_url = new ArticleURL((link \ "@href").text)
       bookmarks += article_url
     }

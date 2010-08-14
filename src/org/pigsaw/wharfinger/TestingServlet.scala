@@ -31,7 +31,7 @@ class TestingServlet extends HttpServlet {
 
     def testGetHtml: Unit = {
       resp.setContentType("text/plain")
-      val html = HtmlNode(new UrlReader("http://www.google.com"))
+      val html = HtmlNode(new URLReader("http://www.google.com"))
       val title = (html \\ "title").text
       resp.getWriter.println("Title of Google is '" + title + "'")      
     }
@@ -39,7 +39,7 @@ class TestingServlet extends HttpServlet {
     def testRedirectResolution: Unit = {
       resp.setContentType("text/plain")
       val bitly_url = "http://bit.ly/9NQcyA"
-      val resolver = new URLResolver(bitly_url)
+      val resolver = new RedirectResolver(bitly_url)
       resp.getWriter.println("'" + bitly_url + "' resolves to '" + resolver.URL + "'")
     }
 

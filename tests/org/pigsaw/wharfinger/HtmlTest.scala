@@ -4,7 +4,6 @@ import org.scalatest.Spec
 import org.scalatest.matchers.ShouldMatchers
 
 import org.ccil.cowan.tagsoup._
-import Data._
 
 /**
  * Created by IntelliJ IDEA.

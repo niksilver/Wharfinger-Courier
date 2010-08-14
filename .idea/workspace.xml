@@ -74,34 +74,34 @@
       <file leaf-file-name="HtmlTest.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="0" selection-start="735" selection-end="735" vertical-scroll-proportion="0.0">
+            <state line="12" column="31" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimpleHtmlHandlerTest.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/SimpleHtmlHandlerTest.scala">
+      <file leaf-file-name="HtmlNodeTest.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="62" selection-start="2271" selection-end="2271" vertical-scroll-proportion="0.0">
+            <state line="47" column="18" selection-start="1444" selection-end="1444" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HtmlNode.scala" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="HtmlNode.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="101" selection-start="580" selection-end="580" vertical-scroll-proportion="0.0">
+            <state line="30" column="32" selection-start="707" selection-end="707" vertical-scroll-proportion="0.885159">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DeliciousNetworkHandlerTest.scala" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DeliciousNetworkHandlerTest.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DeliciousNetworkHandlerTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="0" selection-start="856" selection-end="856" vertical-scroll-proportion="0.7597173">
+            <state line="17" column="17" selection-start="376" selection-end="376" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -128,7 +128,7 @@
       <file leaf-file-name="DeliciousNetworkHandler.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/DeliciousNetworkHandler.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="22" selection-start="983" selection-end="983" vertical-scroll-proportion="0.0">
+            <state line="36" column="22" selection-start="991" selection-end="991" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -137,7 +137,7 @@
       <file leaf-file-name="TestingServlet.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="6" selection-start="2482" selection-end="2482" vertical-scroll-proportion="0.0">
+            <state line="74" column="6" selection-start="2487" selection-end="2487" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -157,8 +157,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/org/ccil/cowan/tagsoup/TagSoupFactoryAdapter.scala" />
-        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlTest.scala" />
         <option value="$PROJECT_DIR$/.idea/artifacts/wharfinger_engine.xml" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/SomeTest.scala" />
@@ -169,10 +167,12 @@
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchURLServlet.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/SimpleHtmlHandler.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/SimpleHtmlHandlerTest.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/DeliciousNetworkHandler.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DeliciousNetworkHandlerTest.scala" />
+        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlTest.scala" />
+        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala" />
       </list>
     </option>
   </component>
@@ -661,6 +661,7 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -671,10 +672,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39918116" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24974412" sideWeight="0.65923566" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="true" weight="0.3312102" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="15" y="414" width="977" height="226" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.3312102" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="15" y="414" width="977" height="226" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -744,21 +744,9 @@
         <state line="10" column="7" selection-start="192" selection-end="192" vertical-scroll-proportion="0.30088496" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="735" selection-end="735" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1191" column="64" selection-start="45557" selection-end="45614" vertical-scroll-proportion="0.031021899">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="101" selection-start="580" selection-end="580" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -770,13 +758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/SimpleHtmlHandlerTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="62" selection-start="2271" selection-end="2271" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/QueueableTask.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="0" selection-start="648" selection-end="648" vertical-scroll-proportion="0.0">
@@ -784,23 +765,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/DeliciousNetworkHandler.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="6" selection-start="2482" selection-end="2482" vertical-scroll-proportion="0.0">
+        <state line="36" column="22" selection-start="991" selection-end="991" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/DeliciousNetworkHandler.scala">
+    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="22" selection-start="983" selection-end="983" vertical-scroll-proportion="0.0">
+        <state line="12" column="31" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="18" selection-start="1444" selection-end="1444" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DeliciousNetworkHandlerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="856" selection-end="856" vertical-scroll-proportion="0.7597173">
+        <state line="17" column="17" selection-start="376" selection-end="376" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="6" selection-start="2487" selection-end="2487" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="32" selection-start="707" selection-end="707" vertical-scroll-proportion="0.885159">
           <folding />
         </state>
       </provider>

@@ -20,25 +20,30 @@ class DeliciousNetworkHandler(val reader: Reader) {
    */
   def parse() {
     val html = HtmlNode(reader)
-    val bookmarks_div =  html \\ "div" containing (_ \ "@class" filter (_.text contains "bookmark "))
+    val bookmarks_div =  html containingElementAttributeSubstring ("div", "@class", "bookmark ") //html \\ "div" containing (_ \ "@class" filter (_.text contains "bookmark "))
     for (bookmark <- bookmarks_div) {
-      val a_elt = bookmark \\ "a" containing (_ \ "@class" filter (_.text contains "taggedlink"))
+      val a_elt = bookmark containingElementAttributeSubstring ("a", "@class", "taggedlink")// \\ "a" containing (_ \ "@class" filter (_.text contains "taggedlink"))
       val link = (a_elt \ "@href").text
 
-      val count_span = bookmark \\ "span" containing (_ \ "@class" filter (_.text contains "delNavCount"))
+      val count_span = bookmark containingElementAttributeText ("span", "@class", "delNavCount") // \\ "span" containing (_ \ "@class" filter (_.text contains "delNavCount"))
       val count = count_span match {
         case NodeSeq.Empty => 1
         case span => span.text.toInt
       }
+
+      val username_a_elt = bookmark containingElementAttributeText ("a", "@class", "user user-tag")
+      // The href will be href="/currybet",
+      // so we need to lose the / to get the username
+      val username = (username_a_elt \ "@href").text.tail
       
-      val article_url = new ArticleURL(url = link, count = count)
+      val article_url = new ArticleURL(link, count, username)
       bookmarks += article_url
     }
   }
 
 }
 
-class ArticleURL(val url: String, val count: Int) {
+class ArticleURL(val url: String, val count: Int, val username: String) {
 
   /** Process a single bookmark. */
   def process() {

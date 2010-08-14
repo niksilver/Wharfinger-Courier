@@ -31,6 +31,7 @@ class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
 
       bookmark0.url should be ("http://www.leedsunited-mad.co.uk/news/tmnw/leeds_40_lincoln_by_sean_markey_aged_11_545231/index.shtml")
       bookmark0.count should be (1)
+      bookmark0.username should be ("currybet")
 
       bookmark2.url should be ("http://www.journalism.co.uk/young-journalists/?p=1094")
       bookmark2.count should be (8)

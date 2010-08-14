@@ -4,8 +4,8 @@ import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.Spec
 import collection.mutable.ListBuffer
 import java.io.StringReader
+
 //import Preamble._
-import xml.Node
 
 /**
  * Created by IntelliJ IDEA.
@@ -36,6 +36,24 @@ class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
       bookmark2.url should be ("http://www.journalism.co.uk/young-journalists/?p=1094")
       bookmark2.count should be (8)
 
+    }
+
+    it("Should process selectively") {
+      val processed = new ListBuffer[ArticleURL]()
+      val handler = new DeliciousNetworkHandler(new StringReader(Data.delicious_html)) {
+        override def process(a: ArticleURL) {
+          processed += a
+        }
+      }
+      handler.parse
+      handler.process(a => a.count > 1)
+
+      processed.size should be (5)
+      processed(0).count should be (8)
+      processed(1).count should be (11)
+      processed(2).count should be (2)
+      processed(3).count should be (78)
+      processed(4).count should be (16)
     }
 
   }

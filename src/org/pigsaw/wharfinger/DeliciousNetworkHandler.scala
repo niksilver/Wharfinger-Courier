@@ -43,11 +43,17 @@ class DeliciousNetworkHandler(val reader: Reader) {
 
   /** Process a single article URL.
    */
-  def process(a: ArticleURL) {}
+  def process(a: ArticleURL) = a.process()
 
+  /** Process all articles which meet a given condition.
+   */
   def process(cond: ArticleURL => Boolean) {
-    (bookmarks filter cond).foreach(process _)
+    (bookmarks filter cond).foreach (process _)
   }
+
+  /**Process all the bookmarks which meet some predefined condition.
+   */
+  def process(): Unit = process(a => a.count > 10)
 }
 
 class ArticleURL(val url: String, val count: Int, val username: String) {

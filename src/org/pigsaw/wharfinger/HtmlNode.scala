@@ -41,10 +41,14 @@ object Preamble {
       val (elt, attr, subs) = matcher
       new RichNodeSeq(ns \\ elt) containing (_ \ attr filter (_.text contains subs))
     }
+
+    def findDivWithId(id: String): Node = {
+      (this findElementAttributeText ("div", "@id", id))(0)
+    }
   }
 
   implicit def nodeSeq2RichNodeSeq(ns:NodeSeq) = new RichNodeSeq(ns)
-  implicit def node2RichNodeSeq(n:Node) = new RichNodeSeq(NodeSeq.Empty :+ n)
+  implicit def node2RichNodeSeq(n:Node) = new RichNodeSeq(n.theSeq)
 }
 
 /**

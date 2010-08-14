@@ -72,7 +72,9 @@ class TestingServlet extends HttpServlet {
 
     def testReadDelicious: Unit = {
       resp.setContentType("text/plain")
-      new DeliciousNetworkHandler
+      val handler = new DeliciousNetworkHandler
+      handler.parse
+      handler.process
       resp.getWriter.println("Done")
     }
 

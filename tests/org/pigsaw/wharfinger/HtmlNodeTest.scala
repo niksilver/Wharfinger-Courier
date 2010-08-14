@@ -58,17 +58,27 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
     evaluating(new RedirectResolver("http://www.madeupdomain54321.com")) should produce [IOException]
   }
 
-  /* This will not work due to Java's security.
-   *
-  it("Should resolve URLs across HTTP(S) boundaries") {
-    val resolver = new RedirectResolver("http://bit.ly/3hQYj")
-    resolver.URL should be ("https://www.google.com")
-  }
-  */
+  describe("RedirectResolver") {
+    /* This will not work due to Java's security.
+     *
+    it("Should resolve URLs across HTTP(S) boundaries") {
+      val resolver = new RedirectResolver("http://bit.ly/3hQYj")
+      resolver.URL should be ("https://www.google.com")
+    }
+    */
 
-  it("Should read HTML from a redirected URL") {
-    val html = HtmlNode(new URLReader("http://bit.ly/9NQcyA"))
-    val title = (html \\ "title").text
-    title should include ("A mobile developer day too far")
+    it("Should read HTML from a redirected URL") {
+      val html = HtmlNode(new URLReader("http://bit.ly/9NQcyA"))
+      val title = (html \\ "title").text
+      title should include ("A mobile developer day too far")
+    }
+  }
+
+  describe("RichNodeSeq") {
+    it("Should be able to find a single node by ID") {
+      val html = HtmlNode(new StringReader(Data.instapaper_html))
+      val div = html findDivWithId "story"
+      div.toString should startWith ("""<div id="story">""")
+    }
   }
 }

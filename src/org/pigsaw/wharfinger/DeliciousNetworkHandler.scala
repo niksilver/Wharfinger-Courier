@@ -3,6 +3,7 @@ package org.pigsaw.wharfinger
 import Preamble._
 import java.io.Reader
 import collection.mutable.ListBuffer
+import xml.{NodeSeq}
 
 /**
  * An object that will read from Delicious and parse out
@@ -21,15 +22,23 @@ class DeliciousNetworkHandler(val reader: Reader) {
     val html = HtmlNode(reader)
     val bookmarks_div =  html \\ "div" containing (_ \ "@class" filter (_.text contains "bookmark "))
     for (bookmark <- bookmarks_div) {
-      val link = bookmark \\ "a" containing (_ \ "@class" filter (_.text contains "taggedlink"))
-      val article_url = new ArticleURL((link \ "@href").text)
+      val a_elt = bookmark \\ "a" containing (_ \ "@class" filter (_.text contains "taggedlink"))
+      val link = (a_elt \ "@href").text
+
+      val count_span = bookmark \\ "span" containing (_ \ "@class" filter (_.text contains "delNavCount"))
+      val count = count_span match {
+        case NodeSeq.Empty => 1
+        case span => span.text.toInt
+      }
+      
+      val article_url = new ArticleURL(url = link, count = count)
       bookmarks += article_url
     }
   }
 
 }
 
-class ArticleURL(val url: String) {
+class ArticleURL(val url: String, val count: Int) {
 
   /** Process a single bookmark. */
   def process() {

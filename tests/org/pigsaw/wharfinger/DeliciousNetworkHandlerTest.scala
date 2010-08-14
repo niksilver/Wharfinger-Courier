@@ -22,9 +22,19 @@ class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
     it("Should return a list of bookmarks") {
       val handler = new DeliciousNetworkHandler(new StringReader(Data.delicious_html))
       handler.parse
+
       handler.bookmarks.size should be === (10)
+
       val bookmark0 = handler.bookmarks(0)
+      val bookmark1 = handler.bookmarks(1)
+      val bookmark2 = handler.bookmarks(2)
+
       bookmark0.url should be ("http://www.leedsunited-mad.co.uk/news/tmnw/leeds_40_lincoln_by_sean_markey_aged_11_545231/index.shtml")
+      bookmark0.count should be (1)
+
+      bookmark2.url should be ("http://www.journalism.co.uk/young-journalists/?p=1094")
+      bookmark2.count should be (8)
+
     }
 
   }

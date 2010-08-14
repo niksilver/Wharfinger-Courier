@@ -32,12 +32,12 @@ object Preamble {
       ns filter( nodeBuilder(_).length > 0)
     }
 
-    def containingElementAttributeText(matcher: Tuple3[String,String,String]): Seq[Node] = {
+    def findElementAttributeText(matcher: Tuple3[String,String,String]): Seq[Node] = {
       val (elt, attr, text) = matcher
       new RichNodeSeq(ns \\ elt) containing (_ \ attr filter (_.text == text))
     }
 
-    def containingElementAttributeSubstring(matcher: Tuple3[String,String,String]): Seq[Node] = {
+    def findElementAttributeSubstring(matcher: Tuple3[String,String,String]): Seq[Node] = {
       val (elt, attr, subs) = matcher
       new RichNodeSeq(ns \\ elt) containing (_ \ attr filter (_.text contains subs))
     }

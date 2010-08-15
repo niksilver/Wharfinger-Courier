@@ -24,6 +24,12 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
       message should be ("This is the second level")
     }
 
+    it("Should be able to handle non-HTML text") {
+      val str = "<<?!"
+      val html = HtmlNode(new StringReader(str));
+      html should not be (null)
+    }
+
     it("Should be able to use 'containing' to limit to nodes which contain certain other node sequences") {
       val html = HtmlNode(new StringReader(Data.instapaper_html))
       val nodes = html \\ "li" containing (_ \\ "@accesskey")
@@ -42,23 +48,30 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
       val title = (html \\ "title").text
       title should be ("Google")
     }
-  }
 
-  it("Should handle reading from a problematic URL") {
-    def readURL = HtmlNode(new URLReader("http://www.willnotresolve5432.com"))
-    evaluating(readURL) should produce [IOException]
-  }
+    it("Should throw an exception reading from a problematic URL") {
+      def readURL = HtmlNode(new URLReader("http://www.willnotresolve5432.com"))
+      evaluating(readURL) should produce [IOException]
+    }
 
-  it("Should allow URL redirects to be resolved") {
-    val resolver = new RedirectResolver("http://bit.ly/9NQcyA")
-    resolver.URL should be ("http://www.mobileuserexperience.com/?p=896")
-  }
-
-  it("Should throw an IOException if URL redirect cannot be resolved") {
-    evaluating(new RedirectResolver("http://www.madeupdomain54321.com")) should produce [IOException]
+    it("Should read HTML from a redirected URL") {
+      val html = HtmlNode(new URLReader("http://bit.ly/9NQcyA"))
+      val title = (html \\ "title").text
+      title should include ("A mobile developer day too far")
+    }
   }
 
   describe("RedirectResolver") {
+
+    it("Should allow URL redirects to be resolved") {
+      val resolver = new RedirectResolver("http://bit.ly/9NQcyA")
+      resolver.URL should be ("http://www.mobileuserexperience.com/?p=896")
+    }
+
+    it("Should throw an IOException if URL redirect cannot be resolved") {
+      evaluating(new RedirectResolver("http://www.madeupdomain54321.com")) should produce [IOException]
+    }
+
     /* This will not work due to Java's security.
      *
     it("Should resolve URLs across HTTP(S) boundaries") {
@@ -66,12 +79,6 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
       resolver.URL should be ("https://www.google.com")
     }
     */
-
-    it("Should read HTML from a redirected URL") {
-      val html = HtmlNode(new URLReader("http://bit.ly/9NQcyA"))
-      val title = (html \\ "title").text
-      title should include ("A mobile developer day too far")
-    }
   }
 
   describe("RichNodeSeq") {

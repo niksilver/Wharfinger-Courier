@@ -84,7 +84,7 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
   describe("RichNodeSeq") {
     it("Should be able to find a single node by ID") {
       val html = HtmlNode(new StringReader(Data.instapaper_html))
-      val div = html findDivWithId "story"
+      val Some(div) = html findDivWithId "story"
       div.toString should startWith ("""<div id="story">""")
     }
   }

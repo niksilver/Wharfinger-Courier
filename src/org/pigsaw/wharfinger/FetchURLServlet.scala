@@ -36,6 +36,9 @@ class InstapaperHandler(article_url: String) {
 
   def getContentDiv(): Node = {
     val html = HtmlNode(new URLReader(url))
-    html findDivWithId "story"
+    html findDivWithId "story" match {
+      case None => <div></div>
+      case Some(story_div) => story_div
+    }
   }
 }

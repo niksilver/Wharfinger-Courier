@@ -42,8 +42,12 @@ object Preamble {
       new RichNodeSeq(ns \\ elt) containing (_ \ attr filter (_.text contains subs))
     }
 
-    def findDivWithId(id: String): Node = {
-      (this findElementAttributeText ("div", "@id", id))(0)
+    def findDivWithId(id: String): Option[Node] = {
+      val elts = (this findElementAttributeText ("div", "@id", id))
+      elts.length match {
+        case 0 => None
+        case _ => Some(elts(0))
+      }
     }
   }
 

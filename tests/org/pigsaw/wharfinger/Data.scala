@@ -9,7 +9,7 @@ package org.pigsaw.wharfinger
  */
 
 object Data {
-  val instapaper_html = """
+  def instapaper_html = { """
   <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
@@ -266,9 +266,9 @@ via <a href="http://seesmic.com/seesmic_mobile/android/" rel="nofollow">Seesmic 
                           &#xab; <a href="/u">Back to Instapaper</a>
   </body>
   </html>
-          """
+          """ }
 
-  val delicious_html = """<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+  def delicious_html = { """<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
   <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -1470,5 +1470,130 @@ var ins = new YAHOO.i13n.Track(conf); ins.init();</script>
 </body>
 </html>
 <!-- fe01.web.del.ac4.yahoo.net compressed/chunked Thu Aug 12 12:57:03 PDT 2010 -->
-"""
+""" }
+
+  def delicious_bookmark_div_with_full_data = { """<div class="bookmark  NOTHUMB">
+
+
+
+
+      <span id="audiofile6" class="jsEnabled action"></span>
+
+
+    <div class="data">
+
+
+
+
+
+      <h4>
+
+                  <a href="http://www.guardian.co.uk/news/datablog/2010/aug/10/government-data-information-architecture" class="taggedlink  " rel="nofollow">The IA behind the World Government Data store | Martin Belam | Guardian Datablog</a>
+        <span class="saverem"><em class="bookmark-actions"><strong><a href="/save?url=http%3A%2F%2Fwww.guardian.co.uk%2Fnews%2Fdatablog%2F2010%2Faug%2F10%2Fgovernment-data-information-architecture&amp;title=The%20IA%20behind%20the%20World%20Government%20Data%20store%20%7C%20Martin%20Belam%20%7C%20Guardian%20Datablog&amp;jump=%2Fnetwork%2Fnik.silver&amp;key=efYRvX6rsyXVRqq19kahvq1OM5s-&amp;copyuser=currybet&amp;via=currybet&amp;copyuser=currybet&amp;copytags=ia+datastore+martinbelam+guardian" class="inlinesave action rapidnofollow">SAVE</a></strong>
+		                </em></span>
+
+
+      </h4>
+
+
+
+
+      <div class="actions">
+      <h5 class="savers-label">PEOPLE</h5>
+      <div class="savers savers2">
+          <a href="/url/f52c6b573ced478eb040713a67ff04ff" class="delNav">
+              <span class="delNavCount">13</span>
+          </a>
+      </div>
+      </div>
+
+
+
+
+
+
+
+            <div class="description">
+          "The Guardian's Information Architect, Martin Belam, provides a glimpse behind the scenes at the design process of our World Government Data store."      </div>
+
+
+    </div>
+
+    <div class="meta">
+                      <a class="user user-tag" href="/currybet"><span class="">Martin Belam</span></a>
+
+
+
+          <h5 class="tag-chain-label tag-chain-tagLabel" style="visibility: hidden;">TAGS</h5>
+      <h5 class="tag-chain-label tag-chain-forLabel">SHARED</h5>
+      <div class="tagdisplay">
+        <ul class="tag-chain">        <li class="off tag-chain-tag first"><a href="/currybet/ia" rel="tag" class="tagItem noplay">ia</a></li>
+            <li class="off tag-chain-tag"><a href="/currybet/datastore" rel="tag" class="tagItem noplay">datastore</a></li>
+            <li class="off tag-chain-tag"><a href="/currybet/martinbelam" rel="tag" class="tagItem noplay">martinbelam</a></li>
+            <li class="off tag-chain-tag last"><a href="/currybet/guardian" rel="tag" class="tagItem noplay">guardian</a></li>
+    </ul>
+		  </div>
+
+      <div class="clr"></div>
+    </div><!-- #tagdisplay -->
+
+    <div class="clr"></div>
+  </div>""" }
+
+  def delicious_bookmark_div_with_partial_data = { """<div class="bookmark  NOTHUMB">
+
+
+
+
+      <span id="audiofile54" class="jsEnabled action"></span>
+
+
+    <div class="data">
+
+
+
+
+
+      <h4>
+
+                  <a href="http://www.sciencedirect.com/science?_ob=ArticleURL&amp;_udi=B6V84-4CS4KXX-2&amp;_user=142623&amp;_coverDate=10%2F31%2F2004&amp;_rdoc=1&amp;_fmt=high&amp;_orig=search&amp;_sort=d&amp;_docanchor=&amp;view=c&amp;_acct=C000000333&amp;_version=1&amp;_urlVersion=0&amp;_userid=142623&amp;md5=28edbadbb8d08ff3c150330060b33661#toc1" class="taggedlink  " rel="nofollow">ScienceDirect - Economics Letters : The effect of democracy and press freedom on corruption: an empirical test</a>
+        <span class="saverem"><em class="bookmark-actions"><strong><a href="/save?url=http%3A%2F%2Fwww.sciencedirect.com%2Fscience%3F_ob%3DArticleURL%26_udi%3DB6V84-4CS4KXX-2%26_user%3D142623%26_coverDate%3D10%252F31%252F2004%26_rdoc%3D1%26_fmt%3Dhigh%26_orig%3Dsearch%26_sort%3Dd%26_docanchor%3D%26view%3Dc%26_acct%3DC000000333%26_version%3D1%26_urlVersion%3D0%26_userid%3D142623%26md5%3D28edbadbb8d08ff3c150330060b33661%23toc1&amp;title=ScienceDirect%20-%20Economics%20Letters%20%3A%20The%20effect%20of%20democracy%20and%20press%20freedom%20on%20corruption%3A%20an%20empirical%20test&amp;jump=%2Fnetwork%2Fnik.silver%3Fpage%3D2&amp;key=efYRvX6rsyXVRqq19kahvq1OM5s-&amp;copyuser=cshirky&amp;via=cshirky&amp;copyuser=cshirky&amp;copytags=press+freedom+democracy+corruption" class="inlinesave action rapidnofollow">SAVE</a></strong>
+		                </em></span>
+
+
+      </h4>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <div class="meta">
+                      <a class="user user-tag" href="/cshirky"><span class="">Clay Shirky (clay@s...</span></a>
+
+
+
+          <h5 class="tag-chain-label tag-chain-tagLabel">TAGS</h5>
+      <h5 class="tag-chain-label tag-chain-forLabel">SHARED</h5>
+      <div class="tagdisplay">
+        <ul class="tag-chain">        <li class="off tag-chain-tag first"><a href="/cshirky/press" rel="tag" class="tagItem noplay">press</a></li>
+            <li class="off tag-chain-tag"><a href="/cshirky/freedom" rel="tag" class="tagItem noplay">freedom</a></li>
+            <li class="off tag-chain-tag"><a href="/cshirky/democracy" rel="tag" class="tagItem noplay">democracy</a></li>
+            <li class="off tag-chain-tag last"><a href="/cshirky/corruption" rel="tag" class="tagItem noplay">corruption</a></li>
+    </ul>
+		  </div>
+
+      <div class="clr"></div>
+    </div><!-- #tagdisplay -->
+
+    <div class="clr"></div>
+  </div>""" }
 }

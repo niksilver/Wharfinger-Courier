@@ -20,7 +20,6 @@ class TestingServlet extends HttpServlet {
       case "savemessage" => testSaveMessage(req.getPathInfo + ":" + req.getRequestURI)
       case "loadmessage" => testLoadMessage
       case "deletemessage" => testDeleteMessage
-      case "readdelicious" => testReadDelicious
       case _ => testBasicOutput
     }
 
@@ -68,14 +67,6 @@ class TestingServlet extends HttpServlet {
         }
         resp.getWriter.println(output)
       }
-    }
-
-    def testReadDelicious: Unit = {
-      resp.setContentType("text/plain")
-      val handler = new DeliciousNetworkHandler
-      handler.parse
-      handler.process
-      resp.getWriter.println("Done")
     }
 
     def testDeleteMessage: Unit = {

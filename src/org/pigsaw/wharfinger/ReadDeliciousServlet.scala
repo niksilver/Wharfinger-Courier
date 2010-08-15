@@ -13,8 +13,16 @@ import javax.servlet.http.{HttpServletResponse, HttpServletRequest, HttpServlet}
 class ReadDeliciousServlet extends HttpServlet {
 
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse) {
-    val handler = new DeliciousNetworkHandler
+    resp.setContentType("text/plain")
+    val handler = (new DeliciousNetworkHandler with ProcessReporter)
     handler.parse
-    handler.process
+    handler.process()
+
+    trait ProcessReporter extends DeliciousNetworkHandler {
+      override def process(a: ArticleURL) {
+        resp.getWriter.println("Queuing task to fetch " + a.url)
+        super.process(a)
+      }
+    }
   }
 }

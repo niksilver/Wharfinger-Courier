@@ -58,14 +58,14 @@ class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
     }
 
     it("Should process selectively") {
-      val processed = new ListBuffer[ArticleURL]()
+      val processed = new ListBuffer[Bookmark]()
       val handler = new DeliciousNetworkHandler(new StringReader(Data.delicious_html)) {
-        override def process(a: ArticleURL) {
+        override def process(a: Bookmark) {
           processed += a
         }
       }
       handler.parse
-      handler.process(a => a.count > 1)
+      handler.process(bookmark => bookmark.count > 1)
 
       processed.size should be (5)
       processed(0).count should be (8)

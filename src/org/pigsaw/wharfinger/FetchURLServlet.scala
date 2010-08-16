@@ -17,17 +17,44 @@ class FetchURLServlet extends HttpServlet {
 
   override def doPost(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
     val article_url = req.getParameter("url")
-    val pm = PMF.get.getPersistenceManager
-    try {
-      val handler = new InstapaperHandler(article_url)
-      val content = handler.getContentDiv().toString
-      pm.makePersistent(new Article(article_url, content))
+    val handler = new InstapaperHandler(article_url)
+    lazy val content_div = getContentDivSafely()
+    if (content_div.text == "") {
+      retry(handler.url)
     }
-    finally {
-      pm.close
+    else {
+      persistArticle()
+    }
+
+    def getContentDivSafely(): Node = {
+      try {
+        handler.getContentDiv()
+      }
+      catch {
+        case _ => <div></div>
+      }
+    }
+
+    def persistArticle() {
+      val pm = PMF.get.getPersistenceManager
+      try {
+        pm.makePersistent(new Article(article_url, content_div.toString))
+      }
+      finally {
+        pm.close
+      }
+    }
+
+    def retry(url: String) {
+      val pm = PMF.get.getPersistenceManager
+      try {
+        pm.makePersistent(new BookmarkToRetry(url))
+      }
+      finally {
+        pm.close
+      }
     }
   }
-
 }
 
 class InstapaperHandler(article_url: String) {

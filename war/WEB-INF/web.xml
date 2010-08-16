@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	<servlet>
+		<servlet-name>MainServlet</servlet-name>
+		<servlet-class>org.pigsaw.wharfinger.MainServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>TestingServlet</servlet-name>
+		<servlet-class>org.pigsaw.wharfinger.TestingServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>FetchURLServlet</servlet-name>
+		<servlet-class>org.pigsaw.wharfinger.FetchURLServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ReadDeliciousServlet</servlet-name>
+		<servlet-class>org.pigsaw.wharfinger.ReadDeliciousServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AdminServlet</servlet-name>
+		<servlet-class>org.pigsaw.wharfinger.AdminServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MainServlet</servlet-name>
+		<url-pattern>/save/*</url-pattern>
+		<url-pattern>/load/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TestingServlet</servlet-name>
+		<url-pattern>/test/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FetchURLServlet</servlet-name>
+		<url-pattern>/fetchurl/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ReadDeliciousServlet</servlet-name>
+		<url-pattern>/readdelicious</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminServlet</servlet-name>
+		<url-pattern>/admin/*</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+</web-app>

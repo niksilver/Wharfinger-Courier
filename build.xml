@@ -1,0 +1,81 @@
+<project name="Wharfinger Courier">
+
+    <property environment="env"/>
+    <property name="base.dir" location="."/>
+    <property name="sources.dir" value="${base.dir}/src"/>
+    <property name="build.dir" value="${base.dir}/out.basic"/>
+    <property name="scala.home" value="${env.SCALA_HOME}"/>
+    <property name="war.lib" value="${base.dir}/war/WEB-INF/lib"/>
+    <property name="sdk.dir" location="${env.SCALA_HOME}/../../Google/appengine-java-sdk-1.3.5"/>
+    <import file="${sdk.dir}/config/user/ant-macros.xml"/>
+
+
+    <target name="init">
+        <property name="scala-library.jar"
+                  value="${scala.home}/lib/scala-library.jar"/>
+        <path id="build.classpath">
+            <pathelement location="${scala-library.jar}"/>
+            <pathelement location="${build.dir}"/>
+            <fileset dir="${war.lib}">
+                <include name="*.jar"/>
+            </fileset>
+            <fileset dir="${base.dir}/lib">
+                <include name="*.jar"/>
+            </fileset>
+        </path>
+        <taskdef resource="scala/tools/ant/antlib.xml">
+            <classpath>
+                <pathelement location="${scala.home}/lib/scala-compiler.jar"/>
+                <pathelement location="${scala-library.jar}"/>
+            </classpath>
+        </taskdef>
+    </target>
+
+    <target name="copy-jars"
+            description="Copies the App Engine JARs to the WAR.">
+        <copy todir="war/WEB-INF/lib"
+              flatten="true">
+            <fileset dir="${sdk.dir}/lib/user">
+                <include name="**/*.jar"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="compile-java" depends="init,copy-jars"
+            description="Compiles Java source and copies other source files to the WAR.">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="war/WEB-INF/classes" />
+        <copy todir="war/WEB-INF/classes">
+          <fileset dir="${sources.dir}">
+              <exclude name="**/*.java" />
+              <exclude name="**/*.scala" />
+          </fileset>
+        </copy>
+        <javac srcdir="${sources.dir}"
+               destdir="${build.dir}"
+               classpathref="build.classpath">
+            <include name="**/*.java"/>
+        </javac>
+        <copy todir="war/WEB-INF/classes">
+          <fileset dir="${build.dir}">
+            <include name="**/*.class" />
+          </fileset>
+        </copy>
+
+    </target>
+
+    <target name="compile-scala" depends="init,compile-java">
+        <mkdir dir="${build.dir}"/>
+        <scalac srcdir="${sources.dir}"
+                destdir="${build.dir}"
+                classpathref="build.classpath">
+            <include name="**/*.scala"/>
+        </scalac>
+    </target>
+
+    <target name="datanucleus-enhance" depends="compile-scala"
+            description="Performs JDO enhancement on compiled data classes.">
+        <enhance_war war="war"/>
+    </target>
+
+</project>

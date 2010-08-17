@@ -4,6 +4,7 @@ import org.ccil.cowan.tagsoup._
 import xml.{NodeSeq, Node}
 import java.net.{HttpURLConnection, URL}
 import java.io.Reader
+import com.google.appengine.api.datastore.Text
 
 /**
  * Object with a factory method to return an HTML document
@@ -53,6 +54,12 @@ object Preamble {
 
   implicit def nodeSeq2RichNodeSeq(ns:NodeSeq) = new RichNodeSeq(ns)
   implicit def node2RichNodeSeq(n:Node) = new RichNodeSeq(n.theSeq)
+
+  implicit def string2GAEText(s: String) = s match {
+    case null => null
+    case _ => new Text(s)
+  }
+  implicit def GAEText2String(t: Text) = t.getValue
 }
 
 /**

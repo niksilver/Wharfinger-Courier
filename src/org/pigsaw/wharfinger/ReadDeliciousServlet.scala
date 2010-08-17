@@ -19,7 +19,7 @@ class ReadDeliciousServlet extends HttpServlet {
     handler.process()
 
     trait ProcessReporter extends DeliciousNetworkHandler {
-      override def process(a: Bookmark) {
+      override def process(a: BookmarkPendingFetch) {
         resp.getWriter.println("Queuing task to fetch " + a.url)
         super.process(a)
       }

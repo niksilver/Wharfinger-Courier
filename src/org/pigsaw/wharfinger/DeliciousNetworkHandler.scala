@@ -12,7 +12,7 @@ import xml.{Node, NodeSeq}
 
 class DeliciousNetworkHandler(val reader: Reader) {
 
-  val bookmarks = new ListBuffer[Bookmark]()
+  val bookmarks = new ListBuffer[BookmarkPendingFetch]()
 
   def this() = this(new URLReader("http://delicious.com/network/nik.silver?setcount=100"))
 
@@ -28,22 +28,22 @@ class DeliciousNetworkHandler(val reader: Reader) {
 
   /** Process a single article URL.
    */
-  def process(b: Bookmark) = b.process()
+  def process(b: BookmarkPendingFetch) = {}
 
   /** Process all articles which meet a given condition.
    */
-  def process(cond: Bookmark => Boolean) {
+  def process(cond: BookmarkPendingFetch => Boolean) {
     (bookmarks filter cond).foreach (process _)
   }
 
   /**Process all the bookmarks which meet some predefined condition.
    */
-  def process(): Unit = process(bookmark => bookmark.count > 0)
+  def process(): Unit = process(bookmark => bookmark.popularity > 0)
 }
 
 object DeliciousNetworkHandler {
 
-  def makeBookmark(bookmark_div: Node): Bookmark = {
+  def makeBookmark(bookmark_div: Node): BookmarkPendingFetch = {
     val a_elt = bookmark_div findElementAttributeSubstring ("a", "@class", "taggedlink")
     val link = (a_elt \ "@href").text
 
@@ -60,25 +60,14 @@ object DeliciousNetworkHandler {
 
     val citation_div = bookmark_div findElementAttributeText ("div", "@class", "description")
     val citation = citation_div.length match {
-      case 0 => None
-      case _ => Some(citation_div.text.trim)
+      case 0 => null
+      case _ => citation_div.text.trim
     }
 
-    new Bookmark(link, count, username, citation)
-  }
-
-}
-
-class Bookmark(val url: String,
-                 val count: Int,
-                 val username: String,
-                 val citation: Option[String]) {
-
-  /** Process a single bookmark. */
-  def process() {
-    val task = new QueueableTask("/fetchurl")
-    task += ("url" -> url)
-    task.enqueue
+    new BookmarkPendingFetch(url = link,
+      popularity = count,
+      username = username,
+      citation = citation)
   }
 
 }

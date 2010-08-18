@@ -10,7 +10,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet>
 		<servlet-name>FetchURLServlet</servlet-name>
-		<servlet-class>org.pigsaw.wharfinger.FetchURLServlet</servlet-class>
+		<servlet-class>org.pigsaw.wharfinger.FetchSomeURLsServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>ReadDeliciousServlet</servlet-name>

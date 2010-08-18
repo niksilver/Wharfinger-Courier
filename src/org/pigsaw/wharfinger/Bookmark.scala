@@ -2,6 +2,7 @@ package org.pigsaw.wharfinger
 
 import javax.jdo.annotations.{PrimaryKey, Persistent, PersistenceCapable}
 import com.google.appengine.api.datastore.Text
+import javax.jdo.PersistenceManager
 
 /**
  * Bookmark trait and all its concrete subclasses.
@@ -30,4 +31,14 @@ class BookmarkPendingFetch(@Persistent @PrimaryKey override val url:String,
                            @Persistent override val citation: Text
         ) extends Bookmark {
   val tryCount = 0
+
+  def saveForLaterFetching() {
+    val pm = PMF.get.getPersistenceManager
+    try {
+      pm.makePersistent(this)
+    }
+    finally {
+      pm.close
+    }
+  }
 }

@@ -3,12 +3,13 @@
     <property environment="env"/>
     <property name="base.dir" location="."/>
     <property name="sources.dir" value="${base.dir}/src"/>
-    <property name="build.dir" value="${base.dir}/out.basic"/>
+    <property name="build.dir" value="${base.dir}/out.unenhanced"/>
     <property name="scala.home" value="${env.SCALA_HOME}"/>
-    <property name="war.lib" value="${base.dir}/war/WEB-INF/lib"/>
+    <property name="war.dir" value="${base.dir}/war"/>
+    <property name="war.lib" value="${war.dir}/WEB-INF/lib"/>
+    <property name="war.classes" value="${war.dir}/WEB-INF/classes"/>
     <property name="sdk.dir" location="${env.SCALA_HOME}/../../Google/appengine-java-sdk-1.3.5"/>
     <import file="${sdk.dir}/config/user/ant-macros.xml"/>
-
 
     <target name="init">
         <property name="scala-library.jar"
@@ -16,11 +17,12 @@
         <path id="build.classpath">
             <pathelement location="${scala-library.jar}"/>
             <pathelement location="${build.dir}"/>
-            <fileset dir="${war.lib}">
-                <include name="*.jar"/>
-            </fileset>
             <fileset dir="${base.dir}/lib">
-                <include name="*.jar"/>
+                <include name="**/*.jar"/>
+            </fileset>
+            <fileset dir="${sdk.dir}/lib">
+                <include name="shared/**/*.jar" />
+                <include name="user/**/*.jar" />
             </fileset>
         </path>
         <taskdef resource="scala/tools/ant/antlib.xml">
@@ -30,38 +32,23 @@
             </classpath>
         </taskdef>
     </target>
-
-    <target name="copy-jars"
-            description="Copies the App Engine JARs to the WAR.">
-        <copy todir="war/WEB-INF/lib"
-              flatten="true">
-            <fileset dir="${sdk.dir}/lib/user">
-                <include name="**/*.jar"/>
-            </fileset>
-        </copy>
+    
+    <target name="clean-all"
+            description="Clean out all the class files and copied JARs">
+        <delete dir="${build.dir}" includes="**/*" includeemptydirs="true" quiet="true"/>
+        <delete dir="${war.classes}" includes="**/*" includeemptydirs="true" quiet="true"/>
+        <delete dir="${war.lib}" includes="**/*" includeemptydirs="true" quiet="true"/>
     </target>
 
-    <target name="compile-java" depends="init,copy-jars"
+    <target name="compile-java" depends="init"
             description="Compiles Java source and copies other source files to the WAR.">
         <mkdir dir="${build.dir}"/>
         <mkdir dir="war/WEB-INF/classes" />
-        <copy todir="war/WEB-INF/classes">
-          <fileset dir="${sources.dir}">
-              <exclude name="**/*.java" />
-              <exclude name="**/*.scala" />
-          </fileset>
-        </copy>
         <javac srcdir="${sources.dir}"
                destdir="${build.dir}"
                classpathref="build.classpath">
             <include name="**/*.java"/>
         </javac>
-        <copy todir="war/WEB-INF/classes">
-          <fileset dir="${build.dir}">
-            <include name="**/*.class" />
-          </fileset>
-        </copy>
-
     </target>
 
     <target name="compile-scala" depends="init,compile-java">
@@ -73,9 +60,39 @@
         </scalac>
     </target>
 
-    <target name="datanucleus-enhance" depends="compile-scala"
+    <target name="populate-war"
+            depends="compile-java,compile-scala"
+            description="Copies the app engine and other JARs to the WAR.">
+        <copy todir="${war.classes}">
+          <fileset dir="${sources.dir}">
+              <exclude name="**/*.java" />
+              <exclude name="**/*.scala" />
+          </fileset>
+        </copy>
+        <copy todir="${war.classes}">
+          <fileset dir="${build.dir}">
+            <include name="**/*.class" />
+          </fileset>
+        </copy>
+        <mkdir dir="${war.lib}"/>
+        <copy todir="${war.lib}"
+              flatten="true">
+            <fileset dir="${sdk.dir}/lib/user">
+                <include name="**/*.jar"/>
+            </fileset>
+            <fileset dir="${base.dir}/lib/runtime">
+                <include name="**/*.jar"/>
+            </fileset>
+            <fileset file="${scala-library.jar}"/>
+        </copy>
+    </target>
+
+    <target name="datanucleus-enhance" depends="populate-war"
             description="Performs JDO enhancement on compiled data classes.">
         <enhance_war war="war"/>
     </target>
+
+    <target name="finish-war"
+            depends="compile-java,compile-scala,populate-war,datanucleus-enhance"/>
 
 </project>

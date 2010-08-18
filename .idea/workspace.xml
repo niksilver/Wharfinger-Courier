@@ -7,15 +7,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/war/WEB-INF/web.xml" />
-      <change type="MOVED" beforePath="C:\Documents and Settings\Nik\IdeaProjects\Wharfinger Courier\lib\twitter4j-core-2.1.3.jar" afterPath="$PROJECT_DIR$/lib/runtime/twitter4j-core-2.1.3.jar" />
-      <change type="MOVED" beforePath="C:\Documents and Settings\Nik\IdeaProjects\Wharfinger Courier\lib\tagsoup-1.2.jar" afterPath="$PROJECT_DIR$/lib/runtime/tagsoup-1.2.jar" />
-      <change type="MOVED" beforePath="C:\Documents and Settings\Nik\IdeaProjects\Wharfinger Courier\src\org\pigsaw\wharfinger\FetchURLServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Bookmark.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Bookmark.scala" />
-      <change type="MOVED" beforePath="C:\Documents and Settings\Nik\IdeaProjects\Wharfinger Courier\lib\servlet.jar" afterPath="$PROJECT_DIR$/lib/build/servlet.jar" />
-      <change type="MOVED" beforePath="C:\Documents and Settings\Nik\IdeaProjects\Wharfinger Courier\lib\scalatest-1.2.jar" afterPath="$PROJECT_DIR$/lib/build/scalatest-1.2.jar" />
+    <list default="true" readonly="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="Removed some redundant files from source control.">
+      <change type="DELETED" beforePath="C:\Documents and Settings\Nik\IdeaProjects\Wharfinger Courier\.settings\com.google.gdt.eclipse.core.prefs" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="DELETED" beforePath="C:\Documents and Settings\Nik\IdeaProjects\Wharfinger Courier\.project" afterPath="" />
+      <change type="DELETED" beforePath="C:\Documents and Settings\Nik\IdeaProjects\Wharfinger Courier\.classpath" afterPath="" />
+      <change type="DELETED" beforePath="C:\Documents and Settings\Nik\IdeaProjects\Wharfinger Courier\.settings\com.google.appengine.eclipse.core.prefs" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Wharfinger Courier.iws" />
@@ -134,19 +131,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FetchSomeURLsServlet.scala" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="FetchSomeURLsServlet.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="72" selection-start="803" selection-end="803" vertical-scroll-proportion="0.0">
+            <state line="24" column="72" selection-start="803" selection-end="803" vertical-scroll-proportion="0.67886853">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="50" selection-start="3497" selection-end="3497" vertical-scroll-proportion="0.8604651">
+            <state line="85" column="50" selection-start="3497" selection-end="3497" vertical-scroll-proportion="-19.24">
               <folding />
             </state>
           </provider>
@@ -175,7 +172,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchURLServlet.scala" />
@@ -191,6 +187,7 @@
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Bookmark.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala" />
         <option value="$PROJECT_DIR$/build.xml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -338,20 +335,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="META-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger Courier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger Courier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -735,31 +718,9 @@
         <state line="18" column="9" selection-start="382" selection-end="382" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/DeliciousNetworkHandler.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="6" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/ReadDeliciousServlet.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="50" selection-start="651" selection-end="651" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="59" column="25" selection-start="1728" selection-end="1728" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="7" selection-start="2645" selection-end="2645" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Bookmark.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="249" selection-end="249" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../workspace/Wharfinger Courier/war/WEB-INF/classes/org/pigsaw/wharfinger/BookmarkToRetry.class">
@@ -769,9 +730,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="72" selection-start="803" selection-end="803" vertical-scroll-proportion="0.0">
+        <state line="2" column="2" selection-start="34" selection-end="34" vertical-scroll-proportion="0.056572378">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Bookmark.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="249" selection-end="249" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -783,9 +751,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/ReadDeliciousServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="50" selection-start="651" selection-end="651" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/DeliciousNetworkHandler.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="6" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="78" column="7" selection-start="2645" selection-end="2645" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="50" selection-start="3497" selection-end="3497" vertical-scroll-proportion="0.8604651">
+        <state line="85" column="50" selection-start="3497" selection-end="3497" vertical-scroll-proportion="-19.24">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="72" selection-start="803" selection-end="803" vertical-scroll-proportion="0.67886853">
           <folding />
         </state>
       </provider>

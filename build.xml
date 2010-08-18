@@ -89,7 +89,7 @@
 
     <target name="datanucleus-enhance" depends="populate-war"
             description="Performs JDO enhancement on compiled data classes.">
-        <enhance_war war="war"/>
+        <enhance_war war="${war.dir}"/>
     </target>
 
     <target name="finish-war"

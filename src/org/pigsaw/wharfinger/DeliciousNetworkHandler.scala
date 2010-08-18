@@ -28,7 +28,9 @@ class DeliciousNetworkHandler(val reader: Reader) {
 
   /** Process a single article URL.
    */
-  def process(b: BookmarkPendingFetch) = {}
+  def process(b: BookmarkPendingFetch) = {
+    b.saveForLaterFetching
+  }
 
   /** Process all articles which meet a given condition.
    */
@@ -64,10 +66,11 @@ object DeliciousNetworkHandler {
       case _ => citation_div.text.trim
     }
 
-    new BookmarkPendingFetch(url = link,
+    /*new BookmarkPendingFetch(url = link,
       popularity = count,
       username = username,
-      citation = citation)
+      citation = citation)*/
+    new BookmarkPendingFetch(link, count, username, citation)
   }
 
 }

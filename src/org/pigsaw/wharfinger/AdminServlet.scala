@@ -17,16 +17,22 @@ class AdminServlet extends HttpServlet {
     req.getPathInfo.tail.split('/')(0) match {
       case "cleardatastore" => clearDataStore
       case "showarticles" => showArticles
+      case "showbookmarkspendingfetch" => showBookmarksPendingFetch
       case _ => {}
     }
 
     def clearDataStore() {
       resp.setContentType("text/plain")
       val pm = PMF.get.getPersistenceManager
-      val query = pm.newQuery(classOf[Article])
-      transaction (query) {
-        query.deletePersistentAll
-        resp.getWriter.println("Deleted articles")
+      deleteClass(classOf[Article])
+      deleteClass(classOf[BookmarkPendingFetch])
+
+      def deleteClass[T](clz: Class[T]) {
+        val query = pm.newQuery(clz)
+        transaction (query) {
+          query.deletePersistentAll
+          resp.getWriter.println("Deleted " + clz)
+        }
       }
     }
 
@@ -45,6 +51,18 @@ class AdminServlet extends HttpServlet {
       def runLinesTogether(str: String) = ("" /: str.lines)(_ + _)
     }
 
+    def showBookmarksPendingFetch() {
+      resp.setContentType("text/plain")
+      val pm = PMF.get.getPersistenceManager
+      val query = pm.newQuery(classOf[BookmarkPendingFetch])
+      transaction (query) {
+        val bookmarks = query.execute.asInstanceOf[java.util.List[BookmarkPendingFetch]]
+        for (bookmark <- bookmarks) {
+          resp.getWriter.println(bookmark.url)
+        }
+      }
+
+    }
 
     def transaction(query: javax.jdo.Query)(block: Unit): Unit = {
       try {

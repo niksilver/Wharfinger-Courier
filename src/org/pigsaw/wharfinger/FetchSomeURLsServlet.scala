@@ -22,7 +22,7 @@ class FetchSomeURLsServlet extends HttpServlet {
     val pm: PersistenceManager = PMF.get.getPersistenceManager
     val query = pm.newQuery(classOf[BookmarkPendingFetch])
     query.setRange(0, 1)
-    val results = query.execute().asInstanceOf[List[BookmarkPendingFetch]]
+    val results = query.execute().asInstanceOf[java.util.List[BookmarkPendingFetch]]
     if (results.size == 0)
       sayNoBookmarksToFetch
     else
@@ -33,46 +33,47 @@ class FetchSomeURLsServlet extends HttpServlet {
     }
 
     def fetchBookmark(bookmark: BookmarkPendingFetch) = {
-      // Fetach a bookmark
-    }
 
-    /*val handler = new InstapaperHandler(article_url)
-    lazy val content_div = getContentDivSafely()
-    if (content_div.text == "") {
-      retry(handler.url)
-    }
-    else {
-      persistArticle()
-    }
+      val handler = new InstapaperHandler(bookmark.url)
+      lazy val content_div = getContentDivSafely()
+      if (content_div.text == "") {
+        resp.getWriter.println("Didn't get, retrying (to be written)")
+        retry(bookmark.url)
+      }
+      else {
+        resp.getWriter.println("Got article to persist: " + bookmark.url)
+        persistArticleAndRemoveFromPendingList()
+      }
 
-    def getContentDivSafely(): Node = {
-      try {
-        handler.getContentDiv()
+      def getContentDivSafely(): Node = {
+        try {
+          handler.getContentDiv()
+        }
+        catch {
+          case _ => <div></div>
+        }
       }
-      catch {
-        case _ => <div></div>
+
+      def persistArticleAndRemoveFromPendingList() {
+        try {
+          pm.makePersistent(new Article(bookmark.url, content_div.toString))
+          pm.deletePersistent(bookmark)
+        }
+        finally {
+          pm.close
+        }
+      }
+
+      def retry(url: String) {
+        /*val pm = PMF.get.getPersistenceManager
+        try {
+          pm.makePersistent(new BookmarkToRetry(url))
+        }
+        finally {
+          pm.close
+        }*/
       }
     }
-
-    def persistArticle() {
-      val pm = PMF.get.getPersistenceManager
-      try {
-        pm.makePersistent(new Article(article_url, content_div.toString))
-      }
-      finally {
-        pm.close
-      }
-    }
-
-    def retry(url: String) {
-      val pm = PMF.get.getPersistenceManager
-      try {
-        pm.makePersistent(new BookmarkToRetry(url))
-      }
-      finally {
-        pm.close
-      }
-    }*/
   }
 }
 

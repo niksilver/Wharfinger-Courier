@@ -9,7 +9,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-class>org.pigsaw.wharfinger.TestingServlet</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>FetchURLServlet</servlet-name>
+		<servlet-name>FetchSomeURLsServlet</servlet-name>
 		<servlet-class>org.pigsaw.wharfinger.FetchSomeURLsServlet</servlet-class>
 	</servlet>
 	<servlet>
@@ -25,8 +25,8 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/test/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>FetchURLServlet</servlet-name>
-		<url-pattern>/fetchurl/*</url-pattern>
+		<servlet-name>FetchSomeURLsServlet</servlet-name>
+		<url-pattern>/fetchsomeurls</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ReadDeliciousServlet</servlet-name>

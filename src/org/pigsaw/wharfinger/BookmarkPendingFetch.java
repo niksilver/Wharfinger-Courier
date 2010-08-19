@@ -20,9 +20,11 @@ public class BookmarkPendingFetch {
     @Persistent
     public String username;
 
-
     @Persistent
     private Text citation;
+
+    @Persistent
+    public int fetchAttempts = 0;
 
     public BookmarkPendingFetch(String url, int popularity, String username, String citation) {
         this.url = url;

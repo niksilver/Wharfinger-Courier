@@ -8,11 +8,7 @@ import Preamble._
 import javax.jdo.PersistenceManager
 
 /**
- * Created by IntelliJ IDEA.
- * User: Nik
- * Date: 13-Aug-2010
- * Time: 22:34:45
- * To change this template use File | Settings | File Templates.
+ * Fetch one or more URLs which are pending.
  */
 
 class FetchSomeURLsServlet extends HttpServlet {
@@ -20,58 +16,44 @@ class FetchSomeURLsServlet extends HttpServlet {
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
     resp.setContentType("text/plain")
     val pm: PersistenceManager = PMF.get.getPersistenceManager
-    val query = pm.newQuery(classOf[BookmarkPendingFetch])
-    query.setRange(0, 1)
-    val results = query.execute().asInstanceOf[java.util.List[BookmarkPendingFetch]]
-    if (results.size == 0)
-      sayNoBookmarksToFetch
-    else
-      fetchBookmark(results(0))
+    bookmarksToFetch().foreach(fetchBookmark _)
+    resp.getWriter.println("Done fetching bookmarks")
 
-    def sayNoBookmarksToFetch = {
-      resp.getWriter.println("No bookmarks to fetch")
+    def bookmarksToFetch(): Seq[BookmarkPendingFetch] = {
+      val query = pm.newQuery(classOf[BookmarkPendingFetch])
+      query.setRange(0, 1)
+      query.execute().asInstanceOf[java.util.List[BookmarkPendingFetch]]
     }
 
     def fetchBookmark(bookmark: BookmarkPendingFetch) = {
 
       val handler = new InstapaperHandler(bookmark.url)
-      lazy val content_div = getContentDivSafely()
-      if (content_div.text == "") {
-        resp.getWriter.println("Didn't get, retrying (to be written)")
-        retry(bookmark.url)
+      val content_div_option = handler.getContentDiv
+      content_div_option match {
+        case Some(content_div) => persistArticleAndRemoveFromPendingList(content_div)
+        case None => saveForLaterRetry(bookmark.url)
       }
-      else {
+
+      def persistArticleAndRemoveFromPendingList(content_div: Node) {
         resp.getWriter.println("Got article to persist: " + bookmark.url)
-        persistArticleAndRemoveFromPendingList()
-      }
-
-      def getContentDivSafely(): Node = {
-        try {
-          handler.getContentDiv()
-        }
-        catch {
-          case _ => <div></div>
-        }
-      }
-
-      def persistArticleAndRemoveFromPendingList() {
-        try {
+        persistAndClose(pm) {
           pm.makePersistent(new Article(bookmark.url, content_div.toString))
           pm.deletePersistent(bookmark)
         }
-        finally {
-          pm.close
+      }
+
+      def saveForLaterRetry(url: String) {
+        resp.getWriter.println("Didn't get, retrying (to be written)")
+        val pm = PMF.get.getPersistenceManager
+        bookmark.fetchAttempts += 1
+        persistAndClose(pm) {
+          pm.makePersistent(bookmark)
         }
       }
 
-      def retry(url: String) {
-        /*val pm = PMF.get.getPersistenceManager
-        try {
-          pm.makePersistent(new BookmarkToRetry(url))
-        }
-        finally {
-          pm.close
-        }*/
+      def persistAndClose(pm: PersistenceManager)(block: Unit) {
+        try { block }
+        finally { pm.close }
       }
     }
   }
@@ -81,11 +63,8 @@ class InstapaperHandler(article_url: String) {
   val url: String = "http://www.instapaper.com/text?u=" +
           URLEncoder.encode(article_url, "UTF-8")
 
-  def getContentDiv(): Node = {
+  def getContentDiv(): Option[Node] = {
     val html = HtmlNode(new URLReader(url))
-    html findDivWithId "story" match {
-      case None => <div></div>
-      case Some(story_div) => story_div
-    }
+    html findDivWithId "story"
   }
 }

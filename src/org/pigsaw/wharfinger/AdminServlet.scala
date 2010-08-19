@@ -2,6 +2,7 @@ package org.pigsaw.wharfinger
 
 import javax.servlet.http.{HttpServletResponse, HttpServletRequest, HttpServlet}
 import scala.collection.JavaConversions._
+import javax.jdo.PersistenceManager
 
 /**
  * Created by IntelliJ IDEA.

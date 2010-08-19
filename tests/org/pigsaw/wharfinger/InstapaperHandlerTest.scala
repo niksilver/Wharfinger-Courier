@@ -23,7 +23,7 @@ class InstapaperHandlerTest extends Spec with ShouldMatchers {
 
     it("Should be able to find the content div") {
       val handler = new InstapaperHandler("http://online.wsj.com/article/SB10001424052748703977004575393173432219064.html")
-      val content: Node = handler.getContentDiv()
+      val Some(content) = handler.getContentDiv()
       val h1 = content \\ "h1"
       h1.text should be ("Sites Feed Personal Details To New Tracking Industry")
     }

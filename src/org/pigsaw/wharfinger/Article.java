@@ -12,16 +12,22 @@ public class Article {
 	@PrimaryKey
 	@Persistent
 	public String url;
-	
-	@Persistent
-	private Text content;
 
-	public Article(String url, String content) {
+    @Persistent
+    private Text content;
+
+    @Persistent
+    private Text citation;
+
+	public Article(String url, String citation, String content) {
 		this.url = url;
 		this.content = new Text(content);
 	}
 	
-	public String getContent() {
-		return content.getValue();
-	}
+    public String getContent() {
+        return content.getValue();
+    }
+    public String getCitation() {
+        return citation.getValue();
+    }
 }

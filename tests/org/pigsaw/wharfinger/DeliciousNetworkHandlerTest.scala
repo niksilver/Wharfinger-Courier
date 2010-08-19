@@ -32,7 +32,7 @@ class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
       bookmark0.url should be ("http://www.leedsunited-mad.co.uk/news/tmnw/leeds_40_lincoln_by_sean_markey_aged_11_545231/index.shtml")
       bookmark0.popularity should be (1)
       bookmark0.username should be ("currybet")
-      bookmark0.citation.getValue should be ("Very passable match report from an 11 year old :-)")
+      bookmark0.description should be ("Very passable match report from an 11 year old :-)")
 
       bookmark2.url should be ("http://www.journalism.co.uk/young-journalists/?p=1094")
       bookmark2.popularity should be (8)
@@ -45,7 +45,7 @@ class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
       bookmark.url should be ("http://www.guardian.co.uk/news/datablog/2010/aug/10/government-data-information-architecture")
       bookmark.popularity should be (13)
       bookmark.username should be ("currybet")
-      bookmark.citation.getValue should be ("\"The Guardian's Information Architect, Martin Belam, provides a glimpse behind the scenes at the design process of our World Government Data store.\"")
+      bookmark.description should be ("\"The Guardian's Information Architect, Martin Belam, provides a glimpse behind the scenes at the design process of our World Government Data store.\"")
     }
 
     it("Should handle bookmark processing with partial data") {
@@ -55,14 +55,14 @@ class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
       bookmark.url should be ("http://www.sciencedirect.com/science?_ob=ArticleURL&_udi=B6V84-4CS4KXX-2&_user=142623&_coverDate=10%2F31%2F2004&_rdoc=1&_fmt=high&_orig=search&_sort=d&_docanchor=&view=c&_acct=C000000333&_version=1&_urlVersion=0&_userid=142623&md5=28edbadbb8d08ff3c150330060b33661#toc1")
       bookmark.popularity should be (1)
       bookmark.username should be ("cshirky")
-      bookmark.citation should be (null)
+      bookmark.description should be (null)
     }
 
     it("Should process selectively") {
-      val processed = new ListBuffer[Bookmark]()
+      val processed = new ListBuffer[DeliciousFeatures]()
       val handler = new DeliciousNetworkHandler(new StringReader(Data.delicious_html)) {
         override def process(a: BookmarkPendingFetch) {
-          processed += a
+          processed += a.asInstanceOf[DeliciousFeatures]
         }
       }
       handler.parse
@@ -76,5 +76,9 @@ class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
       processed(4).popularity should be (16)
     }
 
+    it("Should make a citation with count 1") {
+      DeliciousNetworkHandler.makeCitation(
+        1, "bobby", "I like this") should be ("Bookmarked by bobby: I like this")
+    }
   }
 }

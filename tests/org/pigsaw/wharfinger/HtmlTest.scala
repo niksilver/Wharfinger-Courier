@@ -3,7 +3,7 @@ package org.pigsaw.wharfinger
 import org.scalatest.Spec
 import org.scalatest.matchers.ShouldMatchers
 
-import org.ccil.cowan.tagsoup._
+import org.ccil.cowan.tagsoup.TagSoupFactoryAdapter
 
 /**
  * Created by IntelliJ IDEA.

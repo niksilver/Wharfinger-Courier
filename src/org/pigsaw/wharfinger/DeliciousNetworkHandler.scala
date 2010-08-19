@@ -12,7 +12,7 @@ import xml.{Node, NodeSeq}
 
 class DeliciousNetworkHandler(val reader: Reader) {
 
-  val bookmarks = new ListBuffer[BookmarkPendingFetch]()
+  val bookmarks = new ListBuffer[DeliciousFeatures]()
 
   def this() = this(new URLReader("http://delicious.com/network/nik.silver?setcount=100"))
 
@@ -34,7 +34,7 @@ class DeliciousNetworkHandler(val reader: Reader) {
 
   /** Process all articles which meet a given condition.
    */
-  def process(cond: BookmarkPendingFetch => Boolean) {
+  def process(cond: DeliciousFeatures => Boolean) {
     (bookmarks filter cond).foreach (process _)
   }
 
@@ -43,9 +43,15 @@ class DeliciousNetworkHandler(val reader: Reader) {
   def process(): Unit = process(bookmark => bookmark.popularity > 0)
 }
 
+trait DeliciousFeatures extends BookmarkPendingFetch {
+  val username: String
+  val popularity: Int
+  val description: String
+}
+
 object DeliciousNetworkHandler {
 
-  def makeBookmark(bookmark_div: Node): BookmarkPendingFetch = {
+  def makeBookmark(bookmark_div: Node): DeliciousFeatures = {
     val a_elt = bookmark_div findElementAttributeSubstring ("a", "@class", "taggedlink")
     val link = (a_elt \ "@href").text
 
@@ -58,19 +64,27 @@ object DeliciousNetworkHandler {
     val username_a_elt = bookmark_div findElementAttributeText ("a", "@class", "user user-tag")
     // The href will be href="/currybet",
     // so we need to lose the / to get the username
-    val username = (username_a_elt \ "@href").text.tail
+    val username0 = (username_a_elt \ "@href").text.tail
 
-    val citation_div = bookmark_div findElementAttributeText ("div", "@class", "description")
-    val citation = citation_div.length match {
+    val description_div = bookmark_div findElementAttributeText ("div", "@class", "description")
+    val description0 = description_div.length match {
       case 0 => null
-      case _ => citation_div.text.trim
+      case _ => description_div.text.trim
     }
 
     /*new BookmarkPendingFetch(url = link,
       popularity = count,
       username = username,
       citation = citation)*/
-    new BookmarkPendingFetch(link, count, username, citation)
+    new BookmarkPendingFetch(link, makeCitation(count, username0, description0)) with DeliciousFeatures {
+      val username = username0
+      val popularity = count
+      val description = description0
+    }
+  }
+
+  def makeCitation(count: Int, username: String, citation: String) = {
+    "Bookmarked by " + username + ": " + citation
   }
 
 }

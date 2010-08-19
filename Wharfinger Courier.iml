@@ -40,6 +40,10 @@
     <orderEntry type="library" name="Google App Engine" level="project" />
     <orderEntry type="library" name="Google App Engine from Eclipse" level="project" />
     <orderEntry type="library" name="Classes from Eclipse" level="project" />
+    <orderEntry type="library" name="Local lib" level="project" />
+    <orderEntry type="library" name="Google app engine" level="project" />
+    <orderEntry type="library" name="Local classes" level="project" />
+    <orderEntry type="library" name="Scala" level="project" />
   </component>
 </module>
 

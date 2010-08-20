@@ -43,8 +43,7 @@ class FetchSomeURLsServlet extends HttpServlet {
       }
 
       def saveForLaterRetry(url: String) {
-        resp.getWriter.println("Didn't get, retrying (to be written)")
-        val pm = PMF.get.getPersistenceManager
+        resp.getWriter.println("Didn't get, will mark for retry: " + bookmark.url)
         bookmark.fetchAttempts += 1
         persistAndClose(pm) {
           pm.makePersistent(bookmark)

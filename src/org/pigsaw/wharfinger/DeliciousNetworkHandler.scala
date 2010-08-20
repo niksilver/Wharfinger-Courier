@@ -28,7 +28,7 @@ class DeliciousNetworkHandler(val reader: Reader) {
 
   /** Process a single article URL.
    */
-  def process(b: BookmarkPendingFetch) = {
+  def process(b: DeliciousFeatures) = {
     b.saveForLaterFetching
   }
 
@@ -43,10 +43,21 @@ class DeliciousNetworkHandler(val reader: Reader) {
   def process(): Unit = process(bookmark => bookmark.popularity > 0)
 }
 
-trait DeliciousFeatures extends BookmarkPendingFetch {
-  val username: String
-  val popularity: Int
-  val description: String
+class DeliciousFeatures(
+  val url: String,
+  val username: String,
+  val popularity: Int,
+  val description: String) {
+
+  private val bookmark_jdo = new BookmarkPendingFetch(url, makeCitation(popularity, username, description))
+
+  def citation = bookmark_jdo.getCitation
+  
+  def saveForLaterFetching() { bookmark_jdo.saveForLaterFetching }
+
+  private def makeCitation(count: Int, username: String, citation: String) = {
+    "Bookmarked by " + username + ": " + citation
+  }
 }
 
 object DeliciousNetworkHandler {
@@ -72,19 +83,11 @@ object DeliciousNetworkHandler {
       case _ => description_div.text.trim
     }
 
-    /*new BookmarkPendingFetch(url = link,
+    new DeliciousFeatures(url = link,
+      username = username0,
       popularity = count,
-      username = username,
-      citation = citation)*/
-    new BookmarkPendingFetch(link, makeCitation(count, username0, description0)) with DeliciousFeatures {
-      val username = username0
-      val popularity = count
-      val description = description0
-    }
-  }
-
-  def makeCitation(count: Int, username: String, citation: String) = {
-    "Bookmarked by " + username + ": " + citation
+      description = description0
+    )
   }
 
 }

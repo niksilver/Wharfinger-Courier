@@ -12,7 +12,7 @@ import xml.{Node, NodeSeq}
 
 class DeliciousNetworkHandler(val reader: Reader) {
 
-  val bookmarks = new ListBuffer[DeliciousFeatures]()
+  val bookmarks = new ListBuffer[DeliciousBookmark]()
 
   def this() = this(new URLReader("http://delicious.com/network/nik.silver?setcount=100"))
 
@@ -28,13 +28,13 @@ class DeliciousNetworkHandler(val reader: Reader) {
 
   /** Process a single article URL.
    */
-  def process(b: DeliciousFeatures) = {
+  def process(b: DeliciousBookmark) = {
     b.saveForLaterFetching
   }
 
   /** Process all articles which meet a given condition.
    */
-  def process(cond: DeliciousFeatures => Boolean) {
+  def process(cond: DeliciousBookmark => Boolean) {
     (bookmarks filter cond).foreach (process _)
   }
 
@@ -43,7 +43,7 @@ class DeliciousNetworkHandler(val reader: Reader) {
   def process(): Unit = process(bookmark => bookmark.popularity > 0)
 }
 
-class DeliciousFeatures(
+class DeliciousBookmark(
   val url: String,
   val username: String,
   val popularity: Int,
@@ -62,7 +62,7 @@ class DeliciousFeatures(
 
 object DeliciousNetworkHandler {
 
-  def makeBookmark(bookmark_div: Node): DeliciousFeatures = {
+  def makeBookmark(bookmark_div: Node): DeliciousBookmark = {
     val a_elt = bookmark_div findElementAttributeSubstring ("a", "@class", "taggedlink")
     val link = (a_elt \ "@href").text
 
@@ -83,7 +83,7 @@ object DeliciousNetworkHandler {
       case _ => description_div.text.trim
     }
 
-    new DeliciousFeatures(url = link,
+    new DeliciousBookmark(url = link,
       username = username0,
       popularity = count,
       description = description0

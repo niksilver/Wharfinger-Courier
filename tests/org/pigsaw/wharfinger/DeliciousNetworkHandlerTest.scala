@@ -59,10 +59,10 @@ class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
     }
 
     it("Should process selectively") {
-      val processed = new ListBuffer[DeliciousFeatures]()
+      val processed = new ListBuffer[DeliciousBookmark]()
       val handler = new DeliciousNetworkHandler(new StringReader(Data.delicious_html)) {
-        override def process(a: DeliciousFeatures) {
-          processed += a.asInstanceOf[DeliciousFeatures]
+        override def process(a: DeliciousBookmark) {
+          processed += a.asInstanceOf[DeliciousBookmark]
         }
       }
       handler.parse
@@ -77,7 +77,7 @@ class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
     }
 
     it("Should make a citation with count 1") {
-      val bookmark = new DeliciousFeatures(
+      val bookmark = new DeliciousBookmark(
         url = "some://thing", popularity = 1, username = "bobby", description = "I like this")
       bookmark.citation should be ("Bookmarked by bobby: I like this")
     }

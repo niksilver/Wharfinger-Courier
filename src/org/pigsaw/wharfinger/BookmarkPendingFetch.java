@@ -3,6 +3,7 @@ package org.pigsaw.wharfinger;
 import com.google.appengine.api.datastore.Text;
 
 import javax.jdo.PersistenceManager;
+import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
@@ -11,18 +12,25 @@ import javax.jdo.annotations.PrimaryKey;
 public class BookmarkPendingFetch {
 
     @PrimaryKey
-    @Persistent
+    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     public String url;
 
     @Persistent
     private Text citation;
 
     @Persistent
-    public int fetchAttempts = 0;
+    private int fetchAttempts = 0;
 
     public BookmarkPendingFetch(String url, String citation) {
         this.url = url;
         setCitation(citation);
+    }
+
+    public int getFetchAttempts() {
+        return fetchAttempts;
+    }
+    public void setFetchAttempts(int f) {
+        fetchAttempts = f;
     }
 
     public void setCitation(String c) {

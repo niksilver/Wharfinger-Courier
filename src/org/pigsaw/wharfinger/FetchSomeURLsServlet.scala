@@ -21,6 +21,7 @@ class FetchSomeURLsServlet extends HttpServlet {
 
     def bookmarksToFetch(): Seq[BookmarkPendingFetch] = {
       val query = pm.newQuery(classOf[BookmarkPendingFetch])
+      query.setOrdering("fetchAttempts asc")
       query.setRange(0, 1)
       query.execute().asInstanceOf[java.util.List[BookmarkPendingFetch]]
     }
@@ -31,7 +32,7 @@ class FetchSomeURLsServlet extends HttpServlet {
       val content_div_option = handler.getContentDiv
       content_div_option match {
         case Some(content_div) => persistArticleAndRemoveFromPendingList(content_div)
-        case None => saveForLaterRetry(bookmark.url)
+        case None => saveForLaterRetry()
       }
 
       def persistArticleAndRemoveFromPendingList(content_div: Node) {
@@ -42,12 +43,13 @@ class FetchSomeURLsServlet extends HttpServlet {
         }
       }
 
-      def saveForLaterRetry(url: String) {
+      def saveForLaterRetry() {
         resp.getWriter.println("Didn't get, will mark for retry: " + bookmark.url)
-        bookmark.fetchAttempts += 1
+        bookmark.setFetchAttempts(bookmark.getFetchAttempts + 1)
         persistAndClose(pm) {
-          pm.makePersistent(bookmark)
+          //pm.makePersistent(bookmark)
         }
+        resp.getWriter.println("  fetchAttempts = " + bookmark.getFetchAttempts)
       }
 
       def persistAndClose(pm: PersistenceManager)(block: Unit) {

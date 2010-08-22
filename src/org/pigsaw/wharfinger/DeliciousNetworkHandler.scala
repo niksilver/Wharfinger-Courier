@@ -84,7 +84,9 @@ class DeliciousBookmark(
   val title: String,
   val description: Option[String]) {
 
-  private val bookmark_jdo = new BookmarkPendingFetch(url, makeCitation(popularity, username, description))
+  private val bookmark_jdo = new BookmarkPendingFetch(url,
+    title,
+    makeCitation(popularity, username, description))
 
   def citation = bookmark_jdo.getCitation
   

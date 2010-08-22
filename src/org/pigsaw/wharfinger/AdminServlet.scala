@@ -44,17 +44,13 @@ class AdminServlet extends HttpServlet {
       transaction (query) {
         val articles = query.execute.asInstanceOf[java.util.List[Article]]
         for (article <- articles) {
-          resp.getWriter.print(pad(article.getCitation))
-          resp.getWriter.print(pad(article.getContent))
-          resp.getWriter.println("... " + article.url)
+          resp.getWriter.print(pad(article.getCitation, 40))
+          resp.getWriter.print("  ")
+          resp.getWriter.print(pad(article.getContent, 60))
+          resp.getWriter.print("  ")
+          resp.getWriter.println(article.url)
         }
       }
-
-      def pad(str: String): String = {
-        runLinesTogether(str + (" " * 60)).take(60)
-      }
-
-      def runLinesTogether(str: String) = ("" /: str.lines)(_ + _)
     }
 
     def showBookmarksPendingFetch() {
@@ -64,11 +60,24 @@ class AdminServlet extends HttpServlet {
       transaction (query) {
         val bookmarks = query.execute.asInstanceOf[java.util.List[BookmarkPendingFetch]]
         for (bookmark <- bookmarks) {
+          resp.getWriter.print(pad(bookmark.getFetchAttempts.toString, 4))
+          resp.getWriter.print(pad(bookmark.title, 40))
+          resp.getWriter.print("  ")
           resp.getWriter.println(bookmark.url)
         }
       }
-
     }
+
+    def pad(str: String, len: Int): String = {
+      val str_line = runLinesTogether(str)
+      if (str_line.length > len) {
+        str_line.take(len-3) + "..."
+      } else {
+        (str_line + (" " * len)).take(len)
+      }
+    }
+
+    def runLinesTogether(str: String) = ("" /: str.lines)(_ + _)
 
     def transaction(query: javax.jdo.Query)(block: Unit): Unit = {
       try {

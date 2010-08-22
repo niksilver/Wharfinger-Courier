@@ -16,13 +16,17 @@ public class BookmarkPendingFetch {
     public String url;
 
     @Persistent
+    public String title;
+
+    @Persistent
     private Text citation;
 
     @Persistent
     private int fetchAttempts = 0;
 
-    public BookmarkPendingFetch(String url, String citation) {
+    public BookmarkPendingFetch(String url, String title, String citation) {
         this.url = url;
+        this.title = title;
         setCitation(citation);
     }
 

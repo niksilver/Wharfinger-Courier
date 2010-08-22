@@ -47,7 +47,7 @@ class DeliciousBookmark(
   val url: String,
   val username: String,
   val popularity: Int,
-  val description: String) {
+  val description: Option[String]) {
 
   private val bookmark_jdo = new BookmarkPendingFetch(url, makeCitation(popularity, username, description))
 
@@ -55,8 +55,17 @@ class DeliciousBookmark(
   
   def saveForLaterFetching() { bookmark_jdo.saveForLaterFetching }
 
-  private def makeCitation(count: Int, username: String, citation: String) = {
-    "Bookmarked by " + username + ": " + citation
+  private def makeCitation(popularity: Int, username: String, citation: Option[String]) = {
+    val bookmarkers = popularity match {
+      case 1 => username
+      case 2 => username + " and one other"
+      case _ => username + " and " + (popularity-1) + " others"
+    }
+    val citation_suffix = citation match {
+      case Some(citation_text) => ": " + citation_text
+      case None => ""
+    }
+    "Bookmarked by " + bookmarkers + citation_suffix
   }
 }
 
@@ -79,8 +88,8 @@ object DeliciousNetworkHandler {
 
     val description_div = bookmark_div findElementAttributeText ("div", "@class", "description")
     val description0 = description_div.length match {
-      case 0 => null
-      case _ => description_div.text.trim
+      case 0 => None
+      case _ => Some(description_div.text.trim)
     }
 
     new DeliciousBookmark(url = link,

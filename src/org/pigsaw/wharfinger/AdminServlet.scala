@@ -44,9 +44,14 @@ class AdminServlet extends HttpServlet {
       transaction (query) {
         val articles = query.execute.asInstanceOf[java.util.List[Article]]
         for (article <- articles) {
-          resp.getWriter.print(runLinesTogether(article.getContent).take(60))
+          resp.getWriter.print(pad(article.getCitation))
+          resp.getWriter.print(pad(article.getContent))
           resp.getWriter.println("... " + article.url)
         }
+      }
+
+      def pad(str: String): String = {
+        runLinesTogether(str + (" " * 60)).take(60)
       }
 
       def runLinesTogether(str: String) = ("" /: str.lines)(_ + _)

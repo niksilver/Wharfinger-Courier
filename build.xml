@@ -71,7 +71,8 @@
         </copy>
         <copy todir="${war.classes}">
           <fileset dir="${build.dir}">
-            <include name="**/*.class" />
+              <include name="**/*.class" />
+              <exclude name="**/*Test.class" />
           </fileset>
         </copy>
         <mkdir dir="${war.lib}"/>

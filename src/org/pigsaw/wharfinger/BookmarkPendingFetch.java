@@ -26,11 +26,12 @@ public class BookmarkPendingFetch {
         setCitation(citation);
     }
 
+    public void incrementFetchAttempts() {
+        fetchAttempts += 1;
+    }
+
     public int getFetchAttempts() {
         return fetchAttempts;
-    }
-    public void setFetchAttempts(int f) {
-        fetchAttempts = f;
     }
 
     public void setCitation(String c) {

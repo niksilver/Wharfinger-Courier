@@ -21,13 +21,15 @@ public class Article {
 
 	public Article(String url, String citation, String content) {
 		this.url = url;
-		this.content = new Text(content);
+        this.citation = (citation == null) ? null : new Text(citation);
+		this.content = (content == null) ? null : new Text(content);
 	}
 	
     public String getContent() {
-        return content.getValue();
+        return (content == null) ? null : content.getValue();
     }
+    
     public String getCitation() {
-        return citation.getValue();
+        return (citation == null) ? null : citation.getValue();
     }
 }

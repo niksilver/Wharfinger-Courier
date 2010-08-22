@@ -45,11 +45,14 @@ class FetchSomeURLsServlet extends HttpServlet {
 
       def saveForLaterRetry() {
         resp.getWriter.println("Didn't get, will mark for retry: " + bookmark.url)
-        bookmark.setFetchAttempts(bookmark.getFetchAttempts + 1)
         persistAndClose(pm) {
-          //pm.makePersistent(bookmark)
+          bookmark.incrementFetchAttempts
+          if (bookmark.getFetchAttempts >= 10) {
+            pm.deletePersistent(bookmark)
+            resp.getWriter.println("Too many fetch attempts, giving up.")
+          }
         }
-        resp.getWriter.println("  fetchAttempts = " + bookmark.getFetchAttempts)
+        resp.getWriter.println("Fetch attempts = " + bookmark.getFetchAttempts)
       }
 
       def persistAndClose(pm: PersistenceManager)(block: Unit) {

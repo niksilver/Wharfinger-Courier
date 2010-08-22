@@ -43,10 +43,45 @@ class DeliciousNetworkHandler(val reader: Reader) {
   def process(): Unit = process(bookmark => bookmark.popularity > 0)
 }
 
+object DeliciousNetworkHandler {
+
+  def makeBookmark(bookmark_div: Node): DeliciousBookmark = {
+    val a_elt = bookmark_div findElementAttributeSubstring ("a", "@class", "taggedlink")
+    val link = (a_elt \ "@href").text
+    val title = a_elt.text
+
+    val count_span = bookmark_div findElementAttributeText ("span", "@class", "delNavCount")
+    val count = count_span match {
+      case NodeSeq.Empty => 1
+      case span => span.text.toInt
+    }
+
+    val username_a_elt = bookmark_div findElementAttributeText ("a", "@class", "user user-tag")
+    // The href will be href="/currybet",
+    // so we need to lose the / to get the username
+    val username = (username_a_elt \ "@href").text.tail
+
+    val description_div = bookmark_div findElementAttributeText ("div", "@class", "description")
+    val description = description_div.length match {
+      case 0 => None
+      case _ => Some(description_div.text.trim)
+    }
+
+    new DeliciousBookmark(url = link,
+      username = username,
+      popularity = count,
+      title = title,
+      description = description
+    )
+  }
+
+}
+
 class DeliciousBookmark(
   val url: String,
   val username: String,
   val popularity: Int,
+  val title: String,
   val description: Option[String]) {
 
   private val bookmark_jdo = new BookmarkPendingFetch(url, makeCitation(popularity, username, description))
@@ -67,36 +102,4 @@ class DeliciousBookmark(
     }
     "Bookmarked by " + bookmarkers + citation_suffix
   }
-}
-
-object DeliciousNetworkHandler {
-
-  def makeBookmark(bookmark_div: Node): DeliciousBookmark = {
-    val a_elt = bookmark_div findElementAttributeSubstring ("a", "@class", "taggedlink")
-    val link = (a_elt \ "@href").text
-
-    val count_span = bookmark_div findElementAttributeText ("span", "@class", "delNavCount")
-    val count = count_span match {
-      case NodeSeq.Empty => 1
-      case span => span.text.toInt
-    }
-
-    val username_a_elt = bookmark_div findElementAttributeText ("a", "@class", "user user-tag")
-    // The href will be href="/currybet",
-    // so we need to lose the / to get the username
-    val username0 = (username_a_elt \ "@href").text.tail
-
-    val description_div = bookmark_div findElementAttributeText ("div", "@class", "description")
-    val description0 = description_div.length match {
-      case 0 => None
-      case _ => Some(description_div.text.trim)
-    }
-
-    new DeliciousBookmark(url = link,
-      username = username0,
-      popularity = count,
-      description = description0
-    )
-  }
-
 }

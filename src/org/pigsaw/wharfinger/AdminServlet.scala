@@ -46,6 +46,8 @@ class AdminServlet extends HttpServlet {
         for (article <- articles) {
           resp.getWriter.print(pad(article.getCitation, 40))
           resp.getWriter.print("  ")
+          resp.getWriter.print(pad(article.title, 30))
+          resp.getWriter.print("  ")
           resp.getWriter.print(pad(article.getContent, 60))
           resp.getWriter.print("  ")
           resp.getWriter.println(article.url)

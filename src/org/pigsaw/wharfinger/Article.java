@@ -17,10 +17,14 @@ public class Article {
     private Text content;
 
     @Persistent
+    public String title;
+
+    @Persistent
     private Text citation;
 
-	public Article(String url, String citation, String content) {
+	public Article(String url, String citation, String title, String content) {
 		this.url = url;
+        this.title = (title.length() > 200) ? title.substring(0, 200) : title;
         this.citation = (citation == null) ? null : new Text(citation);
 		this.content = (content == null) ? null : new Text(content);
 	}

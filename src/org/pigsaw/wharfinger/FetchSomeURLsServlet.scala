@@ -38,7 +38,10 @@ class FetchSomeURLsServlet extends HttpServlet {
       def persistArticleAndRemoveFromPendingList(content_div: Node) {
         resp.getWriter.println("Got article to persist: " + bookmark.url)
         persistAndClose(pm) {
-          pm.makePersistent(new Article(bookmark.url, bookmark.getCitation, content_div.toString))
+          pm.makePersistent(new Article(bookmark.url,
+            bookmark.getCitation,
+            bookmark.title,
+            content_div.toString))
           pm.deletePersistent(bookmark)
         }
       }

@@ -9,10 +9,10 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/war/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/index.html" afterPath="$PROJECT_DIR$/war/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/PastArticle.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala" />
     </list>
     <ignored path="Wharfinger Courier.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -106,7 +106,7 @@
       <file leaf-file-name="AdminServlet.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="27" selection-start="635" selection-end="635" vertical-scroll-proportion="0.0">
+            <state line="78" column="78" selection-start="2681" selection-end="2681" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -121,19 +121,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/war/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="22" selection-start="1417" selection-end="1417" vertical-scroll-proportion="0.67979455">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/war/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="33" selection-start="1340" selection-end="1340" vertical-scroll-proportion="-16.24">
+            <state line="23" column="61" selection-start="886" selection-end="886" vertical-scroll-proportion="0.29166666">
               <folding />
             </state>
           </provider>
@@ -142,7 +133,7 @@
       <file leaf-file-name="FetchSomeURLsServlet.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="12" selection-start="1559" selection-end="1559" vertical-scroll-proportion="0.0">
+            <state line="44" column="56" selection-start="1638" selection-end="1638" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -198,8 +189,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Preamble.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlTest.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/ReadDeliciousServlet.scala" />
@@ -208,12 +197,14 @@
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DeliciousNetworkHandlerTest.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/DeliciousNetworkHandler.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/BookmarkPendingFetch.java" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Article.java" />
-        <option value="$PROJECT_DIR$/war/index.html" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" />
         <option value="$PROJECT_DIR$/war/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/PreviousArticle.java" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/PastArticle.java" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala" />
+        <option value="$PROJECT_DIR$/war/index.html" />
       </list>
     </option>
   </component>
@@ -420,6 +411,9 @@
     <property name="options.splitter.details.proportions" value="0.3757764" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.pigsaw.wharfinger" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Documents and Settings\Nik\IdeaProjects\Wharfinger Courier\mytest" />
       <recent name="C:\Documents and Settings\Nik\IdeaProjects\Wharfinger Courier\mytest\mytest2" />
@@ -662,20 +656,20 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4124204" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16990788" sideWeight="0.65923566" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24974412" sideWeight="0.22133759" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39918116" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24974412" sideWeight="0.6576433" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39968154" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3312102" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="15" y="414" width="977" height="226" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24974412" sideWeight="0.22133759" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39918116" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24974412" sideWeight="0.65923566" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3312102" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="15" y="414" width="977" height="226" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -693,7 +687,7 @@
     <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Title from Delicious network is now persisted with the article itself." />
+    <option name="LAST_COMMIT_MESSAGE" value="URLs have hyphens in them for better readability." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -725,6 +719,7 @@
     <MESSAGE value="Title now being picked up from Delicious network page." />
     <MESSAGE value="Title from Delicious network is now persisted with the bookmark (but not with the article)" />
     <MESSAGE value="Title from Delicious network is now persisted with the article itself." />
+    <MESSAGE value="URLs have hyphens in them for better readability." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -750,11 +745,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="23" selection-start="901" selection-end="901" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/META-INF/jdoconfig.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -780,16 +770,6 @@
         <state line="1558" column="499" selection-start="61894" selection-end="62004" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/BookmarkPendingFetch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="27" selection-start="725" selection-end="725" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Article.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="19" selection-start="232" selection-end="232" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DeliciousNetworkHandlerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="93" column="47" selection-start="4231" selection-end="4231" vertical-scroll-proportion="0.0" />
@@ -802,26 +782,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="33" selection-start="1340" selection-end="1340" vertical-scroll-proportion="-16.24">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="12" selection-start="1559" selection-end="1559" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/ReadDeliciousServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="47" selection-start="648" selection-end="648" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala">
+    <entry file="file://$PROJECT_DIR$/war/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="27" selection-start="635" selection-end="635" vertical-scroll-proportion="0.0">
+        <state line="37" column="22" selection-start="1417" selection-end="1417" vertical-scroll-proportion="0.67979455">
           <folding />
         </state>
       </provider>
@@ -833,9 +801,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/WEB-INF/web.xml">
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Article.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="22" selection-start="1417" selection-end="1417" vertical-scroll-proportion="0.67979455">
+        <state line="8" column="19" selection-start="232" selection-end="232" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/BookmarkPendingFetch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="27" selection-start="725" selection-end="725" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="56" selection-start="1638" selection-end="1638" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/PastArticle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="19" selection-start="275" selection-end="275" vertical-scroll-proportion="0.36772045">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#PastArticle#0;class#PastArticle#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="78" column="78" selection-start="2681" selection-end="2681" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="61" selection-start="886" selection-end="886" vertical-scroll-proportion="0.29166666">
           <folding />
         </state>
       </provider>

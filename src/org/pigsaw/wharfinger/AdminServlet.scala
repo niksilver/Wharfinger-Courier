@@ -19,6 +19,7 @@ class AdminServlet extends HttpServlet {
       case "clear-datastore" => clearDataStore
       case "show-articles" => showArticles
       case "show-bookmarks-pending-fetch" => showBookmarksPendingFetch
+      case "show-past-articles" => showPastArticles
       case _ => {}
     }
 
@@ -66,6 +67,18 @@ class AdminServlet extends HttpServlet {
           resp.getWriter.print(pad(bookmark.title, 40))
           resp.getWriter.print("  ")
           resp.getWriter.println(bookmark.url)
+        }
+      }
+    }
+
+    def showPastArticles() {
+      resp.setContentType("text/plain")
+      val pm = PMF.get.getPersistenceManager
+      val query = pm.newQuery(classOf[PastArticle])
+      transaction(query) {
+        val articles = query.execute.asInstanceOf[java.util.List[PastArticle]]
+        for (article <- articles) {
+          resp.getWriter.println(article.url)
         }
       }
     }

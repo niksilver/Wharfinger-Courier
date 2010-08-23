@@ -42,6 +42,7 @@ class FetchSomeURLsServlet extends HttpServlet {
             bookmark.getCitation,
             bookmark.title,
             content_div.toString))
+          pm.makePersistent(new PastArticle(bookmark.url))
           pm.deletePersistent(bookmark)
         }
       }

@@ -15,11 +15,11 @@ class TestingServlet extends HttpServlet {
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
 
     req.getPathInfo.tail.split('/')(0) match {
-      case "gethtml" => testGetHtml
-      case "redirectresolution" => testRedirectResolution
-      case "savemessage" => testSaveMessage(req.getPathInfo + ":" + req.getRequestURI)
-      case "loadmessage" => testLoadMessage
-      case "deletemessage" => testDeleteMessage
+      case "get-html" => testGetHtml
+      case "redirect-resolution" => testRedirectResolution
+      case "save-message" => testSaveMessage(req.getPathInfo + ":" + req.getRequestURI)
+      case "load-message" => testLoadMessage
+      case "delete-message" => testDeleteMessage
       case _ => testBasicOutput
     }
 

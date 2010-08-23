@@ -26,11 +26,11 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>FetchSomeURLsServlet</servlet-name>
-		<url-pattern>/fetchsomeurls</url-pattern>
+		<url-pattern>/fetch-some-urls</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ReadDeliciousServlet</servlet-name>
-		<url-pattern>/readdelicious</url-pattern>
+		<url-pattern>/read-delicious</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>AdminServlet</servlet-name>

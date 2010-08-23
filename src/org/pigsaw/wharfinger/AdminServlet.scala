@@ -16,9 +16,9 @@ class AdminServlet extends HttpServlet {
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
 
     req.getPathInfo.tail.split('/')(0) match {
-      case "cleardatastore" => clearDataStore
-      case "showarticles" => showArticles
-      case "showbookmarkspendingfetch" => showBookmarksPendingFetch
+      case "clear-datastore" => clearDataStore
+      case "show-articles" => showArticles
+      case "show-bookmarks-pending-fetch" => showBookmarksPendingFetch
       case _ => {}
     }
 

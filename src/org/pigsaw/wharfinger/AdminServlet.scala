@@ -28,6 +28,7 @@ class AdminServlet extends HttpServlet {
       val pm = PMF.get.getPersistenceManager
       deleteClass(classOf[Article])
       deleteClass(classOf[BookmarkPendingFetch])
+      deleteClass(classOf[PastArticle])
 
       def deleteClass[T](clz: Class[T]) {
         val query = pm.newQuery(clz)

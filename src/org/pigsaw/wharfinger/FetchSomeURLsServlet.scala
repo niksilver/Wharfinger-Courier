@@ -16,8 +16,27 @@ class FetchSomeURLsServlet extends HttpServlet {
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
     resp.setContentType("text/plain")
     val pm: PersistenceManager = PMF.get.getPersistenceManager
-    bookmarksToFetch().foreach(fetchBookmark _)
+    bookmarksToFetch().foreach(bookmark => {
+      if (isPastArticle(bookmark))
+        rejectBookmark(bookmark)
+      else
+        fetchBookmark(bookmark)
+    })
     resp.getWriter.println("Done fetching bookmarks")
+
+    def isPastArticle(bookmark: BookmarkPendingFetch): Boolean = {
+      val query = pm.newQuery(classOf[PastArticle])
+      query.setFilter("url == urlParam")
+      query.declareParameters("String urlParam")
+      val results = query.execute(bookmark.url).asInstanceOf[java.util.List[BookmarkPendingFetch]]
+      val num_found = results.size
+      num_found == 1
+    }
+
+    def rejectBookmark(bookmark: BookmarkPendingFetch) {
+      resp.getWriter.println("Forgetting bookmark for previously-read article " + bookmark.url)
+      pm.deletePersistent(bookmark)
+    }
 
     def bookmarksToFetch(): Seq[BookmarkPendingFetch] = {
       val query = pm.newQuery(classOf[BookmarkPendingFetch])

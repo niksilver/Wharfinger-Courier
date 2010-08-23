@@ -40,12 +40,8 @@ class AdminServlet extends HttpServlet {
     }
 
     def showArticles() {
-      resp.setContentType("text/plain")
-      val pm = PMF.get.getPersistenceManager
-      val query = pm.newQuery(classOf[Article])
-      transaction (query) {
-        val articles = query.execute.asInstanceOf[java.util.List[Article]]
-        for (article <- articles) {
+      showDataItems(classOf[Article]) {
+        article => {
           resp.getWriter.print(pad(article.getCitation, 40))
           resp.getWriter.print("  ")
           resp.getWriter.print(pad(article.title, 30))
@@ -58,12 +54,8 @@ class AdminServlet extends HttpServlet {
     }
 
     def showBookmarksPendingFetch() {
-      resp.setContentType("text/plain")
-      val pm = PMF.get.getPersistenceManager
-      val query = pm.newQuery(classOf[BookmarkPendingFetch])
-      transaction (query) {
-        val bookmarks = query.execute.asInstanceOf[java.util.List[BookmarkPendingFetch]]
-        for (bookmark <- bookmarks) {
+      showDataItems(classOf[BookmarkPendingFetch]) {
+        bookmark => {
           resp.getWriter.print(pad(bookmark.getFetchAttempts.toString, 4))
           resp.getWriter.print(pad(bookmark.title, 40))
           resp.getWriter.print("  ")
@@ -73,13 +65,19 @@ class AdminServlet extends HttpServlet {
     }
 
     def showPastArticles() {
+      showDataItems(classOf[Article]) {
+        article => resp.getWriter.println(article.url)
+      }
+    }
+
+    def showDataItems[T](clz: Class[T])(printer: T => Unit) {
       resp.setContentType("text/plain")
       val pm = PMF.get.getPersistenceManager
-      val query = pm.newQuery(classOf[PastArticle])
+      val query = pm.newQuery(clz)
       transaction(query) {
-        val articles = query.execute.asInstanceOf[java.util.List[PastArticle]]
+        val articles = query.execute.asInstanceOf[java.util.List[T]]
         for (article <- articles) {
-          resp.getWriter.println(article.url)
+          printer(article)
         }
       }
     }

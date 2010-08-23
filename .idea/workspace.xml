@@ -7,7 +7,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="">
+    <list default="true" readonly="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="Now record when bookmarks are fetched, and won't fetch them again.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala" />
     </list>
@@ -100,10 +101,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminServlet.scala" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="AdminServlet.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="5" selection-start="1214" selection-end="1214" vertical-scroll-proportion="0.0">
+            <state line="100" column="31" selection-start="2879" selection-end="2879" vertical-scroll-proportion="1.0697675">
               <folding />
             </state>
           </provider>
@@ -127,10 +128,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FetchSomeURLsServlet.scala" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="FetchSomeURLsServlet.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="65" selection-start="1257" selection-end="1257" vertical-scroll-proportion="0.7920133">
+            <state line="28" column="0" selection-start="748" selection-end="855" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -177,7 +178,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlTest.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/ReadDeliciousServlet.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/MyTest1Test.scala" />
@@ -191,8 +191,9 @@
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/PreviousArticle.java" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/PastArticle.java" />
         <option value="$PROJECT_DIR$/war/index.html" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/PrintHelper.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala" />
       </list>
     </option>
   </component>
@@ -640,7 +641,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1032" height="746" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4124204" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -648,7 +649,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16990788" sideWeight="0.65923566" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39968154" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32961783" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24974412" sideWeight="0.22133759" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -675,7 +676,7 @@
     <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some fabulous boilerplate removal in AdminServlet courtesy Scala's fabulousness." />
+    <option name="LAST_COMMIT_MESSAGE" value="Now record when bookmarks are fetched, and won't fetch them again." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -711,6 +712,7 @@
     <MESSAGE value="URLs of articles that have been fetched are stored so (potentially) they won't be fetched again." />
     <MESSAGE value="Past articles are now cleared when the datastore is cleared." />
     <MESSAGE value="Some fabulous boilerplate removal in AdminServlet courtesy Scala's fabulousness." />
+    <MESSAGE value="Now record when bookmarks are fetched, and won't fetch them again." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -736,11 +738,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/META-INF/jdoconfig.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="69" selection-start="739" selection-end="739" vertical-scroll-proportion="0.0" />
@@ -821,16 +818,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala">
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="5" selection-start="1214" selection-end="1214" vertical-scroll-proportion="0.0">
+        <state line="28" column="0" selection-start="748" selection-end="855" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala">
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="65" selection-start="1257" selection-end="1257" vertical-scroll-proportion="0.7920133">
+        <state line="100" column="31" selection-start="2879" selection-end="2879" vertical-scroll-proportion="1.0697675">
           <folding />
         </state>
       </provider>

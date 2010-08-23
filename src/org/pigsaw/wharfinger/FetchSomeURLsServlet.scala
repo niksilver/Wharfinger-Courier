@@ -22,7 +22,10 @@ class FetchSomeURLsServlet extends HttpServlet {
       else
         fetchBookmark(bookmark)
     })
-    resp.getWriter.println("Done fetching bookmarks")
+    println("Done fetching bookmarks")
+
+    def println(s: String) = resp.getWriter.println(s)
+    def print(s: String) = resp.getWriter.print(s)
 
     def isPastArticle(bookmark: BookmarkPendingFetch): Boolean = {
       val query = pm.newQuery(classOf[PastArticle])
@@ -34,7 +37,7 @@ class FetchSomeURLsServlet extends HttpServlet {
     }
 
     def rejectBookmark(bookmark: BookmarkPendingFetch) {
-      resp.getWriter.println("Forgetting bookmark for previously-read article " + bookmark.url)
+      println("Forgetting bookmark for previously-read article " + bookmark.url)
       pm.deletePersistent(bookmark)
     }
 
@@ -55,7 +58,7 @@ class FetchSomeURLsServlet extends HttpServlet {
       }
 
       def persistArticleAndRemoveFromPendingList(content_div: Node) {
-        resp.getWriter.println("Got article to persist: " + bookmark.url)
+        println("Got article to persist: " + bookmark.url)
         persistAndClose(pm) {
           pm.makePersistent(new Article(bookmark.url,
             bookmark.getCitation,
@@ -67,15 +70,15 @@ class FetchSomeURLsServlet extends HttpServlet {
       }
 
       def saveForLaterRetry() {
-        resp.getWriter.println("Didn't get, will mark for retry: " + bookmark.url)
+        println("Didn't get, will mark for retry: " + bookmark.url)
         persistAndClose(pm) {
           bookmark.incrementFetchAttempts
           if (bookmark.getFetchAttempts >= 10) {
             pm.deletePersistent(bookmark)
-            resp.getWriter.println("Too many fetch attempts, giving up.")
+            println("Too many fetch attempts, giving up.")
           }
         }
-        resp.getWriter.println("Fetch attempts = " + bookmark.getFetchAttempts)
+        println("Fetch attempts = " + bookmark.getFetchAttempts)
       }
 
       def persistAndClose(pm: PersistenceManager)(block: Unit) {

@@ -23,6 +23,9 @@ class AdminServlet extends HttpServlet {
       case _ => {}
     }
 
+    def println(s: String) = resp.getWriter.println(s)
+    def print(s: String) = resp.getWriter.print(s)
+
     def clearDataStore() {
       resp.setContentType("text/plain")
       val pm = PMF.get.getPersistenceManager
@@ -42,13 +45,13 @@ class AdminServlet extends HttpServlet {
     def showArticles() {
       showDataItems(classOf[Article]) {
         article => {
-          resp.getWriter.print(pad(article.getCitation, 40))
-          resp.getWriter.print("  ")
-          resp.getWriter.print(pad(article.title, 30))
-          resp.getWriter.print("  ")
-          resp.getWriter.print(pad(article.getContent, 60))
-          resp.getWriter.print("  ")
-          resp.getWriter.println(article.url)
+          print(pad(article.getCitation, 40))
+          print("  ")
+          print(pad(article.title, 30))
+          print("  ")
+          print(pad(article.getContent, 60))
+          print("  ")
+          println(article.url)
         }
       }
     }
@@ -56,10 +59,10 @@ class AdminServlet extends HttpServlet {
     def showBookmarksPendingFetch() {
       showDataItems(classOf[BookmarkPendingFetch]) {
         bookmark => {
-          resp.getWriter.print(pad(bookmark.getFetchAttempts.toString, 4))
-          resp.getWriter.print(pad(bookmark.title, 40))
-          resp.getWriter.print("  ")
-          resp.getWriter.println(bookmark.url)
+          print(pad(bookmark.getFetchAttempts.toString, 4))
+          print(pad(bookmark.title, 40))
+          print("  ")
+          println(bookmark.url)
         }
       }
     }
@@ -94,12 +97,8 @@ class AdminServlet extends HttpServlet {
     def runLinesTogether(str: String) = ("" /: str.lines)(_ + _)
 
     def transaction(query: javax.jdo.Query)(block: Unit): Unit = {
-      try {
-        block
-      }
-      finally {
-        query.closeAll
-      }
+      try { block }
+      finally { query.closeAll }
     }
 
   }

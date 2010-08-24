@@ -28,12 +28,13 @@ class DocumentMakerTest extends Spec with ShouldMatchers {
 
       maker.articles.length should be (2)
 
-      val tocs: Seq[Node] = document findElementAttributeText (
-              "div", "@class", "wharfinger-toc") map { n => (n.child)(0) }
+      val tocs: Seq[Node] = document findElementAttributeText ("div", "@class", "wharfinger-toc")
       tocs.length should be === (1)
 
-      val toc = tocs(0)
+      val toc = tocs(0).child
       toc(0).toString should be === ("""<p><a name="TOC"></a><h3>Wharfinger Courier 24 Aug 2010</h3></p>""")
+      toc(1).toString should be === ("""<p><a href="#wharfinger-1"><h4>How I won the war</h4></a></p>""")
+      toc(2).toString should be === ("""<p><a href="#wharfinger-2"><h4>The colour of cows</h4></a></p>""")
 
       val citations: Seq[Node] = document findElementAttributeText (
               "div", "@class", "wharfinger-citation") map { n => (n.child)(0) }
@@ -42,8 +43,8 @@ class DocumentMakerTest extends Spec with ShouldMatchers {
 
       val contents: Seq[Node] = document findElementAttributeText (
               "div", "@class", "wharfinger-content")
-      contents(0).toString should be === ("<div class=\"wharfinger-content\"><div>I fought bravely</div></div>")
-      contents(1).toString should be === ("<div class=\"wharfinger-content\"><p>Brown, black and white</p></div>")
+      contents(0).toString should be === ("""<div class="wharfinger-content"><div>I fought bravely</div></div>""")
+      contents(1).toString should be === ("""<div class="wharfinger-content"><p>Brown, black and white</p></div>""")
     }
   }
 }

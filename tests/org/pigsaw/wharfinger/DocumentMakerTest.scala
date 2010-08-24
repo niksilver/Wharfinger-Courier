@@ -13,7 +13,7 @@ class DocumentMakerTest extends Spec with ShouldMatchers {
 
   describe("DocumentMaker") {
     it("Should be able to create a document with two articles") {
-      val maker = new DocumentMaker
+      val maker = new DocumentMaker("Wharfinger Courier 24 Aug 2010")
       val article1 = new Article(url = "http://warring.com/winning",
         citation = "Spotted by one of <em>your</em> followers",
         title = "How I won the war",
@@ -27,6 +27,13 @@ class DocumentMakerTest extends Spec with ShouldMatchers {
       val document = maker.document
 
       maker.articles.length should be (2)
+
+      val tocs: Seq[Node] = document findElementAttributeText (
+              "div", "@class", "wharfinger-toc") map { n => (n.child)(0) }
+      tocs.length should be === (1)
+
+      val toc = tocs(0)
+      toc(0).toString should be === ("""<p><a name="TOC"></a><h3>Wharfinger Courier 24 Aug 2010</h3></p>""")
 
       val citations: Seq[Node] = document findElementAttributeText (
               "div", "@class", "wharfinger-citation") map { n => (n.child)(0) }

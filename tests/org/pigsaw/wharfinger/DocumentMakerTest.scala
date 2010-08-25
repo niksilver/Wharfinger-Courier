@@ -63,5 +63,35 @@ class DocumentMakerTest extends Spec with ShouldMatchers {
               "div", "@class", "wharfinger-citation") map { n => (n.child)(0) }
       citations(0).toString should be === ("<blockquote><i>Both backwards &amp; forwards</i></blockquote>")
     }
+
+    it("Should be able to handle malformed HTML in the title") {
+      val maker = new DocumentMaker("Wharfinger Courier 25 Aug 2010")
+      val article = new Article(url = "http://warring.com/winning",
+        citation = "Both backwards",
+        title = "How I won & so on",
+        content = "<div>I fought bravely</div>")
+      maker.add(article)
+
+      val document = maker.document
+      val tocs: Seq[Node] = document findElementAttributeText ("div", "@class", "wharfinger-toc")
+      val toc = tocs(0).child
+      toc(0).toString should be === ("""<p><a name="TOC"></a><h3>Wharfinger Courier 25 Aug 2010</h3></p>""")
+      toc(1).toString should be === ("""<p><a href="#wharfinger-1"><h4>How I won &amp; so on</h4></a></p>""")
+    }
+
+    it("Should be able to handle malformed HTML in the content") {
+      val maker = new DocumentMaker("Wharfinger Courier 25 Aug 2010")
+      val article = new Article(url = "http://warring.com/winning",
+        citation = "Both backwards",
+        title = "How I won",
+        content = "I fought & lost")
+      maker.add(article)
+
+      val document = maker.document
+      val contents: Seq[Node] = document findElementAttributeText (
+              "div", "@class", "wharfinger-content")
+      contents(0).toString should be === ("""<div class="wharfinger-content">I fought &amp; lost</div>""")
+    }
+
   }
 }

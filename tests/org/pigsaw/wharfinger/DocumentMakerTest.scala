@@ -36,6 +36,10 @@ class DocumentMakerTest extends Spec with ShouldMatchers {
       toc(1).toString should be === ("""<p><a href="#wharfinger-1"><h4>How I won the war</h4></a></p>""")
       toc(2).toString should be === ("""<p><a href="#wharfinger-2"><h4>The colour of cows</h4></a></p>""")
 
+      val chapter_refs = (document findElementAttributeText ("div", "@class", "wharfinger-chapter")) \ "a"
+      chapter_refs(0).toString should be === ("""<a name="wharfinger-1"></a>""")
+      chapter_refs(1).toString should be === ("""<a name="wharfinger-2"></a>""")
+
       val citations: Seq[Node] = document findElementAttributeText (
               "div", "@class", "wharfinger-citation") map { n => (n.child)(0) }
       citations(0).toString should be === ("<blockquote><i>Spotted by one of <em>your</em> followers</i></blockquote>")

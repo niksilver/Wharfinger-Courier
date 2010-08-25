@@ -61,6 +61,14 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
     }
   }
 
+  describe("SloppyXMLNodeSeq") {
+
+    it("Should tidy sloppy HTML-XML") {
+      val xml = SloppyXMLNodeSeq(new StringReader("Back & forth"))
+      xml.toString should be === ("Back &amp; forth")
+    }
+  }
+
   describe("RedirectResolver") {
 
     it("Should allow URL redirects to be resolved") {

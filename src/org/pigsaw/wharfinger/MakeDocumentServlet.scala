@@ -2,6 +2,8 @@ package org.pigsaw.wharfinger
 
 import javax.servlet.http.{HttpServletResponse, HttpServletRequest, HttpServlet}
 import scala.collection.JavaConversions._
+import java.text.SimpleDateFormat
+import java.util.Calendar
 
 /**
  * Servlet to make a Wharfinger Courier.
@@ -15,12 +17,11 @@ class MakeDocumentServlet extends HttpServlet {
     try {
       val query = pm.newQuery(classOf[Article])
       val articles = query.execute.asInstanceOf[java.util.List[Article]]
-      val datestamp = "2010-08-25"
-      val maker = new DocumentMaker("Wharfinger Courier " + datestamp)
+      val maker = new DocumentMaker("Wharfinger Courier " + niceDate)
       for (article <- articles)
         maker.add(article)
       val doc_xml = maker.document
-      val document = new Document(datestamp + ".html", "text/html", doc_xml.toString)
+      val document = new Document(techDate + ".html", "text/html", doc_xml.toString)
       for (article <- articles)
         pm.deletePersistent(article)
       resp.setContentType(document.contentType)
@@ -28,6 +29,18 @@ class MakeDocumentServlet extends HttpServlet {
     }
     finally {
       pm.close
+    }
+
+    def techDate: String = {
+      val formatter = new SimpleDateFormat("yyyy-MM-dd-HHmm")
+      val cal = Calendar.getInstance
+      formatter.format(cal.getTime)
+    }
+
+    def niceDate: String = {
+      val formatter = new SimpleDateFormat("EEE d MMM yyyy")
+      val cal = Calendar.getInstance
+      formatter.format(cal.getTime)
     }
 
   }

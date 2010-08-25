@@ -12,6 +12,7 @@ import com.google.appengine.api.datastore.Text
  * <code>
  * val html: Node = HtmlNode(new URLReader("http://www.guardian.co.uk"))
  * </code>
+ * Returns content in an <html> tag, and <body> tag within that.
  */
 
 object HtmlNode {
@@ -20,6 +21,14 @@ object HtmlNode {
     val parser = new TagSoupFactoryAdapter
     return parser load reader
   }
+}
+
+/**
+ * Turn some HTML-like code and return a NodeSeq in good XML.
+ */
+object SloppyXMLNodeSeq {
+
+  def apply(reader: Reader): NodeSeq = (HtmlNode(reader) \\ "body")(0).child
 }
 
 class URLReader(val url: String)

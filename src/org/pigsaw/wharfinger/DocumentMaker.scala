@@ -2,6 +2,7 @@ package org.pigsaw.wharfinger
 
 import collection.mutable.ListBuffer
 import xml.{XML, NodeBuffer, Node}
+import java.io.StringReader
 
 /**
  * Make a Wharfinger Courier document.
@@ -37,5 +38,5 @@ class DocumentMaker(val title: String) {
     </div>
   }
 
-  private def asXML(str: String): Seq[Node] = XML.loadString("<x>" + str + "</x>").child
+  private def asXML(str: String): Seq[Node] = SloppyXMLNodeSeq(new StringReader(str))
 }

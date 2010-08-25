@@ -17,7 +17,7 @@ class DocumentMaker(val title: String) {
     val toc = new NodeBuffer
     val main = new NodeBuffer
 
-    toc += <p><a name="TOC"></a><h3>Wharfinger Courier 24 Aug 2010</h3></p>
+    toc += <p><a name="TOC"></a><h3>{ title }</h3></p>
 
     for (i <- 0 until articles.length;
          article = articles(i);

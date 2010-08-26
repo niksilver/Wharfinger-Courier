@@ -21,6 +21,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         <servlet-class>org.pigsaw.wharfinger.FetchSomeURLsServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>TestEncodingsServlet</servlet-name>
+        <servlet-class>org.pigsaw.wharfinger.TestEncodingsServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>MakeDocumentServlet</servlet-name>
         <servlet-class>org.pigsaw.wharfinger.MakeDocumentServlet</servlet-class>
     </servlet>
@@ -39,6 +43,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     <servlet-mapping>
         <servlet-name>FetchSomeURLsServlet</servlet-name>
         <url-pattern>/fetch-some-urls</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TestEncodingsServlet</servlet-name>
+        <url-pattern>/test-encodings/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MakeDocumentServlet</servlet-name>

@@ -89,6 +89,86 @@ class FetchSomeURLsServlet extends HttpServlet {
   }
 }
 
+class TestEncodingsServlet extends HttpServlet {
+
+  private val url = "http://blogs.journalism.co.uk/editors/2010/08/03/life-as-an-editor-through-the-eyes-of-a-journalism-student/"
+  
+  override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
+    req.getPathInfo.tail.split('/')(0) match {
+      case "instapaper" => getInstapaper
+      case "instapaper-h2-a" => getInstapaperH2A
+      case "instapaper-h2-a-characters" => getInstapaperH2ACharacters
+      case "read-raw" => readRaw
+      case "read-raw-characters" => readRawCharacters
+      case _ => {}
+    }
+
+    def println(str: String) = resp.getWriter.println(str)
+    def print(str: String) = resp.getWriter.print(str)
+    def printChr(chr: Char) = resp.getWriter.print(chr)
+
+    def getInstapaper {
+      val handler = new InstapaperHandler(url)
+      val content_div_option = handler.getContentDiv
+      content_div_option match {
+        case Some(content_div) => displayContent(content_div.toString)
+        case None => throw new RuntimeException("Couldn't get content from Instapaper")
+      }
+    }
+
+    def getInstapaperH2A {
+      val handler = new InstapaperHandler(url)
+      val content_div_option = handler.getContentDiv
+      content_div_option match {
+        case Some(content_div) => displayContent((content_div \\ "h2" \ "a").text)
+        case None => throw new RuntimeException("Couldn't get content from Instapaper")
+      }
+    }
+
+    def getInstapaperH2ACharacters {
+      val handler = new InstapaperHandler(url)
+      val content_div_option = handler.getContentDiv
+      content_div_option match {
+        case Some(content_div) => displayCharacters((content_div \\ "h2" \ "a").text)
+        case None => throw new RuntimeException("Couldn't get content from Instapaper")
+      }
+    }
+
+    def readRaw {
+      val reader = new URLReader(url)
+      resp.setContentType("text/html")
+      var chr: Int = 0
+      while ({chr = reader.read; chr != -1}) {
+        printChr(chr.toChar)
+      }
+    }
+
+    // This shows characters as
+    // L i f e   a s   a n   e d i t o r   # 8 2 1 1 ;   t h r o u g h...
+    def readRawCharacters {
+      val reader = new URLReader(url)
+      resp.setContentType("text/html")
+      var chr: Int = 0
+      while ({chr = reader.read; chr != -1}) {
+        print("(")
+        printChr(chr.toChar)
+        print(") = " + chr)
+      }
+    }
+
+    def displayContent(content: String) {
+      resp.setContentType("text/html")
+      print(content)
+    }
+
+    def displayCharacters(content: String) {
+      resp.setContentType("text/plain")
+      content.foreach(c => println("(" + c + ") = " + c.toInt))
+    }
+
+  }
+}
+
 class InstapaperHandler(article_url: String) {
   val url: String = "http://www.instapaper.com/text?u=" +
           URLEncoder.encode(article_url, "UTF-8")

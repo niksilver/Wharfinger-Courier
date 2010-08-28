@@ -4,6 +4,7 @@ import org.scalatest.Spec
 import org.scalatest.matchers.ShouldMatchers
 import Preamble._
 import java.io.{StringReader, IOException}
+import xml.NodeSeq
 
 /**
  * Created by IntelliJ IDEA.
@@ -66,6 +67,25 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
     it("Should tidy sloppy HTML-XML") {
       val xml = SloppyXMLNodeSeq(new StringReader("Back & forth"))
       xml.toString should be === ("Back &amp; forth")
+    }
+
+    it("Should handle funny characters") {
+      val xml = SloppyXMLNodeSeq(new StringReader("life &#8211; goes on"))
+      HtmlNode.toHtmlString(xml) should be === ("life &#8211; goes on")
+    }
+  }
+
+  describe("toHtmlString") {
+
+    it("Should not add unwanted tags") {
+      val xml = <div>My message</div>
+      HtmlNode.toHtmlString(xml) should be === ("<div>My message</div>")
+    }
+
+    it("Should handle a NodeSeq") {
+      val xml = <ol><li>Bread</li><trick>Skip me</trick><li>Milk</li><li>Bananas</li></ol>
+      val nodes: NodeSeq = xml \\ "li"
+      HtmlNode.toHtmlString(nodes) should be === ("<li>Bread</li><li>Milk</li><li>Bananas</li>")
     }
   }
 

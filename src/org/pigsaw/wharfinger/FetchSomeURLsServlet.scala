@@ -6,6 +6,7 @@ import scala.xml.Node
 import scala.collection.JavaConversions._
 import Preamble._
 import javax.jdo.PersistenceManager
+import org.ccil.cowan.tagsoup.TagSoupFactoryAdapter
 
 /**
  * Fetch one or more URLs which are pending.
@@ -98,6 +99,9 @@ class TestEncodingsServlet extends HttpServlet {
       case "instapaper" => getInstapaper
       case "instapaper-h2-a" => getInstapaperH2A
       case "instapaper-h2-a-characters" => getInstapaperH2ACharacters
+      case "tagsoup-using-system-id" => useTagSoupUsingSystemId
+      case "tagsoup-using-string" => useTagSoupUsingString
+      case "tagsoup-using-string-and-buffering" => useTagSoupUsingStringAndBuffering
       case "read-raw" => readRaw
       case "read-raw-characters" => readRawCharacters
       case _ => {}
@@ -134,6 +138,51 @@ class TestEncodingsServlet extends HttpServlet {
       }
     }
 
+    def useTagSoupUsingSystemId {
+      val parser = new TagSoupFactoryAdapter
+      val source = new org.xml.sax.InputSource()
+      source.setSystemId(url)
+      source.setEncoding("UTF-8")
+      val html = parser loadXML source
+      displayContent(html.toString)
+      /*val content_div_option = html findDivWithId "story"
+      content_div_option match {
+        case Some(content_div) => displayCharacters((content_div \\ "h2" \ "a").text)
+        case None => throw new RuntimeException("Couldn't get content from Instapaper")
+      }*/
+    }
+
+    def useTagSoupUsingString {
+      val str = new StringBuilder
+      val reader = new URLReader(url)
+      var chr: Int = 0
+      while ({chr = reader.read; chr != -1}) {
+        str += chr.toChar
+      }
+      val parser = new TagSoupFactoryAdapter
+      val html = parser loadString str.toString
+      displayContent(html.toString)
+
+    }
+
+    def useTagSoupUsingStringAndBuffering {
+      val str = new StringBuilder
+      val buffer = new Array[Char](4*1024)
+      val reader = new URLReader(url)
+      val parser = new TagSoupFactoryAdapter
+      read()
+      lazy val html = parser loadString str.toString
+      displayContent(html.toString)
+
+      def read() {
+        val length = reader.read(buffer, 0, buffer.length)
+        if (length > 0) {
+          str.append(buffer, 0, length)
+          read()
+        }
+      }
+
+    }
     def readRaw {
       val reader = new URLReader(url)
       resp.setContentType("text/html")
@@ -144,7 +193,7 @@ class TestEncodingsServlet extends HttpServlet {
     }
 
     // This shows characters as
-    // L i f e   a s   a n   e d i t o r   # 8 2 1 1 ;   t h r o u g h...
+    // L i f e   a s   a n   e d i t o r   & # 8 2 1 1 ;   t h r o u g h...
     def readRawCharacters {
       val reader = new URLReader(url)
       resp.setContentType("text/html")

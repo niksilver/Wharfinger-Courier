@@ -78,6 +78,14 @@ class TagSoupFactoryAdapter extends FactoryAdapter {
   override def loadXML(source: InputSource, ignoredParser:SAXParser) = loadXML(source)
 
   def loadXML(source: InputSource) = {
+    // This is needed to ensure HTML entities come through okay
+    // Equivalent to --encoding=UTF-8 on the TagSoup command line
+    // --output-encoding=UTF-8 might also be used for safety.
+    //
+    // See
+    //   http://home.ccil.org/~cowan/XML/tagsoup/#program
+    //   http://groups.google.com/group/tagsoup-friends/browse_thread/thread/82b06d90989a58f
+    source.setEncoding("UTF-8")
     val parser: SAXParser = parserFactory.newSAXParser()
 
     scopeStack.push(TopScope)

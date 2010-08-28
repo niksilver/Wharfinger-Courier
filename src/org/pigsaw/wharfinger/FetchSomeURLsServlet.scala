@@ -161,7 +161,7 @@ class TestEncodingsServlet extends HttpServlet {
       }
       val parser = new TagSoupFactoryAdapter
       val html = parser loadString str.toString
-      displayContent(html.toString)
+      displayContent(HtmlNode.toHtmlString(html))
 
     }
 
@@ -172,7 +172,7 @@ class TestEncodingsServlet extends HttpServlet {
       val parser = new TagSoupFactoryAdapter
       read()
       lazy val html = parser loadString str.toString
-      displayContent(html.toString)
+      displayContent(HtmlNode.toHtmlString(html))
 
       def read() {
         val length = reader.read(buffer, 0, buffer.length)
@@ -184,7 +184,10 @@ class TestEncodingsServlet extends HttpServlet {
 
     }
     def readRaw {
-      val reader = new URLReader(url)
+      val reader = req.getParameter("charset") match {
+        case null => new URLReader(url)
+        case charset => new URLReader(url, charset)
+      }
       resp.setContentType("text/html")
       var chr: Int = 0
       while ({chr = reader.read; chr != -1}) {

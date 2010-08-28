@@ -6,6 +6,7 @@ import java.net.{HttpURLConnection, URL}
 import com.google.appengine.api.datastore.Text
 import org.xml.sax.InputSource
 import java.io.{StringWriter, StringReader, Reader}
+import java.nio.charset.Charset
 
 /**
  * Object with a factory method to return an HTML document
@@ -75,8 +76,12 @@ object SloppyXMLNodeSeq {
   def apply(reader: Reader): NodeSeq = (HtmlNode(reader) \\ "body")(0).child
 }
 
-class URLReader(val url: String)
-        extends java.io.BufferedReader(new java.io.InputStreamReader(new java.net.URL(url).openStream))
+class URLReader(val url: String, charset: Charset)
+        extends java.io.BufferedReader(new java.io.InputStreamReader(new java.net.URL(url).openStream, charset)) {
+
+  def this(url: String) = this(url, Charset.defaultCharset)
+  def this(url: String, charset: String) = this(url, Charset.forName(charset))
+}
 
 /**
  * Resolve a URL. Create a new instance using a URL string, then the field

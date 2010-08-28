@@ -115,7 +115,7 @@ class TestEncodingsServlet extends HttpServlet {
       val handler = new InstapaperHandler(url)
       val content_div_option = handler.getContentDiv
       content_div_option match {
-        case Some(content_div) => displayContent(content_div.toString)
+        case Some(content_div) => displayContent(HtmlNode.toHtmlString(content_div))
         case None => throw new RuntimeException("Couldn't get content from Instapaper")
       }
     }
@@ -144,12 +144,7 @@ class TestEncodingsServlet extends HttpServlet {
       source.setSystemId(url)
       source.setEncoding("UTF-8")
       val html = parser loadXML source
-      displayContent(html.toString)
-      /*val content_div_option = html findDivWithId "story"
-      content_div_option match {
-        case Some(content_div) => displayCharacters((content_div \\ "h2" \ "a").text)
-        case None => throw new RuntimeException("Couldn't get content from Instapaper")
-      }*/
+      displayContent(HtmlNode.toHtmlString(html))
     }
 
     def useTagSoupUsingString {
@@ -229,7 +224,7 @@ class InstapaperHandler(article_url: String) {
           URLEncoder.encode(article_url, "UTF-8")
 
   def getContentDiv(): Option[Node] = {
-    val html = HtmlNode(new URLReader(url))
+    val html = HtmlNode(new URLReader(url, "UTF-8"))
     html findDivWithId "story"
   }
 }

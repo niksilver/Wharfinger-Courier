@@ -154,7 +154,7 @@ class TestEncodingsServlet extends HttpServlet {
 
     def useTagSoupUsingString {
       val str = new StringBuilder
-      val reader = new URLReader(url)
+      val reader = new URLReader(url, "UTF-8")
       var chr: Int = 0
       while ({chr = reader.read; chr != -1}) {
         str += chr.toChar
@@ -198,7 +198,10 @@ class TestEncodingsServlet extends HttpServlet {
     // This shows characters as
     // L i f e   a s   a n   e d i t o r   & # 8 2 1 1 ;   t h r o u g h...
     def readRawCharacters {
-      val reader = new URLReader(url)
+      val reader = req.getParameter("charset") match {
+        case null => new URLReader(url)
+        case charset => new URLReader(url, charset)
+      }
       resp.setContentType("text/html")
       var chr: Int = 0
       while ({chr = reader.read; chr != -1}) {

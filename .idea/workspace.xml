@@ -8,7 +8,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala" />
     </list>
@@ -110,10 +109,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FetchSomeURLsServlet.scala" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="FetchSomeURLsServlet.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="156" column="37" selection-start="5707" selection-end="5707" vertical-scroll-proportion="0.0">
+            <state line="156" column="45" selection-start="5715" selection-end="5715" vertical-scroll-proportion="0.09189189">
               <folding />
             </state>
           </provider>
@@ -167,10 +166,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HtmlNode.scala" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="HtmlNode.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="0" selection-start="2466" selection-end="2466" vertical-scroll-proportion="0.50513697">
+            <state line="77" column="0" selection-start="2466" selection-end="2466" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -231,8 +230,8 @@
         <option value="$PROJECT_DIR$/war/index.html" />
         <option value="$PROJECT_DIR$/src/org/ccil/cowan/tagsoup/TagSoupFactoryAdapter.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala" />
       </list>
     </option>
   </component>
@@ -583,14 +582,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1032" height="746" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4124204" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16990788" sideWeight="0.65923566" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39968154" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32961783" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24974412" sideWeight="0.22133759" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958034" sideWeight="0.65923566" order="4" side_tool="false" content_ui="tabs" />
@@ -618,7 +617,7 @@
     <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Unusual characters should be handled properly now.&#10;There is a lot of tidying up to do, though." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made some minor changes to help reading charsets." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -631,7 +630,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Renamed Delicious bookmark class." />
     <MESSAGE value="Marking a bookmark for retry no longer errors." />
     <MESSAGE value="Bookmark fetch attempts persisting properly now." />
     <MESSAGE value="Stops fetching bookmarks that have failed several times.&#10;Saves citation with each article." />
@@ -656,6 +654,7 @@
     <MESSAGE value="Can handle bad HTML in article title and content." />
     <MESSAGE value="In the middle of tracking a down a bug in which unusual characters (e.g. curly quotes, em dashes, etc) in the original appear as funny characters in the end document." />
     <MESSAGE value="Unusual characters should be handled properly now.&#10;There is a lot of tidying up to do, though." />
+    <MESSAGE value="Made some minor changes to help reading charsets." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -782,16 +781,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala">
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="37" selection-start="5707" selection-end="5707" vertical-scroll-proportion="0.0">
+        <state line="77" column="0" selection-start="2466" selection-end="2466" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala">
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="0" selection-start="2466" selection-end="2466" vertical-scroll-proportion="0.50513697">
+        <state line="156" column="45" selection-start="5715" selection-end="5715" vertical-scroll-proportion="0.09189189">
           <folding />
         </state>
       </provider>

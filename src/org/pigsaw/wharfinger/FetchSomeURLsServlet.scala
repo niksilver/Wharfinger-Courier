@@ -97,6 +97,7 @@ class TestEncodingsServlet extends HttpServlet {
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
     req.getPathInfo.tail.split('/')(0) match {
       case "instapaper" => getInstapaper
+      case "instapaper-and-show-characters" => getInstapaper
       case "instapaper-h2-a" => getInstapaperH2A
       case "instapaper-h2-a-characters" => getInstapaperH2ACharacters
       case "tagsoup-using-system-id" => useTagSoupUsingSystemId
@@ -116,6 +117,15 @@ class TestEncodingsServlet extends HttpServlet {
       val content_div_option = handler.getContentDiv
       content_div_option match {
         case Some(content_div) => displayContent(HtmlNode.toHtmlString(content_div))
+        case None => throw new RuntimeException("Couldn't get content from Instapaper")
+      }
+    }
+
+    def getInstapaperAndShowCharacters {
+      val handler = new InstapaperHandler(url)
+      val content_div_option = handler.getContentDiv
+      content_div_option match {
+        case Some(content_div) => displayCharacters(HtmlNode.toHtmlString(content_div))
         case None => throw new RuntimeException("Couldn't get content from Instapaper")
       }
     }
@@ -213,7 +223,7 @@ class TestEncodingsServlet extends HttpServlet {
 
     def displayCharacters(content: String) {
       resp.setContentType("text/plain")
-      content.foreach(c => println("(" + c + ") = " + c.toInt))
+      content.foreach(c => print("(" + c + ")=" + c.toInt) + " ")
     }
 
   }

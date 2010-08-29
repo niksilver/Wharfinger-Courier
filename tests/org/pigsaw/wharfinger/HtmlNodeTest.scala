@@ -87,6 +87,13 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
       val nodes: NodeSeq = xml \\ "li"
       HtmlNode.toHtmlString(nodes) should be === ("<li>Bread</li><li>Milk</li><li>Bananas</li>")
     }
+
+    it("Should handle text") {
+      // See http://www.cs.sfu.ca/~ggbaker/reference/characters/
+      // Unicode hex 2019 = decimal 8217 = close single quote
+      val text = "Don\u2019t look now"
+      HtmlNode.toHtmlString(text) should be === ("Don&#8217;t look now")
+    }
   }
 
   describe("RedirectResolver") {

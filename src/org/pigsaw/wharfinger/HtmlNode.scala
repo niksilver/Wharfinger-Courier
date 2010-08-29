@@ -1,12 +1,12 @@
 package org.pigsaw.wharfinger
 
 import org.ccil.cowan.tagsoup._
-import xml.{NodeSeq, Node}
 import java.net.{HttpURLConnection, URL}
 import com.google.appengine.api.datastore.Text
 import org.xml.sax.InputSource
 import java.io.{StringWriter, StringReader, Reader}
 import java.nio.charset.Charset
+import scala.xml.{NodeSeq, Node}
 
 /**
  * Object with a factory method to return an HTML document
@@ -66,6 +66,8 @@ object HtmlNode {
   }
 
   def toHtmlString(ns: NodeSeq): String = ns map {node => HtmlNode.toHtmlString(node)} mkString
+
+  def toHtmlString(text: String): String = HtmlNode.toHtmlString(new scala.xml.Text(text))
 }
 
 /**

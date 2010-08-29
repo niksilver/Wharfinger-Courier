@@ -40,7 +40,7 @@ class DeliciousNetworkHandler(val reader: Reader) {
 
   /**Process all the bookmarks which meet some predefined condition.
    */
-  def process(): Unit = process(bookmark => bookmark.title.startsWith("Report:"))
+  def process(): Unit = process(bookmark => bookmark.popularity > 0)
 }
 
 object DeliciousNetworkHandler {

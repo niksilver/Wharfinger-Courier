@@ -3,6 +3,7 @@ package org.pigsaw.wharfinger
 import collection.mutable.ListBuffer
 import xml.{XML, NodeBuffer, Node}
 import java.io.StringReader
+import Preamble._
 
 /**
  * Make a Wharfinger Courier document.
@@ -22,12 +23,14 @@ class DocumentMaker(val title: String) {
 
     for (i <- 0 until articles.length;
          article = articles(i);
-         chapter_name = "wharfinger-" + (i+1)) {
-      toc += <p><a href={ "#" + chapter_name }><h4>{ article.title }</h4></a></p>
+         chapter_name = "wharfinger-" + (i+1);
+         article_title = article.title; //.toHTMLString
+         citation = article.getCitation) {
+      toc += <p><a href={ "#" + chapter_name }><h4>{ article_title }</h4></a></p>
 
       main += <div class="wharfinger-chapter">
                 <a name={ chapter_name }></a>
-                <div class="wharfinger-citation"><blockquote><i>{ asXML(article.getCitation) }</i></blockquote></div>
+                <div class="wharfinger-citation"><blockquote><i>{ citation }</i></blockquote></div>
                 <div class="wharfinger-content">{ asXML(article.getContent) }</div>
               </div>
     }

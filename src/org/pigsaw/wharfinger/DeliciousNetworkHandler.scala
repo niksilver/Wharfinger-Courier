@@ -14,7 +14,7 @@ class DeliciousNetworkHandler(val reader: Reader) {
 
   val bookmarks = new ListBuffer[DeliciousBookmark]()
 
-  def this() = this(new URLReader("http://delicious.com/network/nik.silver?setcount=100"))
+  def this() = this(new URLReader("http://delicious.com/network/nik.silver?setcount=100", "UTF-8"))
 
   /**Parse the HTML to create the bookmarks.
    */
@@ -40,7 +40,7 @@ class DeliciousNetworkHandler(val reader: Reader) {
 
   /**Process all the bookmarks which meet some predefined condition.
    */
-  def process(): Unit = process(bookmark => bookmark.popularity > 0)
+  def process(): Unit = process(bookmark => bookmark.title.startsWith("Report:"))
 }
 
 object DeliciousNetworkHandler {
@@ -48,7 +48,7 @@ object DeliciousNetworkHandler {
   def makeBookmark(bookmark_div: Node): DeliciousBookmark = {
     val a_elt = bookmark_div findElementAttributeSubstring ("a", "@class", "taggedlink")
     val link = (a_elt \ "@href").text
-    val title = a_elt.text.toHTMLString
+    val title = a_elt.text
 
     val count_span = bookmark_div findElementAttributeText ("span", "@class", "delNavCount")
     val count = count_span match {
@@ -64,7 +64,7 @@ object DeliciousNetworkHandler {
     val description_div = bookmark_div findElementAttributeText ("div", "@class", "description")
     val description = description_div.length match {
       case 0 => None
-      case _ => Some(description_div.text.toHTMLString.trim)
+      case _ => Some(description_div.text.trim)
     }
 
     new DeliciousBookmark(url = link,

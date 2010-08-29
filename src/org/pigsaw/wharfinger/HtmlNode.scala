@@ -77,12 +77,8 @@ object SloppyXMLNodeSeq {
   def apply(reader: Reader): NodeSeq = (HtmlNode(reader) \\ "body")(0).child
 }
 
-class URLReader(val url: String, charset: Charset)
-        extends java.io.BufferedReader(new java.io.InputStreamReader(new java.net.URL(url).openStream, charset)) {
-
-  def this(url: String) = this(url, Charset.defaultCharset)
-  def this(url: String, charset: String) = this(url, Charset.forName(charset))
-}
+class URLReader(val url: String, charset: String)
+        extends java.io.BufferedReader(new java.io.InputStreamReader(new java.net.URL(url).openStream, Charset.forName(charset)))
 
 /**
  * Resolve a URL. Create a new instance using a URL string, then the field

@@ -32,7 +32,7 @@ class TestingServlet extends HttpServlet {
 
     def testGetHtml: Unit = {
       resp.setContentType("text/plain")
-      val html = HtmlNode(new URLReader("http://www.google.com"))
+      val html = HtmlNode(new URLReader("http://www.google.com", "UTF-8"))
       val title = (html \\ "title").text
       resp.getWriter.println("Title of Google is '" + title + "'")      
     }
@@ -193,10 +193,7 @@ class TestEncodingsServlet extends HttpServlet {
     }
 
     def readRaw {
-      val reader = req.getParameter("charset") match {
-        case null => new URLReader(url)
-        case charset => new URLReader(url, charset)
-      }
+      val reader = new URLReader(url, req.getParameter("charset"))
       resp.setContentType("text/html")
       var chr: Int = 0
       while ({chr = reader.read; chr != -1}) {
@@ -207,10 +204,7 @@ class TestEncodingsServlet extends HttpServlet {
     // This shows characters as
     // L i f e   a s   a n   e d i t o r   & # 8 2 1 1 ;   t h r o u g h...
     def readRawCharacters {
-      val reader = req.getParameter("charset") match {
-        case null => new URLReader(url)
-        case charset => new URLReader(url, charset)
-      }
+      val reader = new URLReader(url, req.getParameter("charset"))
       resp.setContentType("text/html")
       var chr: Int = 0
       while ({chr = reader.read; chr != -1}) {

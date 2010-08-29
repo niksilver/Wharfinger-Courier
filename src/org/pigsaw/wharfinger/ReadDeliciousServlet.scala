@@ -21,7 +21,14 @@ class ReadDeliciousServlet extends HttpServlet {
     trait ProcessReporter extends DeliciousNetworkHandler {
       override def process(a: DeliciousBookmark) {
         resp.getWriter.println("Queuing task to fetch " + a.url)
+        resp.getWriter.println("  title: " + showCharacters(a.title))
+        resp.getWriter.println("  citation: " + showCharacters(a.citation))
         super.process(a)
+
+        def showCharacters(str: String): String = {
+          str flatMap (c => "(" + c.toChar + ")=" + c.toInt + " ")
+        }
+
       }
     }
   }

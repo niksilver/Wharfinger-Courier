@@ -4,6 +4,7 @@ import javax.servlet.http.{HttpServletResponse, HttpServletRequest, HttpServlet}
 import scala.collection.JavaConversions._
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import Preamble._
 
 /**
  * Servlet to make a Wharfinger Courier.
@@ -21,7 +22,7 @@ class MakeDocumentServlet extends HttpServlet {
       for (article <- articles)
         maker.add(article)
       val doc_xml = maker.document
-      val document = new Document(techDate + ".html", "text/html", doc_xml.toString)
+      val document = new Document(techDate + ".html", "text/html", doc_xml.toHTMLString)
       for (article <- articles)
         pm.deletePersistent(article)
       resp.setContentType(document.contentType)

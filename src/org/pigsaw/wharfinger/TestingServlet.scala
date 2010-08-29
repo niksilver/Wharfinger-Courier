@@ -138,7 +138,7 @@ class TestEncodingsServlet extends HttpServlet {
       val handler = new InstapaperHandler(url)
       val content_div_option = handler.getContentDiv
       content_div_option match {
-        case Some(content_div) => displayContent((content_div \\ "h2" \ "a").text)
+        case Some(content_div) => displayContent(HtmlNode.toHtmlString((content_div \\ "h2" \ "a").text))
         case None => throw new RuntimeException("Couldn't get content from Instapaper")
       }
     }
@@ -147,7 +147,7 @@ class TestEncodingsServlet extends HttpServlet {
       val handler = new InstapaperHandler(url)
       val content_div_option = handler.getContentDiv
       content_div_option match {
-        case Some(content_div) => displayCharacters((content_div \\ "h2" \ "a").text)
+        case Some(content_div) => displayCharacters(HtmlNode.toHtmlString((content_div \\ "h2" \ "a").text))
         case None => throw new RuntimeException("Couldn't get content from Instapaper")
       }
     }
@@ -186,7 +186,7 @@ class TestEncodingsServlet extends HttpServlet {
       def read() {
         val length = reader.read(buffer, 0, buffer.length)
         if (length > 0) {
-          str.append(buffer, 0, length)
+          str.appendAll(buffer, 0, length)
           read()
         }
       }
@@ -226,7 +226,7 @@ class TestEncodingsServlet extends HttpServlet {
     }
 
     def displayCharacters(content: String) {
-      resp.setContentType("text/plain")
+      resp.setContentType("text/html")
       content.foreach(c => print("(" + c + ")=" + c.toInt + " "))
     }
 

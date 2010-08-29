@@ -61,6 +61,15 @@ class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
       bookmark.description should be (None)
     }
 
+    it("Should handle non-ASCII characters in the title and description") {
+      val bookmark_div = HtmlNode(new StringReader(Data.delicious_bookmark_div_with_special_characters))
+      val bookmark = DeliciousNetworkHandler.makeBookmark(bookmark_div)
+
+      bookmark.title should be ("10 Characteristics of hyperlocal &#171; Sarah Hartley")
+      bookmark.description should not be (None)
+      bookmark.description.get should startWith (""""What, if anything, the term &#8216;hyperlocal&#8217; now means""")
+    }
+
     it("Should process selectively") {
       val processed = new ListBuffer[DeliciousBookmark]()
       val handler = new DeliciousNetworkHandler(new StringReader(Data.delicious_html)) {

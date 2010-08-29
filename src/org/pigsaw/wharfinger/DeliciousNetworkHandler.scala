@@ -48,7 +48,7 @@ object DeliciousNetworkHandler {
   def makeBookmark(bookmark_div: Node): DeliciousBookmark = {
     val a_elt = bookmark_div findElementAttributeSubstring ("a", "@class", "taggedlink")
     val link = (a_elt \ "@href").text
-    val title = a_elt.text
+    val title = a_elt.text.toHTMLString
 
     val count_span = bookmark_div findElementAttributeText ("span", "@class", "delNavCount")
     val count = count_span match {
@@ -64,7 +64,7 @@ object DeliciousNetworkHandler {
     val description_div = bookmark_div findElementAttributeText ("div", "@class", "description")
     val description = description_div.length match {
       case 0 => None
-      case _ => Some(description_div.text.trim)
+      case _ => Some(description_div.text.toHTMLString.trim)
     }
 
     new DeliciousBookmark(url = link,

@@ -1596,4 +1596,74 @@ var ins = new YAHOO.i13n.Track(conf); ins.init();</script>
 
     <div class="clr"></div>
   </div>""" }
+
+  def delicious_bookmark_div_with_special_characters = """<div class="bookmark  NOTHUMB">
+
+
+
+
+      <span class="jsEnabled action" id="audiofile26"></span>
+
+
+    <div class="data">
+
+
+
+
+
+      <h4>
+
+                  <a rel="nofollow" class="taggedlink  "  href="http://sarahhartley.wordpress.com/2010/08/25/10-characteristics-of-hyperlocal/" >10 Characteristics of hyperlocal \u00AB Sarah Hartley</a>
+        <span class="saverem"><em class="bookmark-actions"><strong><a class="inlinesave action rapidnofollow" href="/save?url=http%3A%2F%2Fsarahhartley.wordpress.com%2F2010%2F08%2F25%2F10-characteristics-of-hyperlocal%2F&amp;title=10%20Characteristics%20of%20hyperlocal%20%C2%AB%20Sarah%20Hartley&amp;jump=%2Fnetwork%2Fnik.silver&amp;key=efYRvX6rsyXVRqq19kahvq1OM5s-&amp;copyuser=currybet&amp;via=currybet&amp;copyuser=currybet&amp;copytags=hyperlocal+sarahhartley">SAVE</a></strong>
+
+		                </em></span>
+
+
+      </h4>
+
+
+
+
+      <div class="actions">
+      <h5 class="savers-label">PEOPLE</h5>
+      <div class="savers savers2">
+          <a class="delNav" href="/url/c58f81286f4daee146b13d78dc3b9ca1">
+              <span class="delNavCount">33</span>
+          </a>
+
+      </div>
+      </div>
+
+
+
+
+
+
+
+            <div class="description">
+          &quot;What, if anything, the term \u2018hyperlocal\u2019 now means is something that keeps coming up in conversations I have and it strikes me that it\u2019s no longer necessarily defined by a tight geographical area, but instead seems to have evolved to describe more of an attitude than a place&quot;. great list from Sarah Hartley      </div>
+
+
+    </div>
+
+    <div class="meta">
+                      <a href="/currybet" class="user user-tag"><span class="">Martin Belam</span></a>
+
+
+
+          <h5 class="tag-chain-label tag-chain-tagLabel">TAGS</h5>
+
+      <h5 class="tag-chain-label tag-chain-forLabel">SHARED</h5>
+      <div class="tagdisplay">
+        <ul class="tag-chain">        <li class="off tag-chain-tag first"><a class="tagItem noplay" rel="tag" href="/currybet/hyperlocal">hyperlocal</a></li>
+            <li class="off tag-chain-tag last"><a class="tagItem noplay" rel="tag" href="/currybet/sarahhartley">sarahhartley</a></li>
+    </ul>
+		  </div>
+
+      <div class="clr"></div>
+
+    </div><!-- #tagdisplay -->
+
+    <div class="clr"></div>
+  </div>"""
 }

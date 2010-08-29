@@ -172,13 +172,12 @@ class TestEncodingsServlet extends HttpServlet {
       val parser = new TagSoupFactoryAdapter
       val html = parser loadString str.toString
       displayContent(html.toHTMLString)
-
     }
 
     def useTagSoupUsingStringAndBuffering {
       val str = new StringBuilder
       val buffer = new Array[Char](4*1024)
-      val reader = new URLReader(url)
+      val reader = new URLReader(url, "UTF-8")
       val parser = new TagSoupFactoryAdapter
       read()
       lazy val html = parser loadString str.toString
@@ -191,8 +190,8 @@ class TestEncodingsServlet extends HttpServlet {
           read()
         }
       }
-
     }
+
     def readRaw {
       val reader = req.getParameter("charset") match {
         case null => new URLReader(url)

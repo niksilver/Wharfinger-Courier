@@ -8,9 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Preamble.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Preamble.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/index.html" afterPath="$PROJECT_DIR$/war/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -112,19 +110,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestingServlet.scala" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="TestingServlet.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="184" column="21" selection-start="6372" selection-end="6372" vertical-scroll-proportion="0.0">
+            <state line="184" column="0" selection-start="6399" selection-end="6399" vertical-scroll-proportion="-0.42979452">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Preamble.scala" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Preamble.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Preamble.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="0" selection-start="1015" selection-end="1015" vertical-scroll-proportion="0.31114808">
+            <state line="40" column="0" selection-start="1123" selection-end="1123" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -160,7 +158,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="52" selection-start="1950" selection-end="1961" vertical-scroll-proportion="-16.92">
+            <state line="48" column="118" selection-start="2612" selection-end="2612" vertical-scroll-proportion="-20.32">
               <folding />
             </state>
           </provider>
@@ -208,12 +206,12 @@
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DocumentMakerTest.scala" />
         <option value="$PROJECT_DIR$/war/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/org/ccil/cowan/tagsoup/TagSoupFactoryAdapter.scala" />
-        <option value="$PROJECT_DIR$/war/index.html" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Preamble.scala" />
+        <option value="$PROJECT_DIR$/war/index.html" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" />
       </list>
     </option>
   </component>
@@ -562,10 +560,10 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4124204" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16990788" sideWeight="0.59076434" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16990788" sideWeight="0.65923566" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39968154" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24974412" sideWeight="0.22133759" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958034" sideWeight="0.65923566" order="4" side_tool="false" content_ui="tabs" />
@@ -593,7 +591,7 @@
     <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adjusted the servlet to test encodings to demonstrate more of HtmlNode.toHtmlString working.&#10;Adjusted code to avoid deprecated scala.collection.mutable.StringBuilder.append method." />
+    <option name="LAST_COMMIT_MESSAGE" value="HtmlNode.toHtmlString now available via implicits." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -606,7 +604,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Title from Delicious network is now persisted with the article itself." />
     <MESSAGE value="URLs have hyphens in them for better readability." />
     <MESSAGE value="URLs of articles that have been fetched are stored so (potentially) they won't be fetched again." />
     <MESSAGE value="Past articles are now cleared when the datastore is cleared." />
@@ -631,6 +628,7 @@
     <MESSAGE value="Moved file location of text encodings tests." />
     <MESSAGE value="HtmlNode.toHtmlString can handle strings now, too." />
     <MESSAGE value="Adjusted the servlet to test encodings to demonstrate more of HtmlNode.toHtmlString working.&#10;Adjusted code to avoid deprecated scala.collection.mutable.StringBuilder.append method." />
+    <MESSAGE value="HtmlNode.toHtmlString now available via implicits." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -719,23 +717,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="52" selection-start="1950" selection-end="1961" vertical-scroll-proportion="-16.92">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="68" column="58" selection-start="2296" selection-end="2296" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="184" column="21" selection-start="6372" selection-end="6372" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -749,7 +733,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Preamble.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="1015" selection-end="1015" vertical-scroll-proportion="0.31114808">
+        <state line="40" column="0" selection-start="1123" selection-end="1123" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="118" selection-start="2612" selection-end="2612" vertical-scroll-proportion="-20.32">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="184" column="0" selection-start="6399" selection-end="6399" vertical-scroll-proportion="-0.42979452">
           <folding />
         </state>
       </provider>

@@ -5,6 +5,10 @@ import com.google.appengine.api.datastore.Text
 
 object Preamble {
 
+  class RichNode(n: Node) {
+    def toHTMLString: String = HtmlNode.toHTMLString(n)
+  }
+
   class RichNodeSeq(ns:Seq[Node]) {
 
     def containing(nodeBuilder: Node => NodeSeq): Seq[Node] = {
@@ -28,10 +32,19 @@ object Preamble {
         case _ => Some(elts(0))
       }
     }
+
   }
 
-  implicit def nodeSeq2RichNodeSeq(ns:NodeSeq) = new RichNodeSeq(ns)
-  implicit def node2RichNodeSeq(n:Node) = new RichNodeSeq(n.theSeq)
+  class RichStringForHTML(str: String) {
+    def toHTMLString: String = HtmlNode.toHTMLString(str)
+  }
+
+  implicit def nodeSeq2RichNodeSeq(ns: NodeSeq) = new RichNodeSeq(ns)
+
+  implicit def node2RichNode(n: Node) = new RichNode(n)
+  implicit def node2RichNodeSeq(n: Node) = new RichNodeSeq(n.theSeq)
+
+  implicit def string2RichStringForHTML(str: String) = new RichStringForHTML(str)
 
   implicit def string2GAEText(s: String) = s match {
     case null => null

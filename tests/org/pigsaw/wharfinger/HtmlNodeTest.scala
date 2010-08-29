@@ -71,7 +71,7 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
 
     it("Should handle funny characters") {
       val xml = SloppyXMLNodeSeq(new StringReader("life &#8211; goes on"))
-      HtmlNode.toHtmlString(xml) should be === ("life &#8211; goes on")
+      HtmlNode.toHTMLString(xml) should be === ("life &#8211; goes on")
     }
   }
 
@@ -79,20 +79,20 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
 
     it("Should not add unwanted tags") {
       val xml = <div>My message</div>
-      HtmlNode.toHtmlString(xml) should be === ("<div>My message</div>")
+      HtmlNode.toHTMLString(xml) should be === ("<div>My message</div>")
     }
 
     it("Should handle a NodeSeq") {
       val xml = <ol><li>Bread</li><trick>Skip me</trick><li>Milk</li><li>Bananas</li></ol>
       val nodes: NodeSeq = xml \\ "li"
-      HtmlNode.toHtmlString(nodes) should be === ("<li>Bread</li><li>Milk</li><li>Bananas</li>")
+      HtmlNode.toHTMLString(nodes) should be === ("<li>Bread</li><li>Milk</li><li>Bananas</li>")
     }
 
     it("Should handle text") {
       // See http://www.cs.sfu.ca/~ggbaker/reference/characters/
       // Unicode hex 2019 = decimal 8217 = close single quote
       val text = "Don\u2019t look now"
-      HtmlNode.toHtmlString(text) should be === ("Don&#8217;t look now")
+      HtmlNode.toHTMLString(text) should be === ("Don&#8217;t look now")
     }
   }
 

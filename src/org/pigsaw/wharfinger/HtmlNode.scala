@@ -44,7 +44,7 @@ object HtmlNode {
     return TagSoupXmlLoader.get.load(reader)
   }
 
-  def toHtmlString(node: Node): String = {
+  def toHTMLString(node: Node): String = {
     // The content ends up between <html> and <body> tags if we don't
     // put a bogon in there.
     val xmlstr = (<org.pigsaw.wharfinger>{ node }</org.pigsaw.wharfinger>).toString
@@ -52,7 +52,6 @@ object HtmlNode {
     val string_writer = new StringWriter
     val xml_writer = new XMLWriter(string_writer)
     parser.setContentHandler(new XMLWriter(string_writer))
-    //parser.setFeature(Parser.rootBogonsFeature, true)
     parser.parse(new InputSource(new StringReader(xmlstr)))
     val full_xml_str = string_writer.toString
     // We now have something like
@@ -65,9 +64,9 @@ object HtmlNode {
     main
   }
 
-  def toHtmlString(ns: NodeSeq): String = ns map {node => HtmlNode.toHtmlString(node)} mkString
+  def toHTMLString(ns: NodeSeq): String = ns map {node => HtmlNode.toHTMLString(node)} mkString
 
-  def toHtmlString(text: String): String = HtmlNode.toHtmlString(new scala.xml.Text(text))
+  def toHTMLString(text: String): String = HtmlNode.toHTMLString(new scala.xml.Text(text))
 }
 
 /**

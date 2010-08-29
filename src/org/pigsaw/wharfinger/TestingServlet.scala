@@ -3,6 +3,7 @@ package org.pigsaw.wharfinger
 import javax.servlet.http.{HttpServletResponse, HttpServletRequest, HttpServlet}
 import scala.collection.JavaConversions._
 import org.ccil.cowan.tagsoup.TagSoupFactoryAdapter
+import Preamble._
 
 /**
  * Created by IntelliJ IDEA.
@@ -120,7 +121,7 @@ class TestEncodingsServlet extends HttpServlet {
       val handler = new InstapaperHandler(url)
       val content_div_option = handler.getContentDiv
       content_div_option match {
-        case Some(content_div) => displayContent(HtmlNode.toHtmlString(content_div))
+        case Some(content_div) => displayContent(content_div.toHTMLString)
         case None => throw new RuntimeException("Couldn't get content from Instapaper")
       }
     }
@@ -129,7 +130,7 @@ class TestEncodingsServlet extends HttpServlet {
       val handler = new InstapaperHandler(url)
       val content_div_option = handler.getContentDiv
       content_div_option match {
-        case Some(content_div) => displayCharacters(HtmlNode.toHtmlString(content_div))
+        case Some(content_div) => displayCharacters(content_div.toHTMLString)
         case None => throw new RuntimeException("Couldn't get content from Instapaper")
       }
     }
@@ -138,7 +139,7 @@ class TestEncodingsServlet extends HttpServlet {
       val handler = new InstapaperHandler(url)
       val content_div_option = handler.getContentDiv
       content_div_option match {
-        case Some(content_div) => displayContent(HtmlNode.toHtmlString((content_div \\ "h2" \ "a").text))
+        case Some(content_div) => displayContent((content_div \\ "h2" \ "a").text.toHTMLString)
         case None => throw new RuntimeException("Couldn't get content from Instapaper")
       }
     }
@@ -147,7 +148,7 @@ class TestEncodingsServlet extends HttpServlet {
       val handler = new InstapaperHandler(url)
       val content_div_option = handler.getContentDiv
       content_div_option match {
-        case Some(content_div) => displayCharacters(HtmlNode.toHtmlString((content_div \\ "h2" \ "a").text))
+        case Some(content_div) => displayCharacters((content_div \\ "h2" \ "a").text.toHTMLString)
         case None => throw new RuntimeException("Couldn't get content from Instapaper")
       }
     }
@@ -158,7 +159,7 @@ class TestEncodingsServlet extends HttpServlet {
       source.setSystemId(url)
       source.setEncoding("UTF-8")
       val html = parser loadXML source
-      displayContent(HtmlNode.toHtmlString(html))
+      displayContent(html.toHTMLString)
     }
 
     def useTagSoupUsingString {
@@ -170,7 +171,7 @@ class TestEncodingsServlet extends HttpServlet {
       }
       val parser = new TagSoupFactoryAdapter
       val html = parser loadString str.toString
-      displayContent(HtmlNode.toHtmlString(html))
+      displayContent(html.toHTMLString)
 
     }
 
@@ -181,7 +182,7 @@ class TestEncodingsServlet extends HttpServlet {
       val parser = new TagSoupFactoryAdapter
       read()
       lazy val html = parser loadString str.toString
-      displayContent(HtmlNode.toHtmlString(html))
+      displayContent(html.toHTMLString)
 
       def read() {
         val length = reader.read(buffer, 0, buffer.length)

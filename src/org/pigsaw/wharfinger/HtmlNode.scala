@@ -76,14 +76,17 @@ object HtmlNode {
     def escapeRule = new RewriteRule {
       override def transform(n: Node): NodeSeq = {
         n match {
-          case a:Atom[_] => escape(a.data.toString)
+          case a:Atom[_] if needsEscaping(a.data.toString) => escape(a.data.toString)
           case x => x
         }
       }
     }
 
+    def charNeedsEscaping(c: Char) = (c > 0x7F || Character.isISOControl(c))
+    def needsEscaping(s: String) = s exists charNeedsEscaping
+
     def escapeChar(c: Char): Node = {
-      if (c > 0x7F || Character.isISOControl(c))
+      if (charNeedsEscaping(c))
         new EntityRef("#" + c.toInt)
       else
         new Text(c.toString)

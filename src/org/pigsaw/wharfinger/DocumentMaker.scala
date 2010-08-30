@@ -15,28 +15,28 @@ class DocumentMaker(val title: String) {
 
   def add(article: Article) { articles += article }
 
-  def document: Node = {
-    val toc = new NodeBuffer
-    val main = new NodeBuffer
+  def document: String = {
+    val toc = new StringBuilder
+    val main = new StringBuilder
 
-    toc appendAll <p><a name="TOC"></a><h3>{ title }</h3></p>
+    toc appendAll """<p><a name="TOC"></a><h3>""" + title + """</h3></p>"""
 
     for (i <- 0 until articles.length;
          article = articles(i);
          chapter_name = "wharfinger-" + (i+1)) {
-      toc += <p><a href={ "#" + chapter_name }><h4>{ article.title }</h4></a></p>
+      toc appendAll "<p><a href=\"#" + chapter_name + "\"><h4>" + article.title + "</h4></a></p>"
 
-      main += <div class="wharfinger-chapter">
-                <a name={ chapter_name }></a>
-                <div class="wharfinger-citation"><blockquote><i>{ article.getCitation }</i></blockquote></div>
-                <div class="wharfinger-content">{ asXML(article.getContent) }</div>
-              </div>
+      main appendAll """<div class="wharfinger-chapter">
+                <a name=""" + chapter_name +"""></a>
+                <div class="wharfinger-citation"><blockquote><i>""" + article.getCitation + """</i></blockquote></div>
+                <div class="wharfinger-content">""" + article.getContent + """</div>
+              </div>"""
     }
     
-    <div>
-      <div class="wharfinger-toc">{ toc }</div>
-      { main }
-    </div>
+    """<div>
+      <div class="wharfinger-toc">""" + toc + """</div>
+      """ + main + """
+    </div>"""
   }
 
   private def asXML(str: String): Seq[Node] = SloppyXMLNodeSeq(new StringReader(str))

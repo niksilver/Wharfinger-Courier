@@ -7,10 +7,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="The stored article title and citation is now designed to be just test, stripped of HTML markup.&#10;The charset must now be explicitly set for fetching content (but we're always setting it to UTF-8).">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" />
+    <list default="true" readonly="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/DocumentMaker.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/DocumentMaker.scala" />
     </list>
     <ignored path=".idea/workspace.xml" />
     <ignored path="Wharfinger Courier.iws" />
@@ -119,28 +121,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FetchSomeURLsServlet.scala" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="FetchSomeURLsServlet.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="6" selection-start="370" selection-end="370" vertical-scroll-proportion="0.0">
+            <state line="60" column="51" selection-start="2119" selection-end="2119" vertical-scroll-proportion="0.37770382">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HtmlNode.scala" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="HtmlNode.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="57" selection-start="2168" selection-end="2168" vertical-scroll-proportion="0.15753424">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="0" selection-start="1037" selection-end="1037" vertical-scroll-proportion="0.0">
+            <state line="85" column="49" selection-start="2839" selection-end="2839" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -158,7 +151,7 @@
       <file leaf-file-name="DocumentMaker.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/DocumentMaker.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="44" selection-start="934" selection-end="934" vertical-scroll-proportion="0.0">
+            <state line="18" column="31" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -167,7 +160,7 @@
       <file leaf-file-name="MakeDocumentServlet.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="78" selection-start="878" selection-end="878" vertical-scroll-proportion="0.0">
+            <state line="24" column="74" selection-start="874" selection-end="874" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -200,18 +193,18 @@
         <option value="$PROJECT_DIR$/src/org/ccil/cowan/tagsoup/TagSoupFactoryAdapter.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Preamble.scala" />
         <option value="$PROJECT_DIR$/war/index.html" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/DeliciousNetworkHandler.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/ReadDeliciousServlet.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DeliciousNetworkHandlerTest.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DocumentMakerTest.scala" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/DocumentMaker.scala" />
         <option value="$PROJECT_DIR$/src/test.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/DocumentMaker.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala" />
       </list>
     </option>
   </component>
@@ -292,7 +285,38 @@
       </pane>
       <pane id="Favorites" />
       <pane id="ProjectPane">
-        <subPane />
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
       </pane>
     </panes>
   </component>
@@ -594,7 +618,7 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4124204" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16990788" sideWeight="0.65923566" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16990788" sideWeight="0.65923566" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39968154" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
@@ -625,7 +649,7 @@
     <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="The stored article title and citation is now designed to be just test, stripped of HTML markup.&#10;The charset must now be explicitly set for fetching content (but we're always setting it to UTF-8)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Now have a means to escape entities for HTML." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -638,7 +662,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Removed boilerplate relating to resp.getWriter.print/println." />
     <MESSAGE value="Started the class (and tests) which makes a Wharfinger Courier." />
     <MESSAGE value="DocumentMaker includes content and can handle XML." />
     <MESSAGE value="DocumentMaker handles several articles." />
@@ -663,6 +686,7 @@
     <MESSAGE value="Document seems to be output with special characters properly processed. A bit more checking and lots of tidying up needed." />
     <MESSAGE value="Confirmed: Document is be output with special characters properly processed. Lots of tidying definitely needed, though." />
     <MESSAGE value="The stored article title and citation is now designed to be just test, stripped of HTML markup.&#10;The charset must now be explicitly set for fetching content (but we're always setting it to UTF-8)." />
+    <MESSAGE value="Now have a means to escape entities for HTML." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -724,13 +748,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="6" selection-start="370" selection-end="370" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DeliciousNetworkHandlerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="18" selection-start="1805" selection-end="1805" vertical-scroll-proportion="0.0">
@@ -752,20 +769,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/DocumentMaker.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="44" selection-start="934" selection-end="934" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="78" selection-start="878" selection-end="878" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Preamble.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="45" selection-start="198" selection-end="198" vertical-scroll-proportion="0.0">
@@ -773,9 +776,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test.scala">
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="1037" selection-end="1037" vertical-scroll-proportion="0.0">
+        <state line="85" column="49" selection-start="2839" selection-end="2839" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -787,9 +790,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HtmlNode.scala">
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="57" selection-start="2168" selection-end="2168" vertical-scroll-proportion="0.15753424">
+        <state line="24" column="74" selection-start="874" selection-end="874" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/DocumentMaker.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="31" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/FetchSomeURLsServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="51" selection-start="2119" selection-end="2119" vertical-scroll-proportion="0.37770382">
           <folding />
         </state>
       </provider>

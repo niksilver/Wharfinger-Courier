@@ -2,11 +2,11 @@ package org.pigsaw.wharfinger
 
 import org.ccil.cowan.tagsoup._
 import java.net.{HttpURLConnection, URL}
-import com.google.appengine.api.datastore.Text
 import org.xml.sax.InputSource
 import java.io.{StringWriter, StringReader, Reader}
 import java.nio.charset.Charset
-import scala.xml.{NodeSeq, Node}
+import xml.transform.{RuleTransformer, RewriteRule}
+import xml._
 
 /**
  * Object with a factory method to return an HTML document
@@ -67,7 +67,33 @@ object HtmlNode {
 
   def toHTMLString(ns: NodeSeq): String = ns map {node => HtmlNode.toHTMLString(node)} mkString
 
-  def toHTMLString(text: String): String = HtmlNode.toHTMLString(new scala.xml.Text(text))
+  def toHTMLString(text: String): String = HtmlNode.toHTMLString(new Text(text))
+
+  def escapeForHTML(node: Node): Node = {
+
+    def escapeTransform = new RuleTransformer(escapeRule)
+
+    def escapeRule = new RewriteRule {
+      override def transform(n: Node): NodeSeq = {
+        n match {
+          case a:Atom[_] => escape(a.data.toString)
+          case x => x
+        }
+      }
+    }
+
+    def escapeChar(c: Char): Node = {
+      if (c > 0x7F || Character.isISOControl(c))
+        new EntityRef("#" + c.toInt)
+      else
+        new Text(c.toString)
+    }
+
+    def escape(str: String) = str map escapeChar
+
+    escapeTransform(node)
+  }
+  
 }
 
 /**

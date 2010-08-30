@@ -55,6 +55,15 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
       evaluating(readURL) should produce [IOException]
     }
 
+    it("Should convert to a string escaping special characters") {
+      val msg1 = "Message... one"
+      val msg2 = "Message\u2014two"
+      val xml = <outside class="clz" id="my\u2010id"><in1>{ msg1 }</in1><in2>{ msg2 }</in2></outside>
+      val html = HtmlNode.escapeForHTML(xml)
+      (html \\ "@id").toString should be === ("my\u2010id")
+      (html \\ "in2").text should be === ("Message&#8212;two")
+    }
+
     it("Should read HTML from a redirected URL") {
       val html = HtmlNode(new URLReader("http://bit.ly/9NQcyA", "UTF-8"))
       val title = (html \\ "title").text

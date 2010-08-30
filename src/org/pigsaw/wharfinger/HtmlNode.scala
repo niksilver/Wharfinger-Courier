@@ -82,7 +82,6 @@ object HtmlNode {
       }
     }
 
-    def charNeedsEscaping(c: Char) = (c > 0x7F || Character.isISOControl(c))
     def needsEscaping(s: String) = s exists charNeedsEscaping
 
     def escapeChar(c: Char): Node = {
@@ -96,7 +95,18 @@ object HtmlNode {
 
     escapeTransform(node)
   }
-  
+
+  def escapeForHTML(str: String): String = {
+    str flatMap { c =>
+      if (charNeedsEscaping(c))
+        "&#" + c.toInt + ";"
+      else
+        c.toString
+    }
+  }
+
+  private def charNeedsEscaping(c: Char) = (c > 0x7F || Character.isISOControl(c))
+
 }
 
 /**

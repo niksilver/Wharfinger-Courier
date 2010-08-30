@@ -45,18 +45,18 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
     }
 
     it("Should read HTML from a URL") {
-      val html = HtmlNode(new URLReader("http://www.google.com"))
+      val html = HtmlNode(new URLReader("http://www.google.com", "UTF-8"))
       val title = (html \\ "title").text
       title should be ("Google")
     }
 
     it("Should throw an exception reading from a problematic URL") {
-      def readURL = HtmlNode(new URLReader("http://www.willnotresolve5432.com"))
+      def readURL = HtmlNode(new URLReader("http://www.willnotresolve5432.com", "UTF-8"))
       evaluating(readURL) should produce [IOException]
     }
 
     it("Should read HTML from a redirected URL") {
-      val html = HtmlNode(new URLReader("http://bit.ly/9NQcyA"))
+      val html = HtmlNode(new URLReader("http://bit.ly/9NQcyA", "UTF-8"))
       val title = (html \\ "title").text
       title should include ("A mobile developer day too far")
     }

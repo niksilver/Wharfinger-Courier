@@ -36,7 +36,8 @@ object HtmlNode {
   object TagSoupXmlLoader {
       private val factory = new SAXFactoryImpl()
       def get(): XMLLoader[Elem] = {
-          XML.withSAXParser(factory.newSAXParser())
+        factory.setFeature(Parser.defaultAttributesFeature, false)
+        XML.withSAXParser(factory.newSAXParser())
       }
   }
 

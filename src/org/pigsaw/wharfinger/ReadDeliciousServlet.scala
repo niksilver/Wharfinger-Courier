@@ -22,11 +22,6 @@ class ReadDeliciousServlet extends HttpServlet {
       override def process(a: DeliciousBookmark) {
         resp.getWriter.println("Queuing task to fetch " + a.url)
         super.process(a)
-
-        def showCharacters(str: String): String = {
-          str flatMap (c => "(" + c.toChar + ")=" + c.toInt + " ")
-        }
-
       }
     }
   }

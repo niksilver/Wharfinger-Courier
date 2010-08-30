@@ -65,9 +65,18 @@ class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
       val bookmark_div = HtmlNode(new StringReader(Data.delicious_bookmark_div_with_special_characters))
       val bookmark = DeliciousNetworkHandler.makeBookmark(bookmark_div)
 
-      bookmark.title should be ("10 Characteristics of hyperlocal &#171; Sarah Hartley")
+      bookmark.title should be ("10 Characteristics of hyperlocal \u00AB Sarah Hartley")
       bookmark.description should not be (None)
-      bookmark.description.get should startWith (""""What, if anything, the term &#8216;hyperlocal&#8217; now means""")
+      bookmark.description.get should startWith (""""What, if anything, the term \u2018hyperlocal\u2019 now means""")
+    }
+
+    it("Should read title and description as just text") {
+      val bookmark_div = HtmlNode(new StringReader(Data.delicious_bookmark_div_with_html_in_fields))
+      val bookmark = DeliciousNetworkHandler.makeBookmark(bookmark_div)
+
+      bookmark.title should be ("Something about hyperlocal")
+      bookmark.description should not be (None)
+      bookmark.description.get should startWith ("""What is this hyperlocal thing?""")
     }
 
     it("Should process selectively") {

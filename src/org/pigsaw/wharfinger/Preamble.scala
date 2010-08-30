@@ -7,6 +7,7 @@ object Preamble {
 
   class RichNode(n: Node) {
     def toHTMLString: String = HtmlNode.toHTMLString(n)
+    def escapeForHTML: Node = HtmlNode.escapeForHTML(n)
   }
 
   class RichNodeSeq(ns:Seq[Node]) {
@@ -37,6 +38,7 @@ object Preamble {
 
   class RichStringForHTML(str: String) {
     def toHTMLString: String = HtmlNode.toHTMLString(str)
+    def escapeForHTML: String = HtmlNode.escapeForHTML(str)
   }
 
   implicit def nodeSeq2RichNodeSeq(ns: NodeSeq) = new RichNodeSeq(ns)

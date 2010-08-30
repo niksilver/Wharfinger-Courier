@@ -62,9 +62,9 @@ class FetchSomeURLsServlet extends HttpServlet {
         println("Got article to persist: " + bookmark.url)
         persistAndClose(pm) {
           pm.makePersistent(new Article(bookmark.url,
-            HtmlNode.escapeForHTML(bookmark.getCitation),
-            HtmlNode.escapeForHTML(bookmark.title),
-            HtmlNode.escapeForHTML(content_div).toString))
+            bookmark.getCitation.escapeForHTML,
+            bookmark.title.escapeForHTML,
+            content_div.escapeForHTML.toString))
           pm.makePersistent(new PastArticle(bookmark.url))
           pm.deletePersistent(bookmark)
         }

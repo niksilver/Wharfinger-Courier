@@ -121,7 +121,7 @@ class TestEncodingsServlet extends HttpServlet {
       val handler = new InstapaperHandler(url)
       val content_div_option = handler.getContentDiv
       content_div_option match {
-        case Some(content_div) => displayContent(content_div.toHTMLString)
+        case Some(content_div) => displayContent(content_div.escapeForHTML.toString)
         case None => throw new RuntimeException("Couldn't get content from Instapaper")
       }
     }
@@ -130,7 +130,7 @@ class TestEncodingsServlet extends HttpServlet {
       val handler = new InstapaperHandler(url)
       val content_div_option = handler.getContentDiv
       content_div_option match {
-        case Some(content_div) => displayCharacters(content_div.toHTMLString)
+        case Some(content_div) => displayCharacters(content_div.escapeForHTML.toString)
         case None => throw new RuntimeException("Couldn't get content from Instapaper")
       }
     }
@@ -139,7 +139,7 @@ class TestEncodingsServlet extends HttpServlet {
       val handler = new InstapaperHandler(url)
       val content_div_option = handler.getContentDiv
       content_div_option match {
-        case Some(content_div) => displayContent((content_div \\ "h2" \ "a").text.toHTMLString)
+        case Some(content_div) => displayContent((content_div \\ "h2" \ "a").text.escapeForHTML)
         case None => throw new RuntimeException("Couldn't get content from Instapaper")
       }
     }
@@ -148,7 +148,7 @@ class TestEncodingsServlet extends HttpServlet {
       val handler = new InstapaperHandler(url)
       val content_div_option = handler.getContentDiv
       content_div_option match {
-        case Some(content_div) => displayCharacters((content_div \\ "h2" \ "a").text.toHTMLString)
+        case Some(content_div) => displayCharacters((content_div \\ "h2" \ "a").text.escapeForHTML)
         case None => throw new RuntimeException("Couldn't get content from Instapaper")
       }
     }
@@ -159,7 +159,7 @@ class TestEncodingsServlet extends HttpServlet {
       source.setSystemId(url)
       source.setEncoding("UTF-8")
       val html = parser loadXML source
-      displayContent(html.toHTMLString)
+      displayContent(html.escapeForHTML.toString)
     }
 
     def useTagSoupUsingString {
@@ -171,7 +171,7 @@ class TestEncodingsServlet extends HttpServlet {
       }
       val parser = new TagSoupFactoryAdapter
       val html = parser loadString str.toString
-      displayContent(html.toHTMLString)
+      displayContent(html.escapeForHTML.toString)
     }
 
     def useTagSoupUsingStringAndBuffering {
@@ -181,7 +181,7 @@ class TestEncodingsServlet extends HttpServlet {
       val parser = new TagSoupFactoryAdapter
       read()
       lazy val html = parser loadString str.toString
-      displayContent(html.toHTMLString)
+      displayContent(html.escapeForHTML.toString)
 
       def read() {
         val length = reader.read(buffer, 0, buffer.length)

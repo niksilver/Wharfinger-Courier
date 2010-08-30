@@ -6,7 +6,6 @@ import com.google.appengine.api.datastore.Text
 object Preamble {
 
   class RichNode(n: Node) {
-    def toHTMLString: String = HtmlNode.toHTMLString(n)
     def escapeForHTML: Node = HtmlNode.escapeForHTML(n)
   }
 
@@ -37,7 +36,6 @@ object Preamble {
   }
 
   class RichStringForHTML(str: String) {
-    def toHTMLString: String = HtmlNode.toHTMLString(str)
     def escapeForHTML: String = HtmlNode.escapeForHTML(str)
   }
 

@@ -3,6 +3,7 @@
     <property environment="env"/>
     <property name="base.dir" location="."/>
     <property name="sources.dir" value="${base.dir}/src"/>
+    <property name="tests.dir" value="${base.dir}/tests"/>
     <property name="build.dir" value="${base.dir}/out.unenhanced"/>
     <property name="scala.home" value="${env.SCALA_HOME}"/>
     <property name="war.dir" value="${base.dir}/war"/>

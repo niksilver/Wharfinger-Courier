@@ -13,12 +13,15 @@ public class Article {
 	@Persistent
 	public String url;
 
+    /** This should be HTML-escaped, ready to be dropped into the middle of an HTML template. */
     @Persistent
     private Text content;
 
+    /** This should be HTML-escaped, ready to be dropped into the middle of an HTML template. */
     @Persistent
     public String title;
 
+    /** This should be HTML-escaped, ready to be dropped into the middle of an HTML template. */
     @Persistent
     private Text citation;
 

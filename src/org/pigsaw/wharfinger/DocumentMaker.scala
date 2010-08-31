@@ -17,12 +17,12 @@ class DocumentMaker(val title: String) {
     val toc = new StringBuilder
     val main = new StringBuilder
 
-    toc appendAll p( a_name("TOC") + h3(title) )
+    val toc_title = a_name("TOC") + h3(title)
 
     for (idx <- 0 until articles.length;
          article = articles(idx);
          chapter_name = "wharfinger-" + (idx+1)) {
-      toc appendAll dt( a_href("#"+chapter_name, h4(article.title)) ) +
+      toc appendAll dt( a_href("#"+chapter_name, article.title) ) +
         dd( article.url ) +
         dd( i(article.getCitation) )
 
@@ -33,7 +33,7 @@ class DocumentMaker(val title: String) {
     }
     
     div(
-      div_class("wharfinger-toc", dl(toc)) +
+      div_class("wharfinger-toc", toc_title + dl(toc)) +
       main
     )
   }

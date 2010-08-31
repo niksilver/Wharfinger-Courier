@@ -1,8 +1,6 @@
 package org.pigsaw.wharfinger
 
 import collection.mutable.ListBuffer
-import xml.{XML, NodeBuffer, Node}
-import java.io.StringReader
 import Preamble._
 
 /**
@@ -19,25 +17,43 @@ class DocumentMaker(val title: String) {
     val toc = new StringBuilder
     val main = new StringBuilder
 
-    toc appendAll """<p><a name="TOC"></a><h3>""" + title + """</h3></p>"""
+    toc appendAll p( a_name("TOC") + h3(title) )
 
-    for (i <- 0 until articles.length;
-         article = articles(i);
-         chapter_name = "wharfinger-" + (i+1)) {
-      toc appendAll "<p><a href=\"#" + chapter_name + "\"><h4>" + article.title + "</h4></a></p>"
+    for (idx <- 0 until articles.length;
+         article = articles(idx);
+         chapter_name = "wharfinger-" + (idx+1)) {
+      toc appendAll p( a_href("#"+chapter_name, h4(article.title)) )
 
-      main appendAll """<div class="wharfinger-chapter">
-                <a name=""" + chapter_name +"""></a>
-                <div class="wharfinger-citation"><blockquote><i>""" + article.getCitation + """</i></blockquote></div>
-                <div class="wharfinger-content">""" + article.getContent + """</div>
-              </div>"""
+      main appendAll div_class("wharfinger-chapter",
+        a_name(chapter_name) +
+        div_class("wharfinger-citation", blockquote(i( article.getCitation ))) +
+        div_class("wharfinger-content", article.getContent)
+      )
     }
     
-    """<div>
-      <div class="wharfinger-toc">""" + toc + """</div>
-      """ + main + """
-    </div>"""
+    div(
+      div_class("wharfinger-toc", toc) +
+      main
+    )
   }
 
-  private def asXML(str: String): Seq[Node] = SloppyXMLNodeSeq(new StringReader(str))
+  implicit def stringBuilder2String(s: StringBuilder) = s.toString
+
+  private def elt(name: String, content: String) = "<" + name + ">" + content + "</" + name + ">"
+  private def open(name: String, attr: Pair[String,String]*) = "<" + name +
+    (attr map { a => " " + a._1 + "=\"" + a._2 + "\"" }).mkString + ">"
+  private def close(name: String) = "</" + name + ">"
+
+  private def a_name(name: String) = open("a", "name" -> name) + close("a")
+  private def a_href(href: String, text: String) = open("a", "href" -> href) + text + close("a")
+
+  private def div(text: String) = elt("div", text)
+  private def div_class(name: String, text: String) = open("div", "class" -> name) + text + close("div")
+
+  private def blockquote(text: String) = elt("blockquote", text)
+  private def i(text: String) = elt("i", text)
+  private def p(text: String) = elt("p", text)
+  private def h3(text: String) = elt("h3", text)
+  private def h4(text: String) = elt("h4", text)
+
 }

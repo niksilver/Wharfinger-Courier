@@ -21,7 +21,8 @@ class DocumentMaker(val title: String) {
 
     for (idx <- 0 until articles.length;
          article = articles(idx);
-         chapter_name = "wharfinger-" + (idx+1)) {
+         chapter_name = "wharfinger-" + (idx+1);
+         is_last = (idx == articles.length-1)) {
       toc appendAll dt( a_href("#"+chapter_name, article.title) ) +
         dd( article.url ) +
         dd( i(article.getCitation) )
@@ -30,6 +31,9 @@ class DocumentMaker(val title: String) {
         a_name(chapter_name) +
         div_class("wharfinger-content", article.getContent)
       )
+
+      if (!is_last)
+        main appendAll "<mbp:pagebreak />"
     }
     
     div(

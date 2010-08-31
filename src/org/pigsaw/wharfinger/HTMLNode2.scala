@@ -1,11 +1,11 @@
 package org.pigsaw.wharfinger
 
 import org.ccil.cowan.tagsoup._
-import java.net.{HttpURLConnection, URL}
-import java.io.Reader
 import java.nio.charset.Charset
 import xml.transform.{RuleTransformer, RewriteRule}
 import xml._
+import java.net.{HttpURLConnection, URL}
+import java.io.Reader
 
 /**
  * Object with a factory method to return an HTML document
@@ -84,7 +84,7 @@ object SloppyXMLNodeSeq {
 }
 
 class URLReader(val url: String, charset: String)
-        extends java.io.BufferedReader(new java.io.InputStreamReader(new java.net.URL(url).openStream, Charset.forName(charset)))
+        extends java.io.BufferedReader(new java.io.InputStreamReader(new java.net.URL(url).openConnection, Charset.forName(charset)))
 
 /**
  * Resolve a URL. Create a new instance using a URL string, then the field

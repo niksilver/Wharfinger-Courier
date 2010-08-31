@@ -51,11 +51,16 @@ class FetchSomeURLsServlet extends HttpServlet {
 
     def fetchBookmark(bookmark: BookmarkPendingFetch) = {
 
-      val handler = new InstapaperHandler(bookmark.url)
-      val content_div_option = handler.getContentDiv
-      content_div_option match {
-        case Some(content_div) => persistArticleAndRemoveFromPendingList(content_div)
-        case None => saveForLaterRetry()
+      try {
+        val handler = new InstapaperHandler(bookmark.url)
+        val content_div_option = handler.getContentDiv
+        content_div_option match {
+          case Some(content_div) => persistArticleAndRemoveFromPendingList(content_div)
+          case None => saveForLaterRetry()
+        }
+      }
+      catch {
+        case e => saveForLaterRetry()
       }
 
       def persistArticleAndRemoveFromPendingList(content_div: Node) {
@@ -95,7 +100,7 @@ class InstapaperHandler(article_url: String) {
           URLEncoder.encode(article_url, "UTF-8")
 
   def getContentDiv(): Option[Node] = {
-    val html = HtmlNode(new URLReader(url, "UTF-8"))
+    val html = HTMLNode(new URLReader(url, "UTF-8"))
     html findDivWithId "story"
   }
 }

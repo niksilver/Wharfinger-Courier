@@ -19,7 +19,7 @@ class DeliciousNetworkHandler(val reader: Reader) {
   /**Parse the HTML to create the bookmarks.
    */
   def parse() {
-    val html = HtmlNode(reader)
+    val html = HTMLNode(reader)
     val bookmarks_div =  html findElementAttributeSubstring ("div", "@class", "bookmark ")
     for (bookmark_div <- bookmarks_div) {
       bookmarks += DeliciousNetworkHandler.makeBookmark(bookmark_div)

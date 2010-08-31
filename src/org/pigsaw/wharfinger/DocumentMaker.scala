@@ -22,17 +22,18 @@ class DocumentMaker(val title: String) {
     for (idx <- 0 until articles.length;
          article = articles(idx);
          chapter_name = "wharfinger-" + (idx+1)) {
-      toc appendAll p( a_href("#"+chapter_name, h4(article.title)) )
+      toc appendAll dt( a_href("#"+chapter_name, h4(article.title)) ) +
+        dd( article.url ) +
+        dd( i(article.getCitation) )
 
       main appendAll div_class("wharfinger-chapter",
         a_name(chapter_name) +
-        div_class("wharfinger-citation", blockquote(i( article.getCitation ))) +
         div_class("wharfinger-content", article.getContent)
       )
     }
     
     div(
-      div_class("wharfinger-toc", toc) +
+      div_class("wharfinger-toc", dl(toc)) +
       main
     )
   }
@@ -53,6 +54,9 @@ class DocumentMaker(val title: String) {
   private def blockquote(text: String) = elt("blockquote", text)
   private def i(text: String) = elt("i", text)
   private def p(text: String) = elt("p", text)
+  private def dl(text: String) = elt("dl", text)
+  private def dt(text: String) = elt("dt", text)
+  private def dd(text: String) = elt("dd", text)
   private def h3(text: String) = elt("h3", text)
   private def h4(text: String) = elt("h4", text)
 

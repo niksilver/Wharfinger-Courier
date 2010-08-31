@@ -20,19 +20,19 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
 
     it("Should read HTML text") {
       val str = "<a>This is the first level<b>This is the second level</b></a>"
-      val html = HtmlNode(new StringReader(str));
+      val html = HTMLNode(new StringReader(str));
       val message = (html \\ "b").text
       message should be ("This is the second level")
     }
 
     it("Should be able to handle non-HTML text") {
       val str = "<<?!"
-      val html = HtmlNode(new StringReader(str));
+      val html = HTMLNode(new StringReader(str));
       html should not be (null)
     }
 
     it("Should be able to use 'containing' to limit to nodes which contain certain other node sequences") {
-      val html = HtmlNode(new StringReader(Data.instapaper_html))
+      val html = HTMLNode(new StringReader(Data.instapaper_html))
       val nodes = html \\ "li" containing (_ \\ "@accesskey")
       
       nodes should have length (3)
@@ -45,13 +45,13 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
     }
 
     it("Should read HTML from a URL") {
-      val html = HtmlNode(new URLReader("http://www.google.com", "UTF-8"))
+      val html = HTMLNode(new URLReader("http://www.google.com", "UTF-8"))
       val title = (html \\ "title").text
       title should be ("Google")
     }
 
     it("Should throw an exception reading from a problematic URL") {
-      def readURL = HtmlNode(new URLReader("http://www.willnotresolve5432.com", "UTF-8"))
+      def readURL = HTMLNode(new URLReader("http://www.willnotresolve5432.com", "UTF-8"))
       evaluating(readURL) should produce [IOException]
     }
 
@@ -59,23 +59,23 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
       val msg1 = "Message... one"
       val msg2 = "Message\u2014two"
       val xml = <outside class="clz" id="my\u2010id"><in1>{ msg1 }</in1><in2>{ msg2 }</in2></outside>
-      val html = HtmlNode.escapeForHTML(xml)
+      val html = HTMLNode.escapeForHTML(xml)
       (html \\ "@id").toString should be === ("my\u2010id")
       (html \\ "in2").text should be === ("Message&#8212;two")
     }
 
     it("Should be able to escape special characters in a string") {
       val msg = "Message\u2014two"
-      HtmlNode.escapeForHTML(msg) should be === ("Message&#8212;two")
+      HTMLNode.escapeForHTML(msg) should be === ("Message&#8212;two")
     }
 
     it("Should not escape whitespace characters in a string") {
       val msg = "New\nline\tand so on"
-      HtmlNode.escapeForHTML(msg) should be === ("New\nline\tand so on")
+      HTMLNode.escapeForHTML(msg) should be === ("New\nline\tand so on")
     }
 
     it("Should read HTML from a redirected URL") {
-      val html = HtmlNode(new URLReader("http://bit.ly/9NQcyA", "UTF-8"))
+      val html = HTMLNode(new URLReader("http://bit.ly/9NQcyA", "UTF-8"))
       val title = (html \\ "title").text
       title should include ("A mobile developer day too far")
     }
@@ -111,7 +111,7 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
 
   describe("RichNodeSeq") {
     it("Should be able to find a single node by ID") {
-      val html = HtmlNode(new StringReader(Data.instapaper_html))
+      val html = HTMLNode(new StringReader(Data.instapaper_html))
       val Some(div) = html findDivWithId "story"
       div.toString should startWith ("""<div id="story">""")
     }

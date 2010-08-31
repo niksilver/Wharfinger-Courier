@@ -41,7 +41,7 @@ class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
     }
 
     it("Should handle bookmark processing with full data") {
-      val bookmark_div = HtmlNode(new StringReader(Data.delicious_bookmark_div_with_full_data))
+      val bookmark_div = HTMLNode(new StringReader(Data.delicious_bookmark_div_with_full_data))
       val bookmark = DeliciousNetworkHandler.makeBookmark(bookmark_div)
       bookmark.url should be ("http://www.guardian.co.uk/news/datablog/2010/aug/10/government-data-information-architecture")
       bookmark.popularity should be (13)
@@ -51,7 +51,7 @@ class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
     }
 
     it("Should handle bookmark processing with partial data") {
-      val bookmark_div = HtmlNode(new StringReader(Data.delicious_bookmark_div_with_partial_data))
+      val bookmark_div = HTMLNode(new StringReader(Data.delicious_bookmark_div_with_partial_data))
       val bookmark = DeliciousNetworkHandler.makeBookmark(bookmark_div)
 
       bookmark.url should be ("http://www.sciencedirect.com/science?_ob=ArticleURL&_udi=B6V84-4CS4KXX-2&_user=142623&_coverDate=10%2F31%2F2004&_rdoc=1&_fmt=high&_orig=search&_sort=d&_docanchor=&view=c&_acct=C000000333&_version=1&_urlVersion=0&_userid=142623&md5=28edbadbb8d08ff3c150330060b33661#toc1")
@@ -62,7 +62,7 @@ class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
     }
 
     it("Should handle non-ASCII characters in the title and description") {
-      val bookmark_div = HtmlNode(new StringReader(Data.delicious_bookmark_div_with_special_characters))
+      val bookmark_div = HTMLNode(new StringReader(Data.delicious_bookmark_div_with_special_characters))
       val bookmark = DeliciousNetworkHandler.makeBookmark(bookmark_div)
 
       bookmark.title should be ("10 Characteristics of hyperlocal \u00AB Sarah Hartley")
@@ -71,7 +71,7 @@ class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
     }
 
     it("Should read title and description as just text") {
-      val bookmark_div = HtmlNode(new StringReader(Data.delicious_bookmark_div_with_html_in_fields))
+      val bookmark_div = HTMLNode(new StringReader(Data.delicious_bookmark_div_with_html_in_fields))
       val bookmark = DeliciousNetworkHandler.makeBookmark(bookmark_div)
 
       bookmark.title should be ("Something about hyperlocal")

@@ -32,7 +32,7 @@ class TestingServlet extends HttpServlet {
 
     def testGetHtml: Unit = {
       resp.setContentType("text/plain")
-      val html = HtmlNode(new URLReader("http://www.google.com", "UTF-8"))
+      val html = HTMLNode(new URLReader("http://www.google.com", "UTF-8"))
       val title = (html \\ "title").text
       resp.getWriter.println("Title of Google is '" + title + "'")      
     }

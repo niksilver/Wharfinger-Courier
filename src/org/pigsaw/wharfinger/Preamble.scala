@@ -6,7 +6,7 @@ import com.google.appengine.api.datastore.Text
 object Preamble {
 
   class RichNode(n: Node) {
-    def escapeForHTML: Node = HtmlNode.escapeForHTML(n)
+    def escapeForHTML: Node = HTMLNode.escapeForHTML(n)
   }
 
   class RichNodeSeq(ns:Seq[Node]) {
@@ -36,7 +36,7 @@ object Preamble {
   }
 
   class RichStringForHTML(str: String) {
-    def escapeForHTML: String = HtmlNode.escapeForHTML(str)
+    def escapeForHTML: String = HTMLNode.escapeForHTML(str)
   }
 
   implicit def nodeSeq2RichNodeSeq(ns: NodeSeq) = new RichNodeSeq(ns)

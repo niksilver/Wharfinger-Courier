@@ -11,17 +11,18 @@ import xml._
  * Object with a factory method to return an HTML document
  * from a reader. Use it as
  * <code>
- * val html: Node = HtmlNode(new URLReader("http://www.guardian.co.uk"))
+ * val html: Node = HTMLNode(new URLReader("http://www.guardian.co.uk"))
  * </code>
  * Returns content in an <html> tag, and <body> tag within that.
  */
 
-object HtmlNode {
+object HTMLNode {
   import scala.xml.{Elem, XML}
   import scala.xml.factory.XMLLoader
   import org.ccil.cowan.tagsoup.jaxp.SAXFactoryImpl
 
-  object TagSoupXmlLoader {
+  // From http://blog.dub.podval.org/2010/08/scala-and-tag-soup.html
+  object TagSoupXMLLoader {
       private val factory = new SAXFactoryImpl()
       def get(): XMLLoader[Elem] = {
         factory.setFeature(Parser.defaultAttributesFeature, false)
@@ -30,7 +31,7 @@ object HtmlNode {
   }
 
   def apply(reader: Reader): Node = {
-    return TagSoupXmlLoader.get.load(reader)
+    return TagSoupXMLLoader.get.load(reader)
   }
 
   def escapeForHTML(node: Node): Node = {
@@ -79,7 +80,7 @@ object HtmlNode {
  */
 object SloppyXMLNodeSeq {
 
-  def apply(reader: Reader): NodeSeq = (HtmlNode(reader) \\ "body")(0).child
+  def apply(reader: Reader): NodeSeq = (HTMLNode(reader) \\ "body")(0).child
 }
 
 class URLReader(val url: String, charset: String)

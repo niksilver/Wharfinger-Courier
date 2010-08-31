@@ -2,8 +2,7 @@ package org.pigsaw.wharfinger
 
 import org.ccil.cowan.tagsoup._
 import java.net.{HttpURLConnection, URL}
-import org.xml.sax.InputSource
-import java.io.{StringWriter, StringReader, Reader}
+import java.io.Reader
 import java.nio.charset.Charset
 import xml.transform.{RuleTransformer, RewriteRule}
 import xml._
@@ -70,7 +69,8 @@ object HtmlNode {
     }
   }
 
-  private def charNeedsEscaping(c: Char) = (c > 0x7F || Character.isISOControl(c))
+  private def charNeedsEscaping(c: Char) =
+    (c > 0x7F || Character.isISOControl(c)) && !Character.isWhitespace(c)
 
 }
 

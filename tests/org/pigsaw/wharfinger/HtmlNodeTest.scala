@@ -69,6 +69,11 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
       HtmlNode.escapeForHTML(msg) should be === ("Message&#8212;two")
     }
 
+    it("Should not escape whitespace characters in a string") {
+      val msg = "New\nline\tand so on"
+      HtmlNode.escapeForHTML(msg) should be === ("New\nline\tand so on")
+    }
+
     it("Should read HTML from a redirected URL") {
       val html = HtmlNode(new URLReader("http://bit.ly/9NQcyA", "UTF-8"))
       val title = (html \\ "title").text

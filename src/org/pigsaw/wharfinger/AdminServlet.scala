@@ -20,7 +20,9 @@ class AdminServlet extends HttpServlet {
       case "show-articles" => showArticles
       case "show-bookmarks-pending-fetch" => showBookmarksPendingFetch
       case "show-past-articles" => showPastArticles
-      case _ => {}
+      case "show-documents" => showDocuments
+      case "show-document" => showDocument
+      case _ => unrecognisedRequest
     }
 
     def println(s: String) = resp.getWriter.println(s)
@@ -32,6 +34,7 @@ class AdminServlet extends HttpServlet {
       deleteClass(classOf[Article])
       deleteClass(classOf[BookmarkPendingFetch])
       deleteClass(classOf[PastArticle])
+      deleteClass(classOf[Document])
 
       def deleteClass[T](clz: Class[T]) {
         val query = pm.newQuery(clz)
@@ -73,6 +76,55 @@ class AdminServlet extends HttpServlet {
       }
     }
 
+    def showDocuments() {
+      resp.setContentType("text/html")
+      val pm = PMF.get.getPersistenceManager
+      val query = pm.newQuery(classOf[Document])
+      query.setOrdering("filename desc")
+      transaction(query) {
+        val documents = query.execute.asInstanceOf[java.util.List[Document]]
+        for (document <- documents) {
+          resp.getWriter.println("<a href=\"/admin/show-document?filename=" + document.filename + "\">" +
+                  document.filename + "</a><br/>")
+        }
+      }
+    }
+
+    def showDocument() {
+      val filename = req.getParameter("filename")
+      val document = getDocument(filename)
+      document match {
+        case Some(doc) => outputDocument(doc)
+        case _ => outputNoDocument(filename)
+      }
+    }
+
+    def getDocument(filename: String): Option[Document] = {
+      val pm = PMF.get.getPersistenceManager
+      val query = pm.newQuery(classOf[Document])
+      query.setFilter("filename == filenameParam")
+      query.declareParameters("String filenameParam")
+      var out: Option[Document] = None
+      transaction(query) {
+        val results: Seq[Document] = query.execute(filename).asInstanceOf[java.util.List[Document]]
+        results.size match {
+          case 1 => out = Some(results(0))
+          case _ => out = None
+        }
+      }
+      out
+    }
+
+    def outputDocument(doc: Document) {
+      resp.setContentType(doc.contentType)
+      resp.getWriter.print(doc.getContent)
+    }
+
+    def outputNoDocument(filename: String) {
+      resp.setContentType("text/plain")
+      resp.getWriter.println("Could not find document called '" + filename + "'")
+    }
+
     def showDataItems[T](clz: Class[T])(printer: T => Unit) {
       resp.setContentType("text/plain")
       val pm = PMF.get.getPersistenceManager
@@ -83,6 +135,11 @@ class AdminServlet extends HttpServlet {
           printer(article)
         }
       }
+    }
+
+    def unrecognisedRequest {
+      resp.setContentType("text/plain")
+      resp.getWriter.println("Unrecognised request")
     }
 
     def pad(str: String, len: Int): String = {

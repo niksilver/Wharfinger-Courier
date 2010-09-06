@@ -35,10 +35,13 @@ class DocumentMaker(val title: String) {
       if (!is_last)
         main appendAll "<mbp:pagebreak />"
     }
-    
-    div(
-      div_class("wharfinger-toc", toc_title + dl(toc)) +
-      main
+
+    html(
+      head( title(title) ) +
+      body(
+        div_class("wharfinger-toc", toc_title + dl(toc)) +
+        main
+      )
     )
   }
 
@@ -51,6 +54,11 @@ class DocumentMaker(val title: String) {
 
   private def a_name(name: String) = open("a", "name" -> name) + close("a")
   private def a_href(href: String, text: String) = open("a", "href" -> href) + text + close("a")
+
+  private def html(text: String) = elt("html", text)
+  private def head(text: String) = elt("head", text)
+  private def title(text: String) = elt("title", text)
+  private def body(text: String) = elt("body", text)
 
   private def div(text: String) = elt("div", text)
   private def div_class(name: String, text: String) = open("div", "class" -> name) + text + close("div")

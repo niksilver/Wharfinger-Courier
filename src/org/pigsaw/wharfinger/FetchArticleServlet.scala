@@ -6,13 +6,12 @@ import scala.xml.Node
 import scala.collection.JavaConversions._
 import Preamble._
 import javax.jdo.PersistenceManager
-import org.ccil.cowan.tagsoup.TagSoupFactoryAdapter
 
 /**
- * Fetch one or more URLs which are pending.
+ * Fetch one or more articles which are pending.
  */
 
-class FetchSomeURLsServlet extends HttpServlet {
+class FetchArticleServlet extends HttpServlet {
 
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
     resp.setContentType("text/plain")

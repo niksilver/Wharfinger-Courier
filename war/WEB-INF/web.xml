@@ -17,8 +17,8 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         <servlet-class>org.pigsaw.wharfinger.ReadDeliciousServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>FetchSomeURLsServlet</servlet-name>
-        <servlet-class>org.pigsaw.wharfinger.FetchSomeURLsServlet</servlet-class>
+        <servlet-name>FetchArticleServlet</servlet-name>
+        <servlet-class>org.pigsaw.wharfinger.FetchArticleServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MakeDocumentServlet</servlet-name>
@@ -37,8 +37,8 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         <url-pattern>/read-delicious</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>FetchSomeURLsServlet</servlet-name>
-        <url-pattern>/fetch-some-urls</url-pattern>
+        <servlet-name>FetchArticleServlet</servlet-name>
+        <url-pattern>/fetch-article</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MakeDocumentServlet</servlet-name>

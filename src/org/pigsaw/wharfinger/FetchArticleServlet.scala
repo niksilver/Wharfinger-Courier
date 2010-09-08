@@ -8,7 +8,7 @@ import Preamble._
 import javax.jdo.PersistenceManager
 
 /**
- * Fetch one or more articles which are pending.
+ * Fetch a pending article.
  */
 
 class FetchArticleServlet extends HttpServlet {

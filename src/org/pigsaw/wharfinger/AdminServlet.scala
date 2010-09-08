@@ -20,7 +20,6 @@ class AdminServlet extends HttpServlet {
       case "show-articles" => showArticles
       case "show-bookmarks-pending-fetch" => showBookmarksPendingFetch
       case "show-past-articles" => showPastArticles
-      case "show-documents" => showDocuments
       case "show-document" => showDocument
       case _ => unrecognisedRequest
     }
@@ -73,20 +72,6 @@ class AdminServlet extends HttpServlet {
     def showPastArticles() {
       showDataItems(classOf[Article]) {
         article => resp.getWriter.println(article.url)
-      }
-    }
-
-    def showDocuments() {
-      resp.setContentType("text/html")
-      val pm = PMF.get.getPersistenceManager
-      val query = pm.newQuery(classOf[Document])
-      query.setOrdering("filename desc")
-      transaction(query) {
-        val documents = query.execute.asInstanceOf[java.util.List[Document]]
-        for (document <- documents) {
-          resp.getWriter.println("<a href=\"/admin/show-document?filename=" + document.filename + "\">" +
-                  document.filename + "</a><br/>")
-        }
       }
     }
 

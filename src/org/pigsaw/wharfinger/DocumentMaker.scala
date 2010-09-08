@@ -17,7 +17,7 @@ class DocumentMaker(val title: String) {
     val toc = new StringBuilder
     val main = new StringBuilder
 
-    val toc_title = a_name("TOC") + h3(title)
+    val toc_title = a_name("TOC") + center(h3(title))
 
     for (idx <- 0 until articles.length;
          article = articles(idx);
@@ -25,16 +25,17 @@ class DocumentMaker(val title: String) {
          is_last = (idx == articles.length-1)) {
       toc appendAll a_href("#"+chapter_name, article.title) +
         small( div_style( "margin-left: 1em",
-          article.url + br +
-          i(article.getCitation)
+          i(article.getCitation) + br +
+          article.url
         )
       )
 
-      main appendAll section(
-        div_class("wharfinger-chapter",
-          a_name(chapter_name) +
-          div_class("wharfinger-content", article.getContent)
-        )
+      main appendAll div_class("wharfinger-chapter",
+        blockquote(small(i(article.getCitation))) +
+        p_align_right(small(article.url)) +
+        hr +
+        center(a_name(chapter_name)) +
+        div_class("wharfinger-content", article.getContent)
       )
 
       if (!is_last)
@@ -70,10 +71,13 @@ class DocumentMaker(val title: String) {
   private def div_style(style: String, text: String) = open("div", "style" -> style) + text + close("div")
 
   private def blockquote(text: String) = elt("blockquote", text)
+  private def center(text: String) = elt("center", text)
   private def i(text: String) = elt("i", text)
   private def p(text: String) = elt("p", text)
   private def p_style(style: String, text: String) = open("p", "style" -> style) + text + close("p")
+  private def p_align_right(text: String) = open("p", "align" -> "right") + text + close("p")
   private def br: String = "<br/>"
+  private def hr: String = "<hr/>"
   private def small(text: String) = elt("small", text)
   private def dl(text: String) = elt("dl", text)
   private def dt(text: String) = elt("dt", text)
@@ -83,6 +87,5 @@ class DocumentMaker(val title: String) {
   private def h4(text: String) = elt("h4", text)
 
   private def pagebreak: String = "<mbp:pagebreak />"
-  private def section(text: String) = elt("mbp:section", text)
 
 }

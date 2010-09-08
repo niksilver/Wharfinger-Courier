@@ -5,11 +5,7 @@ import scala.collection.JavaConversions._
 import javax.jdo.PersistenceManager
 
 /**
- * Created by IntelliJ IDEA.
- * User: Nik
- * Date: 15-Aug-2010
- * Time: 00:55:02
- * To change this template use File | Settings | File Templates.
+ * Handle core admin requests.
  */
 
 class AdminServlet extends HttpServlet {
@@ -20,7 +16,6 @@ class AdminServlet extends HttpServlet {
       case "show-articles" => showArticles
       case "show-bookmarks-pending-fetch" => showBookmarksPendingFetch
       case "show-past-articles" => showPastArticles
-      case "show-document" => showDocument
       case _ => unrecognisedRequest
     }
 
@@ -73,41 +68,6 @@ class AdminServlet extends HttpServlet {
       showDataItems(classOf[Article]) {
         article => resp.getWriter.println(article.url)
       }
-    }
-
-    def showDocument() {
-      val filename = req.getParameter("filename")
-      val document = getDocument(filename)
-      document match {
-        case Some(doc) => outputDocument(doc)
-        case _ => outputNoDocument(filename)
-      }
-    }
-
-    def getDocument(filename: String): Option[Document] = {
-      val pm = PMF.get.getPersistenceManager
-      val query = pm.newQuery(classOf[Document])
-      query.setFilter("filename == filenameParam")
-      query.declareParameters("String filenameParam")
-      var out: Option[Document] = None
-      transaction(query) {
-        val results: Seq[Document] = query.execute(filename).asInstanceOf[java.util.List[Document]]
-        results.size match {
-          case 1 => out = Some(results(0))
-          case _ => out = None
-        }
-      }
-      out
-    }
-
-    def outputDocument(doc: Document) {
-      resp.setContentType(doc.contentType)
-      resp.getWriter.print(doc.getContent)
-    }
-
-    def outputNoDocument(filename: String) {
-      resp.setContentType("text/plain")
-      resp.getWriter.println("Could not find document called '" + filename + "'")
     }
 
     def showDataItems[T](clz: Class[T])(printer: T => Unit) {

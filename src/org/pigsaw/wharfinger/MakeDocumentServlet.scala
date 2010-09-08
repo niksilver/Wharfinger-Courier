@@ -18,7 +18,7 @@ class MakeDocumentServlet extends HttpServlet {
     try {
       val query = pm.newQuery(classOf[Article])
       val articles = query.execute.asInstanceOf[java.util.List[Article]]
-      val maker = new DocumentMaker("Wharfinger Courier " + niceDate)
+      val maker = new DocumentMaker("Wharfinger Courier", niceDate)
       for (article <- articles)
         maker.add(article)
       val doc_str = maker.document

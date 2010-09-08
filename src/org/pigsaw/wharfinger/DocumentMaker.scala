@@ -7,7 +7,7 @@ import Preamble._
  * Make a Wharfinger Courier document.
  */
 
-class DocumentMaker(val title: String) {
+class DocumentMaker(val title: String, val dateline: String) {
 
   val articles = new ListBuffer[Article]
 
@@ -17,7 +17,7 @@ class DocumentMaker(val title: String) {
     val toc = new StringBuilder
     val main = new StringBuilder
 
-    val toc_title = a_name("TOC") + center(h3(title))
+    val toc_title = a_name("toc") + a_name("start") + center(h3(title) + h4(dateline))
 
     for (idx <- 0 until articles.length;
          article = articles(idx);

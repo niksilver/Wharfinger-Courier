@@ -6,7 +6,7 @@
         <schedule>every 1 hours</schedule>
     </cron>
     <cron>
-        <url>/fetch-arcticle</url>
+        <url>/fetch-article</url>
         <description>Fetch a new article</description>
         <schedule>every 1 minutes</schedule>
         <timezone>Europe/London</timezone>

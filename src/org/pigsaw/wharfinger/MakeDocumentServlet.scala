@@ -22,7 +22,8 @@ class MakeDocumentServlet extends HttpServlet {
       for (article <- articles)
         maker.add(article)
       val doc_str = maker.document
-      val document = new Document(techDate + ".html", "text/html", doc_str)
+      val filename = "Wharfinger Courier " + niceDate + ".html"
+      val document = new Document(filename, "text/html", doc_str)
       pm.makePersistent(document)
       for (article <- articles)
         pm.deletePersistent(article)

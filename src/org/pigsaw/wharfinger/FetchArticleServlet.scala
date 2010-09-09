@@ -27,6 +27,11 @@ class FetchArticleServlet extends HttpServlet {
     def println(s: String) = resp.getWriter.println(s)
     def print(s: String) = resp.getWriter.print(s)
 
+    def shouldNotFetch(bookmark: BookmarkPendingFetch): Boolean =
+      tooManyFetchAttempts(bookmark) || isPastArticle(bookmark)
+
+    def tooManyFetchAttempts(bookmark: BookmarkPendingFetch): Boolean = (bookmark.getFetchAttempts >= 10)
+
     def isPastArticle(bookmark: BookmarkPendingFetch): Boolean = {
       val query = pm.newQuery(classOf[PastArticle])
       query.setFilter("url == urlParam")
@@ -37,8 +42,10 @@ class FetchArticleServlet extends HttpServlet {
     }
 
     def rejectBookmark(bookmark: BookmarkPendingFetch) {
-      println("Forgetting bookmark for previously-read article " + bookmark.url)
-      pm.deletePersistent(bookmark)
+      persistAndClose(pm) {
+        println("Forgetting bookmark for previously-read article " + bookmark.url)
+        pm.deletePersistent(bookmark)
+      }
     }
 
     def bookmarksToFetch(): Seq[BookmarkPendingFetch] = {
@@ -50,46 +57,46 @@ class FetchArticleServlet extends HttpServlet {
 
     def fetchBookmark(bookmark: BookmarkPendingFetch) = {
 
-      try {
+      persistAndClose(pm) {
         val handler = new InstapaperHandler(bookmark.url)
+        markFetchAttempt()
         val content_div_option = handler.getContentDiv
         content_div_option match {
           case Some(content_div) => persistArticleAndRemoveFromPendingList(content_div)
           case None => saveForLaterRetry()
         }
       }
-      catch {
-        case e => saveForLaterRetry()
+
+      def markFetchAttempt() {
+        bookmark.incrementFetchAttempts
+        pm.makePersistent(bookmark)
       }
 
       def persistArticleAndRemoveFromPendingList(content_div: Node) {
         println("Got article to persist: " + bookmark.url)
-        persistAndClose(pm) {
-          pm.makePersistent(new Article(bookmark.url,
-            bookmark.getCitation.escapeForHTML,
-            bookmark.title.escapeForHTML,
-            content_div.escapeForHTML.toString))
-          pm.makePersistent(new PastArticle(bookmark.url))
-          pm.deletePersistent(bookmark)
-        }
+        pm.makePersistent(new Article(bookmark.url,
+          bookmark.getCitation.escapeForHTML,
+          bookmark.title.escapeForHTML,
+          content_div.escapeForHTML.toString))
+        pm.makePersistent(new PastArticle(bookmark.url))
+        pm.deletePersistent(bookmark)
       }
 
       def saveForLaterRetry() {
-        println("Didn't get, will mark for retry: " + bookmark.url)
+        println("Didn't get " + bookmark.url)
+        println("Number of fetch attempts: " + bookmark.getFetchAttempts)
         persistAndClose(pm) {
-          bookmark.incrementFetchAttempts
-          if (bookmark.getFetchAttempts >= 10) {
+          if (tooManyFetchAttempts(bookmark)) {
             pm.deletePersistent(bookmark)
             println("Too many fetch attempts, giving up.")
           }
         }
-        println("Fetch attempts = " + bookmark.getFetchAttempts)
       }
+    }
 
-      def persistAndClose(pm: PersistenceManager)(block: Unit) {
-        try { block }
-        finally { pm.close }
-      }
+    def persistAndClose(pm: PersistenceManager)(block: Unit) {
+      try { block }
+      finally { pm.close }
     }
   }
 }

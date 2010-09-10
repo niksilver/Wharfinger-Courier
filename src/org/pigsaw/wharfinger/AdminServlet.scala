@@ -98,7 +98,7 @@ class AdminServlet extends HttpServlet {
 
     def runLinesTogether(str: String) = ("" /: str.lines)(_ + _)
 
-    def transaction(query: javax.jdo.Query)(block: Unit): Unit = {
+    def transaction(query: javax.jdo.Query)(block: =>Unit): Unit = {
       try { block }
       finally { query.closeAll }
     }

@@ -94,7 +94,7 @@ class FetchArticleServlet extends HttpServlet {
       }
     }
 
-    def persistAndClose(pm: PersistenceManager)(block: Unit) {
+    def persistAndClose(pm: PersistenceManager)(block: =>Unit) {
       try { block }
       finally { pm.close }
     }

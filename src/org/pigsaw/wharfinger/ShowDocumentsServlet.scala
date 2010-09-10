@@ -73,7 +73,7 @@ class ShowDocumentsServlet extends HttpServlet {
       resp.getWriter.println("Unrecognised request")
     }
 
-    def transaction(query: javax.jdo.Query)(block: Unit): Unit = {
+    def transaction(query: javax.jdo.Query)(block: =>Unit): Unit = {
       try { block }
       finally { query.closeAll }
     }

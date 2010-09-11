@@ -2,7 +2,6 @@ package org.pigsaw.wharfinger
 
 import org.ccil.cowan.tagsoup._
 import java.nio.charset.Charset
-import xml.transform.{RuleTransformer, RewriteRule}
 import xml._
 import java.net.{HttpURLConnection, URL}
 import java.io.{InputStream, Reader}

@@ -97,12 +97,34 @@ class DoFetchArticleServlet extends HttpServlet {
     val url = req.getParameter("url")
     val title = req.getParameter("title")
     val citation = req.getParameter("citation")
+    if (tooManyRetries)
+      findAndDeleteBookmark
+    else
+      fetchArticle
 
-    val handler = new InstapaperHandler(url)
-    val content_div_option = handler.getContentDiv
-    content_div_option match {
-      case Some(content_div) => recordArticle(content_div)
-      case None => {}
+    def tooManyRetries: Boolean = {
+      val retries_str = req.getHeader("X-AppEngine-TaskRetryCount")
+      retries_str match {
+        case null => false
+        case "" => false
+        case _ => retries_str.toInt > 10
+      }
+    }
+
+    def findAndDeleteBookmark {
+      val pm = PMF.get.getPersistenceManager
+      persistAndClose(pm) {
+        deleteBookmark(pm)
+      }
+    }
+
+    def fetchArticle {
+      val handler = new InstapaperHandler(url)
+      val content_div_option = handler.getContentDiv
+      content_div_option match {
+        case Some(content_div) => recordArticle(content_div)
+        case None => {}
+      }
     }
 
     def vizLog(s: String) = println(s)
@@ -118,15 +140,15 @@ class DoFetchArticleServlet extends HttpServlet {
           citation.escapeForHTML,
           title.escapeForHTML,
           content_div.escapeForHTML.toString))
-        //pm.makePersistent(new PastArticle(url))
-        //deleteBookmark
+        pm.makePersistent(new PastArticle(url))
+        deleteBookmark(pm)
       }
+    }
 
-      def deleteBookmark {
-        val bookmark = pm.getObjectById(classOf[BookmarkPendingFetch], url)
-        println("Deleting bookmark: " + bookmark)
-        pm.deletePersistent(bookmark)
-      }
+    def deleteBookmark(pm: PersistenceManager) {
+      val bookmark = pm.getObjectById(classOf[BookmarkPendingFetch], url)
+      println("Deleting bookmark: " + bookmark)
+      pm.deletePersistent(bookmark)
     }
 
     def persistAndClose(pm: PersistenceManager)(block: =>Unit) {

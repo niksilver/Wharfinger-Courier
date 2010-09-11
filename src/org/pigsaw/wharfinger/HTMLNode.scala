@@ -5,7 +5,7 @@ import java.nio.charset.Charset
 import xml.transform.{RuleTransformer, RewriteRule}
 import xml._
 import java.net.{HttpURLConnection, URL}
-import java.io.Reader
+import java.io.{InputStream, Reader}
 
 /**
  * Object with a factory method to return an HTML document
@@ -84,7 +84,21 @@ object SloppyXMLNodeSeq {
 }
 
 class URLReader(val url: String, charset: String)
-        extends java.io.BufferedReader(new java.io.InputStreamReader(new java.net.URL(url).openStream, Charset.forName(charset)))
+        extends java.io.BufferedReader(
+          new java.io.InputStreamReader(URLReader.makeInputStream(url), Charset.forName(charset)))
+
+object URLReader {
+
+  /** Make input stream from the URL, with useful timeouts.
+   */
+  def makeInputStream(url: String): InputStream = {
+    val url_obj = new java.net.URL(url)
+    val connection = url_obj.openConnection
+    connection.setConnectTimeout(10*1000)
+    connection.setReadTimeout(10*1000)
+    connection.getInputStream
+  }
+}
 
 /**
  * Resolve a URL. Create a new instance using a URL string, then the field

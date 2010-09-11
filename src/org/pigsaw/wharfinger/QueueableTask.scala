@@ -16,6 +16,6 @@ class QueueableTask(val worker:String) extends HashMap[String, String] {
     val queue = QueueFactory.getDefaultQueue();
     //queue.add((url(name) /: toSeq) ((b, pair) => b.param(pair._1, pair._2)))
     //queue.add(url(name).param("title",apply("title")).param("url",apply("url")).method(Method.GET))
-    queue.add(url(worker).param("url", this("url")))
+    //queue.add(url(worker).param("url", this("url")))
   }
 }

@@ -11,19 +11,22 @@ import javax.jdo.PersistenceManager
  * Fetch a pending article.
  */
 
-class FetchArticleServlet extends HttpServlet {
+/* class FetchArticleServlet extends HttpServlet {
 
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
     resp.setContentType("text/plain")
     val pm: PersistenceManager = PMF.get.getPersistenceManager
+    vizLog("Got pm = " + pm)
     bookmarksToFetch().foreach(bookmark => {
+      vizLog("foreach, bookmark = " + bookmark.url)
       if (isPastArticle(bookmark))
-        rejectBookmark(bookmark)
+        { vizLog("rejecting"); rejectBookmark(bookmark) }
       else
-        fetchBookmark(bookmark)
+        { vizLog("fetching"); fetchBookmark(bookmark) }
     })
     println("Done fetching bookmarks")
 
+    def vizLog(s: String) = println(s + " / transaction active? " + pm.currentTransaction.isActive)
     def println(s: String) = resp.getWriter.println(s)
     def print(s: String) = resp.getWriter.print(s)
 
@@ -33,6 +36,7 @@ class FetchArticleServlet extends HttpServlet {
     def tooManyFetchAttempts(bookmark: BookmarkPendingFetch): Boolean = (bookmark.getFetchAttempts >= 10)
 
     def isPastArticle(bookmark: BookmarkPendingFetch): Boolean = {
+      vizLog("Entering isPastArticle")
       val query = pm.newQuery(classOf[PastArticle])
       query.setFilter("url == urlParam")
       query.declareParameters("String urlParam")
@@ -42,6 +46,7 @@ class FetchArticleServlet extends HttpServlet {
     }
 
     def rejectBookmark(bookmark: BookmarkPendingFetch) {
+      vizLog("Entering rejectBookmark")
       persistAndClose(pm) {
         println("Forgetting bookmark for previously-read article " + bookmark.url)
         pm.deletePersistent(bookmark)
@@ -49,6 +54,7 @@ class FetchArticleServlet extends HttpServlet {
     }
 
     def bookmarksToFetch(): Seq[BookmarkPendingFetch] = {
+      vizLog("Entering bookmarksToFetch")
       val query = pm.newQuery(classOf[BookmarkPendingFetch])
       query.setOrdering("fetchAttempts asc")
       query.setRange(0, 1)
@@ -57,6 +63,7 @@ class FetchArticleServlet extends HttpServlet {
 
     def fetchBookmark(bookmark: BookmarkPendingFetch) = {
 
+      vizLog("Entering fetchBookmark")
       persistAndClose(pm) {
         val handler = new InstapaperHandler(bookmark.url)
         markFetchAttempt()
@@ -68,11 +75,13 @@ class FetchArticleServlet extends HttpServlet {
       }
 
       def markFetchAttempt() {
+        vizLog("Entering markFetchAttempt")
         bookmark.incrementFetchAttempts
         pm.makePersistent(bookmark)
       }
 
       def persistArticleAndRemoveFromPendingList(content_div: Node) {
+        vizLog("Entering persistArticleAndRemoveFromPendingList")
         println("Got article to persist: " + bookmark.url)
         pm.makePersistent(new Article(bookmark.url,
           bookmark.getCitation.escapeForHTML,
@@ -83,30 +92,20 @@ class FetchArticleServlet extends HttpServlet {
       }
 
       def saveForLaterRetry() {
+        vizLog("Entering saveForLaterRetry")
         println("Didn't get " + bookmark.url)
         println("Number of fetch attempts: " + bookmark.getFetchAttempts)
-        persistAndClose(pm) {
-          if (tooManyFetchAttempts(bookmark)) {
-            pm.deletePersistent(bookmark)
-            println("Too many fetch attempts, giving up.")
-          }
+        if (tooManyFetchAttempts(bookmark)) {
+          pm.deletePersistent(bookmark)
+          println("Too many fetch attempts, giving up.")
         }
       }
     }
 
     def persistAndClose(pm: PersistenceManager)(block: =>Unit) {
       try { block }
-      finally { pm.close }
+      finally { if (!pm.isClosed) pm.close }
     }
   }
 }
-
-class InstapaperHandler(article_url: String) {
-  val url: String = "http://www.instapaper.com/text?u=" +
-          URLEncoder.encode(article_url, "UTF-8")
-
-  def getContentDiv(): Option[Node] = {
-    val html = HTMLNode(new URLReader(url, "UTF-8"))
-    html findDivWithId "story"
-  }
-}
+*/

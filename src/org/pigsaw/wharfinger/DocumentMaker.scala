@@ -31,10 +31,10 @@ class DocumentMaker(val title: String, val dateline: String) {
       )
 
       main appendAll div_class("wharfinger-chapter",
+        a_name(chapter_name) +
         blockquote(small(i(article.getCitation))) +
         p_align_right(small(article.url)) +
         hr +
-        center(a_name(chapter_name)) +
         div_class("wharfinger-content", article.getContent)
       )
 

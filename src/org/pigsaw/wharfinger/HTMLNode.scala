@@ -36,29 +36,33 @@ object HTMLNode {
 
   def escapeForHTML(node: Node): Node = {
 
-    def escapeTransform = new RuleTransformer(escapeRule)
-
-    def escapeRule = new RewriteRule {
-      override def transform(n: Node): NodeSeq = {
-        n match {
-          case a:Atom[_] if needsEscaping(a.data.toString) => escape(a.data.toString)
-          case x => x
+    def transform(n: Node, fn: (Node)=>Node): Node = {
+      n match {
+        case e: Elem => e.copy(e.prefix, e.label,
+          e.attributes, e.scope, e.child map (n => transform(n, fn)))
+        case _ => {
+          fn(n)
         }
       }
     }
 
-    def needsEscaping(s: String) = s exists charNeedsEscaping
-
-    def escapeChar(c: Char): Node = {
-      if (charNeedsEscaping(c))
-        new EntityRef("#" + c.toInt)
-      else
-        new Text(c.toString)
+    def escapeTrans(n: Node): Node = n match {
+      case a:Atom[_] if needsEscaping(a.data.toString) => new Unparsed(escape(a.data.toString))
+      case x => x
     }
 
-    def escape(str: String) = str map escapeChar
+    def needsEscaping(s: String) = s exists charNeedsEscaping
 
-    escapeTransform(node)
+    def escapeChar(c: Char): String = {
+      if (charNeedsEscaping(c))
+        "&#" + c.toInt + ";"
+      else
+        c.toString
+    }
+
+    def escape(str: String): String = str flatMap escapeChar
+
+    transform(node, escapeTrans)
   }
 
   def escapeForHTML(str: String): String = {

@@ -2,7 +2,7 @@ package org.pigsaw.wharfinger
 
 import javax.servlet.http.{HttpServletResponse, HttpServletRequest, HttpServlet}
 import scala.collection.JavaConversions._
-import org.ccil.cowan.tagsoup.TagSoupFactoryAdapter
+import scala.util.Random
 import Preamble._
 
 /**
@@ -22,26 +22,31 @@ class TestingServlet extends HttpServlet {
       case "save-message" => testSaveMessage(req.getPathInfo + ":" + req.getRequestURI)
       case "load-message" => testLoadMessage
       case "delete-message" => testDeleteMessage
+      case "mail-simple-message" => testMailSimpleMessage
+      case "mail-message-with-html-attachment" => testMailMessageWithHTMLAttachment
       case _ => testBasicOutput
     }
 
+    def println(s: String) = resp.getWriter.println(s)
+    def print(s: String) = resp.getWriter.print(s)
+
     def testBasicOutput: Unit = {
       resp.setContentType("text/plain")
-      resp.getWriter.println("This is the testing servlet, basic test")
+      println("This is the testing servlet, basic test")
     }
 
     def testGetHtml: Unit = {
       resp.setContentType("text/plain")
       val html = HTMLNode(new URLReader("http://www.google.com", "UTF-8"))
       val title = (html \\ "title").text
-      resp.getWriter.println("Title of Google is '" + title + "'")      
+      println("Title of Google is '" + title + "'")
     }
 
     def testRedirectResolution: Unit = {
       resp.setContentType("text/plain")
       val bitly_url = "http://bit.ly/9NQcyA"
       val resolver = new RedirectResolver(bitly_url)
-      resp.getWriter.println("'" + bitly_url + "' resolves to '" + resolver.URL + "'")
+      println("'" + bitly_url + "' resolves to '" + resolver.URL + "'")
     }
 
     def testSaveMessage(msg: String): Unit = {
@@ -53,7 +58,7 @@ class TestingServlet extends HttpServlet {
         val message = new Message
         message.setMessage(msg)
         pm.makePersistent(message)
-        resp.getWriter.println("Message was set to '" + msg + "'")
+        println("Message was set to '" + msg + "'")
       }
     }
 
@@ -67,7 +72,7 @@ class TestingServlet extends HttpServlet {
           case 0 => "No message saved"
           case _ => "The message is '" + messages(0).getMessage + "'"
         }
-        resp.getWriter.println(output)
+        println(output)
       }
     }
 
@@ -77,8 +82,33 @@ class TestingServlet extends HttpServlet {
       val query = pm.newQuery(classOf[Message])
       transaction (query) {
         query.deletePersistentAll
-        resp.getWriter.println("Deleted message")
+        println("Deleted message")
       }
+    }
+
+    def testMailSimpleMessage() {
+      val random = "...." map {c => Random.nextPrintableChar }
+      val mail = new EMail(to = "nik.silver@gmail.com", toName = "Nik Silver",
+        from = "nik.silver@gmail.com", fromName = "Nik Silver",
+        subject = "Simple test message " + random,
+        bodyText = "Dear Nik,\nThis is a simple message with content " + random + ".\nYours\nNik\n")
+      mail.send
+      resp.setContentType("text/plain")
+      println("Sent simple message with random content " + random)
+    }
+
+    def testMailMessageWithHTMLAttachment() {
+      val random = "...." map {c => Random.nextPrintableChar }
+      val mail = new EMail(to = "nik.silver@gmail.com", toName = "Nik Silver",
+        from = "nik.silver@gmail.com", fromName = "Nik Silver",
+        subject = "Test message with HTML attachment and " + random,
+        bodyText = "Dear Nik,\nThis is a message with an HTML attachment and " +
+                random + ".\nYours\nNik\n")
+      val html = HTMLNode(new URLReader("http://sharkysoft.com/tutorials/jsa/", "UTF-8"))
+      mail.attachHTML("javascript-answers.html", html.toString)
+      mail.send
+      resp.setContentType("text/plain")
+      println("Sent message with attachment and random content " + random)
     }
 
     def transaction(query: javax.jdo.Query)(block: Unit): Unit = {
@@ -86,7 +116,7 @@ class TestingServlet extends HttpServlet {
         block
       }
       catch {
-        case e => resp.getWriter.println("Exception: " + e.getMessage)
+        case e => println("Exception: " + e.getMessage)
       }
       finally {
         query.closeAll

@@ -8,12 +8,15 @@ import Preamble._
 import javax.jdo.PersistenceManager
 import com.google.appengine.api.labs.taskqueue.QueueFactory
 import com.google.appengine.api.labs.taskqueue.TaskOptions.Builder._
+import java.util.logging.Logger
 
 /**
  * Kick off fetching a pending article.
  */
 
 class KickOffFetchArticleServlet extends HttpServlet {
+
+  val log = Logger.getLogger(this.getClass.getName)
 
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
     resp.setContentType("text/plain")
@@ -28,7 +31,7 @@ class KickOffFetchArticleServlet extends HttpServlet {
     })
     println("Done fetching bookmarks")
 
-    def vizLog(s: String) = println(s)
+    def vizLog(s: String) = log(s)
     def println(s: String) = resp.getWriter.println(s)
     def print(s: String) = resp.getWriter.print(s)
 

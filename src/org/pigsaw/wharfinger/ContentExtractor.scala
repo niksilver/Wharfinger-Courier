@@ -20,7 +20,7 @@ class ContentExtractor(val html: Node) {
   val article_content: Node = grabArticle(html2)
 
   def removeScripts(html: Node): Node = { null }
-  def getArticleTitle: Node = {
+  def getArticleTitle(html: Node): String = {
     // 273-280: Get document title from the first tag called <title>
     // Now tidy the title...
     // 282-289: If the title has ' - ' or ' | ' then get the text before that, unless it's
@@ -31,9 +31,11 @@ class ContentExtractor(val html: Node) {
     //          there's only one H1, then take the text of the H1
     // Trim what we've got, and if it's less than 4 words then go back to what we
     // got originally
+    null
   }
-  def prepDocument: Node = {
+  def prepDocument(html: Node): Node = {
     // 358: WE ARE HERE
+    null
   }
-  def grabArticle: Node = { null }
+  def grabArticle(html: Node): Node = { null }
 }

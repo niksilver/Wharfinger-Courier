@@ -14,7 +14,7 @@ class DeliciousNetworkHandler(val reader: Reader) {
 
   val bookmarks = new ListBuffer[DeliciousBookmark]()
 
-  def this() = this(new URLReader("http://delicious.com/network/nik.silver?setcount=100", "UTF-8"))
+  def this() = this(new URLReader("http://delicious.com/network/nik.silver?setcount=50", "UTF-8"))
 
   /**Parse the HTML to create the bookmarks.
    */

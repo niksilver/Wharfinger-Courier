@@ -4,6 +4,7 @@ import javax.servlet.http.{HttpServletResponse, HttpServletRequest, HttpServlet}
 import scala.collection.JavaConversions._
 import scala.util.Random
 import Preamble._
+import java.util.logging.Logger
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,6 +15,9 @@ import Preamble._
  */
 
 class TestingServlet extends HttpServlet {
+
+  val log = Logger.getLogger(this.getClass.getName)
+
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
 
     req.getPathInfo.tail.split('/')(0) match {
@@ -32,7 +36,10 @@ class TestingServlet extends HttpServlet {
 
     def testBasicOutput: Unit = {
       resp.setContentType("text/plain")
-      println("This is the testing servlet, basic test")
+      val num = Random.nextInt
+      println("This is the testing servlet, basic test " + num)
+      log.info("This is info from testBasicOutput " + num)
+      log.warning("This is a warning from testBasicOutput " + num)
     }
 
     def testGetHtml: Unit = {

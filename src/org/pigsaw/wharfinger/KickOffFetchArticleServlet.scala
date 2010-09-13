@@ -21,19 +21,18 @@ class KickOffFetchArticleServlet extends HttpServlet {
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
     resp.setContentType("text/plain")
     val pm: PersistenceManager = PMF.get.getPersistenceManager
-    vizLog("Got pm = " + pm)
     bookmarksToFetch().foreach(bookmark => {
-      vizLog("foreach, bookmark = " + bookmark.url)
-      if (shouldNotFetch(bookmark))
-        { vizLog("rejecting"); rejectBookmark(bookmark) }
+      if (tooManyFetchAttempts(bookmark))
+        rejectBookmark(bookmark, "Too many fetch attempts")
+      else if (isPastArticle(bookmark))
+        rejectBookmark(bookmark, "Have published this before")
       else
-        { vizLog("fetching"); queueFetchBookmark(bookmark) }
+        queueFetchBookmark(bookmark)
     })
     println("Done fetching bookmarks")
 
-    def vizLog(s: String) = log(s)
-    def println(s: String) = resp.getWriter.println(s)
-    def print(s: String) = resp.getWriter.print(s)
+    def println(s: String) { resp.getWriter.println(s) }
+    def print(s: String) { resp.getWriter.print(s) }
 
     def shouldNotFetch(bookmark: BookmarkPendingFetch): Boolean =
       tooManyFetchAttempts(bookmark) || isPastArticle(bookmark)
@@ -41,7 +40,7 @@ class KickOffFetchArticleServlet extends HttpServlet {
     def tooManyFetchAttempts(bookmark: BookmarkPendingFetch): Boolean = (bookmark.getFetchAttempts >= 10)
 
     def isPastArticle(bookmark: BookmarkPendingFetch): Boolean = {
-      vizLog("Entering isPastArticle")
+      log.info("Entering isPastArticle")
       val query = pm.newQuery(classOf[PastArticle])
       query.setFilter("url == urlParam")
       query.declareParameters("String urlParam")
@@ -50,8 +49,9 @@ class KickOffFetchArticleServlet extends HttpServlet {
       num_found >= 1
     }
 
-    def rejectBookmark(bookmark: BookmarkPendingFetch) {
-      vizLog("Entering rejectBookmark")
+    def rejectBookmark(bookmark: BookmarkPendingFetch, reason: String) {
+      log.warning("Rejecting bookmark: " + bookmark.url)
+      log.warning("Reason for rejection: " + reason)
       persistAndClose(pm) {
         println("Forgetting bookmark for previously-read article " + bookmark.url)
         pm.deletePersistent(bookmark)
@@ -59,7 +59,7 @@ class KickOffFetchArticleServlet extends HttpServlet {
     }
 
     def bookmarksToFetch(): Seq[BookmarkPendingFetch] = {
-      vizLog("Entering bookmarksToFetch")
+      log.info("Entering bookmarksToFetch")
       val query = pm.newQuery(classOf[BookmarkPendingFetch])
       query.setOrdering("fetchAttempts asc")
       query.setRange(0, 1)
@@ -67,7 +67,7 @@ class KickOffFetchArticleServlet extends HttpServlet {
     }
 
     def queueFetchBookmark(bookmark: BookmarkPendingFetch) = {
-      vizLog("Entering queueFetchBookmark")
+      log.info("Queueing to fetch bookmark: " + bookmark.url)
       persistAndClose(pm) {
         markFetchAttempt()
         val queue = QueueFactory.getDefaultQueue
@@ -80,7 +80,7 @@ class KickOffFetchArticleServlet extends HttpServlet {
       }
 
       def markFetchAttempt() {
-        vizLog("Entering markFetchAttempt")
+        log.info("Entering markFetchAttempt")
         bookmark.incrementFetchAttempts
         pm.makePersistent(bookmark)
       }
@@ -94,6 +94,8 @@ class KickOffFetchArticleServlet extends HttpServlet {
 }
 
 class DoFetchArticleServlet extends HttpServlet {
+
+  val log = Logger.getLogger(this.getClass.getName)
 
   override def doPost(req: HttpServletRequest, resp: HttpServletResponse) {
     resp.setContentType("text/plain")
@@ -115,6 +117,7 @@ class DoFetchArticleServlet extends HttpServlet {
     }
 
     def findAndDeleteBookmark {
+      log.warning("Too many retries. Deleting bookmark: " + url)
       val pm = PMF.get.getPersistenceManager
       persistAndClose(pm) {
         deleteBookmark(pm)
@@ -135,7 +138,7 @@ class DoFetchArticleServlet extends HttpServlet {
     def print(s: String) = resp.getWriter.print(s)
 
     def recordArticle(content_div: Node) {
-      vizLog("Entering recordArticle")
+      log.info("Entering recordArticle")
       val pm: PersistenceManager = PMF.get.getPersistenceManager
       println("Got article to persist: " + url)
       persistAndClose(pm) {

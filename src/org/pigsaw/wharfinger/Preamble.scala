@@ -2,7 +2,6 @@ package org.pigsaw.wharfinger
 
 import xml.{NodeSeq, Node}
 import com.google.appengine.api.datastore.Text
-import java.util.logging.Logger
 
 object Preamble {
 
@@ -53,6 +52,4 @@ object Preamble {
   }
   implicit def GAEText2String(t: Text) = t.getValue
 
-  def logInfo(msg: String) = Console.out.println(msg)
-  def logWarning(msg: String) = Console.err.println(msg)
 }

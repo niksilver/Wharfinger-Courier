@@ -3,7 +3,7 @@
     <cron>
         <url>/read-delicious</url>
         <description>Read the Delicious network</description>
-        <schedule>every 1 hours</schedule>
+        <schedule>every 4 hours</schedule>
         <timezone>Europe/London</timezone>
     </cron>
     <!-- <cron>

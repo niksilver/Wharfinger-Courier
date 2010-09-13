@@ -28,6 +28,7 @@ class TestingServlet extends HttpServlet {
       case "delete-message" => testDeleteMessage
       case "mail-simple-message" => testMailSimpleMessage
       case "mail-message-with-html-attachment" => testMailMessageWithHTMLAttachment
+      case "test-tag-soup" => testTagSoup
       case _ => testBasicOutput
     }
 
@@ -116,6 +117,13 @@ class TestingServlet extends HttpServlet {
       mail.send
       resp.setContentType("text/plain")
       println("Sent message with attachment and random content " + random)
+    }
+
+    def testTagSoup() {
+      val url = req.getParameter("url")
+      val html = HTMLNode(new URLReader(url, "UTF-8"))
+      resp.setContentType("text/html")
+      print(html.toString)
     }
 
     def transaction(query: javax.jdo.Query)(block: Unit): Unit = {

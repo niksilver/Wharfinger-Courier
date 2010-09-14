@@ -8,11 +8,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/war/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/index.html" afterPath="$PROJECT_DIR$/war/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MailDocumentServlet.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -135,7 +130,7 @@
       <file leaf-file-name="KickOffFetchArticleServlet.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="0" selection-start="1046" selection-end="1046" vertical-scroll-proportion="0.44863012">
+            <state line="45" column="5" selection-start="1729" selection-end="1729" vertical-scroll-proportion="0.8561644">
               <folding />
             </state>
           </provider>
@@ -783,7 +778,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="1046" selection-end="1046" vertical-scroll-proportion="0.44863012">
+        <state line="45" column="5" selection-start="1729" selection-end="1729" vertical-scroll-proportion="0.8561644">
           <folding />
         </state>
       </provider>

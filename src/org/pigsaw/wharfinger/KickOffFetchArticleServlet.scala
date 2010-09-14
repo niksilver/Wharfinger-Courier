@@ -22,7 +22,9 @@ class KickOffFetchArticleServlet extends HttpServlet {
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
     resp.setContentType("text/plain")
     val pm: PersistenceManager = PMF.get.getPersistenceManager
-    bookmarksToFetch() find fetchableBookmark map queueFetchBookmark
+    persistAndClose(pm) {
+      bookmarksToFetch() find fetchableBookmark map queueFetchBookmark
+    }
     println("Done fetching bookmarks")
 
     def println(s: String) { resp.getWriter.println(s) }
@@ -44,10 +46,10 @@ class KickOffFetchArticleServlet extends HttpServlet {
     }
 
     def fetchableBookmark(bookmark: BookmarkPendingFetch): Boolean = {
-      if (tooManyFetchAttempts(bookmark)) {
-        rejectBookmark(bookmark, "Too many fetch attempts"); false
-      } else if (isPastArticle(bookmark)) {
+      if (isPastArticle(bookmark)) {
         rejectBookmark(bookmark, "Have published this before"); false
+      } else if (tooManyFetchAttempts(bookmark)) {
+        rejectBookmark(bookmark, "Too many fetch attempts"); false
       } else
         true
     }
@@ -55,10 +57,8 @@ class KickOffFetchArticleServlet extends HttpServlet {
     def rejectBookmark(bookmark: BookmarkPendingFetch, reason: String) {
       log.warning("Rejecting bookmark: " + bookmark.url)
       log.warning("Reason for rejection: " + reason)
-      persistAndClose(pm) {
-        println("Forgetting bookmark for previously-read article " + bookmark.url)
-        pm.deletePersistent(bookmark)
-      }
+      println("Forgetting bookmark for previously-read article " + bookmark.url)
+      pm.deletePersistent(bookmark)
     }
 
     def bookmarksToFetch(): Seq[BookmarkPendingFetch] = {
@@ -71,17 +71,15 @@ class KickOffFetchArticleServlet extends HttpServlet {
 
     def queueFetchBookmark(bookmark: BookmarkPendingFetch) = {
       log.info("Queueing to fetch bookmark: " + bookmark.url)
-      persistAndClose(pm) {
-        markFetchAttempt()
-        val queue = QueueFactory.getDefaultQueue
-        val task = url("/do-fetch-article").
-          param("url", bookmark.url).
-          param("title", bookmark.title).
-          param("citation", bookmark.getCitation).
-          method(Method.GET)
-        queue.add(task)
-        println("Queued task " + task.getUrl)
-      }
+      val queue = QueueFactory.getDefaultQueue
+      val task = url("/do-fetch-article").
+        param("url", bookmark.url).
+        param("title", bookmark.title).
+        param("citation", bookmark.getCitation).
+        method(Method.GET)
+      queue.add(task)
+      println("Queued task " + task.getUrl)
+      markFetchAttempt()
 
       def markFetchAttempt() {
         log.info("Entering markFetchAttempt")

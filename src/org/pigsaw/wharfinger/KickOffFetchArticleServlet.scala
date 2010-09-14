@@ -9,6 +9,7 @@ import javax.jdo.PersistenceManager
 import com.google.appengine.api.labs.taskqueue.QueueFactory
 import com.google.appengine.api.labs.taskqueue.TaskOptions.Builder._
 import java.util.logging.Logger
+import com.google.appengine.api.labs.taskqueue.TaskOptions.Method
 
 /**
  * Kick off fetching a pending article.
@@ -21,14 +22,7 @@ class KickOffFetchArticleServlet extends HttpServlet {
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
     resp.setContentType("text/plain")
     val pm: PersistenceManager = PMF.get.getPersistenceManager
-    bookmarksToFetch().foreach(bookmark => {
-      if (tooManyFetchAttempts(bookmark))
-        rejectBookmark(bookmark, "Too many fetch attempts")
-      else if (isPastArticle(bookmark))
-        rejectBookmark(bookmark, "Have published this before")
-      else
-        queueFetchBookmark(bookmark)
-    })
+    bookmarksToFetch() find fetchableBookmark map queueFetchBookmark
     println("Done fetching bookmarks")
 
     def println(s: String) { resp.getWriter.println(s) }
@@ -49,6 +43,15 @@ class KickOffFetchArticleServlet extends HttpServlet {
       num_found >= 1
     }
 
+    def fetchableBookmark(bookmark: BookmarkPendingFetch): Boolean = {
+      if (tooManyFetchAttempts(bookmark)) {
+        rejectBookmark(bookmark, "Too many fetch attempts"); false
+      } else if (isPastArticle(bookmark)) {
+        rejectBookmark(bookmark, "Have published this before"); false
+      } else
+        true
+    }
+
     def rejectBookmark(bookmark: BookmarkPendingFetch, reason: String) {
       log.warning("Rejecting bookmark: " + bookmark.url)
       log.warning("Reason for rejection: " + reason)
@@ -62,7 +65,7 @@ class KickOffFetchArticleServlet extends HttpServlet {
       log.info("Entering bookmarksToFetch")
       val query = pm.newQuery(classOf[BookmarkPendingFetch])
       query.setOrdering("fetchAttempts asc")
-      query.setRange(0, 1)
+      query.setRange(0, 5)
       query.execute().asInstanceOf[java.util.List[BookmarkPendingFetch]]
     }
 
@@ -74,7 +77,8 @@ class KickOffFetchArticleServlet extends HttpServlet {
         val task = url("/do-fetch-article").
           param("url", bookmark.url).
           param("title", bookmark.title).
-          param("citation", bookmark.getCitation)
+          param("citation", bookmark.getCitation).
+          method(Method.GET)
         queue.add(task)
         println("Queued task " + task.getUrl)
       }
@@ -97,7 +101,9 @@ class DoFetchArticleServlet extends HttpServlet {
 
   val log = Logger.getLogger(this.getClass.getName)
 
-  override def doPost(req: HttpServletRequest, resp: HttpServletResponse) {
+  override def doPost(req: HttpServletRequest, resp: HttpServletResponse) = doGet(req, resp)
+
+  override def doGet(req: HttpServletRequest, resp: HttpServletResponse) {
     resp.setContentType("text/plain")
     val url = req.getParameter("url")
     val title = req.getParameter("title")
@@ -109,6 +115,7 @@ class DoFetchArticleServlet extends HttpServlet {
 
     def tooManyRetries: Boolean = {
       val retries_str = req.getHeader("X-AppEngine-TaskRetryCount")
+      log.warning("TaskRetryCount is '" + retries_str + "'")
       retries_str match {
         case null => false
         case "" => false

@@ -65,7 +65,7 @@ class AdminServlet extends HttpServlet {
     }
 
     def showPastArticles() {
-      showDataItems(classOf[Article]) {
+      showDataItems(classOf[PastArticle]) {
         article => resp.getWriter.println(article.url)
       }
     }

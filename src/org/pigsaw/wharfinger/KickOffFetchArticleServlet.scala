@@ -180,7 +180,9 @@ class InstapaperHandler(article_url: String) {
     }
     catch {
       case e => {
-        log.warning(e.getStackTraceString)
+        val str = new java.io.StringWriter
+        e.printStackTrace(new java.io.PrintWriter(str))
+        log.warning(str.toString)
         None
       }
     }

@@ -8,8 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/TwitterTimesNetworkHandlerTest.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path=".idea/workspace.xml" />
@@ -119,28 +118,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KickOffFetchArticleServlet.scala" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="KickOffFetchArticleServlet.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="0" selection-start="484" selection-end="484" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="27" selection-start="963" selection-end="963" vertical-scroll-proportion="-4.68">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cron.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/WEB-INF/cron.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0">
+            <state line="178" column="32" selection-start="6016" selection-end="6016" vertical-scroll-proportion="0.56335616">
               <folding />
             </state>
           </provider>
@@ -155,10 +136,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Data.scala" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Data.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3634" column="14" selection-start="226219" selection-end="226219" vertical-scroll-proportion="0.35958904">
+            <state line="3634" column="14" selection-start="226219" selection-end="226219" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -204,7 +185,6 @@
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MailDocumentServlet.scala" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
         <option value="$PROJECT_DIR$/war/index.html" />
         <option value="$PROJECT_DIR$/war/WEB-INF/cron.xml" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/ReadDeliciousServlet.scala" />
@@ -212,6 +192,7 @@
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/ReadBookmarksServlet.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/TwitterTimesNetworkHandlerTest.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
       </list>
     </option>
   </component>
@@ -663,7 +644,7 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4124204" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16990788" sideWeight="0.65923566" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16990788" sideWeight="0.65923566" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39968154" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
@@ -694,7 +675,7 @@
     <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started making ReadDeliciousServlet into a slightly more generic ReadBookmarksServlet, so as to be able to reader twittertim.es, and potentially others." />
+    <option name="LAST_COMMIT_MESSAGE" value="Starting work on Twitter Times parsing." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -707,7 +688,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Added new file (moved from old)." />
     <MESSAGE value="Corrected mistake in HTMLNode." />
     <MESSAGE value="Document now persisted and findable in a list." />
     <MESSAGE value="Document is wrapped in decent HTML and so renders properly on the device." />
@@ -732,6 +712,7 @@
     <MESSAGE value="- New servlet which mails a named file. (NB: There is a limit of 1MB for attachments)&#10;- MakeDocumentServlet cleaned up.&#10;- When document made servlet queues task to mail document&#10;- KickOffFetchArticleServlet now selects five (not one) document and processes them all, stopping when it finds one to fetch.&#10;- Admin endpoint to list past articles fixed." />
     <MESSAGE value="Corrected problem closing persistence manager too early.&#10;Corrected (I think) order in which bookmarks are checked for rejection." />
     <MESSAGE value="Started making ReadDeliciousServlet into a slightly more generic ReadBookmarksServlet, so as to be able to reader twittertim.es, and potentially others." />
+    <MESSAGE value="Starting work on Twitter Times parsing." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -785,13 +766,6 @@
     <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/DocumentMaker.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="34" column="51" selection-start="972" selection-end="972" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="484" selection-end="484" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
@@ -852,7 +826,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3634" column="14" selection-start="226219" selection-end="226219" vertical-scroll-proportion="0.35958904">
+        <state line="3634" column="14" selection-start="226219" selection-end="226219" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="178" column="32" selection-start="6016" selection-end="6016" vertical-scroll-proportion="0.56335616">
           <folding />
         </state>
       </provider>

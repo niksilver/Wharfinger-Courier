@@ -143,7 +143,6 @@ class DoFetchArticleServlet extends HttpServlet {
     def print(s: String) = resp.getWriter.print(s)
 
     def recordArticle(content_div: Node) {
-      log.info("Entering recordArticle")
       val pm: PersistenceManager = PMF.get.getPersistenceManager
       println("Got article to persist: " + url)
       persistAndClose(pm) {
@@ -170,11 +169,20 @@ class DoFetchArticleServlet extends HttpServlet {
 }
 
 class InstapaperHandler(article_url: String) {
+  val log = Logger.getLogger(this.getClass.getName)
   val url: String = "http://www.instapaper.com/text?u=" +
           URLEncoder.encode(article_url, "UTF-8")
 
   def getContentDiv(): Option[Node] = {
-    val html = HTMLNode(new URLReader(url, "UTF-8"))
-    html findDivWithId "story"
+    try {
+      val html = HTMLNode(new URLReader(url, "UTF-8"))
+      html findDivWithId "story"
+    }
+    catch {
+      case e => {
+        log.warning(e.getStackTraceString)
+        None
+      }
+    }
   }
 }

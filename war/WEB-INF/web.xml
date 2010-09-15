@@ -13,13 +13,9 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         <servlet-class>org.pigsaw.wharfinger.AdminServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ReadDeliciousServlet</servlet-name>
-        <servlet-class>org.pigsaw.wharfinger.ReadDeliciousServlet</servlet-class>
+        <servlet-name>ReadBookmarksServlet</servlet-name>
+        <servlet-class>org.pigsaw.wharfinger.ReadBookmarksServlet</servlet-class>
     </servlet>
-    <!-- <servlet>
-        <servlet-name>FetchArticleServlet</servlet-name>
-        <servlet-class>org.pigsaw.wharfinger.FetchArticleServlet</servlet-class>
-    </servlet>-->
     <servlet>
         <servlet-name>KickOffFetchArticleServlet</servlet-name>
         <servlet-class>org.pigsaw.wharfinger.KickOffFetchArticleServlet</servlet-class>
@@ -52,13 +48,9 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         <url-pattern>/admin/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ReadDeliciousServlet</servlet-name>
-        <url-pattern>/read-delicious</url-pattern>
+        <servlet-name>ReadBookmarksServlet</servlet-name>
+        <url-pattern>/read/*</url-pattern>
     </servlet-mapping>
-    <!-- <servlet-mapping>
-        <servlet-name>FetchArticleServlet</servlet-name>
-        <url-pattern>/fetch-article</url-pattern>
-    </servlet-mapping> -->
     <servlet-mapping>
         <servlet-name>KickOffFetchArticleServlet</servlet-name>
         <url-pattern>/kick-off-fetch-article</url-pattern>

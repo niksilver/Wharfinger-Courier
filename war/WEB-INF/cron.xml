@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cronentries>
     <cron>
-        <url>/read-delicious</url>
+        <url>/read/delicious</url>
         <description>Read the Delicious network</description>
         <schedule>every 4 hours</schedule>
         <timezone>Europe/London</timezone>
     </cron>
-    <!-- <cron>
-        <url>/fetch-article</url>
-        <description>Fetch a new article</description>
-        <schedule>every 1 minutes</schedule>
-        <timezone>Europe/London</timezone>
-    </cron> -->
     <cron>
         <url>/kick-off-fetch-article</url>
         <description>Kick off fetching a new article</description>

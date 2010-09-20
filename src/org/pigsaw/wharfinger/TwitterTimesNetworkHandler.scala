@@ -1,7 +1,8 @@
 package org.pigsaw.wharfinger
 
 import java.io.Reader
-import collection.mutable.ListBuffer
+import scala.collection.mutable.ListBuffer
+import scala.xml.XML
 
 /**
  * Read and parse the Twitter Times RSS feed
@@ -9,18 +10,18 @@ import collection.mutable.ListBuffer
 
 class TwitterTimesNetworkHandler(val reader: Reader) {
 
-  val bookmarks = new ListBuffer[DeliciousBookmark]()
+  val bookmarks = new ListBuffer[TwitterTimesBookmark]()
 
   def this() = this(new URLReader("http://twittertim.es/pigsaw/rss.xml", "UTF-8"))
 
   /**Parse the RSS to create the bookmarks.
    */
   def parse() {
-    /*val rss = HTMLNode(reader)
-    val bookmarks_div =  html findElementAttributeSubstring ("div", "@class", "bookmark ")
-    for (bookmark_div <- bookmarks_div) {
-      bookmarks += DeliciousNetworkHandler.makeBookmark(bookmark_div)
-    }*/
+    val rss = XML.load(reader)
+    val items = rss \ "channel" \ "item"
+    for (item <- items) {
+      bookmarks += new TwitterTimesBookmark((item \ "link").text)
+    }
   }
 
   /** Process a single article URL.
@@ -39,3 +40,5 @@ class TwitterTimesNetworkHandler(val reader: Reader) {
    */
   //def process(): Unit = process(bookmark => bookmark.popularity > 0)
 }
+
+class TwitterTimesBookmark (val url: String)

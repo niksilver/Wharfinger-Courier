@@ -1,8 +1,7 @@
 package org.pigsaw.wharfinger
 
-import org.scalatest.Spec
 import org.scalatest.matchers.ShouldMatchers
-import xml.Node
+import org.scalatest.Spec
 
 /**
  * Created by IntelliJ IDEA.

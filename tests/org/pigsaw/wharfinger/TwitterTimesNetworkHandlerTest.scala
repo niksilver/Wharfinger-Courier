@@ -27,3 +27,13 @@ class TwitterTimesNetworkHandlerTest extends Spec with ShouldMatchers {
     }
   }
 }
+
+class TwitterTimesBookmarkTest extends Spec with ShouldMatchers {
+
+  describe("TwitterTimesBookmark") {
+    it("Should extract the URL") {
+      val bookmark = new TwitterTimesBookmark(Data.twitter_times_item)
+      bookmark.url should be === ("http://www.guardian.co.uk/media/audio/2010/sep/20/ken-bruce-popmaster")
+    }
+  }
+}

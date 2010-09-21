@@ -115,5 +115,17 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
       val Some(div) = html findDivWithId "story"
       div.toString should startWith ("""<div id="story">""")
     }
+
+    it("Should allow you to find an element with an attribute whose value starts with something") {
+      val n = <a>
+          <b id="oneanother"></b>
+          <c><b id="onegin"></b></c>
+          <b id="twozzack"></b>
+        </a>
+      val extract = n findElementAttributeStartingWith ("b", "@id", "one")
+      extract.size should be (2)
+      extract(0).attribute("id").get(0).toString should be === ("oneanother")
+      extract(1).attribute("id").get(0).toString should be === ("onegin")
+    }
   }
 }

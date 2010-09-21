@@ -2,7 +2,8 @@ package org.pigsaw.wharfinger
 
 import org.scalatest.Spec
 import org.scalatest.matchers.ShouldMatchers
-import java.io.{FileReader, StringReader}
+import java.io.{FileReader}
+import xml.Elem
 
 /**
  * Test the thing that fetches and parses a the Twitter Times RSS feed
@@ -32,8 +33,18 @@ class TwitterTimesBookmarkTest extends Spec with ShouldMatchers {
 
   describe("TwitterTimesBookmark") {
     it("Should extract the URL") {
-      val bookmark = new TwitterTimesBookmark(Data.twitter_times_item)
+      val bookmark = new TwitterTimesBookmark(Data.twitter_times_ken_bruce_item)
       bookmark.url should be === ("http://www.guardian.co.uk/media/audio/2010/sep/20/ken-bruce-popmaster")
+    }
+
+    it("Should have a description which is XML") {
+      val bookmark = new TwitterTimesBookmark(Data.twitter_times_ken_bruce_item)
+      bookmark.description.getClass should be (classOf[Elem])
+    }
+
+    it("Should list friends and their tweets") {
+      val bookmark = new TwitterTimesBookmark(Data.twitter_times_bbc_item)
+      bookmark.tweets.length should be === (6)
     }
   }
 }

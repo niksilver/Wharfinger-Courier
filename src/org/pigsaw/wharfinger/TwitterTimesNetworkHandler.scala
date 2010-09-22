@@ -1,9 +1,9 @@
 package org.pigsaw.wharfinger
 
 import scala.collection.mutable.ListBuffer
-import xml.{Node, XML}
 import java.io.{StringReader, Reader}
 import Preamble._
+import xml.{Elem, Node, XML}
 
 /**
  * Read and parse the Twitter Times RSS feed
@@ -42,8 +42,10 @@ class TwitterTimesNetworkHandler(val reader: Reader) {
 class TwitterTimesBookmark (item: Node) {
   val url = (item \ "link").text
   val description = HTMLNode(new StringReader(item \ "description" text))
-  /*val tweets = description findElementAttributeStartingWith ("a", "@href", "http://twitter.com/") filterNot {
-    n: Node => n.attribute("href").get.toString contains "/status/"
-  }*/
-  val tweets = (description \\ "div") containing (_ \ "span" findElementAttributeStartingWith ("a", "@href", "http://twitter.com/"))
+  private val tweets_html = (description \\ "div") containing
+          (_ \ "span" findElementAttributeStartingWith ("a", "@href", "http://twitter.com/"))
+  val tweets = for (div <- tweets_html) yield ( username(div) -> tweet(div) )
+
+  def username(div: Node): String = ((div \ "span")(0) \ "a" \ "@href" text) split '/' last
+  def tweet(div: Node): String =  { (div.child) filterNot (_.isInstanceOf[Elem]) mkString }
 }

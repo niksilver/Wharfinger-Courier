@@ -45,6 +45,16 @@ class TwitterTimesBookmarkTest extends Spec with ShouldMatchers {
     it("Should list friends and their tweets") {
       val bookmark = new TwitterTimesBookmark(Data.twitter_times_bbc_item)
       bookmark.tweets.length should be === (6)
+
+      bookmark.tweets(0)._1 should be ("JR0cket")
+      bookmark.tweets(1)._1 should be ("paulbradshaw")
+      bookmark.tweets(2)._1 should be ("markrock")
+      bookmark.tweets(3)._1 should be ("willperrin")
+      bookmark.tweets(4)._1 should be ("billt")
+      bookmark.tweets(5)._1 should be ("ruskin147")
+
+      bookmark.tweets(0)._2 should include ("RT @david_colquhoun The BBC Trust")
+      bookmark.tweets(3)._2 should include ("RT @paulbradshaw: RT @david_colquhoun")
     }
   }
 }

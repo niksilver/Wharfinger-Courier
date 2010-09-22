@@ -42,7 +42,8 @@ class TwitterTimesNetworkHandler(val reader: Reader) {
 class TwitterTimesBookmark (item: Node) {
   val url = (item \ "link").text
   val description = HTMLNode(new StringReader(item \ "description" text))
-  val tweets = description findElementAttributeStartingWith ("a", "@href", "http://twitter.com/") filterNot {
+  /*val tweets = description findElementAttributeStartingWith ("a", "@href", "http://twitter.com/") filterNot {
     n: Node => n.attribute("href").get.toString contains "/status/"
-  }
+  }*/
+  val tweets = (description \\ "div") containing (_ \ "span" findElementAttributeStartingWith ("a", "@href", "http://twitter.com/"))
 }

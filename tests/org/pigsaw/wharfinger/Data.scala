@@ -1848,4 +1848,43 @@ It is not uncommon for bloggers to be critical of science reporting in the mains
     </div>
 ]]></description>
    </item> }
+
+  def twitter_times_ken_bruce_item_reduced = { <item>
+       <title><![CDATA[Ken Bruce: 'I think we might actually get a real contestant on ...' | Media | guardian.co.uk]]></title>
+       <pubDate>Mon Sep 20 09:06:24 PDT 2010</pubDate>
+       <guid isPermaLink='false'><![CDATA[user.14697612::1285007820525]]></guid>
+       <link><![CDATA[http://www.guardian.co.uk/media/audio/2010/sep/20/ken-bruce-popmaster]]></link>
+       <description><![CDATA[    <div style='margin: 0 0 6px 0;'>
+          <a target='_blank' href='http://www.guardian.co.uk/media/audio/2010/sep/20/ken-bruce-popmaster' style='color: #009900; text-decoration: none;'>guardian.co.uk</a>
+      </div>
+      <div>
+         <div id='fooid#snippet' style='margin: 6px 0 0 0;'>
+            Radio 2 DJ Ken Bruce smells a rat on his PopMaster quiz
+  Monkey       </div>
+      </div>
+      <div style='margin: 3px 0pt 0pt;'>
+         <div style='margin: 3px 0pt 0pt;'>
+           <strong>posted by friends:</strong>
+           &nbsp;<span>(0)</span>
+         </div>
+
+         <div style='margin: 3px 0pt 0pt;'>
+           <strong>posted by friends of friends:</strong>
+           &nbsp;<span>(1)</span>
+         </div>
+         <div style='margin: 0 0 0 15px;'>
+           <div>
+              <span><a target='_blank' href='http://twitter.com/mediaguardian' style='color:#093D72; text-decoration: none; font-weight: bold;'>mediaguardian:</a></span>&nbsp;Ken Bruce: 'I think we might actually get a real contestant on ...' http://bit.ly/cEbHEy&nbsp;
+              <span><a target='_blank' href='http://twitter.com/mediaguardian/status/25037763260' style='color:#666666; font-size:10px; text-decoration: none;'>20.09.2010 09.06.24</a></span>
+           </div>
+         </div>
+
+      </div>
+      <div style='margin: 6px 0 0 0;'>
+           <a target='_blank' href='/retweet.jsp?url=http%3A%2F%2Fwww.guardian.co.uk%2Fmedia%2Faudio%2F2010%2Fsep%2F20%2Fken-bruce-popmaster&title=Ken+Bruce%3A+%27I+think+we+might+actually+get+a+real+contestant+on+...%27+%7C+Media+%7C+guardian.co.uk'>
+               <span style='color:#093D72; text-decoration: none; font-weight: bold;'> retweet </span>
+           </a>
+      </div>
+  ]]></description>
+     </item> }
 }

@@ -66,5 +66,10 @@ class TwitterTimesBookmarkTest extends Spec with ShouldMatchers {
       val bookmark = new TwitterTimesBookmark(Data.twitter_times_ken_bruce_item)
       bookmark.citation should startWith ("Tweeted by hayjane and 1 other: Ken Bruce: on the money or anti-parachutist??")
     }
+
+    it("Should make a grammatical citation with no other tweeters") {
+      val bookmark = new TwitterTimesBookmark(Data.twitter_times_ken_bruce_item_reduced)
+      bookmark.citation should startWith ("Tweeted by mediaguardian: Ken Bruce: 'I think we might actually")
+    }
   }
 }

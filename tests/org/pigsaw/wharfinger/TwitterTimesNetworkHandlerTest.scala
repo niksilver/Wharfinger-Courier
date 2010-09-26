@@ -53,8 +53,13 @@ class TwitterTimesBookmarkTest extends Spec with ShouldMatchers {
       bookmark.tweets(4)._1 should be ("billt")
       bookmark.tweets(5)._1 should be ("ruskin147")
 
-      bookmark.tweets(0)._2 should include ("RT @david_colquhoun The BBC Trust")
-      bookmark.tweets(3)._2 should include ("RT @paulbradshaw: RT @david_colquhoun")
+      bookmark.tweets(0)._2 should startWith ("RT @david_colquhoun The BBC Trust wants")
+      bookmark.tweets(3)._2 should startWith ("RT @paulbradshaw: RT @david_colquhoun")
+    }
+
+    it("Should make a citation") {
+      val bookmark = new TwitterTimesBookmark(Data.twitter_times_bbc_item)
+      bookmark.citation should startWith ("Tweeted by JR0cket and 5 others: RT @david_colquhoun The BBC Trust")
     }
   }
 }

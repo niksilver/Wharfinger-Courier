@@ -40,12 +40,27 @@ class TwitterTimesNetworkHandler(val reader: Reader) {
 }
 
 class TwitterTimesBookmark (item: Node) {
+
   val url = (item \ "link").text
+
   val description = HTMLNode(new StringReader(item \ "description" text))
+
   private val tweets_html = (description \\ "div") containing
           (_ \ "span" findElementAttributeStartingWith ("a", "@href", "http://twitter.com/"))
+
   val tweets = for (div <- tweets_html) yield ( username(div) -> tweet(div) )
 
+  val citation = "Tweeted by " + tweets(0)._1 + " and " + (tweets.length - 1) + " others: " +
+    tweets(0)._2
+
+  /**To extract a username look for an A HREF to http://twitter.com/username.
+   */
   def username(div: Node): String = ((div \ "span")(0) \ "a" \ "@href" text) split '/' last
-  def tweet(div: Node): String =  { (div.child) filterNot (_.isInstanceOf[Elem]) mkString }
+
+  /**To extract a tweet take just the text, trim it, and drop
+   * any NBSP (char 160s) from the start.
+   */
+  def tweet(div: Node): String =  {
+    ((div.child) filterNot (_.isInstanceOf[Elem]) mkString).trim.dropWhile(_ == '\u00A0')
+  }
 }

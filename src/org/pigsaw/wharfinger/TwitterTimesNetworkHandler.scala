@@ -50,8 +50,14 @@ class TwitterTimesBookmark (item: Node) {
 
   val tweets = for (div <- tweets_html) yield ( username(div) -> tweet(div) )
 
-  val citation = "Tweeted by " + tweets(0)._1 + " and " + (tweets.length - 1) + " others: " +
+  val citation = "Tweeted by " + tweets(0)._1 + andOthersText(tweets.length - 1) + ": " +
     tweets(0)._2
+
+  def andOthersText(num_others: Int) = num_others match {
+    case 0 => ""
+    case 1 => " and 1 other"
+    case _ => " and " + num_others + " others"
+  }
 
   /**To extract a username look for an A HREF to http://twitter.com/username.
    */

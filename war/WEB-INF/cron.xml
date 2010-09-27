@@ -7,6 +7,12 @@
         <timezone>Europe/London</timezone>
     </cron>
     <cron>
+        <url>/read/twitter-times</url>
+        <description>Read the Twitter Times</description>
+        <schedule>every 3 hours</schedule>
+        <timezone>Europe/London</timezone>
+    </cron>
+    <cron>
         <url>/kick-off-fetch-article</url>
         <description>Kick off fetching a new article</description>
         <schedule>every 1 minutes</schedule>

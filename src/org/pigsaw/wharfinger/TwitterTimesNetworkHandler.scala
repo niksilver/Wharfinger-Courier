@@ -43,11 +43,14 @@ class TwitterTimesBookmark (item: Node) {
 
   val url = (item \ "link").text
 
+  val title = (item \ "title").text
+
   val description = HTMLNode(new StringReader(item \ "description" text))
 
   private val tweets_html = (description \\ "div") containing
           (_ \ "span" findElementAttributeStartingWith ("a", "@href", "http://twitter.com/"))
 
+  /** A mapping from Twitter usernames to tweets. */
   val tweets = for (div <- tweets_html) yield ( username(div) -> tweet(div) )
 
   val citation = "Tweeted by " + tweets(0)._1 + andOthersText(tweets.length - 1) + ": " +

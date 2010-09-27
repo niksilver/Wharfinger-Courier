@@ -37,6 +37,11 @@ class TwitterTimesBookmarkTest extends Spec with ShouldMatchers {
       bookmark.url should be === ("http://www.guardian.co.uk/media/audio/2010/sep/20/ken-bruce-popmaster")
     }
 
+    it("Should extract the title") {
+      val bookmark = new TwitterTimesBookmark(Data.twitter_times_ken_bruce_item)
+      bookmark.title should be === ("Ken Bruce: 'I think we might actually get a real contestant on ...' | Media | guardian.co.uk")
+    }
+
     it("Should have a description which is XML") {
       val bookmark = new TwitterTimesBookmark(Data.twitter_times_ken_bruce_item)
       bookmark.description.getClass should be (classOf[Elem])

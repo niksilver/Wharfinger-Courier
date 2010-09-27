@@ -5,12 +5,17 @@ import java.io.Reader
 import collection.mutable.ListBuffer
 import xml.{Node, NodeSeq}
 
+abstract class BookmarkServiceNetworkHandler {
+  def parse: Unit
+  def bookmarksPendingFetch: Seq[BookmarkPendingFetch]
+}
+
 /**
  * An object that will read from Delicious and parse out
  * articles to fetch
  */
 
-class DeliciousNetworkHandler(val reader: Reader) {
+class DeliciousNetworkHandler(val reader: Reader) extends BookmarkServiceNetworkHandler {
 
   val bookmarks = new ListBuffer[DeliciousBookmark]()
 
@@ -41,6 +46,9 @@ class DeliciousNetworkHandler(val reader: Reader) {
   /**Process all the bookmarks which meet some predefined condition.
    */
   def process(): Unit = process(bookmark => bookmark.popularity > 0)
+
+  def bookmarksPendingFetch: Seq[BookmarkPendingFetch] =
+    for (b <- bookmarks) yield b.bookmarkPendingFetch
 }
 
 object DeliciousNetworkHandler {
@@ -84,13 +92,13 @@ class DeliciousBookmark(
   val title: String,
   val description: Option[String]) {
 
-  private val bookmark_jdo = new BookmarkPendingFetch(url,
+  val bookmarkPendingFetch = new BookmarkPendingFetch(url,
     title,
     makeCitation(popularity, username, description))
 
-  def citation = bookmark_jdo.getCitation
+  def citation = bookmarkPendingFetch.getCitation
   
-  def saveForLaterFetching() { bookmark_jdo.saveForLaterFetching }
+  def saveForLaterFetching() { bookmarkPendingFetch.saveForLaterFetching }
 
   private def makeCitation(popularity: Int, username: String, citation: Option[String]) = {
     val bookmarkers = popularity match {

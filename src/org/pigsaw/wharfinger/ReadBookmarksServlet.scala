@@ -15,25 +15,22 @@ class ReadBookmarksServlet extends HttpServlet {
     resp.setContentType("text/plain")
 
     lazy val handler = req.getPathInfo.tail.split('/')(0) match {
-      case "delicious" => (new DeliciousNetworkHandler with ProcessReporter)
+      case "delicious" => new DeliciousNetworkHandler
+      case "twitter-times" => new TwitterTimesNetworkHandler
       case service => new UnknownServiceHandler(service, log)
     }
     handler.parse
-    handler.process()
+    handler.bookmarksPendingFetch.foreach( b => {
+      resp.getWriter.println("Saving for later fetching: " + b.url)
+      b.saveForLaterFetching
+    })
 
-    trait ProcessReporter extends DeliciousNetworkHandler {
-      override def process(a: DeliciousBookmark) {
-        resp.getWriter.println("Queuing task to fetch " + a.url)
-        super.process(a)
-      }
-    }
-
-    class UnknownServiceHandler(service: String, log: Logger) extends DeliciousNetworkHandler {
-      override def parse = {}
-      override def process = {
+    class UnknownServiceHandler(service: String, log: Logger) extends BookmarkServiceNetworkHandler {
+      def parse = {
         resp.getWriter.println("Unknown bookmark service: " + service)
         log.warning("Unknown bookmark service: " + service)
       }
+      def bookmarksPendingFetch = Nil
     }
   }
 }

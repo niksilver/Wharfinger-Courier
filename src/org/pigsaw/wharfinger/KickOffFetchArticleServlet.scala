@@ -25,7 +25,7 @@ class KickOffFetchArticleServlet extends HttpServlet {
     persistAndClose(pm) {
       bookmarksToFetch() find fetchableBookmark map queueFetchBookmark
     }
-    println("Done fetching bookmarks")
+    println("Done kick-off")
 
     def println(s: String) { resp.getWriter.println(s) }
     def print(s: String) { resp.getWriter.print(s) }
@@ -57,7 +57,8 @@ class KickOffFetchArticleServlet extends HttpServlet {
     def rejectBookmark(bookmark: BookmarkPendingFetch, reason: String) {
       log.warning("Rejecting bookmark: " + bookmark.url)
       log.warning("Reason for rejection: " + reason)
-      println("Forgetting bookmark for previously-read article " + bookmark.url)
+      println("Rejecting bookmark: " + bookmark.url)
+      println("Reason for rejection: " + reason)
       pm.deletePersistent(bookmark)
     }
 
@@ -70,7 +71,8 @@ class KickOffFetchArticleServlet extends HttpServlet {
     }
 
     def queueFetchBookmark(bookmark: BookmarkPendingFetch) = {
-      log.info("Queueing to fetch bookmark: " + bookmark.url)
+      log.info("Queueing task to fetch bookmark: " + bookmark.url)
+      println("Queueing task to fetch bookmark: " + bookmark.url)
       val queue = QueueFactory.getDefaultQueue
       val task = url("/do-fetch-article").
         param("url", bookmark.url).
@@ -78,7 +80,6 @@ class KickOffFetchArticleServlet extends HttpServlet {
         param("citation", bookmark.getCitation).
         method(Method.GET)
       queue.add(task)
-      println("Queued task " + task.getUrl)
       markFetchAttempt()
 
       def markFetchAttempt() {

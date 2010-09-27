@@ -9,7 +9,7 @@ import xml.{Elem, Node, XML}
  * Read and parse the Twitter Times RSS feed
  */
 
-class TwitterTimesNetworkHandler(val reader: Reader) {
+class TwitterTimesNetworkHandler(val reader: Reader) extends BookmarkServiceNetworkHandler {
 
   val bookmarks = new ListBuffer[TwitterTimesBookmark]()
 
@@ -22,21 +22,10 @@ class TwitterTimesNetworkHandler(val reader: Reader) {
     bookmarks ++= (rss \ "channel" \ "item") map { new TwitterTimesBookmark(_) }
   }
 
-  /** Process a single article URL.
+  /** Get all the bookmarks pending fetch (as JDOs).
    */
-  /*def process(b: DeliciousBookmark) = {
-    b.saveForLaterFetching
-  }*/
-
-  /** Process all articles which meet a given condition.
-   */
-  /*def process(cond: DeliciousBookmark => Boolean) {
-    (bookmarks filter cond).foreach (process _)
-  }*/
-
-  /**Process all the bookmarks which meet some predefined condition.
-   */
-  //def process(): Unit = process(bookmark => bookmark.popularity > 0)
+  def bookmarksPendingFetch =
+    for (b <- bookmarks) yield new BookmarkPendingFetch(b.url, b.title, b.citation)
 }
 
 class TwitterTimesBookmark (item: Node) {

@@ -80,6 +80,18 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
         """<p><a href="/hello.txt">[Image: Smiley]</a>[Image: Underline]</p>""")
     }
 
+    it("Should be able to replace images which have empty alt text") {
+      val xml = <p><a href="/hello.txt"><img src="hello.jpg" alt=""/></a><img src="underline.jpg" alt=""/></p>
+      HTMLNode.imagesToText(xml).toString should be === (
+        """<p><a href="/hello.txt"></a></p>""")
+    }
+
+    it("Should be able to replace images which have no text") {
+      val xml = <p><a href="/hello.txt"><img src="hello.jpg"/></a><img src="underline.jpg"/></p>
+      HTMLNode.imagesToText(xml).toString should be === (
+        """<p><a href="/hello.txt"></a></p>""")
+    }
+
     it("Should read HTML from a redirected URL") {
       val html = HTMLNode(new URLReader("http://bit.ly/9NQcyA", "UTF-8"))
       val title = (html \\ "title").text

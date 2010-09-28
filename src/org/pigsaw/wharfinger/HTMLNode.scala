@@ -78,7 +78,7 @@ object HTMLNode {
   }
 
   def altText(e: Elem): String = e.attribute("alt") match {
-    case Some(seq) if seq.toString.length > 0 => "[Image: " + seq.toString + "]"
+    case Some(seq) if seq.length > 0 => "[Image: " + seq.toString + "]"
     case _ => ""
   }
 

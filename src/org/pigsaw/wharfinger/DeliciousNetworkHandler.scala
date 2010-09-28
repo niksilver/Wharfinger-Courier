@@ -31,22 +31,6 @@ class DeliciousNetworkHandler(val reader: Reader) extends BookmarkServiceNetwork
     }
   }
 
-  /** Process a single article URL.
-   */
-  def process(b: DeliciousBookmark) = {
-    b.saveForLaterFetching
-  }
-
-  /** Process all articles which meet a given condition.
-   */
-  def process(cond: DeliciousBookmark => Boolean) {
-    (bookmarks filter cond).foreach (process _)
-  }
-
-  /**Process all the bookmarks which meet some predefined condition.
-   */
-  def process(): Unit = process(bookmark => bookmark.popularity > 0)
-
   def bookmarksPendingFetch: Seq[BookmarkPendingFetch] =
     for (b <- bookmarks) yield b.bookmarkPendingFetch
 }

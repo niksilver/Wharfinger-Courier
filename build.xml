@@ -5,6 +5,7 @@
     <property name="sources.dir" value="${base.dir}/src"/>
     <property name="tests.dir" value="${base.dir}/tests"/>
     <property name="build.dir" value="${base.dir}/out.unenhanced"/>
+    <property name="intellijbuild.dir" value="${base.dir}/out"/>
     <property name="scala.home" value="${env.SCALA_HOME}"/>
     <property name="war.dir" value="${base.dir}/war"/>
     <property name="war.lib" value="${war.dir}/WEB-INF/lib"/>
@@ -37,6 +38,7 @@
     <target name="clean-all"
             description="Clean out all the class files and copied JARs">
         <delete dir="${build.dir}" includes="**/*" includeemptydirs="true" quiet="true"/>
+        <delete dir="${intellijbuild.dir}" includes="**/*" includeemptydirs="true" quiet="true"/>
         <delete dir="${war.classes}" includes="**/*" includeemptydirs="true" quiet="true"/>
         <delete dir="${war.lib}" includes="**/*" includeemptydirs="true" quiet="true"/>
     </target>

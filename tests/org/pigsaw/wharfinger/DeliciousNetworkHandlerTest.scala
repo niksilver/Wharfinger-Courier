@@ -79,24 +79,6 @@ class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
       bookmark.description.get should startWith ("""What is this hyperlocal thing?""")
     }
 
-    it("Should process selectively") {
-      val processed = new ListBuffer[DeliciousBookmark]()
-      val handler = new DeliciousNetworkHandler(new StringReader(Data.delicious_html)) {
-        override def process(a: DeliciousBookmark) {
-          processed += a.asInstanceOf[DeliciousBookmark]
-        }
-      }
-      handler.parse
-      handler.process(bookmark => bookmark.popularity > 1)
-
-      processed.size should be (5)
-      processed(0).popularity should be (8)
-      processed(1).popularity should be (11)
-      processed(2).popularity should be (2)
-      processed(3).popularity should be (78)
-      processed(4).popularity should be (16)
-    }
-
     it("Should make a citation with count 1") {
       val bookmark = new DeliciousBookmark(
         url = "some://thing", popularity = 1, username = "bobby", title = "My title", description = Some("I like this"))

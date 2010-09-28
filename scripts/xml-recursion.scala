@@ -1,44 +1,63 @@
-import java.io.InputStream
-import java.nio.charset.Charset
-import scala.xml._
 
-val xml = <li>
-  <h3>
-    <a href="/url" id="an2">
-      <b>EC2 Java</b> Ecommerce
-    </a>
-  </h3>
-  <b>Java</b> Shopping Cart for <b>EC2</b>/S3 Source Code, Clustered, Fast<br/>
-  <cite>Avetti.com</cite></li>
+object HTMLNode {
+  import scala.xml._
 
-
-def recur(n: Node, trans: (Node)=>Node): Node = {
-  n match {
-    case e: Elem => {
-      e.copy(e.prefix, e.label+"x", e.attributes, e.scope, e.child map (n => recur(n, trans)))
-    }
-    case _ => {
-      trans(n)
+  def transform(n: Node, fn: (Node)=>Node): Node = {
+    n match {
+      case e: Elem if e.child.length == 0 => fn(e)
+      case e: Elem => {
+        e.copy(e.prefix, e.label, e.attributes, e.scope, e.child map (n => { println("    ---> " + n); transform(n, fn) }))
+      }
+      case _ => {
+        fn(n)
+      }
     }
   }
+
+  def escapeTrans(n: Node): Node = n match {
+    case a:Atom[_] if needsEscaping(a.data.toString) => new Unparsed(escape(a.data.toString))
+    case x => x
+  }
+
+  def needsEscaping(s: String) = s exists charNeedsEscaping
+
+  def escapeChar(c: Char): String = {
+    if (charNeedsEscaping(c))
+      "&#" + c.toInt + ";"
+    else
+      c.toString
+  }
+
+  def escape(str: String): String = str flatMap escapeChar
+
+  def escapeForHTML(node: Node): Node = transform(node, escapeTrans)
+
+  def escapeForHTML(str: String): String = {
+    str flatMap { c =>
+      if (charNeedsEscaping(c))
+        "&#" + c.toInt + ";"
+      else
+        c.toString
+    }
+  }
+
+  private def charNeedsEscaping(c: Char) =
+    (c > 0x7F || Character.isISOControl(c)) && !Character.isWhitespace(c)
+
+  def imagesToTextTrans(n: Node): Node = {
+    n match {
+      case e: Elem if (e.label.toLowerCase == "img") => new Text(altText(e))
+      case x => x
+    }
+  }
+
+  def altText(e: Elem): String = e.attribute("alt") match {
+    case Some(seq) if seq.toString.length > 0 => "[Image: " + seq.toString + "]"
+    case _ => ""
+  }
+
+  def imagesToText(node: Node): Node = transform(node, imagesToTextTrans)
 }
-def trans(n: Node): Node = n match {
-  case t: Text => new Text("*" + t.text + "*")
-  case _ => n
-}
-def time(name: String)(code: =>Unit) {
-  val start = System.currentTimeMillis
-  code
-  val end = System.currentTimeMillis
-  println(name + ": Duration = " + (end-start) + "ms")
-}
-var large_xml: Elem = _
-var large_xml_trans: Node = _
-time("Loading XML") {
-  large_xml = XML.load("http://www.w3.org/TR/2001/REC-xsl-20011015/xslspec.xml")
-}
-println("large_xml length is " + (large_xml.toString.length)/1024 + "kB")
-time("Transforming large XML") {
-  large_xml_trans = recur(large_xml, trans)
-}
-println(large_xml_trans.toString.take(200) + "...")
+
+val xml = <p><a href="/hello.txt"><img src="hello.jpg" alt="Smiley"/></a><img src="underline.jpg" alt="Underline"/></p>
+HTMLNode.imagesToText(xml)

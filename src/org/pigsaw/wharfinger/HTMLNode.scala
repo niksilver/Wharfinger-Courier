@@ -43,7 +43,7 @@ object HTMLNode {
   }
 
   def escapeTrans(n: Node): Node = n match {
-    case a:Atom[_] if needsEscaping(a.data.toString) => new Unparsed(escape(a.data.toString))
+    case a:Atom[_] if needsEscaping(a.data.toString) => new Unparsed(escapeForHTML(a.data.toString))
     case x => x
   }
 
@@ -56,17 +56,10 @@ object HTMLNode {
       c.toString
   }
 
-  def escape(str: String): String = str flatMap escapeChar
-
   def escapeForHTML(node: Node): Node = transform(node, escapeTrans)
 
   def escapeForHTML(str: String): String = {
-    str flatMap { c =>
-      if (charNeedsEscaping(c))
-        "&#" + c.toInt + ";"
-      else
-        c.toString
-    }
+    str flatMap escapeChar
   }
 
   private def charNeedsEscaping(c: Char) =
@@ -83,7 +76,6 @@ object HTMLNode {
   }
 
   def imagesToText(node: Node): Node = transform(node, imagesToTextTrans)
-
 }
 
 /**

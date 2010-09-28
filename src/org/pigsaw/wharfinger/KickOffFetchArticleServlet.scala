@@ -150,7 +150,7 @@ class DoFetchArticleServlet extends HttpServlet {
         pm.makePersistent(new Article(url,
           citation.escapeForHTML,
           title.escapeForHTML,
-          content_div.escapeForHTML.toString))
+          content_div.imagesToText.escapeForHTML.toString))
         pm.makePersistent(new PastArticle(url))
         deleteBookmark(pm)
       }

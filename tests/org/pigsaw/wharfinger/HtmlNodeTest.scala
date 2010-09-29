@@ -92,6 +92,14 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
         """<p><a href="/hello.txt"></a></p>""")
     }
 
+    it("Should allow you to replace images and escape HTML") {
+      import Preamble._
+      val msg = "Message\u2014again"
+      val xml = <p><a href="/hello.txt">{ msg }<img src="hello.jpg" alt="Hello"/></a><img src="underline.jpg" alt="Under\u2014line"/></p>
+      xml.imagesToText.escapeForHTML.toString should be === (
+        """<p><a href="/hello.txt">Message&#8212;again[Image: Hello]</a>[Image: Under&#8212;line]</p>""")
+    }
+
     it("Should read HTML from a redirected URL") {
       val html = HTMLNode(new URLReader("http://bit.ly/9NQcyA", "UTF-8"))
       val title = (html \\ "title").text

@@ -25,16 +25,23 @@ class AdminServlet extends HttpServlet {
     def clearDataStore() {
       resp.setContentType("text/plain")
       val pm = PMF.get.getPersistenceManager
-      deleteClass(classOf[Article])
-      deleteClass(classOf[BookmarkPendingFetch])
-      deleteClass(classOf[PastArticle])
-      deleteClass(classOf[Document])
+      req.getParameter("confirm") match {
+        case "yes" => deleteClasses
+        case _ => println("Parameter confirm=yes required")
+      }
+
+      def deleteClasses {
+        deleteClass(classOf[Article])
+        deleteClass(classOf[BookmarkPendingFetch])
+        deleteClass(classOf[PastArticle])
+        deleteClass(classOf[Document])
+      }
 
       def deleteClass[T](clz: Class[T]) {
         val query = pm.newQuery(clz)
         transaction (query) {
           query.deletePersistentAll
-          resp.getWriter.println("Deleted " + clz)
+          println("Deleted " + clz)
         }
       }
     }

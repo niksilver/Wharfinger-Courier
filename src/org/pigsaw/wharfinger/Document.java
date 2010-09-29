@@ -5,6 +5,7 @@ import com.google.appengine.api.datastore.Text;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+import java.util.Date;
 
 /**
  * A Wharfinger Courier document
@@ -20,6 +21,11 @@ public class Document {
     @Persistent
     public String contentType;
 
+    /** Publication date set to be creation date.
+     */
+    @Persistent
+    public Date publicationDate = new Date();
+
     @Persistent
     private Text content;
 
@@ -31,5 +37,9 @@ public class Document {
 
     public String getContent() {
         return (content == null) ? null : content.getValue();
+    }
+
+    public void setPublicationDate(Date d) {
+        publicationDate = d;
     }
 }

@@ -23,7 +23,7 @@ class ShowDocumentsServlet extends HttpServlet {
       resp.setContentType("text/html")
       val pm = PMF.get.getPersistenceManager
       val query = pm.newQuery(classOf[Document])
-      query.setOrdering("filename desc")
+      query.setOrdering("publicationDate desc")
       transaction(query) {
         val documents = query.execute.asInstanceOf[java.util.List[Document]]
         for (document <- documents) {

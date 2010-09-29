@@ -71,39 +71,3 @@ class MakeDocumentServlet extends HttpServlet {
 
   }
 }
-
-class BackfillDatesServlet extends MakeDocumentServlet {
-  override def doGet(req: HttpServletRequest, resp: HttpServletResponse) {
-    val pm = PMF.get.getPersistenceManager
-    val date_re = """Wharfinger Courier (.*)\.html""".r
-    val format = new SimpleDateFormat("EEE d MMM yyyy")
-    resp.setContentType("text/plain")
-    try {
-      val query = pm.newQuery(classOf[Document])
-      transaction(query) {
-        val documents = query.execute.asInstanceOf[java.util.List[Document]]
-        for (document <- documents; if (document.publicationDate == null)) {
-          println("Null date for " + document.filename)
-          val date_re(date_str) = document.filename
-          println("  Date string is '" + date_str + "'")
-          val date = format.parse(date_str)
-          println("  Date is " + date)
-          document.setPublicationDate(date)
-          pm.makePersistent(document)
-        }
-      }
-    }
-    finally {
-      pm.close
-    }
-
-    def println(s: String) = resp.getWriter.println(s)
-    def print(s: String) = resp.getWriter.print(s)
-  }
-
-  def transaction(query: javax.jdo.Query)(block: =>Unit): Unit = {
-    try { block }
-    finally { query.closeAll }
-  }
-
-}

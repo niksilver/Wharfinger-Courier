@@ -11,8 +11,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/war/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/ShowDocumentsServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/ShowDocumentsServlet.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Document.java" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Document.java" />
     </list>
     <ignored path=".idea/workspace.xml" />
     <ignored path="Wharfinger Courier.iws" />
@@ -94,10 +92,10 @@
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="KickOffFetchArticleServlet.scala" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="KickOffFetchArticleServlet.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="146" column="51" selection-start="5017" selection-end="5017" vertical-scroll-proportion="0.64041096">
+            <state line="146" column="51" selection-start="5017" selection-end="5017" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -106,16 +104,16 @@
       <file leaf-file-name="MakeDocumentServlet.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="36" selection-start="3265" selection-end="3265" vertical-scroll-proportion="0.0">
+            <state line="73" column="0" selection-start="2371" selection-end="2371" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="web.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/war/WEB-INF/web.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="36" selection-start="2898" selection-end="2898" vertical-scroll-proportion="0.0">
+            <state line="39" column="43" selection-start="1686" selection-end="1686" vertical-scroll-proportion="0.4342762">
               <folding />
             </state>
           </provider>
@@ -214,9 +212,9 @@
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala" />
         <option value="$PROJECT_DIR$/war/index.html" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/ShowDocumentsServlet.scala" />
-        <option value="$PROJECT_DIR$/war/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Document.java" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala" />
+        <option value="$PROJECT_DIR$/war/WEB-INF/web.xml" />
       </list>
     </option>
   </component>
@@ -772,7 +770,7 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4124204" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21392016" sideWeight="0.66719747" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21392016" sideWeight="0.66719747" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39968154" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32165605" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
@@ -803,7 +801,7 @@
     <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made it difficult to accidentally delete the datastore." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added dates into documents, for proper ordering.&#10;Added code to backfill dates of old documents." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -816,7 +814,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="- New servlet which mails a named file. (NB: There is a limit of 1MB for attachments)&#10;- MakeDocumentServlet cleaned up.&#10;- When document made servlet queues task to mail document&#10;- KickOffFetchArticleServlet now selects five (not one) document and processes them all, stopping when it finds one to fetch.&#10;- Admin endpoint to list past articles fixed." />
     <MESSAGE value="Corrected problem closing persistence manager too early.&#10;Corrected (I think) order in which bookmarks are checked for rejection." />
     <MESSAGE value="Started making ReadDeliciousServlet into a slightly more generic ReadBookmarksServlet, so as to be able to reader twittertim.es, and potentially others." />
     <MESSAGE value="Starting work on Twitter Times parsing." />
@@ -841,6 +838,7 @@
     <MESSAGE value="Now creating documents with images converted to text." />
     <MESSAGE value="Added a test to convert images to text plus escaping HTML." />
     <MESSAGE value="Made it difficult to accidentally delete the datastore." />
+    <MESSAGE value="Added dates into documents, for proper ordering.&#10;Added code to backfill dates of old documents." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -938,13 +936,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="36" selection-start="2898" selection-end="2898" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Document.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="20" selection-start="616" selection-end="616" vertical-scroll-proportion="0.0">
@@ -955,16 +946,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala">
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="36" selection-start="3265" selection-end="3265" vertical-scroll-proportion="0.0">
+        <state line="146" column="51" selection-start="5017" selection-end="5017" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="146" column="51" selection-start="5017" selection-end="5017" vertical-scroll-proportion="0.64041096">
+        <state line="73" column="0" selection-start="2371" selection-end="2371" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="43" selection-start="1686" selection-end="1686" vertical-scroll-proportion="0.4342762">
           <folding />
         </state>
       </provider>

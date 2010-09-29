@@ -29,10 +29,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         <servlet-class>org.pigsaw.wharfinger.MakeDocumentServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>BackfillDatesServlet</servlet-name>
-        <servlet-class>org.pigsaw.wharfinger.BackfillDatesServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>MailDocumentServlet</servlet-name>
         <servlet-class>org.pigsaw.wharfinger.MailDocumentServlet</servlet-class>
     </servlet>
@@ -66,10 +62,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     <servlet-mapping>
         <servlet-name>MakeDocumentServlet</servlet-name>
         <url-pattern>/make-document</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>BackfillDatesServlet</servlet-name>
-        <url-pattern>/backfill-dates</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MailDocumentServlet</servlet-name>

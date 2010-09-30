@@ -97,5 +97,11 @@ class URLStringTest extends Spec with ShouldMatchers {
       URLString("http://www.scala-LANG.org/node/112").isBad should be (false)
       URLString("www.scala-LANG.org/node/112").isBad should be (true)
     }
+
+    it("Should allow construction with a single string") {
+      val url = new URLString("http://www.scala-lang.org/node/112")
+      url.server should be ("http://www.scala-lang.org")
+      url.path should be ("/node/112")
+    }
   }
 }

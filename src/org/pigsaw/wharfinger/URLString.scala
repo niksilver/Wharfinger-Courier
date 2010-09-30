@@ -13,6 +13,8 @@ package org.pigsaw.wharfinger
 
 class URLString private (val server: String, val path: String) {
 
+  def this(url: String) = this(url)
+
   def isBad = (server == "")
 
   def normalise = new URLString(

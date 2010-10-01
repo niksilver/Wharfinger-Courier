@@ -103,5 +103,25 @@ class URLStringTest extends Spec with ShouldMatchers {
       url.server should be ("http://www.scala-lang.org")
       url.path should be ("/node/112")
     }
+
+    it("Should enable filtering with a trait") {
+      trait NonArticleFilter extends URLString {
+        override def isBad = (super.isBad ||
+                server == "http://www.youtube.com")
+      }
+      val url_1 = new URLString("http://www.scala-lang.org/node/112") with NonArticleFilter
+      val url_2 = new URLString("http://www.youtube.com/watch?v=HMGIbOGu8q0") with NonArticleFilter
+      url_1.isBad should be (false)
+      url_2.isBad should be (true)
+    }
+
+    it("Should detect the domain") {
+      URLString("http://tu.be/123").domain should be ("tu.be")
+      URLString("https://tu.be/123").domain should be ("tu.be")
+      URLString("http://TU.be/123").domain should be ("tu.be")
+      URLString("https://TU.be/123").domain should be ("tu.be")
+      URLString("http://tu.be:80/123").domain should be ("tu.be")
+      URLString("tu.be/123").domain should be ("")
+    }
   }
 }

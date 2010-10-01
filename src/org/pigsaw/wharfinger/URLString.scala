@@ -17,21 +17,23 @@ class URLString (url: String) {
   //   http(s)://domain.name:1234
   // from
   //   /some/page.html?q=z
-  private val server_re = """(https?:\/\/[-A-Za-z.:0-9]*)""".r
+  private val server_re = """(https?:\/\/[-A-Za-z.:0-9]*)(.*)""".r
 
-  val (server, path) = server_re.findFirstIn(url) match {
-    case Some(s) => (s, url.drop(s.length))
-    case None => ("", url)
+  val (server, path) = url match {
+    case server_re(s, p) => (s, p)
+    case _ => ("", url)
   }
 
   def isBad = (server == "")
 
-  def normalise = new URLString(
-    server.toLowerCase +
-    (path match {
+  def normalise = new URLString(normalisedServer + normalisedPath)
+
+  def normalisedServer = server.toLowerCase
+  
+  def normalisedPath = path match {
       case "/" => ""
       case _ => path
-    }))
+    }
 
   override def toString = server + path
 }

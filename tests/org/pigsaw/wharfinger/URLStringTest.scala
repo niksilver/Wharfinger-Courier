@@ -107,7 +107,7 @@ class URLStringTest extends Spec with ShouldMatchers {
     it("Should enable filtering with a trait") {
       trait NonArticleFilter extends URLString {
         override def isBad = (super.isBad ||
-                server == "http://www.youtube.com")
+                domain == "www.youtube.com")
       }
       val url_1 = new URLString("http://www.scala-lang.org/node/112") with NonArticleFilter
       val url_2 = new URLString("http://www.youtube.com/watch?v=HMGIbOGu8q0") with NonArticleFilter

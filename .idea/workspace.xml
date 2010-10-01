@@ -8,7 +8,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/URLString.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/URLString.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/URLStringTest.scala" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/URLStringTest.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -155,19 +154,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="URLString.scala" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="URLString.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/URLString.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="23" selection-start="671" selection-end="671" vertical-scroll-proportion="0.4342762">
+            <state line="28" column="23" selection-start="671" selection-end="671" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="URLStringTest.scala" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="URLStringTest.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/URLStringTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="118" column="0" selection-start="4260" selection-end="4260" vertical-scroll-proportion="0.0">
+            <state line="109" column="27" selection-start="3920" selection-end="3920" vertical-scroll-proportion="0.33047944">
               <folding />
             </state>
           </provider>
@@ -201,8 +200,8 @@
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala" />
         <option value="$PROJECT_DIR$/war/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/BookmarkFilter.scala" />
-        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/URLStringTest.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/URLString.scala" />
+        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/URLStringTest.scala" />
       </list>
     </option>
   </component>
@@ -781,7 +780,7 @@
     <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tidied up URLString." />
+    <option name="LAST_COMMIT_MESSAGE" value="Can now extract domain from URLString." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -794,7 +793,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="A more Scala-ish TwitterTimesNetworkHandler." />
     <MESSAGE value="More fine-grained testing of Twitter Times code." />
     <MESSAGE value="Started to extract tweets from Twitter Times." />
     <MESSAGE value="Extracting tweets in basic fashion from Twitter Times RSS feed." />
@@ -819,6 +817,7 @@
     <MESSAGE value="Trying to make a simple constructor that takes a trait." />
     <MESSAGE value="Should now have a simple constructor that takes a trait." />
     <MESSAGE value="Tidied up URLString." />
+    <MESSAGE value="Can now extract domain from URLString." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -916,16 +915,16 @@
         <state line="34" column="43" selection-start="1005" selection-end="1005" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/URLStringTest.scala">
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/URLString.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="0" selection-start="4260" selection-end="4260" vertical-scroll-proportion="0.0">
+        <state line="28" column="23" selection-start="671" selection-end="671" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/URLString.scala">
+    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/URLStringTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="23" selection-start="671" selection-end="671" vertical-scroll-proportion="0.4342762">
+        <state line="109" column="27" selection-start="3920" selection-end="3920" vertical-scroll-proportion="0.33047944">
           <folding />
         </state>
       </provider>

@@ -24,6 +24,8 @@ public class BookmarkPendingFetch {
     @Persistent
     private int fetchAttempts = 0;
 
+    /** Any URL will be normalised.
+     */
     public BookmarkPendingFetch(String url, String title, String citation) {
         this.url = url;
         this.title = title;

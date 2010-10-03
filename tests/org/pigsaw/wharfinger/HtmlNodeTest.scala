@@ -4,7 +4,7 @@ import org.scalatest.Spec
 import org.scalatest.matchers.ShouldMatchers
 import Preamble._
 import java.io.{StringReader, IOException}
-import xml.NodeSeq
+import scala.xml._
 
 /**
  * Created by IntelliJ IDEA.
@@ -104,6 +104,20 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
       val html = HTMLNode(new URLReader("http://bit.ly/9NQcyA", "UTF-8"))
       val title = (html \\ "title").text
       title should include ("A mobile developer day too far")
+    }
+
+    it("Should be able to transform elements recursively") {
+      val nested_as = <a level="one"><a level="two"></a><b><a level="three"><a>4</a></a></b></a>
+      def asToAsTrans(n: Node): Node = {
+        n match {
+          case e: Elem if (e.label == "a") =>
+            e.copy(e.prefix, "A", e.attributes, e.scope, e.child)
+          case x => x
+        }
+      }
+
+      val nested_As = HTMLNode.transform(nested_as, asToAsTrans)
+      nested_As should be (<A level="one"><A level="two"></A><b><A level="three"><A>4</A></A></b></A>)
     }
   }
 

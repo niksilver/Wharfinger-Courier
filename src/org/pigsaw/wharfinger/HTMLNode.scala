@@ -35,12 +35,20 @@ object HTMLNode {
 
   def transform(n: Node, fn: (Node)=>Node): Node = {
     n match {
-      case e: Elem if e.child.length == 0 => fn(e)
-      case e: Elem => e.copy(e.prefix, e.label,
-        e.attributes, e.scope, e.child map (n => transform(n, fn)))
-      case _ => fn(n)
+      case e: Elem => {
+        fn(e) match {
+          case e2: Elem => transformChildren(e2, fn)
+          case n => n
+        }
+      }
+      case _ => {
+        fn(n)
+      }
     }
   }
+
+  def transformChildren(e: Elem, fn: (Node)=>Node): Node =
+    e.copy(e.prefix, e.label, e.attributes, e.scope, e.child map (n => transform(n, fn) ))
 
   def escapeTrans(n: Node): Node = n match {
     case a:Atom[_] if needsEscaping(a.data.toString) => new Unparsed(escapeForHTML(a.data.toString))

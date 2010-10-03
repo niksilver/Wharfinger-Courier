@@ -4,14 +4,20 @@ object HTMLNode {
 
   def transform(n: Node, fn: (Node)=>Node): Node = {
     n match {
-      case e: Elem if e.child.length == 0 => fn(e)
       case e: Elem => {
-        e.copy(e.prefix, e.label, e.attributes, e.scope, e.child map (n => { println("    ---> " + n); transform(n, fn) }))
+        fn(e) match {
+          case e2: Elem => transformChildren(e2, fn)
+          case n => n
+        }
       }
       case _ => {
         fn(n)
       }
     }
+  }
+
+  def transformChildren(e: Elem, fn: (Node)=>Node): Node = {
+    e.copy(e.prefix, e.label, e.attributes, e.scope, e.child map (n => { println("    ---> " + n); transform(n, fn) }))
   }
 
   def escapeTrans(n: Node): Node = n match {
@@ -61,3 +67,17 @@ object HTMLNode {
 
 val xml = <p><a href="/hello.txt"><img src="hello.jpg" alt="Smiley"/></a><img src="underline.jpg" alt="Underline"/></p>
 HTMLNode.imagesToText(xml)
+
+import scala.xml.Node
+import scala.xml.Elem
+
+val nested_as = <a level="one"><a level="two"></a><b><a level="three"><a>4</a></a></b></a>
+def asToAsTrans(n: Node): Node = {
+  n match {
+      case e: Elem if (e.label == "a") =>
+        e.copy(e.prefix, "A", e.attributes, e.scope, e.child)
+      case x => x
+    }
+}
+
+HTMLNode.transform(nested_as, asToAsTrans)

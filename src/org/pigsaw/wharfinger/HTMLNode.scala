@@ -35,15 +35,11 @@ object HTMLNode {
 
   def transform(n: Node, fn: (Node)=>Node): Node = {
     n match {
-      case e: Elem => {
-        fn(e) match {
+      case e: Elem => fn(e) match {
           case e2: Elem => transformChildren(e2, fn)
           case n => n
         }
-      }
-      case _ => {
-        fn(n)
-      }
+      case _ => fn(n)
     }
   }
 

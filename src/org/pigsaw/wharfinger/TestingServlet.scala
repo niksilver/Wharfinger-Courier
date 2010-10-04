@@ -28,7 +28,8 @@ class TestingServlet extends HttpServlet {
       case "delete-message" => testDeleteMessage
       case "mail-simple-message" => testMailSimpleMessage
       case "mail-message-with-html-attachment" => testMailMessageWithHTMLAttachment
-      case "test-tag-soup" => testTagSoup
+      case "tag-soup" => testTagSoup
+      case "instapaper-and-transformation" => testInstapaperAndTransformation
       case _ => testBasicOutput
     }
 
@@ -124,6 +125,14 @@ class TestingServlet extends HttpServlet {
       val html = HTMLNode(new URLReader(url, "UTF-8"))
       resp.setContentType("text/html")
       print(html.toString)
+    }
+
+    def testInstapaperAndTransformation() {
+      val url = req.getParameter("url")
+      val handler = new InstapaperHandler(url)
+      val Some(content_div) = handler.getContentDiv
+      resp.setContentType("text/html")
+      print(content_div.imagesToText.escapeForHTML.toString)
     }
 
     def transaction(query: javax.jdo.Query)(block: Unit): Unit = {

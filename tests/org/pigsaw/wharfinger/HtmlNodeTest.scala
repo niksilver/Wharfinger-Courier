@@ -92,6 +92,20 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
         """<p><a href="/hello.txt"></a></p>""")
     }
 
+    it("Should be able to replace images which have non-empty Text nodes as alt text") {
+      val text = new Text("Hello")
+      val xml = <p><a href="/hello.txt"><img src="hello.jpg" alt={ text }/></a></p>
+      HTMLNode.imagesToText(xml).toString should be === (
+        """<p><a href="/hello.txt">[Image: Hello]</a></p>""")
+    }
+
+    it("Should be able to replace images which have empty Text nodes as alt text") {
+      val empty_text = new Text("")
+      val xml = <p><a href="/hello.txt"><img src="hello.jpg" alt={ empty_text }/></a></p>
+      HTMLNode.imagesToText(xml).toString should be === (
+        """<p><a href="/hello.txt"></a></p>""")
+    }
+
     it("Should allow you to replace images and escape HTML") {
       import Preamble._
       val msg = "Message\u2014again"

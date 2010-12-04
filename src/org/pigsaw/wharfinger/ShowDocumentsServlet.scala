@@ -21,9 +21,11 @@ class ShowDocumentsServlet extends HttpServlet {
 
     def showDocuments() {
       resp.setContentType("text/html")
+      println("First 10 only...<br/>")
       val pm = PMF.get.getPersistenceManager
       val query = pm.newQuery(classOf[Document])
       query.setOrdering("publicationDate desc")
+      query.setRange(0, 10)
       transaction(query) {
         val documents = query.execute.asInstanceOf[java.util.List[Document]]
         for (document <- documents) {

@@ -26,7 +26,7 @@ class DocumentMaker(val title: String, val dateline: String) {
       toc appendAll a_href("#"+chapter_name, article.title) +
         small( div_style( "margin-left: 1em",
           i(article.getCitation) + br +
-          article.url + " " + a_href(article.url, "[>]")
+          article.url + " " + a_href(article.url, "[&gt;]")
         )
       )
 

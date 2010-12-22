@@ -121,7 +121,7 @@
       <file leaf-file-name="DocumentMaker.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/DocumentMaker.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="55" selection-start="851" selection-end="851" vertical-scroll-proportion="0.952">
+            <state line="18" column="0" selection-start="386" selection-end="386" vertical-scroll-proportion="0.32020548">
               <folding />
             </state>
           </provider>
@@ -793,14 +793,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1032" height="746" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4124204" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21392016" sideWeight="0.66719747" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39968154" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32165605" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32165605" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24974412" sideWeight="0.22133759" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958034" sideWeight="0.65923566" order="4" side_tool="false" content_ui="tabs" />
@@ -828,7 +828,7 @@
     <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added limiting to /show-documents, otherwise was getting an OutOfMemory error inside DataNucleus." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added small links to original web page, for easier bookmarking on the desktop." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -841,7 +841,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Just integrated Twitter Times into fetching.&#10;Still need to see if it works." />
     <MESSAGE value="Added Twitter Times scraping to the index page and cron job." />
     <MESSAGE value="Removed some irrelevant code and tests." />
     <MESSAGE value="Got a function to replace images with alt text." />
@@ -866,6 +865,7 @@
     <MESSAGE value="Corrected bug with converting images to text - we didn't catch the case where for &lt;img src=&quot;...&quot; alt=&quot;something&quot;&gt; the &quot;something&quot; may be represented as a Text node." />
     <MESSAGE value="Continued working on ContentExtractor, translating how Readability works." />
     <MESSAGE value="Added limiting to /show-documents, otherwise was getting an OutOfMemory error inside DataNucleus." />
+    <MESSAGE value="Added small links to original web page, for easier bookmarking on the desktop." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -970,7 +970,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/DocumentMaker.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="55" selection-start="851" selection-end="851" vertical-scroll-proportion="0.952">
+        <state line="18" column="0" selection-start="386" selection-end="386" vertical-scroll-proportion="0.32020548">
           <folding />
         </state>
       </provider>

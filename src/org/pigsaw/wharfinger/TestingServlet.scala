@@ -29,6 +29,9 @@ class TestingServlet extends HttpServlet {
       case "mail-simple-message" => testMailSimpleMessage
       case "mail-message-with-html-attachment" => testMailMessageWithHTMLAttachment
       case "tag-soup" => testTagSoup
+      case "tag-soup-and-character-codes" => testTagSoupAndCharacterCodes
+      case "instapaper" => testInstapaper
+      case "instapaper-and-character-codes" => testInstapaperAndCharacterCodes
       case "instapaper-and-transformation" => testInstapaperAndTransformation
       case _ => testBasicOutput
     }
@@ -127,12 +130,46 @@ class TestingServlet extends HttpServlet {
       print(html.toString)
     }
 
+    def characterView(c: Char) = c.toString + " (" + c.toInt + ") "
+
+    def testTagSoupAndCharacterCodes() {
+      val url = req.getParameter("url")
+      val html = HTMLNode(new URLReader(url, "UTF-8"))
+      resp.setContentType("text/html")
+      print(html.toString flatMap characterView)
+    }
+
+    def testInstapaper() {
+      val url = req.getParameter("url")
+      val handler = new InstapaperHandler(url)
+      val Some(content_div) = handler.getContentDiv
+      resp.setContentType("text/html")
+      print(content_div.toString)
+    }
+
+    def testInstapaperAndCharacterCodes() {
+      val url = req.getParameter("url")
+      val handler = new InstapaperHandler(url)
+      val Some(content_div) = handler.getContentDiv
+      resp.setContentType("text/html")
+      print(content_div.toString flatMap characterView)
+    }
+
     def testInstapaperAndTransformation() {
       val url = req.getParameter("url")
       val handler = new InstapaperHandler(url)
       val Some(content_div) = handler.getContentDiv
       resp.setContentType("text/html")
       print(content_div.imagesToText.escapeForHTML.toString)
+    }
+
+    def testInstapaperAndTransformationWithCharacterCodes() {
+      val url = req.getParameter("url")
+      val handler = new InstapaperHandler(url)
+      val Some(content_div) = handler.getContentDiv
+      resp.setContentType("text/html")
+      print(content_div.imagesToText.escapeForHTML.toString flatMap
+        {c => c.toString + " (" + c.toInt + ") "})
     }
 
     def transaction(query: javax.jdo.Query)(block: Unit): Unit = {

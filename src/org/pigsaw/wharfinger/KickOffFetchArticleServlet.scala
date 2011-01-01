@@ -2,7 +2,6 @@ package org.pigsaw.wharfinger
 
 import javax.servlet.http.{HttpServletResponse, HttpServletRequest, HttpServlet}
 import java.net.URLEncoder
-import scala.xml.Node
 import scala.collection.JavaConversions._
 import Preamble._
 import javax.jdo.PersistenceManager
@@ -12,6 +11,7 @@ import java.util.logging.Logger
 import com.google.appengine.api.labs.taskqueue.TaskOptions.Method
 import io.Source
 import util.parsing.json.{JSONObject, JSON, JSONType}
+import xml.{NodeSeq, Node}
 
 /**
  * Kick off fetching a pending article.
@@ -197,9 +197,17 @@ class ClnMeHandler(article_url: String) {
   val url: String = "http://cln.me/clean.json?url=" +
           URLEncoder.encode(article_url, "UTF-8")
 
-  def getJSONText(): Option[String] = {
+  def getJSONText(): String = { Source.fromURL(url, "UTF-8").mkString }
+
+  def getCleanHTMLAsText(): String = {
+    val json_text = getJSONText
+    val Some(json) = JSON.parseRaw(json_text)
+    json.asInstanceOf[JSONObject].obj("cleanHtml").asInstanceOf[String]
+  }
+
+  def getCleanHTML(): Option[NodeSeq] = {
     try {
-      Some( Source.fromURL(url, "UTF-8").mkString )
+      Some( SloppyXMLNodeSeq(new java.io.StringReader(getCleanHTMLAsText)) )
     }
     catch {
       case e => {
@@ -211,9 +219,4 @@ class ClnMeHandler(article_url: String) {
     }
   }
 
-  def getCleanHTMLAsText(): Option[String] = {
-    val Some(json_text) = getJSONText
-    val Some(json) = JSON.parseRaw(json_text)
-    Some( json.asInstanceOf[JSONObject].obj("cleanHtml").asInstanceOf[String] )
-  }
 }

@@ -23,21 +23,28 @@ class ClnMeHandlerTest extends Spec with ShouldMatchers {
 
     it("Should be able to read JSON text") {
       val handler = new ClnMeHandler("http://online.wsj.com/article/SB10001424052748703977004575393173432219064.html")
-      val Some(text) = handler.getJSONText
+      val text = handler.getJSONText
       text should include ("""videos":[],"cleanHtml":"<div """)
     }
 
     it("Should be able to find the clean HTML as text") {
       val handler = new ClnMeHandler("http://online.wsj.com/article/SB10001424052748703977004575393173432219064.html")
-      val Some(text) = handler.getCleanHTMLAsText
+      val text = handler.getCleanHTMLAsText
       text should include ("more than 100 tracking tools")
     }
 
-    /*it("Should be able to find the content div") {
-      val handler = new InstapaperHandler("http://online.wsj.com/article/SB10001424052748703977004575393173432219064.html")
-      val Some(content) = handler.getContentDiv()
+    it("Should be able to find the clean HTML") {
+      val handler = new ClnMeHandler("http://online.wsj.com/article/SB10001424052748703977004575393173432219064.html")
+      val Some(content) = handler.getCleanHTML
       val h1 = content \\ "h1"
-      h1.text should be ("Sites Feed Personal Details To New Tracking Industry")
-    }*/
+      h1.text should be ("Personal Information Exposed Via Biggest U.S. Websites")
+    }
+
+    it("Should handle an error") {
+      val handler = new ClnMeHandler("rubbish URL")
+      val content = handler.getCleanHTML
+      content should be (None)
+    }
+
   }
 }

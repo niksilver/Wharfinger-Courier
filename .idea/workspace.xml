@@ -9,7 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Wharfinger Courier.iml" afterPath="$PROJECT_DIR$/Wharfinger Courier.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/ClnMeHandlerTest.scala" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/ClnMeHandlerTest.scala" />
     </list>
@@ -96,7 +95,7 @@
       <file leaf-file-name="KickOffFetchArticleServlet.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="202" column="5" selection-start="6648" selection-end="6648" vertical-scroll-proportion="0.5322034">
+            <state line="212" column="17" selection-start="6977" selection-end="6977" vertical-scroll-proportion="0.620339">
               <folding />
             </state>
           </provider>
@@ -123,7 +122,7 @@
       <file leaf-file-name="ClnMeHandlerTest.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/ClnMeHandlerTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="58" selection-start="1264" selection-end="1264" vertical-scroll-proportion="0.0">
+            <state line="37" column="23" selection-start="1452" selection-end="1452" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -330,7 +329,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="50" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="78" />
     <property name="project.structure.proportion" value="0.15" />
@@ -685,7 +684,7 @@
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated for IntelliJ 10.0.1.&#10;Added the start of use of cln.me instead of Instapaper. Tests run." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding more to use cln.me" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -698,7 +697,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Can handle images with empty or no alt text." />
     <MESSAGE value="Now creating documents with images converted to text." />
     <MESSAGE value="Added a test to convert images to text plus escaping HTML." />
     <MESSAGE value="Made it difficult to accidentally delete the datastore." />
@@ -723,6 +721,7 @@
     <MESSAGE value="Corrected HTML error." />
     <MESSAGE value="Added some tests around character encodings. It seems Instapaper has a problem with &#10;http://www.nytimes.com/2010/12/27/business/media/27stewart.html?_r=1&#10;See&#10;http://www.instapaper.com/text?u=http%3A%2F%2Fwww.nytimes.com%2F2010%2F12%2F27%2Fbusiness%2Fmedia%2F27stewart.html%3F_r%3D1" />
     <MESSAGE value="Updated for IntelliJ 10.0.1.&#10;Added the start of use of cln.me instead of Instapaper. Tests run." />
+    <MESSAGE value="Adding more to use cln.me" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -791,13 +790,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/ContentExtractor.not-scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="14" selection-start="368" selection-end="368" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlTest.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="7" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0">
@@ -819,13 +811,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="98" selection-start="2633" selection-end="2721" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/httpcontent.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="99" selection-start="17" selection-end="116" vertical-scroll-proportion="0.0">
@@ -833,16 +818,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="98" selection-start="2633" selection-end="2721" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/ContentExtractor.not-scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="6" selection-start="245" selection-end="245" vertical-scroll-proportion="0.42394015">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/ClnMeHandlerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="58" selection-start="1264" selection-end="1264" vertical-scroll-proportion="0.0">
+        <state line="37" column="23" selection-start="1452" selection-end="1452" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="202" column="5" selection-start="6648" selection-end="6648" vertical-scroll-proportion="0.5322034">
+        <state line="212" column="17" selection-start="6977" selection-end="6977" vertical-scroll-proportion="0.620339">
           <folding />
         </state>
       </provider>
@@ -852,13 +851,18 @@
     <states>
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
-          <artifact-editor />
+          <artifact-editor>
+            <show-content>
+              <type id="library" />
+              <type id="artifact" />
+            </show-content>
+          </artifact-editor>
           <last-edited>wharfinger-engine</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
+                <option value="0.51480263" />
               </list>
             </option>
           </splitter-proportions>
@@ -911,6 +915,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -918,7 +923,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Scala</last-edited>
+          <last-edited>Local classes</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -10,6 +10,8 @@ import com.google.appengine.api.labs.taskqueue.QueueFactory
 import com.google.appengine.api.labs.taskqueue.TaskOptions.Builder._
 import java.util.logging.Logger
 import com.google.appengine.api.labs.taskqueue.TaskOptions.Method
+import io.Source
+import util.parsing.json.{JSONObject, JSON, JSONType}
 
 /**
  * Kick off fetching a pending article.
@@ -194,4 +196,24 @@ class ClnMeHandler(article_url: String) {
   val log = Logger.getLogger(this.getClass.getName)
   val url: String = "http://cln.me/clean.json?url=" +
           URLEncoder.encode(article_url, "UTF-8")
+
+  def getJSONText(): Option[String] = {
+    try {
+      Some( Source.fromURL(url, "UTF-8").mkString )
+    }
+    catch {
+      case e => {
+        val str = new java.io.StringWriter
+        e.printStackTrace(new java.io.PrintWriter(str))
+        log.warning(str.toString)
+        None
+      }
+    }
+  }
+
+  def getCleanHTMLAsText(): Option[String] = {
+    val Some(json_text) = getJSONText
+    val Some(json) = JSON.parseRaw(json_text)
+    Some( json.asInstanceOf[JSONObject].obj("cleanHtml").asInstanceOf[String] )
+  }
 }

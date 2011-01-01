@@ -54,7 +54,7 @@
         </javac>
     </target>
 
-    <target name="compile-scala" depends="init,compile-java">
+    <target name="compile-scala-app" depends="init,compile-java">
         <mkdir dir="${build.dir}"/>
         <scalac srcdir="${sources.dir}"
                 destdir="${build.dir}"
@@ -63,8 +63,17 @@
         </scalac>
     </target>
 
+    <target name="compile-tests" depends="init,compile-scala-app">
+        <mkdir dir="${build.dir}"/>
+        <scalac srcdir="${tests.dir}"
+                destdir="${build.dir}"
+                classpathref="build.classpath">
+            <include name="**/*.scala"/>
+        </scalac>
+    </target>
+
     <target name="populate-war"
-            depends="compile-java,compile-scala"
+            depends="compile-java,compile-scala-app"
             description="Copies the app engine and other JARs to the WAR.">
         <copy todir="${war.classes}">
           <fileset dir="${sources.dir}">
@@ -97,6 +106,6 @@
     </target>
 
     <target name="finish-war"
-            depends="compile-java,compile-scala,populate-war,datanucleus-enhance"/>
+            depends="compile-java,compile-scala-app,populate-war,datanucleus-enhance"/>
 
 </project>

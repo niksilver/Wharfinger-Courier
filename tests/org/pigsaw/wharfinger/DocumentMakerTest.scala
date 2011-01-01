@@ -14,14 +14,14 @@ class DocumentMakerTest extends Spec with ShouldMatchers {
   describe("DocumentMaker") {
     it("Should be able to create a document with two articles") {
       val maker = new DocumentMaker("Wharfinger Courier", "25 Aug 2010")
-      val article1 = new Article(url = "http://warring.com/winning",
-        citation = "Spotted by one of your followers",
-        title = "How I won the war",
-        content = "<div>I fought bravely</div>")
-      val article2 = new Article(url = "http://cows.co.uk/colours",
-        citation = "Spotted by someone",
-        title = "The colour of cows",
-        content = "<p>Brown, black and white</p>")
+      val article1 = new Article("http://warring.com/winning",
+        "Spotted by one of your followers",
+        "How I won the war",
+        "<div>I fought bravely</div>")
+      val article2 = new Article("http://cows.co.uk/colours",
+        "Spotted by someone",
+        "The colour of cows",
+        "<p>Brown, black and white</p>")
       maker.add(article1)
       maker.add(article2)
       val document = XML.loadString(maker.document)

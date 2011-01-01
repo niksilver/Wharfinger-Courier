@@ -189,3 +189,9 @@ class InstapaperHandler(article_url: String) {
     }
   }
 }
+
+class ClnMeHandler(article_url: String) {
+  val log = Logger.getLogger(this.getClass.getName)
+  val url: String = "http://cln.me/clean.json?url=" +
+          URLEncoder.encode(article_url, "UTF-8")
+}

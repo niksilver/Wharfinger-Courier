@@ -35,7 +35,12 @@ public class Article {
     public String getContent() {
         return (content == null) ? null : content.getValue();
     }
-    
+
+    public int getContentLength() {
+        String content = getContent();
+        return (content == null) ? 0 : content.length();
+    }
+
     public String getCitation() {
         return (citation == null) ? null : citation.getValue();
     }

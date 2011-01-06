@@ -47,5 +47,36 @@ class DocumentMakerTest extends Spec with ShouldMatchers {
       contents(1).toString should be === ("""<div class="wharfinger-content"><p>Brown, black and white</p></div>""")
     }
 
+    it("Should insert articles up to 740k") {
+      def content(msg: String, size: Int): String =
+        (msg * (size/msg.length + 1)).slice(0, size)
+      val maker = new DocumentMaker("Wharfinger Courier", "25 Aug 2010")
+
+      val article1 = new Article("http://art.com/1","Cit 1", "Title 1", content("Content 1 ", 100*1024))
+      val article2 = new Article("http://art.com/2","Cit 2", "Title 2", content("Content 2 ", 100*1024))
+      val article3 = new Article("http://art.com/3","Cit 3", "Title 3", content("Content 3 ", 100*1024))
+      val article4 = new Article("http://art.com/4","Cit 4", "Title 4", content("Content 4 ", 100*1024))
+      val article5 = new Article("http://art.com/5","Cit 5", "Title 5", content("Content 5 ", 100*1024))
+      val article6 = new Article("http://art.com/6","Cit 6", "Title 6", content("Content 6 ", 100*1024))
+      val article7 = new Article("http://art.com/7","Cit 7", "Title 7", content("Content 7 ", 100*1024))
+      val article8 = new Article("http://art.com/8","Cit 8", "Title 8", content("Content 8 ", 100*1024))
+      val article9 = new Article("http://art.com/9","Cit 9", "Title 9", content("Content 9 ", 100*1024))
+
+      maker.add(article1) should be (true)
+      maker.add(article2) should be (true)
+      maker.add(article3) should be (true)
+      maker.add(article4) should be (true)
+      maker.add(article5) should be (true)
+      maker.add(article6) should be (true)
+      maker.add(article7) should be (true)
+      maker.add(article8) should be (false)
+      maker.add(article9) should be (false)
+
+      maker.articles.length should be (7)
+
+      maker.rejectedArticles should contain (article8)
+      maker.rejectedArticles should contain (article9)
+    }
+
   }
 }

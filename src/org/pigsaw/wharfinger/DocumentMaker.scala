@@ -5,13 +5,27 @@ import Preamble._
 
 /**
  * Make a Wharfinger Courier document.
+ * Will only add articles to a maximum length of 740k
  */
 
 class DocumentMaker(val title: String, val dateline: String) {
 
   val articles = new ListBuffer[Article]
+  val maxArticlesLength = 740 * 1024
+  val rejectedArticles = new ListBuffer[Article]
 
-  def add(article: Article) { articles += article }
+  def add(article: Article): Boolean = {
+    val articles_length = articles.foldLeft(0)(_ + _.getContentLength)
+    if (articles_length + article.getContentLength > maxArticlesLength) {
+      rejectedArticles += article
+      false
+    }
+    else {
+      articles += article
+      true
+    }
+
+  }
 
   def document: String = {
     val toc = new StringBuilder

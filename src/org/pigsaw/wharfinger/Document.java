@@ -39,6 +39,11 @@ public class Document {
         return (content == null) ? null : content.getValue();
     }
 
+    public int getContentLength() {
+        String content = getContent();
+        return (content == null) ? 0 : content.length();
+    }
+
     public void setPublicationDate(Date d) {
         publicationDate = d;
     }

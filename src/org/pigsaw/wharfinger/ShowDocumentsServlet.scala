@@ -20,20 +20,24 @@ class ShowDocumentsServlet extends HttpServlet {
     def print(s: String) = resp.getWriter.print(s)
 
     def showDocuments() {
+      val offset = req.getParameter("offset").toInt
+      val extent = 10
       resp.setContentType("text/html")
-      println("First 10 only...<br/>")
       val pm = PMF.get.getPersistenceManager
       val query = pm.newQuery(classOf[Document])
       query.setOrdering("publicationDate desc")
-      query.setRange(0, 10)
+      query.setRange(offset, offset+extent)
       transaction(query) {
         val documents = query.execute.asInstanceOf[java.util.List[Document]]
         for (document <- documents) {
           println("<a href=\"/show-document/" + document.filename + "\">" +
-                  document.filename + "</a><br/>")
+                  document.filename + "</a> (" + kilobytes(document.getContentLength) + " KB)<br/>")
         }
       }
+      println("<br/><a href=\"/show-documents?offset=" + (offset + extent) + "\">Next...</a>")
     }
+
+    def kilobytes(bytes: Int): String = format("%,d", (bytes/1024.0 + 0.5).asInstanceOf[Int])
 
     def showDocument() {
       val filename = req.getPathInfo.tail.split('/')(0)

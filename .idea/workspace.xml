@@ -9,8 +9,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/ClnMeHandlerTest.scala" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/ClnMeHandlerTest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Document.java" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Document.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/ShowDocumentsServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/ShowDocumentsServlet.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/index.html" afterPath="$PROJECT_DIR$/war/index.html" />
     </list>
     <ignored path="Wharfinger Courier.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -92,11 +93,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="KickOffFetchArticleServlet.scala" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="KickOffFetchArticleServlet.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="212" column="17" selection-start="6977" selection-end="6977" vertical-scroll-proportion="0.620339">
+            <state line="27" column="70" selection-start="981" selection-end="999" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Article.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Article.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="11" selection-start="732" selection-end="732" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShowDocumentsServlet.scala" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/ShowDocumentsServlet.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="36" selection-start="949" selection-end="949" vertical-scroll-proportion="1.0077319">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Document.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Document.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="55" selection-start="1053" selection-end="1053" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="method#getContent#0;class#Document#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -147,17 +177,17 @@
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" />
         <option value="$PROJECT_DIR$/scripts/seq-matching.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/ContentExtractor.scala" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/ShowDocumentsServlet.scala" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Document.java" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/DocumentMaker.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" />
-        <option value="$PROJECT_DIR$/war/index.html" />
         <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/ReadBookmarksServlet.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DocumentMakerTest.scala" />
         <option value="$PROJECT_DIR$/scripts/httpcontent.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/ClnMeHandlerTest.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Document.java" />
+        <option value="$PROJECT_DIR$/war/index.html" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/ShowDocumentsServlet.scala" />
       </list>
     </option>
   </component>
@@ -219,7 +249,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -235,6 +264,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="war" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -291,6 +334,32 @@
               <option name="myItemId" value="org" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wharfinger" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KickOffFetchArticleServlet.scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -308,6 +377,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
       <pane id="Scope">
         <subPane subId="Problems" />
       </pane>
@@ -648,24 +718,24 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1032" height="746" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41111112" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21289662" sideWeight="0.67142856" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21289662" sideWeight="0.6793651" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39968154" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32063493" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32063493" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24974412" sideWeight="0.22133759" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958034" sideWeight="0.65923566" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39918116" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23746161" sideWeight="0.67142856" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23746161" sideWeight="0.6793651" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.0" order="2" side_tool="false" content_ui="tabs" x="124" y="296" width="736" height="409" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24974412" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -684,7 +754,7 @@
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding more to use cln.me" />
+    <option name="LAST_COMMIT_MESSAGE" value="Have done most of the ClnMeHandler.&#10;Baffled why tests are each picked up twice, unless a clean-all is done first.&#10;Need to remove the &quot;Original source&quot; line from the HTML." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -697,7 +767,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Now creating documents with images converted to text." />
     <MESSAGE value="Added a test to convert images to text plus escaping HTML." />
     <MESSAGE value="Made it difficult to accidentally delete the datastore." />
     <MESSAGE value="Added dates into documents, for proper ordering.&#10;Added code to backfill dates of old documents." />
@@ -722,6 +791,7 @@
     <MESSAGE value="Added some tests around character encodings. It seems Instapaper has a problem with &#10;http://www.nytimes.com/2010/12/27/business/media/27stewart.html?_r=1&#10;See&#10;http://www.instapaper.com/text?u=http%3A%2F%2Fwww.nytimes.com%2F2010%2F12%2F27%2Fbusiness%2Fmedia%2F27stewart.html%3F_r%3D1" />
     <MESSAGE value="Updated for IntelliJ 10.0.1.&#10;Added the start of use of cln.me instead of Instapaper. Tests run." />
     <MESSAGE value="Adding more to use cln.me" />
+    <MESSAGE value="Have done most of the ClnMeHandler.&#10;Baffled why tests are each picked up twice, unless a clean-all is done first.&#10;Need to remove the &quot;Original source&quot; line from the HTML." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -747,59 +817,66 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="159" column="30" selection-start="5820" selection-end="5820" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="5" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.76949155" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="106" selection-start="2408" selection-end="2408" vertical-scroll-proportion="-0.65384614">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Document.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="0" selection-start="1003" selection-end="1003" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/BookmarkPendingFetch.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="18" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="28" column="18" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/ReadBookmarksServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="31" selection-start="874" selection-end="874" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="25" column="31" selection-start="874" selection-end="874" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DocumentMakerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="8" selection-start="713" selection-end="713" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="23" column="8" selection-start="713" selection-end="713" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="7" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="5" column="7" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="0" selection-start="3008" selection-end="3008" vertical-scroll-proportion="0.0">
+        <state line="69" column="0" selection-start="3008" selection-end="3008" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/ContentExtractor.not-scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="6" selection-start="245" selection-end="245" vertical-scroll-proportion="0.42394015" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="98" selection-start="2633" selection-end="2721" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/httpcontent.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="99" selection-start="17" selection-end="116" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/ClnMeHandlerTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="23" selection-start="1452" selection-end="1452" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="70" selection-start="981" selection-end="999" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="6" selection-start="237" selection-end="237" vertical-scroll-proportion="0.2819237">
           <folding />
         </state>
       </provider>
@@ -811,37 +888,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/httpcontent.scala">
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Document.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="99" selection-start="17" selection-end="116" vertical-scroll-proportion="0.0">
+        <state line="43" column="55" selection-start="1053" selection-end="1053" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="method#getContent#0;class#Document#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="45" selection-start="1388" selection-end="1388" vertical-scroll-proportion="0.23226951">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala">
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/ShowDocumentsServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="98" selection-start="2633" selection-end="2721" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/ContentExtractor.not-scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="6" selection-start="245" selection-end="245" vertical-scroll-proportion="0.42394015">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/ClnMeHandlerTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="23" selection-start="1452" selection-end="1452" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="212" column="17" selection-start="6977" selection-end="6977" vertical-scroll-proportion="0.620339">
+        <state line="28" column="36" selection-start="949" selection-end="949" vertical-scroll-proportion="1.0077319">
           <folding />
         </state>
       </provider>

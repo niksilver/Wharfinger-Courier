@@ -5,7 +5,8 @@ import Preamble._
 
 /**
  * Make a Wharfinger Courier document.
- * Will only add articles to a maximum length of 740k
+ * Will only add articles to a maximum length of 740k total.
+ * This is to cope with GAE datastore's max entity size.
  */
 
 class DocumentMaker(val title: String, val dateline: String) {
@@ -27,11 +28,22 @@ class DocumentMaker(val title: String, val dateline: String) {
 
   }
 
+  def articleSummary: String = {
+    (articles.length match {
+      case 1 => "1 article"
+      case n => n + " articles"
+    }) + (rejectedArticles.length match {
+      case 0 => ""
+      case n => ", " + n + " remaining"
+    })
+  }
+
   def document: String = {
     val toc = new StringBuilder
     val main = new StringBuilder
 
-    val toc_title = a_name("toc") + a_name("start") + center(h3(title) + h4(dateline))
+    val toc_title = a_name("toc") + a_name("start") + center(h3(title) + h4(dateline)) +
+      p_align_right(small(articleSummary))
 
     for (idx <- 0 until articles.length;
          article = articles(idx);

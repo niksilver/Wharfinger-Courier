@@ -35,6 +35,7 @@ class DocumentMakerTest extends Spec with ShouldMatchers {
       toc(0).toString should be === ("""<a name="toc"></a>""")
       toc(1).toString should be === ("""<a name="start"></a>""")
       toc(2).toString should be === ("""<center><h3>Wharfinger Courier</h3><h4>25 Aug 2010</h4></center>""")
+      toc(3).toString should be === ("""<p align="right"><small>2 articles</small></p>""")
 
       val chapter_refs = (document findElementAttributeText ("div", "@class", "wharfinger-chapter")) \ "a"
       chapter_refs.length should be === (2)
@@ -76,6 +77,15 @@ class DocumentMakerTest extends Spec with ShouldMatchers {
 
       maker.rejectedArticles should contain (article8)
       maker.rejectedArticles should contain (article9)
+
+      val document = XML.loadString(maker.document)
+      val tocs: Seq[Node] = document findElementAttributeText ("div", "@class", "wharfinger-toc")
+      val toc = tocs(0).child
+      // toc(0) is <a name="toc"></a>
+      // toc(1) is <a name="start"></a>
+      // toc(2) is <center><h3>Wharfinger Courier</h3><h4>25 Aug 2010</h4></center>
+      toc(3).toString should be === ("""<p align="right"><small>7 articles, 2 remaining</small></p>""")
+
     }
 
   }

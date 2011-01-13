@@ -29,9 +29,10 @@ class ShowDocumentsServlet extends HttpServlet {
       query.setRange(offset, offset+extent)
       transaction(query) {
         val documents = query.execute.asInstanceOf[java.util.List[Document]]
-        for (document <- documents) {
-          println("<a href=\"/show-document/" + document.filename + "\">" +
-                  document.filename + "</a> (" + kilobytes(document.getContentLength) + " KB)<br/>")
+        for (document <- documents; filename = document.filename) {
+          println("<a href=\"/show-document/" + filename + "\">" +
+                  filename + "</a> (" + kilobytes(document.getContentLength) +
+                  " KB) <a href=\"/mail-document?filename=" + filename + "\">[Mail]</a><br/>")
         }
       }
       println("<br/><a href=\"/show-documents?offset=" + (offset + extent) + "\">Next...</a>")

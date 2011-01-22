@@ -4,6 +4,7 @@ import scala.collection.mutable.ListBuffer
 import java.io.{StringReader, Reader}
 import Preamble._
 import xml.{Elem, Node, XML}
+import util.matching.Regex
 
 /**
  * Read and parse the Twitter Times RSS feed
@@ -51,14 +52,29 @@ class TwitterTimesBookmark (item: Node) {
     case _ => " and " + num_others + " others"
   }
 
-  /**To extract a username look for an A HREF to http://twitter.com/username.
+  /** To extract a username look for an A HREF to http://twitter.com/username.
    */
-  def username(div: Node): String = ((div \ "span")(0) \ "a" \ "@href" text) split '/' last
+  def username(div: Node): String = ":(.|\\s)*".r replaceFirstIn (div.text.trim, "")
+
+  /** Remove the username and ": " from the start of the tweet text.
+   */
+  def removeUsername(txt: String) = "^[^:]*:.".r replaceFirstIn (txt, "")
+
+  /** Remove the timestamp at the end of the tweet text
+   */
+  def removeTimestamp(txt: String) = """(\d|\.|\s)*$""".r replaceFirstIn (txt , "")
+
+  /** Like trim, but removes all kinds of whitespace, not just that which is \u0020
+   *  and below.
+   */
+  def hardTrim(txt: String) = "^(\\s|\\u00A0)*".r replaceFirstIn ("(\\s|\\u00A0)*$".r replaceFirstIn(txt, ""), "")
 
   /**To extract a tweet take just the text, trim it, and drop
-   * any NBSP (char 160s) from the start.
+    *  any NBSP (char 160s) from the start.
    */
-  def tweet(div: Node): String =  {
-    ((div.child) filterNot (_.isInstanceOf[Elem]) mkString).trim.dropWhile(_ == '\u00A0')
-  }
+  def tweet(div: Node): String = hardTrim(removeUsername(removeTimestamp(div.text)))
+
+  /** Remove a regular expression from a string.
+   */
+  def remove(txt: String, re: String): String = re.r replaceFirstIn (txt, "")
 }

@@ -67,6 +67,11 @@ class TwitterTimesBookmarkTest extends Spec with ShouldMatchers {
       bookmark.citation should startWith ("Tweeted by JR0cket and 5 others: RT @david_colquhoun The BBC Trust")
     }
 
+    it("Should handle Twitter username links") {
+      val bookmark = new TwitterTimesBookmark(Data.twitter_times_bookseller_item)
+      bookmark.citation should be ("Tweeted by stephen_abbott and 2 others: @Sarah_Crown Seen this? RT @martinhearn: Bookseller launches site to #savelibraries http://bit.ly/gBL7RR\u201D (via @Fight4libraries)")
+    }
+
     it("Should make a grammatical citation with '1 other' tweeter") {
       val bookmark = new TwitterTimesBookmark(Data.twitter_times_ken_bruce_item)
       bookmark.citation should startWith ("Tweeted by hayjane and 1 other: Ken Bruce: on the money or anti-parachutist??")

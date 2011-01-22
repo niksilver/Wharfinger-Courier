@@ -24,7 +24,8 @@ class ClnMeHandlerTest extends Spec with ShouldMatchers {
     it("Should be able to read JSON text") {
       val handler = new ClnMeHandler("http://online.wsj.com/article/SB10001424052748703977004575393173432219064.html")
       val text = handler.getJSONText
-      text should include ("""videos":[],"cleanHtml":"<div """)
+      text should include (""""videos":[],""")
+      text should include (""""cleanHtml":"<div """)
     }
 
     it("Should be able to find the clean HTML as text") {

@@ -52,29 +52,32 @@ class TwitterTimesBookmark (item: Node) {
     case _ => " and " + num_others + " others"
   }
 
+  implicit def String2SmartString(s: String) = new SmartString(s)
+
   /** To extract a username look for an A HREF to http://twitter.com/username.
    */
-  def username(div: Node): String = ":(.|\\s)*".r replaceFirstIn (div.text.trim, "")
+  def username(div: Node): String = div.text.trim remove ":(.|\\s)*"
 
   /** Remove the username and ": " from the start of the tweet text.
    */
-  def removeUsername(txt: String) = "^[^:]*:.".r replaceFirstIn (txt, "")
+  def removeUsername(txt: String) = txt remove "^[^:]*:."
 
   /** Remove the timestamp at the end of the tweet text
    */
-  def removeTimestamp(txt: String) = """(\d|\.|\s)*$""".r replaceFirstIn (txt , "")
+  def removeTimestamp(txt: String) = txt remove """(\d|\.|\s)*$"""
 
-  /** Like trim, but removes all kinds of whitespace, not just that which is \u0020
-   *  and below.
+  /** Like trim, but also removes &nbsp; = character 160 = \u00A0
    */
-  def hardTrim(txt: String) = "^(\\s|\\u00A0)*".r replaceFirstIn ("(\\s|\\u00A0)*$".r replaceFirstIn(txt, ""), "")
+  def hardTrim(txt: String) = txt remove "^(\\s|\\u00A0)*" remove "(\\s|\\u00A0)*$"
 
   /**To extract a tweet take just the text, trim it, and drop
     *  any NBSP (char 160s) from the start.
    */
   def tweet(div: Node): String = hardTrim(removeUsername(removeTimestamp(div.text)))
 
-  /** Remove a regular expression from a string.
-   */
-  def remove(txt: String, re: String): String = re.r replaceFirstIn (txt, "")
+  class SmartString(str: String) {
+    /** Remove a regular expression from a string.
+     */
+    def remove(re: String): String = re.r replaceFirstIn (str, "")
+  }
 }

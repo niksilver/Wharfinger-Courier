@@ -4,7 +4,6 @@ import scala.collection.mutable.ListBuffer
 import java.io.{StringReader, Reader}
 import Preamble._
 import xml.{Elem, Node, XML}
-import util.matching.Regex
 
 /**
  * Read and parse the Twitter Times RSS feed

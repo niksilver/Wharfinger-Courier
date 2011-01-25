@@ -15,7 +15,7 @@ class TwitterTimesNetworkHandler(val reader: Reader) extends BookmarkServiceNetw
 
   def this() = this(new URLReader("http://twittertim.es/pigsaw/rss.xml", "UTF-8"))
 
-  /**Parse the RSS to create the bookmarks.
+  /** Parse the RSS to create the bookmarks.
    */
   def parse() {
     val rss = XML.load(reader)

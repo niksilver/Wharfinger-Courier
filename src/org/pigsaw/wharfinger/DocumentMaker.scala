@@ -50,9 +50,10 @@ class DocumentMaker(val title: String, val dateline: String) {
          chapter_name = "wharfinger-" + (idx+1);
          is_last = (idx == articles.length-1)) {
       toc appendAll a_href("#"+chapter_name, article.title) +
+        " " + a_href(article.url, "(&gt;)") +
         small( div_style( "margin-left: 1em",
           i(article.getCitation) + br +
-          article.url + " " + a_href(article.url, "[&gt;]")
+          article.url
         )
       )
 

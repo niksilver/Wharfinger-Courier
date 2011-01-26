@@ -73,11 +73,17 @@ class TwitterTimesBookmarkTest extends Spec with ShouldMatchers {
       bookmark.citation should be ("Tweeted by stephen_abbott and 2 others: @Sarah_Crown Seen this? RT @martinhearn: Bookseller launches site to #savelibraries http://bit.ly/gBL7RR\u201D (via @Fight4libraries)")
     }
 
-    /*it("Should handle tweets where some don't conform to pattern") {
+    it("Should handle tweets where some don't conform to pattern") {
       val bookmark = new TwitterTimesBookmark(Data.twitter_times_two_bad_items)
       bookmark.tweets.length should be (1)
       bookmark.citation should be ("Tweeted by martinhearn: The Bookseller launches site to oppose library closures http://bit.ly/gBL7RR\u201D (via @Fight4libraries)")
-    }*/
+    }
+
+    it("Should handle tweets where none conform to pattern") {
+      val bookmark = new TwitterTimesBookmark(Data.twitter_times_all_bad_items)
+      bookmark.tweets.length should be (0)
+      bookmark.citation should be ("Could not recognise tweets")
+    }
 
     it("Should make a grammatical citation with '1 other' tweeter") {
       val bookmark = new TwitterTimesBookmark(Data.twitter_times_ken_bruce_item)

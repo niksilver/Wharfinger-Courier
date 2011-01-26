@@ -46,14 +46,25 @@ class TwitterTimesBookmark (item: Node) {
 
   val tweet = (space + username + ":" + space + message + space + timestamp + space).r
 
-  /** A mapping from Twitter usernames to tweets. */
-  val tweets = for {
-    div <- tweets_html
-    tweet(username, message) = div.text
-  } yield ( username -> message )
+  def splitTweet(str: String) = {
+    try {
+      val tweet(username, message) = str
+      Some(username, message)
+    }
+    catch { case _ => None }
+  }
 
-  val citation = "Tweeted by " + tweets(0)._1 + andOthersText(tweets.length - 1) + ": " +
-    tweets(0)._2
+  /** A mapping from Twitter usernames to tweets. */
+  val tweets = tweets_html.
+    map(_.text).
+    map(splitTweet(_)).
+    filter(_.isDefined).
+    flatten
+
+  val citation = tweets match {
+    case Nil => "Could not recognise tweets"
+    case _ => "Tweeted by " + tweets(0)._1 + andOthersText(tweets.length - 1) + ": " + tweets(0)._2
+  }
 
   def andOthersText(num_others: Int) = num_others match {
     case 0 => ""

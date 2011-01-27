@@ -46,13 +46,8 @@ class TwitterTimesBookmark (item: Node) {
 
   val tweet = (space + username + ":" + space + message + space + timestamp + space).r
 
-  def splitTweet(str: String) = {
-    try {
-      val tweet(username, message) = str
-      Some(username, message)
-    }
-    catch { case _ => None }
-  }
+  def splitTweet(str: String) =
+    tweet.unapplySeq(str).flatMap(mtch => Some( mtch(0), mtch(1) ))
 
   /** A mapping from Twitter usernames to tweets. */
   val tweets = tweets_html.

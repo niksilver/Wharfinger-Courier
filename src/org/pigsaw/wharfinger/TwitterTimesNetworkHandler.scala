@@ -46,10 +46,10 @@ class TwitterTimesBookmark (item: Node) {
 
   val tweet = (space + username + ":" + space + message + space + timestamp + space).r
 
-  def splitTweet(str: String) =
-    tweet.unapplySeq(str).flatMap(mtch => Some( mtch(0), mtch(1) ))
+  // Split a tweet into Some(List(username, message)) or None
+  def splitTweet(str: String) = tweet.unapplySeq(str)
 
-  /** A mapping from Twitter usernames to tweets. */
+  /** A list of List(username, message) */
   val tweets = tweets_html.
     map(_.text).
     map(splitTweet(_)).
@@ -58,7 +58,7 @@ class TwitterTimesBookmark (item: Node) {
 
   val citation = tweets match {
     case Nil => "Could not recognise tweets"
-    case _ => "Tweeted by " + tweets(0)._1 + andOthersText(tweets.length - 1) + ": " + tweets(0)._2
+    case _ => "Tweeted by " + tweets(0)(0) + andOthersText(tweets.length - 1) + ": " + tweets(0)(1)
   }
 
   def andOthersText(num_others: Int) = num_others match {

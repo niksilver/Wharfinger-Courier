@@ -51,15 +51,15 @@ class TwitterTimesBookmarkTest extends Spec with ShouldMatchers {
       val bookmark = new TwitterTimesBookmark(Data.twitter_times_bbc_item)
       bookmark.tweets.length should be === (6)
 
-      bookmark.tweets(0)._1 should be ("JR0cket")
-      bookmark.tweets(1)._1 should be ("paulbradshaw")
-      bookmark.tweets(2)._1 should be ("markrock")
-      bookmark.tweets(3)._1 should be ("willperrin")
-      bookmark.tweets(4)._1 should be ("billt")
-      bookmark.tweets(5)._1 should be ("ruskin147")
+      bookmark.tweets(0)(0) should be ("JR0cket")
+      bookmark.tweets(1)(0) should be ("paulbradshaw")
+      bookmark.tweets(2)(0) should be ("markrock")
+      bookmark.tweets(3)(0) should be ("willperrin")
+      bookmark.tweets(4)(0) should be ("billt")
+      bookmark.tweets(5)(0) should be ("ruskin147")
 
-      bookmark.tweets(0)._2 should startWith ("RT @david_colquhoun The BBC Trust wants")
-      bookmark.tweets(3)._2 should startWith ("RT @paulbradshaw: RT @david_colquhoun")
+      bookmark.tweets(0)(1) should startWith ("RT @david_colquhoun The BBC Trust wants")
+      bookmark.tweets(3)(1) should startWith ("RT @paulbradshaw: RT @david_colquhoun")
     }
 
     it("Should make a citation") {

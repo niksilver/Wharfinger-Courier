@@ -105,7 +105,10 @@
         <enhance_war war="${war.dir}"/>
     </target>
 
-    <target name="finish-war"
+    <target name="prep-for-upload"
             depends="compile-java,compile-scala-app,populate-war,datanucleus-enhance"/>
+
+    <target name="compile-tests-and-prep-for-upload"
+            depends="compile-tests,prep-for-upload"/>
 
 </project>

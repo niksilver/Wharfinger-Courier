@@ -15,13 +15,13 @@ import java.util.logging.Logger
  * Puts the document into the datastore and returns it
  */
 
-class MakeDocumentServlet extends HttpServlet {
+class MakeDocumentServlet extends HttpServlet with Transaction {
 
   val log = Logger.getLogger(this.getClass.getName)
   
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse) {
     val pm = PMF.get.getPersistenceManager
-    try {
+    persistAndClose(pm) {
       val query = pm.newQuery(classOf[Article])
       val articles: Seq[Article] = query.execute.asInstanceOf[java.util.List[Article]]
       val maker = new DocumentMaker("Wharfinger Courier", niceDate)
@@ -34,9 +34,6 @@ class MakeDocumentServlet extends HttpServlet {
       resp.setContentType(document.contentType)
       resp.getWriter.print(document.getContent)
       queueMailingDocument(document.filename)
-    }
-    finally {
-      pm.close
     }
 
     def addArticles(articles: Seq[Article], maker: DocumentMaker) {

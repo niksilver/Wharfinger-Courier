@@ -17,7 +17,7 @@ import xml.{NodeSeq, Node}
  * Kick off fetching a pending article.
  */
 
-class KickOffFetchArticleServlet extends HttpServlet {
+class KickOffFetchArticleServlet extends HttpServlet with Transaction {
 
   val log = Logger.getLogger(this.getClass.getName)
 
@@ -91,14 +91,10 @@ class KickOffFetchArticleServlet extends HttpServlet {
       }
     }
 
-    def persistAndClose(pm: PersistenceManager)(block: =>Unit) {
-      try { block }
-      finally { if (!pm.isClosed) pm.close }
-    }
   }
 }
 
-class DoFetchArticleServlet extends HttpServlet {
+class DoFetchArticleServlet extends HttpServlet with Transaction {
 
   val log = Logger.getLogger(this.getClass.getName)
 
@@ -162,11 +158,6 @@ class DoFetchArticleServlet extends HttpServlet {
       val bookmark = pm.getObjectById(classOf[BookmarkPendingFetch], url)
       println("Deleting bookmark: " + bookmark)
       pm.deletePersistent(bookmark)
-    }
-
-    def persistAndClose(pm: PersistenceManager)(block: =>Unit) {
-      try { block }
-      finally { if (!pm.isClosed) pm.close }
     }
   }
 }

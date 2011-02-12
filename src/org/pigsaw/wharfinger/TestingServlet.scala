@@ -14,7 +14,7 @@ import java.util.logging.Logger
  * To change this template use File | Settings | File Templates.
  */
 
-class TestingServlet extends HttpServlet {
+class TestingServlet extends HttpServlet with Transaction {
 
   val log = Logger.getLogger(this.getClass.getName)
 
@@ -66,7 +66,7 @@ class TestingServlet extends HttpServlet {
 
       val pm = PMF.get.getPersistenceManager
       val query = pm.newQuery(classOf[Message])
-      transaction (query) {
+      transactionWithReporting (query) {
         val message = new Message
         message.setMessage(msg)
         pm.makePersistent(message)
@@ -78,7 +78,7 @@ class TestingServlet extends HttpServlet {
       resp.setContentType("text/plain")
       val pm = PMF.get.getPersistenceManager
       val query = pm.newQuery(classOf[Message])
-      transaction (query) {
+      transactionWithReporting (query) {
         val messages = query.execute.asInstanceOf[java.util.List[Message]]
         val output = messages.size match {
           case 0 => "No message saved"
@@ -92,7 +92,7 @@ class TestingServlet extends HttpServlet {
       resp.setContentType("text/plain")
       val pm = PMF.get.getPersistenceManager
       val query = pm.newQuery(classOf[Message])
-      transaction (query) {
+      transactionWithReporting (query) {
         query.deletePersistentAll
         println("Deleted message")
       }
@@ -172,17 +172,6 @@ class TestingServlet extends HttpServlet {
         {c => c.toString + " (" + c.toInt + ") "})
     }
 
-    def transaction(query: javax.jdo.Query)(block: Unit): Unit = {
-      try {
-        block
-      }
-      catch {
-        case e => println("Exception: " + e.getMessage)
-      }
-      finally {
-        query.closeAll
-      }
-    }
   }
 }
 

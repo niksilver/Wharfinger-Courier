@@ -8,7 +8,7 @@ import javax.jdo.PersistenceManager
  * Handle core admin requests.
  */
 
-class AdminServlet extends HttpServlet {
+class AdminServlet extends HttpServlet with Transaction {
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
 
     req.getPathInfo.tail.split('/')(0) match {
@@ -104,11 +104,6 @@ class AdminServlet extends HttpServlet {
     }
 
     def runLinesTogether(str: String) = ("" /: str.lines)(_ + _)
-
-    def transaction(query: javax.jdo.Query)(block: =>Unit): Unit = {
-      try { block }
-      finally { query.closeAll }
-    }
 
   }
 }

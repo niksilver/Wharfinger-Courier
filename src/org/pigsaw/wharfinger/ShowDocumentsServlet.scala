@@ -7,7 +7,7 @@ import scala.collection.JavaConversions._
  * Handle requests to deliver a document or show all documents.
  */
 
-class ShowDocumentsServlet extends HttpServlet {
+class ShowDocumentsServlet extends HttpServlet with Transaction {
 
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
     req.getServletPath match {
@@ -78,11 +78,6 @@ class ShowDocumentsServlet extends HttpServlet {
     def unrecognisedRequest {
       resp.setContentType("text/plain")
       resp.getWriter.println("Unrecognised request")
-    }
-
-    def transaction(query: javax.jdo.Query)(block: =>Unit): Unit = {
-      try { block }
-      finally { query.closeAll }
     }
 
   }

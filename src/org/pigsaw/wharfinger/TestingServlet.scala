@@ -66,7 +66,7 @@ class TestingServlet extends HttpServlet with Transaction {
 
       val pm = PMF.get.getPersistenceManager
       val query = pm.newQuery(classOf[Message])
-      transactionWithReporting (query) {
+      transactionWithReporting (query, resp) {
         val message = new Message
         message.setMessage(msg)
         pm.makePersistent(message)
@@ -78,7 +78,7 @@ class TestingServlet extends HttpServlet with Transaction {
       resp.setContentType("text/plain")
       val pm = PMF.get.getPersistenceManager
       val query = pm.newQuery(classOf[Message])
-      transactionWithReporting (query) {
+      transactionWithReporting (query, resp) {
         val messages = query.execute.asInstanceOf[java.util.List[Message]]
         val output = messages.size match {
           case 0 => "No message saved"
@@ -92,7 +92,7 @@ class TestingServlet extends HttpServlet with Transaction {
       resp.setContentType("text/plain")
       val pm = PMF.get.getPersistenceManager
       val query = pm.newQuery(classOf[Message])
-      transactionWithReporting (query) {
+      transactionWithReporting (query, resp) {
         query.deletePersistentAll
         println("Deleted message")
       }

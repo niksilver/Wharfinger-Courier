@@ -51,7 +51,7 @@ class MakeDocumentServlet extends HttpServlet with Transaction {
       val queue = QueueFactory.getDefaultQueue
       val task = url("/mail-document").param("filename", filename).method(Method.GET)
       queue.add(task)
-      println("Queued task " + task.getUrl)
+      resp.getWriter.println("Queued task " + task.getUrl)
     }
 
     def techDate: String = {

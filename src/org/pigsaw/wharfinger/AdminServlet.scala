@@ -10,6 +10,7 @@ import javax.jdo.PersistenceManager
 
 class AdminServlet extends HttpServlet with Transaction {
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
+    implicit val _ = resp
 
     req.getPathInfo.tail.split('/')(0) match {
       case "clear-datastore" => clearDataStore
@@ -18,9 +19,6 @@ class AdminServlet extends HttpServlet with Transaction {
       case "show-past-articles" => showPastArticles
       case _ => unrecognisedRequest
     }
-
-    def println(s: String) = resp.getWriter.println(s)
-    def print(s: String) = resp.getWriter.print(s)
 
     def clearDataStore() {
       resp.setContentType("text/plain")

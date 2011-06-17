@@ -182,32 +182,3 @@ class InstapaperHandler(article_url: String) {
     }
   }
 }
-
-class ClnMeHandler(article_url: String) {
-  val log = Logger.getLogger(this.getClass.getName)
-  val url: String = "http://cln.me/clean.json?url=" +
-          URLEncoder.encode(article_url, "UTF-8")
-
-  def getJSONText(): String = { Source.fromURL(url, "UTF-8").mkString }
-
-  def getCleanHTMLAsText(): String = {
-    val json_text = getJSONText
-    val Some(json) = JSON.parseRaw(json_text)
-    json.asInstanceOf[JSONObject].obj("cleanHtml").asInstanceOf[String]
-  }
-
-  def getCleanHTML(): Option[NodeSeq] = {
-    try {
-      Some( SloppyXMLNodeSeq(new java.io.StringReader(getCleanHTMLAsText)) )
-    }
-    catch {
-      case e => {
-        val str = new java.io.StringWriter
-        e.printStackTrace(new java.io.PrintWriter(str))
-        log.warning(str.toString)
-        None
-      }
-    }
-  }
-
-}

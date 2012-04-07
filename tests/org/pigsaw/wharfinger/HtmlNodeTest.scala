@@ -1,6 +1,6 @@
 package org.pigsaw.wharfinger
 
-import org.scalatest.Spec
+import org.scalatest.FunSpec
 import org.scalatest.matchers.ShouldMatchers
 import Preamble._
 import java.io.{StringReader, IOException}
@@ -14,7 +14,7 @@ import scala.xml._
  * To change this template use File | Settings | File Templates.
  */
 
-class HtmlNodeTest extends Spec with ShouldMatchers {
+class HtmlNodeTest extends FunSpec with ShouldMatchers {
 
   describe("SimpleHtmlHandler") {
 

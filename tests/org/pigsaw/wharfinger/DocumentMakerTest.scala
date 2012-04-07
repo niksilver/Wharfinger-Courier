@@ -1,6 +1,6 @@
 package org.pigsaw.wharfinger
 
-import org.scalatest.Spec
+import org.scalatest.FunSpec
 import org.scalatest.matchers.ShouldMatchers
 import Preamble._
 import xml.{XML, Node}
@@ -9,7 +9,7 @@ import xml.{XML, Node}
  * Test the DocumentMaker
  */
 
-class DocumentMakerTest extends Spec with ShouldMatchers {
+class DocumentMakerTest extends FunSpec with ShouldMatchers {
 
   describe("DocumentMaker") {
     it("Should be able to create a document with two articles") {

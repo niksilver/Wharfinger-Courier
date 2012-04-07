@@ -1,7 +1,7 @@
 package org.pigsaw.wharfinger
 
 import org.scalatest.matchers.ShouldMatchers
-import org.scalatest.Spec
+import org.scalatest.FunSpec
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,7 +11,7 @@ import org.scalatest.Spec
  * To change this template use File | Settings | File Templates.
  */
 
-class InstapaperHandlerTest extends Spec with ShouldMatchers {
+class InstapaperHandlerTest extends FunSpec with ShouldMatchers {
 
   describe("InstapaperHandler") {
 

@@ -1,7 +1,7 @@
 package org.pigsaw.wharfinger
 
 import org.scalatest.matchers.ShouldMatchers
-import org.scalatest.Spec
+import org.scalatest.FunSpec
 import collection.mutable.ListBuffer
 import java.io.StringReader
 
@@ -15,7 +15,7 @@ import java.io.StringReader
  * To change this template use File | Settings | File Templates.
  */
 
-class DeliciousNetworkHandlerTest extends Spec with ShouldMatchers {
+class DeliciousNetworkHandlerTest extends FunSpec with ShouldMatchers {
 
   describe("DeliciousNetworkHandler") {
 

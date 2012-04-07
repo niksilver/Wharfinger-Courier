@@ -1,6 +1,6 @@
 package org.pigsaw.wharfinger
 
-import org.scalatest.Spec
+import org.scalatest.FunSpec
 import org.scalatest.matchers.ShouldMatchers
 import java.io.{FileReader}
 import xml.Elem
@@ -9,7 +9,7 @@ import xml.Elem
  * Test the thing that fetches and parses a the Twitter Times RSS feed
  */
 
-class TwitterTimesNetworkHandlerTest extends Spec with ShouldMatchers {
+class TwitterTimesNetworkHandlerTest extends FunSpec with ShouldMatchers {
 
   describe("TwitterTimesNetworkHandler") {
     it("Should return a list of bookmarks") {
@@ -29,7 +29,7 @@ class TwitterTimesNetworkHandlerTest extends Spec with ShouldMatchers {
   }
 }
 
-class TwitterTimesBookmarkTest extends Spec with ShouldMatchers {
+class TwitterTimesBookmarkTest extends FunSpec with ShouldMatchers {
 
   describe("TwitterTimesBookmark") {
     it("Should extract the URL") {

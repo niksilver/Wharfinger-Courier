@@ -8,6 +8,7 @@ object Preamble {
   class RichNode(n: Node) {
     def escapeForHTML: Node = HTMLNode.escapeForHTML(n)
     def imagesToText: Node = HTMLNode.imagesToText(n)
+    def bodyToStoryDiv: Node = HTMLNode.bodyToStoryDiv(n)
   }
 
   class RichNodeSeq(ns:Seq[Node]) {

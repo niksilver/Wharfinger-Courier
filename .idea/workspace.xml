@@ -9,9 +9,15 @@
   <component name="ChangeListManager">
     <list default="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Preamble.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Preamble.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DeliciousNetworkHandlerTest.scala" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DeliciousNetworkHandlerTest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DocumentMakerTest.scala" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DocumentMakerTest.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlTest.scala" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlTest.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/TwitterTimesNetworkHandlerTest.scala" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/TwitterTimesNetworkHandlerTest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/URLStringTest.scala" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/URLStringTest.scala" />
     </list>
     <ignored path="Wharfinger Courier.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -92,19 +98,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AdminServlet.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala">
+      <file leaf-file-name="TestingServlet.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="26" column="34" selection-start="848" selection-end="848" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InstapaperHandlerTest.scala" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="InstapaperHandlerTest.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="356" selection-end="356" vertical-scroll-proportion="0.18582375">
+            <state line="35" column="26" selection-start="1435" selection-end="1435" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -113,25 +119,7 @@
       <file leaf-file-name="KickOffFetchArticleServlet.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="190" column="20" selection-start="6349" selection-end="6349" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestingServlet.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="50" selection-start="1211" selection-end="1211" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="42" selection-start="2365" selection-end="2365" vertical-scroll-proportion="-12.076923">
+            <state line="179" column="17" selection-start="6063" selection-end="6063" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -140,25 +128,16 @@
       <file leaf-file-name="HTMLNode.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="81" selection-start="2488" selection-end="2488" vertical-scroll-proportion="0.0">
+            <state line="116" column="3" selection-start="3308" selection-end="3308" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HtmlNodeTest.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="30" selection-start="4026" selection-end="4026" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Preamble.scala" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Preamble.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Preamble.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="19" selection-start="1151" selection-end="1151" vertical-scroll-proportion="0.0">
+            <state line="9" column="5" selection-start="214" selection-end="214" vertical-scroll-proportion="0.34">
               <folding />
             </state>
           </provider>
@@ -179,25 +158,28 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitLogSettings">
+    <option name="myStructureFilterPaths" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/war/WEB-INF/cron.xml" />
-        <option value="$PROJECT_DIR$/scripts/set-classpath.scala" />
-        <option value="$PROJECT_DIR$/scripts/InstapaperHandlerTest-script.scala" />
-        <option value="$PROJECT_DIR$/scripts/rss-parser.scala" />
-        <option value="$PROJECT_DIR$/scripts/scala" />
-        <option value="$PROJECT_DIR$/scripts/utf8.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/QueueableTask.scala" />
         <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/war/index.html" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala" />
-        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" />
+        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" />
+        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DeliciousNetworkHandlerTest.scala" />
+        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DocumentMakerTest.scala" />
+        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlTest.scala" />
+        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/URLStringTest.scala" />
+        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/TwitterTimesNetworkHandlerTest.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Preamble.scala" />
       </list>
     </option>
   </component>
@@ -341,6 +323,86 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="wharfinger" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wharfinger" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wharfinger" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HTMLNode.scala" />
+              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -713,7 +775,11 @@
       <created>1333831509993</created>
       <updated>1333831509993</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Processed output from Instapaper which works around empty story div now creates its own story div, rather than leaving the body tag in.">
+      <created>1333833373913</created>
+      <updated>1333833373913</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -738,22 +804,22 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41095892" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25360668" sideWeight="0.37328768" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25360668" sideWeight="0.61986303" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39968154" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.63013697" sideWeight="0.49734244" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.380137" sideWeight="0.49734244" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270548" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.380137" sideWeight="0.49734244" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24974412" sideWeight="0.22133759" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2126044" sideWeight="0.32363012" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958034" sideWeight="0.65923566" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39918116" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2126044" sideWeight="0.37328768" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39863327" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2126044" sideWeight="0.61986303" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6267123" sideWeight="0.49734244" order="2" side_tool="false" content_ui="tabs" x="124" y="296" width="736" height="409" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -800,7 +866,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Got basic change working to work round empty story div issue. A test prove this works. Needs tidying." />
+    <option name="LAST_COMMIT_MESSAGE" value="Processed output from Instapaper which works around empty story div now creates its own story div, rather than leaving the body tag in." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -813,7 +879,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Added some tests around character encodings. It seems Instapaper has a problem with &#10;http://www.nytimes.com/2010/12/27/business/media/27stewart.html?_r=1&#10;See&#10;http://www.instapaper.com/text?u=http%3A%2F%2Fwww.nytimes.com%2F2010%2F12%2F27%2Fbusiness%2Fmedia%2F27stewart.html%3F_r%3D1" />
     <MESSAGE value="Updated for IntelliJ 10.0.1.&#10;Added the start of use of cln.me instead of Instapaper. Tests run." />
     <MESSAGE value="Adding more to use cln.me" />
     <MESSAGE value="Have done most of the ClnMeHandler.&#10;Baffled why tests are each picked up twice, unless a clean-all is done first.&#10;Need to remove the &quot;Original source&quot; line from the HTML." />
@@ -838,6 +903,7 @@
     <MESSAGE value="Corrected test following WSJ page changes.&#10;Added a couple of scripts which should start making this kind of thing easier." />
     <MESSAGE value="Now running on new laptop, Windows 7, Scala 2.9, Google App Engine 1.6.4.&#10;Corrected test following WSJ page changes.&#10;All tests run and pass." />
     <MESSAGE value="Got basic change working to work round empty story div issue. A test prove this works. Needs tidying." />
+    <MESSAGE value="Processed output from Instapaper which works around empty story div now creates its own story div, rather than leaving the body tag in." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -864,31 +930,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/scripts/rss-parser.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DeliciousNetworkHandlerTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="65" selection-start="566" selection-end="566" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/utf8.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="194" column="120" selection-start="12803" selection-end="12803" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2011" column="31" selection-start="98500" selection-end="98500" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/DeliciousNetworkHandler.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="66" selection-start="346" selection-end="436" vertical-scroll-proportion="0.4898305" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="51" column="22" selection-start="1870" selection-end="1870" vertical-scroll-proportion="0.0" />
@@ -913,51 +954,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
+    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DeliciousNetworkHandlerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="50" selection-start="1211" selection-end="1211" vertical-scroll-proportion="0.0">
+        <state line="17" column="45" selection-start="392" selection-end="392" vertical-scroll-proportion="0.5536398">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Preamble.scala">
+    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DocumentMakerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="19" selection-start="1151" selection-end="1151" vertical-scroll-proportion="0.0">
+        <state line="11" column="35" selection-start="217" selection-end="217" vertical-scroll-proportion="0.33271027">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="42" selection-start="2365" selection-end="2365" vertical-scroll-proportion="-12.076923">
+        <state line="47" column="42" selection-start="2365" selection-end="2365" vertical-scroll-proportion="0.6061776">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
+    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="190" column="20" selection-start="6349" selection-end="6349" vertical-scroll-proportion="0.0">
+        <state line="15" column="26" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala">
+    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/URLStringTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="81" selection-start="2488" selection-end="2488" vertical-scroll-proportion="0.0">
+        <state line="9" column="31" selection-start="176" selection-end="176" vertical-scroll-proportion="0.27468583">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/TwitterTimesNetworkHandlerTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="46" selection-start="1145" selection-end="1149" vertical-scroll-proportion="0.33333334">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="30" selection-start="4026" selection-end="4026" vertical-scroll-proportion="0.0">
+        <state line="53" column="44" selection-start="1677" selection-end="1677" vertical-scroll-proportion="0.19585687">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="34" selection-start="848" selection-end="848" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="179" column="17" selection-start="6063" selection-end="6063" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="356" selection-end="356" vertical-scroll-proportion="0.18582375">
+        <state line="35" column="26" selection-start="1435" selection-end="1435" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="116" column="3" selection-start="3308" selection-end="3308" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Preamble.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="5" selection-start="214" selection-end="214" vertical-scroll-proportion="0.34">
           <folding />
         </state>
       </provider>

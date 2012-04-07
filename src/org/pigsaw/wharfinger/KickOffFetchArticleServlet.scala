@@ -188,7 +188,8 @@ class InstapaperHandler(article_url: String) {
 
   private def getSecondBody(html: Node): Option[Node] = {
     val second_body = (html \\ "body")(1)
-    Some(second_body)
+    val story_div = second_body.bodyToStoryDiv
+    Some(story_div)
   }
 
   /** Get just what comes out of Instapaper, albeit processed by the Tag Soup XML loader

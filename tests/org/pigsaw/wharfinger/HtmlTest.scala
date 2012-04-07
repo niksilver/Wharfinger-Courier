@@ -1,6 +1,6 @@
 package org.pigsaw.wharfinger
 
-import org.scalatest.Spec
+import org.scalatest.FunSpec
 import org.scalatest.matchers.ShouldMatchers
 
 import org.ccil.cowan.tagsoup.TagSoupFactoryAdapter
@@ -13,7 +13,7 @@ import org.ccil.cowan.tagsoup.TagSoupFactoryAdapter
  * To change this template use File | Settings | File Templates.
  */
 
-class HtmlTest extends Spec with ShouldMatchers {
+class HtmlTest extends FunSpec with ShouldMatchers {
 
   describe("Tagsoup") {
 

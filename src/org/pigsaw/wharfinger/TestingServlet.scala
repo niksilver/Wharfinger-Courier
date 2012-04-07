@@ -30,7 +30,8 @@ class TestingServlet extends HttpServlet with Transaction {
       case "mail-message-with-html-attachment" => testMailMessageWithHTMLAttachment
       case "tag-soup" => testTagSoup
       case "tag-soup-and-character-codes" => testTagSoupAndCharacterCodes
-      case "instapaper" => testInstapaper
+      case "instapaper-html" => testInstapaperHtml
+      case "instapaper-content-extraction" => testInstapaperContentExtraction
       case "instapaper-and-character-codes" => testInstapaperAndCharacterCodes
       case "instapaper-and-transformation" => testInstapaperAndTransformation
       case _ => testBasicOutput
@@ -139,7 +140,15 @@ class TestingServlet extends HttpServlet with Transaction {
       print(html.toString flatMap characterView)
     }
 
-    def testInstapaper() {
+    def testInstapaperHtml() {
+      val url = req.getParameter("url")
+      val handler = new InstapaperHandler(url)
+      val Some(content_div) = handler.getBasicHtml
+      resp.setContentType("text/html")
+      print(content_div.toString)
+    }
+
+    def testInstapaperContentExtraction() {
       val url = req.getParameter("url")
       val handler = new InstapaperHandler(url)
       val Some(content_div) = handler.getContentDiv

@@ -1,9 +1,9 @@
 package org.pigsaw.wharfinger
 
 import collection.mutable.HashMap
-import com.google.appengine.api.labs.taskqueue.QueueFactory
-import com.google.appengine.api.labs.taskqueue.TaskOptions.Builder._
-import com.google.appengine.api.labs.taskqueue.TaskOptions.Method
+import com.google.appengine.api.taskqueue.QueueFactory
+import com.google.appengine.api.taskqueue.TaskOptions.Builder._
+import com.google.appengine.api.taskqueue.TaskOptions.Method
 
 
 /**

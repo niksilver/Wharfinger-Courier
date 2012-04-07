@@ -1,14 +1,14 @@
 <component name="libraryTable">
   <library name="Google app engine">
     <CLASSES>
-      <root url="file://C:/Program Files/Google/appengine-java-sdk-1.3.5/lib/user" />
-      <root url="file://C:/Program Files/Google/appengine-java-sdk-1.3.5/lib/shared" />
-      <root url="file://C:/Program Files/Google/appengine-java-sdk-1.3.5/lib/user/orm" />
+      <root url="file://C:/Program Files/Google/appengine-java-sdk-1.6.4/lib/shared" />
+      <root url="file://C:/Program Files/Google/appengine-java-sdk-1.6.4/lib/user" />
+      <root url="file://C:/Program Files/Google/appengine-java-sdk-1.6.4/lib/user/orm" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
-    <jarDirectory url="file://C:/Program Files/Google/appengine-java-sdk-1.3.5/lib/shared" recursive="false" />
-    <jarDirectory url="file://C:/Program Files/Google/appengine-java-sdk-1.3.5/lib/user" recursive="false" />
-    <jarDirectory url="file://C:/Program Files/Google/appengine-java-sdk-1.3.5/lib/user/orm" recursive="false" />
+    <jarDirectory url="file://C:/Program Files/Google/appengine-java-sdk-1.6.4/lib/shared" recursive="false" />
+    <jarDirectory url="file://C:/Program Files/Google/appengine-java-sdk-1.6.4/lib/user" recursive="false" />
+    <jarDirectory url="file://C:/Program Files/Google/appengine-java-sdk-1.6.4/lib/user/orm" recursive="false" />
   </library>
 </component>

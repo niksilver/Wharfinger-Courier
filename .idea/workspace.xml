@@ -8,11 +8,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/rss-parser.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/scala.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/scalatest-1.7.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/highlighting.xml" />
+      <change type="DELETED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\lib\build\scalatest-1.2.jar" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Google_app_engine.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Google_app_engine.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Local_classes.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Local_classes.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Scala.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Scala.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/utf8.scala" afterPath="$PROJECT_DIR$/scripts/utf8.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Wharfinger Courier.iml" afterPath="$PROJECT_DIR$/Wharfinger Courier.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/run-local-server.cmd" afterPath="$PROJECT_DIR$/bin/run-local-server.cmd" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/QueueableTask.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/QueueableTask.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" />
     </list>
     <ignored path="Wharfinger Courier.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,27 +41,11 @@
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
-    <option name="REVERSE_PATCH" value="false" />
   </component>
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala" line="12" class="Class at Data.scala:12" package="">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -109,55 +104,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="InstapaperHandlerTest.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="41" selection-start="984" selection-end="984" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DeliciousNetworkHandler.scala" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/DeliciousNetworkHandler.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="66" selection-start="346" selection-end="436" vertical-scroll-proportion="0.4898305">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DeliciousNetworkHandlerTest.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DeliciousNetworkHandlerTest.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="65" selection-start="566" selection-end="566" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Data.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2011" column="31" selection-start="98500" selection-end="98500" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="utf8.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/utf8.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="194" column="120" selection-start="12803" selection-end="12803" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="rss-parser.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/rss-parser.scala">
+      <file leaf-file-name="AdminServlet.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InstapaperHandlerTest.scala" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="12" selection-start="148" selection-end="148" vertical-scroll-proportion="0.21118012">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="KickOffFetchArticleServlet.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="185" column="5" selection-start="6189" selection-end="6189" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestingServlet.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="50" selection-start="1211" selection-end="1211" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/war/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="47" column="42" selection-start="2365" selection-end="2365" vertical-scroll-proportion="-12.076923">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HTMLNode.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="6" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -171,37 +166,45 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
-    <option name="CHECKOUT_INCLUDE_TAGS" value="false" />
-    <option name="UPDATE_CHANGES_POLICY" value="STASH" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/war/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/Transaction.scala" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
-        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/twitter-times-rss.xml" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TwitterTimesNetworkHandler.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/TwitterTimesNetworkHandlerTest.scala" />
         <option value="$PROJECT_DIR$/war/WEB-INF/cron.xml" />
         <option value="$PROJECT_DIR$/scripts/set-classpath.scala" />
-        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" />
         <option value="$PROJECT_DIR$/scripts/InstapaperHandlerTest-script.scala" />
         <option value="$PROJECT_DIR$/scripts/rss-parser.scala" />
         <option value="$PROJECT_DIR$/scripts/scala" />
         <option value="$PROJECT_DIR$/scripts/utf8.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/QueueableTask.scala" />
+        <option value="$PROJECT_DIR$/build.xml" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
+        <option value="$PROJECT_DIR$/war/index.html" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" />
+        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" />
       </list>
     </option>
   </component>
   <component name="MavenProjectNavigator">
     <treeState />
   </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="#JAVA_INTERNAL" />
+  </component>
   <component name="ModuleEditorState">
     <option name="LAST_EDITED_MODULE_NAME" />
     <option name="LAST_EDITED_TAB_NAME" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -247,116 +250,110 @@
       <showMembers />
       <showModules />
       <showLibraryContents />
-      <hideEmptyPackages />
+      <hideEmptyPackages ProjectPane="true" />
       <abbreviatePackageNames />
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger Courier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger Courier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemId" value="Wharfinger-Courier" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemId" value="Wharfinger-Courier" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger Courier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger Courier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger Courier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="Local classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wharfinger" />
+              <option name="myItemId" value="war" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemId" value="Wharfinger-Courier" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger Courier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="Local classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out.unenhanced" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemId" value="Wharfinger-Courier" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger Courier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="org" />
+              <option name="myItemId" value="Wharfinger-Courier" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemId" value="Wharfinger-Courier" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemId" value="Wharfinger-Courier" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
+              <option name="myItemId" value="war" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemId" value="Wharfinger-Courier" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="war" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -366,8 +363,70 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope">
+        <subPane subId="Default">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Wharfinger-Courier">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
         <subPane subId="Problems" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Wharfinger-Courier">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Changed Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Wharfinger-Courier">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="All">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Wharfinger-Courier">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
       </pane>
       <pane id="Favorites" />
     </panes>
@@ -404,7 +463,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="options.lastSelected" value="preferences.lookFeel" />
+    <property name="options.lastSelected" value="preferences.editor" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -417,11 +476,11 @@
       <recent name="org.pigsaw.wharfinger" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\cygwin\home\Nik\bin\Wharfinger-Courier\lib\build" />
       <recent name="C:\Documents and Settings\Nik\IdeaProjects\Wharfinger Courier\src\org\pigsaw\wharfinger" />
       <recent name="C:\Documents and Settings\Nik\IdeaProjects\Wharfinger Courier\lib" />
       <recent name="C:\Documents and Settings\Nik\IdeaProjects\Wharfinger Courier\mytest" />
       <recent name="C:\Documents and Settings\Nik\IdeaProjects\Wharfinger Courier\mytest\mytest2" />
-      <recent name="C:\Documents and Settings\Nik\IdeaProjects\Wharfinger Courier\mytest\test2" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Documents and Settings\Nik\IdeaProjects\Wharfinger Courier\tests\org\pigsaw\wharfinger" />
@@ -434,8 +493,9 @@
   <component name="RunManager" selected="ScalaTest.Wharfinger test">
     <configuration default="true" type="ScalaScriptConsoleRunConfiguration" factoryName="Scala Console">
       <module name="" />
-      <setting name="vmparams" value="" />
+      <setting name="vmparams4" value="-Djline.terminal=NONE" />
       <setting name="consoleArgs" value="" />
+      <setting name="workingDirectory" value="$PROJECT_DIR$" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -452,22 +512,6 @@
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="SpecsRunConfiguration" factoryName="Specs">
-      <module name="" />
-      <setting name="path" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="packagepath" value="" />
-      <setting name="workingDirectory" value="$PROJECT_DIR$" />
-      <setting name="sysFilter" value=".*" />
-      <setting name="exampleFilter" value=".*" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
@@ -571,22 +615,10 @@
       <setting name="package" value="" />
       <setting name="vmparams" value="" />
       <setting name="params" value="" />
-      <setting name="version" value="false" />
       <setting name="workingDirectory" value="$PROJECT_DIR$" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ScalaScriptRunConfiguration" factoryName="Scala Script">
-      <module name="" />
-      <setting name="path" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="consoleargs" value="" />
-      <setting name="params" value="" />
-      <setting name="workingDirectory" value="$PROJECT_DIR$" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -596,20 +628,37 @@
     </configuration>
     <configuration default="false" name="Scala Console" type="ScalaScriptConsoleRunConfiguration" factoryName="Scala Console">
       <module name="Wharfinger Courier" />
-      <setting name="vmparams" value="" />
+      <setting name="vmparams4" value=" -Djline.terminal=NONE" />
       <setting name="consoleArgs" value="" />
+      <setting name="workingDirectory" value="$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="HTMLNodeTest" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
+      <module name="Wharfinger Courier" />
+      <setting name="path" value="org.pigsaw.wharfinger.HtmlNodeTest" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
     <configuration default="false" name="Wharfinger test" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
       <module name="Wharfinger Courier" />
-      <setting name="path" value="" />
+      <setting name="path" value="org.pigsaw.wharfinger" />
       <setting name="package" value="org.pigsaw.wharfinger" />
       <setting name="vmparams" value="" />
       <setting name="params" value="" />
-      <setting name="version" value="true" />
-      <setting name="workingDirectory" value="C:\Documents and Settings\Nik\IdeaProjects\Wharfinger Courier" />
+      <setting name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <setting name="searchForTest" value="In single module" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="All in package" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="2518" />
         <option name="TRANSPORT" value="0" />
@@ -623,22 +672,10 @@
         <option name="Make" enabled="false" />
       </method>
     </configuration>
-    <configuration default="false" name="HTMLNodeTest" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
-      <module name="Wharfinger Courier" />
-      <setting name="path" value="org.pigsaw.wharfinger.HtmlNodeTest" />
-      <setting name="package" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="version" value="true" />
-      <setting name="workingDirectory" value="$PROJECT_DIR$" />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Scala Console.Scala Console" />
-      <item index="1" class="java.lang.String" itemvalue="ScalaTest.Wharfinger test" />
-      <item index="2" class="java.lang.String" itemvalue="ScalaTest.HTMLNodeTest" />
+      <item index="1" class="java.lang.String" itemvalue="ScalaTest.HTMLNodeTest" />
+      <item index="2" class="java.lang.String" itemvalue="ScalaTest.Wharfinger test" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -646,9 +683,11 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500">
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
     <option name="LAST_MERGED_REVISION" />
     <option name="MERGE_DRY_RUN" value="false" />
     <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
@@ -659,7 +698,7 @@
     <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
     <option name="FORCE_UPDATE" value="false" />
-    <configuration useDefault="true">C:\Documents and Settings\Nik\Application Data\Subversion</configuration>
+    <configuration useDefault="true">C:\Users\Nik\AppData\Roaming\Subversion</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
     <supportedVersion>125</supportedVersion>
   </component>
@@ -692,32 +731,47 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1032" height="746" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41111112" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41095892" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.0" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958034" sideWeight="0.6793651" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25360668" sideWeight="0.37328768" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39968154" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.63013697" sideWeight="0.49734244" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32063493" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.380137" sideWeight="0.49734244" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24974412" sideWeight="0.22133759" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958034" sideWeight="0.65923566" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39918116" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25588536" sideWeight="0.6793651" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.0" order="2" side_tool="false" content_ui="tabs" x="124" y="296" width="736" height="409" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2126044" sideWeight="0.61986303" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6267123" sideWeight="0.49734244" order="2" side_tool="false" content_ui="tabs" x="124" y="296" width="736" height="409" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270548" sideWeight="0.0" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24974412" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_NEW_TODO" value="true" />
+    <option name="myTodoPanelSettings">
+      <value>
+        <are-packages-shown value="false" />
+        <are-modules-shown value="false" />
+        <flatten-packages value="false" />
+        <is-autoscroll-to-source value="false" />
+      </value>
+    </option>
     <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
     <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
@@ -729,8 +783,18 @@
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
+    <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
+    <option name="SHORT_DIFF_HORISONTALLY" value="true" />
+    <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
+    <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
+    <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
+    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
+    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrected test following WSJ page changes.&#10;Added a couple of scripts which should start making this kind of thing easier." />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
+    <option name="LAST_COMMIT_MESSAGE" value="Now running on new laptop, Windows 7, Scala 2.9, Google App Engine 1.6.4.&#10;Corrected test following WSJ page changes.&#10;All tests run and pass." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -743,7 +807,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Added small links to original web page, for easier bookmarking on the desktop." />
     <MESSAGE value="Corrected HTML error." />
     <MESSAGE value="Added some tests around character encodings. It seems Instapaper has a problem with &#10;http://www.nytimes.com/2010/12/27/business/media/27stewart.html?_r=1&#10;See&#10;http://www.instapaper.com/text?u=http%3A%2F%2Fwww.nytimes.com%2F2010%2F12%2F27%2Fbusiness%2Fmedia%2F27stewart.html%3F_r%3D1" />
     <MESSAGE value="Updated for IntelliJ 10.0.1.&#10;Added the start of use of cln.me instead of Instapaper. Tests run." />
@@ -768,6 +831,7 @@
     <MESSAGE value="Updated to deal with change in The Tweeted Times' changed format." />
     <MESSAGE value="Less frequent article fetching to run up less costs in Google App Engine new pricing plan." />
     <MESSAGE value="Corrected test following WSJ page changes.&#10;Added a couple of scripts which should start making this kind of thing easier." />
+    <MESSAGE value="Now running on new laptop, Windows 7, Scala 2.9, Google App Engine 1.6.4.&#10;Corrected test following WSJ page changes.&#10;All tests run and pass." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -790,101 +854,100 @@
       <treeView value="true" />
       <verbose value="true" />
       <viewClosedWhenNoErrors value="false" />
+      <expanded value="true" />
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/scripts/set-classpath.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="89" selection-end="89" vertical-scroll-proportion="0.112769485" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/war/WEB-INF/cron.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="25" selection-start="611" selection-end="611" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Article.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="246" selection-end="246" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="701" selection-end="701" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Preamble.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="7" selection-start="113" selection-end="113" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/twitter-times-rss.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="186" column="0" selection-start="17281" selection-end="22858" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="41" selection-start="984" selection-end="984" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/InstapaperHandlerTest-script.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="35" selection-end="35" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/TwitterTimesNetworkHandlerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="70" column="0" selection-start="2986" selection-end="2986" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="15" selection-start="3493" selection-end="3493" vertical-scroll-proportion="0.59322035">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/scala.bat">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="45" selection-end="45" vertical-scroll-proportion="0.04292929">
-          <folding />
-        </state>
+        <state line="1" column="0" selection-start="45" selection-end="45" vertical-scroll-proportion="0.04292929" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/rss-parser.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DeliciousNetworkHandlerTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="65" selection-start="566" selection-end="566" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/utf8.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="194" column="120" selection-start="12803" selection-end="12803" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2011" column="31" selection-start="98500" selection-end="98500" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/DeliciousNetworkHandler.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="66" selection-start="346" selection-end="436" vertical-scroll-proportion="0.4898305" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="22" selection-start="1870" selection-end="1870" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/QueueableTask.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="32" selection-start="216" selection-end="216" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="37" selection-start="3649" selection-end="3649" vertical-scroll-proportion="0.60597014">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="6" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="185" column="5" selection-start="6189" selection-end="6189" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/DeliciousNetworkHandlerTest.scala">
+    <entry file="file://$PROJECT_DIR$/war/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="65" selection-start="566" selection-end="566" vertical-scroll-proportion="0.0">
+        <state line="47" column="42" selection-start="2365" selection-end="2365" vertical-scroll-proportion="-12.076923">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/utf8.scala">
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="194" column="120" selection-start="12803" selection-end="12803" vertical-scroll-proportion="0.0">
+        <state line="32" column="50" selection-start="1211" selection-end="1211" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/Data.scala">
+    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2011" column="31" selection-start="98500" selection-end="98500" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/DeliciousNetworkHandler.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="66" selection-start="346" selection-end="436" vertical-scroll-proportion="0.4898305">
+        <state line="7" column="12" selection-start="148" selection-end="148" vertical-scroll-proportion="0.21118012">
           <folding />
         </state>
       </provider>
@@ -896,8 +959,8 @@
         <settings>
           <artifact-editor>
             <show-content>
-              <type id="library" />
               <type id="artifact" />
+              <type id="library" />
             </show-content>
           </artifact-editor>
           <last-edited>wharfinger-engine</last-edited>
@@ -941,7 +1004,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.6</last-edited>
+          <last-edited>1.7</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -958,7 +1021,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

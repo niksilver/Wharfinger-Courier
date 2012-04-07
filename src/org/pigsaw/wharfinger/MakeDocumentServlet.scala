@@ -5,9 +5,9 @@ import scala.collection.JavaConversions._
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import Preamble._
-import com.google.appengine.api.labs.taskqueue.QueueFactory
-import com.google.appengine.api.labs.taskqueue.TaskOptions.Builder._
-import com.google.appengine.api.labs.taskqueue.TaskOptions.Method
+import com.google.appengine.api.taskqueue.QueueFactory
+import com.google.appengine.api.taskqueue.TaskOptions.Builder._
+import com.google.appengine.api.taskqueue.TaskOptions.Method
 import java.util.logging.Logger
 
 /**
@@ -49,7 +49,7 @@ class MakeDocumentServlet extends HttpServlet with Transaction {
     def queueMailingDocument(filename: String) {
       log.info("Queueing mailing of file named " + filename)
       val queue = QueueFactory.getDefaultQueue
-      val task = url("/mail-document").param("filename", filename).method(Method.GET)
+      val task = withUrl("/mail-document").param("filename", filename).method(Method.GET)
       queue.add(task)
       resp.getWriter.println("Queued task " + task.getUrl)
     }

@@ -5,10 +5,10 @@ import java.net.URLEncoder
 import scala.collection.JavaConversions._
 import Preamble._
 import javax.jdo.PersistenceManager
-import com.google.appengine.api.labs.taskqueue.QueueFactory
-import com.google.appengine.api.labs.taskqueue.TaskOptions.Builder._
+import com.google.appengine.api.taskqueue.QueueFactory
+import com.google.appengine.api.taskqueue.TaskOptions.Builder._
 import java.util.logging.Logger
-import com.google.appengine.api.labs.taskqueue.TaskOptions.Method
+import com.google.appengine.api.taskqueue.TaskOptions.Method
 import io.Source
 import util.parsing.json.{JSONObject, JSON, JSONType}
 import xml.{NodeSeq, Node}
@@ -76,7 +76,7 @@ class KickOffFetchArticleServlet extends HttpServlet with Transaction {
       log.info("Queueing task to fetch bookmark: " + bookmark.url)
       println("Queueing task to fetch bookmark: " + bookmark.url)
       val queue = QueueFactory.getDefaultQueue
-      val task = url("/do-fetch-article").
+      val task = withUrl("/do-fetch-article").
         param("url", bookmark.url).
         param("title", bookmark.title).
         param("citation", bookmark.getCitation).
@@ -181,4 +181,21 @@ class InstapaperHandler(article_url: String) {
       }
     }
   }
+
+  /** Get just what comes out of Instapaper, albeit processed by the Tag Soup XML loader
+   */
+  def getBasicHtml(): Option[Node] = {
+    try {
+      Some(HTMLNode(new URLReader(url, "UTF-8")))
+    }
+    catch {
+      case e => {
+        val str = new java.io.StringWriter
+        e.printStackTrace(new java.io.PrintWriter(str))
+        log.warning(str.toString)
+        None
+      }
+    }
+  }
+
 }

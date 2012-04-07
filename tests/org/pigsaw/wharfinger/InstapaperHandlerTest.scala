@@ -24,7 +24,7 @@ class InstapaperHandlerTest extends Spec with ShouldMatchers {
       val handler = new InstapaperHandler("http://online.wsj.com/article/SB10001424052748703977004575393173432219064.html")
       val Some(content) = handler.getContentDiv()
       val h3 = content \\ "h3"
-      h3.text should startWith ("By JULIA")
+      content.text.trim should startWith ("The largest U.S. websites")
     }
   }
 }

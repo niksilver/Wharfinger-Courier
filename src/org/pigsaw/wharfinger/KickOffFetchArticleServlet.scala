@@ -168,21 +168,13 @@ class InstapaperHandler(article_url: String) {
           URLEncoder.encode(article_url, "UTF-8")
 
   def getContentDiv(): Option[Node] = {
-    try {
+    tryOrLogWarning {
       val html = HTMLNode(new URLReader(url, "UTF-8"))
       val story_div = html findDivWithId "story"
       if (story_div exists { n: Node => n.text.trim == "" })
         getSecondBody(html)
       else
         story_div
-    }
-    catch {
-      case e => {
-        val str = new java.io.StringWriter
-        e.printStackTrace(new java.io.PrintWriter(str))
-        log.warning(str.toString)
-        None
-      }
     }
   }
 
@@ -195,9 +187,13 @@ class InstapaperHandler(article_url: String) {
   /** Get just what comes out of Instapaper, albeit processed by the Tag Soup XML loader
    */
   def getBasicHtml(): Option[Node] = {
-    try {
+    tryOrLogWarning {
       Some(HTMLNode(new URLReader(url, "UTF-8")))
     }
+  }
+
+  def tryOrLogWarning(block: =>Option[Node]): Option[Node] = {
+    try { block }
     catch {
       case e => {
         val str = new java.io.StringWriter

@@ -170,7 +170,11 @@ class InstapaperHandler(article_url: String) {
   def getContentDiv(): Option[Node] = {
     try {
       val html = HTMLNode(new URLReader(url, "UTF-8"))
-      html findDivWithId "story"
+      val story_div = html findDivWithId "story"
+      if (story_div exists { n: Node => n.text.trim == "" })
+        getSecondBody(html)
+      else
+        story_div
     }
     catch {
       case e => {
@@ -180,6 +184,11 @@ class InstapaperHandler(article_url: String) {
         None
       }
     }
+  }
+
+  private def getSecondBody(html: Node): Option[Node] = {
+    val second_body = (html \\ "body")(1)
+    Some(second_body)
   }
 
   /** Get just what comes out of Instapaper, albeit processed by the Tag Soup XML loader

@@ -23,8 +23,13 @@ class InstapaperHandlerTest extends Spec with ShouldMatchers {
     it("Should be able to find the content div") {
       val handler = new InstapaperHandler("http://online.wsj.com/article/SB10001424052748703977004575393173432219064.html")
       val Some(content) = handler.getContentDiv()
-      val h3 = content \\ "h3"
       content.text.trim should startWith ("The largest U.S. websites")
+    }
+
+    it("Should get content by working around empty story div") {
+      val handler = new InstapaperHandler("http://www.guardian.co.uk/commentisfree/cifamerica/2012/apr/03/sarah-palin-unreality-tv-show-today")
+      val Some(content) = handler.getContentDiv()
+      content.text.trim should startWith ("Sarah Palin reads the newspapers")
     }
   }
 }

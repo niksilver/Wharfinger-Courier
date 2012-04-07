@@ -8,22 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/scalatest-1.7.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/highlighting.xml" />
-      <change type="DELETED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\lib\build\scalatest-1.2.jar" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Google_app_engine.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Google_app_engine.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Local_classes.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Local_classes.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Scala.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Scala.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Wharfinger Courier.iml" afterPath="$PROJECT_DIR$/Wharfinger Courier.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/run-local-server.cmd" afterPath="$PROJECT_DIR$/bin/run-local-server.cmd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/QueueableTask.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/QueueableTask.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/index.html" afterPath="$PROJECT_DIR$/war/index.html" />
     </list>
     <ignored path="Wharfinger Courier.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -113,19 +102,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InstapaperHandlerTest.scala" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="InstapaperHandlerTest.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="12" selection-start="148" selection-end="148" vertical-scroll-proportion="0.21118012">
+            <state line="28" column="60" selection-start="1050" selection-end="1050" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KickOffFetchArticleServlet.scala" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="KickOffFetchArticleServlet.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="185" column="5" selection-start="6189" selection-end="6189" vertical-scroll-proportion="0.0">
+            <state line="190" column="20" selection-start="6349" selection-end="6349" vertical-scroll-proportion="1.4664537">
               <folding />
             </state>
           </provider>
@@ -158,6 +147,24 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="HtmlNodeTest.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="172" column="0" selection-start="6479" selection-end="6479" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Preamble.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Preamble.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="19" selection-start="1151" selection-end="1151" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -166,12 +173,16 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Got " />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TwitterTimesNetworkHandler.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/TwitterTimesNetworkHandlerTest.scala" />
         <option value="$PROJECT_DIR$/war/WEB-INF/cron.xml" />
         <option value="$PROJECT_DIR$/scripts/set-classpath.scala" />
@@ -183,10 +194,11 @@
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/MakeDocumentServlet.scala" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/QueueableTask.scala" />
         <option value="$PROJECT_DIR$/build.xml" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
         <option value="$PROJECT_DIR$/war/index.html" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" />
+        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
       </list>
     </option>
   </component>
@@ -339,11 +351,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="war" />
+              <option name="myItemId" value="tests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemId" value="wharfinger" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -708,6 +720,11 @@
       <created>1293882384787</created>
       <updated>1293882384787</updated>
     </task>
+    <task id="LOCAL-00001" summary="Now running on new laptop, Windows 7, Scala 2.9, Google App Engine 1.6.4.&#10;Corrected test following WSJ page changes.&#10;All tests run and pass.">
+      <created>1333828935661</created>
+      <updated>1333828935661</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -794,7 +811,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Now running on new laptop, Windows 7, Scala 2.9, Google App Engine 1.6.4.&#10;Corrected test following WSJ page changes.&#10;All tests run and pass." />
+    <option name="LAST_COMMIT_MESSAGE" value="Got basic change working to work round empty story div issue. A test prove this works. Needs tidying." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -807,7 +824,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Corrected HTML error." />
     <MESSAGE value="Added some tests around character encodings. It seems Instapaper has a problem with &#10;http://www.nytimes.com/2010/12/27/business/media/27stewart.html?_r=1&#10;See&#10;http://www.instapaper.com/text?u=http%3A%2F%2Fwww.nytimes.com%2F2010%2F12%2F27%2Fbusiness%2Fmedia%2F27stewart.html%3F_r%3D1" />
     <MESSAGE value="Updated for IntelliJ 10.0.1.&#10;Added the start of use of cln.me instead of Instapaper. Tests run." />
     <MESSAGE value="Adding more to use cln.me" />
@@ -832,6 +848,7 @@
     <MESSAGE value="Less frequent article fetching to run up less costs in Google App Engine new pricing plan." />
     <MESSAGE value="Corrected test following WSJ page changes.&#10;Added a couple of scripts which should start making this kind of thing easier." />
     <MESSAGE value="Now running on new laptop, Windows 7, Scala 2.9, Google App Engine 1.6.4.&#10;Corrected test following WSJ page changes.&#10;All tests run and pass." />
+    <MESSAGE value="Got basic change working to work round empty story div issue. A test prove this works. Needs tidying." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -858,16 +875,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/TwitterTimesNetworkHandlerTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="0" selection-start="2986" selection-end="2986" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/scala.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="45" selection-end="45" vertical-scroll-proportion="0.04292929" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/rss-parser.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -910,30 +917,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="6" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="185" column="5" selection-start="6189" selection-end="6189" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/war/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="42" selection-start="2365" selection-end="2365" vertical-scroll-proportion="-12.076923">
           <folding />
         </state>
       </provider>
@@ -945,9 +931,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Preamble.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="19" selection-start="1151" selection-end="1151" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="12" selection-start="148" selection-end="148" vertical-scroll-proportion="0.21118012">
+        <state line="28" column="60" selection-start="1050" selection-end="1050" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="42" selection-start="2365" selection-end="2365" vertical-scroll-proportion="-12.076923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="6" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="172" column="0" selection-start="6479" selection-end="6479" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="190" column="20" selection-start="6349" selection-end="6349" vertical-scroll-proportion="1.4664537">
           <folding />
         </state>
       </provider>

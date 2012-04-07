@@ -9,10 +9,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala" afterPath="$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" afterPath="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/index.html" afterPath="$PROJECT_DIR$/war/index.html" />
     </list>
     <ignored path="Wharfinger Courier.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -102,19 +101,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InstapaperHandlerTest.scala" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="InstapaperHandlerTest.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="60" selection-start="1050" selection-end="1050" vertical-scroll-proportion="0.0">
+            <state line="16" column="0" selection-start="356" selection-end="356" vertical-scroll-proportion="0.18582375">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KickOffFetchArticleServlet.scala" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="KickOffFetchArticleServlet.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="190" column="20" selection-start="6349" selection-end="6349" vertical-scroll-proportion="1.4664537">
+            <state line="190" column="20" selection-start="6349" selection-end="6349" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -141,7 +140,7 @@
       <file leaf-file-name="HTMLNode.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="6" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0">
+            <state line="84" column="81" selection-start="2488" selection-end="2488" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -150,7 +149,7 @@
       <file leaf-file-name="HtmlNodeTest.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="172" column="0" selection-start="6479" selection-end="6479" vertical-scroll-proportion="0.0">
+            <state line="104" column="30" selection-start="4026" selection-end="4026" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -183,7 +182,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/TwitterTimesNetworkHandlerTest.scala" />
         <option value="$PROJECT_DIR$/war/WEB-INF/cron.xml" />
         <option value="$PROJECT_DIR$/scripts/set-classpath.scala" />
         <option value="$PROJECT_DIR$/scripts/InstapaperHandlerTest-script.scala" />
@@ -196,9 +194,10 @@
         <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/war/index.html" />
         <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
+        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala" />
         <option value="$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" />
-        <option value="$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
       </list>
     </option>
   </component>
@@ -223,23 +222,9 @@
       <profile-state>
         <expanded-state>
           <State>
-            <id>Inspections</id>
-          </State>
-          <State>
-            <id>Java language level issues</id>
-          </State>
-          <State>
-            <id>Naming conventions</id>
-          </State>
-          <State>
-            <id>Spelling</id>
+            <id />
           </State>
         </expanded-state>
-        <selected-state>
-          <State>
-            <id>SpellCheckingInspection</id>
-          </State>
-        </selected-state>
       </profile-state>
     </entry>
   </component>
@@ -445,7 +430,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="49" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="77" />
@@ -475,7 +460,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="options.lastSelected" value="preferences.editor" />
+    <property name="options.lastSelected" value="Errors" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -724,7 +709,11 @@
       <created>1333828935661</created>
       <updated>1333828935661</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Got basic change working to work round empty story div issue. A test prove this works. Needs tidying.">
+      <created>1333831509993</created>
+      <updated>1333831509993</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -749,7 +738,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41095892" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -759,12 +748,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.63013697" sideWeight="0.49734244" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.380137" sideWeight="0.49734244" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.380137" sideWeight="0.49734244" order="8" side_tool="false" content_ui="tabs" x="23" y="265" width="977" height="207" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24974412" sideWeight="0.22133759" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958034" sideWeight="0.65923566" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39918116" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2126044" sideWeight="0.61986303" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2126044" sideWeight="0.37328768" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6267123" sideWeight="0.49734244" order="2" side_tool="false" content_ui="tabs" x="124" y="296" width="736" height="409" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -938,13 +927,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="60" selection-start="1050" selection-end="1050" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/war/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="47" column="42" selection-start="2365" selection-end="2365" vertical-scroll-proportion="-12.076923">
@@ -952,23 +934,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="190" column="20" selection-start="6349" selection-end="6349" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="6" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0">
+        <state line="84" column="81" selection-start="2488" selection-end="2488" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/HtmlNodeTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="0" selection-start="6479" selection-end="6479" vertical-scroll-proportion="0.0">
+        <state line="104" column="30" selection-start="4026" selection-end="4026" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
+    <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="190" column="20" selection-start="6349" selection-end="6349" vertical-scroll-proportion="1.4664537">
+        <state line="16" column="0" selection-start="356" selection-end="356" vertical-scroll-proportion="0.18582375">
           <folding />
         </state>
       </provider>

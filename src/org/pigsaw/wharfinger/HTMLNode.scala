@@ -80,6 +80,13 @@ object HTMLNode {
   }
 
   def imagesToText(node: Node): Node = transform(node, imagesToTextTrans)
+
+  def bodyToStoryDivTrans(n: Node): Node = n match {
+    case e: Elem if (e.label.toLowerCase == "body") => <div id="story">{ e.child }</div>
+    case x => x
+  }
+
+  def bodyToStoryDiv(node: Node): Node = transform(node, bodyToStoryDivTrans)
 }
 
 /**

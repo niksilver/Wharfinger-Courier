@@ -114,6 +114,12 @@ class HtmlNodeTest extends Spec with ShouldMatchers {
         """<p><a href="/hello.txt">Message&#8212;again[Image: Hello]</a>[Image: Under&#8212;line]</p>""")
     }
 
+    it("Should be able to change a body into a story div") {
+      val xml = <body>It's <out0></out0> and <out1>Out<in1>In 1</in1><in2>In 2</in2>side</out1></body>
+      HTMLNode.bodyToStoryDiv(xml).toString should be === (
+        """<div id="story">It's <out0></out0> and <out1>Out<in1>In 1</in1><in2>In 2</in2>side</out1></div>""")
+    }
+
     it("Should read HTML from a redirected URL") {
       val html = HTMLNode(new URLReader("http://bit.ly/9NQcyA", "UTF-8"))
       val title = (html \\ "title").text

@@ -13,7 +13,7 @@ class TwitterTimesNetworkHandler(val reader: Reader) extends BookmarkServiceNetw
 
   val bookmarks = new ListBuffer[TwitterTimesBookmark]()
 
-  def this() = this(new URLReader("http://twittertim.es/pigsaw/rss.xml", "UTF-8"))
+  def this() = this(new URLReader("http://tweetedtimes.com/pigsaw/rss.xml", "UTF-8"))
 
   /** Parse the RSS to create the bookmarks.
    */

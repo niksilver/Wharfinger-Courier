@@ -26,6 +26,11 @@ class TwitterTimesNetworkHandlerTest extends FunSpec with ShouldMatchers {
       bookmark1.url should be === ("http://www.niemanlab.org/2011/06/who-clicks-more-on-local-news-new-york-or-omaha-surprising-data-from-the-fcc-on-local-online-news")
       bookmark2.url should be === ("http://www.guardian.co.uk/law/butterworth-and-bowcott-on-law/2011/jun/17/internet-freedom-matter-un")
     }
+
+    it("Should be able to parse the real Tweeted Times") {
+      val handler = new TwitterTimesNetworkHandler()
+      handler.parse
+    }
   }
 }
 
@@ -82,5 +87,6 @@ class TwitterTimesBookmarkTest extends FunSpec with ShouldMatchers {
       val bookmark = new TwitterTimesBookmark(Data.twitter_times_nieman_lab_item_with_1_tweeter)
       bookmark.citation should startWith ("Tweeted by @steverubel: Who clicks more on local news")
     }
+
   }
 }

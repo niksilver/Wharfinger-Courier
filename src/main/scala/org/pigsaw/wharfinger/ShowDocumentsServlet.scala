@@ -38,7 +38,7 @@ class ShowDocumentsServlet extends HttpServlet with Transaction {
       println("<br/><a href=\"/show-documents?offset=" + (offset + extent) + "\">Next...</a>")
     }
 
-    def kilobytes(bytes: Int): String = format("%,d", (bytes/1024.0 + 0.5).asInstanceOf[Int])
+    def kilobytes(bytes: Int): String = (bytes/1024.0 + 0.5).asInstanceOf[Int].formatted("%,d")
 
     def showDocument() {
       val filename = req.getPathInfo.tail.split('/')(0)

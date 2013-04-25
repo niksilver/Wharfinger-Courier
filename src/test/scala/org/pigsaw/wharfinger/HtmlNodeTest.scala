@@ -157,7 +157,7 @@ class HtmlNodeTest extends FunSpec with ShouldMatchers {
     }
 
     it("Should throw an IOException if URL redirect cannot be resolved") {
-      evaluating(new RedirectResolver("http://www.madeupdomain54321.com")) should produce [IOException]
+      evaluating(print("** URL is " + (new RedirectResolver("http://www.madeupdomain54321.com").URL))) should produce [IOException]
     }
 
     /* This will not work due to Java's security.

@@ -8,8 +8,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build.sbt" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\ccil\cowan\tagsoup\TagSoupFactoryAdapter.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/ccil/cowan/tagsoup/TagSoupFactoryAdapter.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\AdminServlet.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/AdminServlet.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\Article.java" afterPath="$PROJECT_DIR$/src/main/java/org/pigsaw/wharfinger/Article.java" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\BookmarkPendingFetch.java" afterPath="$PROJECT_DIR$/src/main/java/org/pigsaw/wharfinger/BookmarkPendingFetch.java" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\ContentExtractor.not-scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/ContentExtractor.not-scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\DeliciousNetworkHandler.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/DeliciousNetworkHandler.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\Document.java" afterPath="$PROJECT_DIR$/src/main/java/org/pigsaw/wharfinger/Document.java" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\DocumentMaker.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/DocumentMaker.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\EMail.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/EMail.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\HTMLNode.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/HTMLNode.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\KickOffFetchArticleServlet.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\MailDocumentServlet.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/MailDocumentServlet.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\MakeDocumentServlet.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/MakeDocumentServlet.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\Message.java" afterPath="$PROJECT_DIR$/src/main/java/org/pigsaw/wharfinger/Message.java" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\PMF.java" afterPath="$PROJECT_DIR$/src/main/java/org/pigsaw/wharfinger/PMF.java" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\PastArticle.java" afterPath="$PROJECT_DIR$/src/main/java/org/pigsaw/wharfinger/PastArticle.java" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\Preamble.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/Preamble.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\QueueableTask.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/QueueableTask.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\ReadBookmarksServlet.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/ReadBookmarksServlet.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\ShowDocumentsServlet.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/ShowDocumentsServlet.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\TestingServlet.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/TestingServlet.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\Transaction.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/Transaction.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\TwitterTimesNetworkHandler.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/TwitterTimesNetworkHandler.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\org\pigsaw\wharfinger\URLString.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/URLString.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/WEB-INF/appengine-web.xml" afterPath="$PROJECT_DIR$/war/WEB-INF/appengine-web.xml" />
     </list>
     <ignored path="Wharfinger Courier.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -90,15 +114,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TestingServlet.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="34" selection-start="848" selection-end="848" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="InstapaperHandlerTest.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala">
           <provider selected="true" editor-type-id="text-editor">
@@ -108,28 +123,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReadBookmarksServlet.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/ReadBookmarksServlet.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="38" selection-start="553" selection-end="553" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TwitterTimesNetworkHandler.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TwitterTimesNetworkHandler.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="73" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="appengine-web.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/war/WEB-INF/appengine-web.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="338" selection-end="338" vertical-scroll-proportion="0.331384">
+            <state line="10" column="0" selection-start="338" selection-end="338" vertical-scroll-proportion="0.30520648">
               <folding />
             </state>
           </provider>
@@ -139,33 +136,6 @@
         <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/TwitterTimesNetworkHandlerTest.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state line="15" column="13" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KickOffFetchArticleServlet.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="188" column="38" selection-start="6356" selection-end="6356" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdminServlet.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="14" selection-start="2343" selection-end="2343" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Transaction.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Transaction.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="173" selection-end="293" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -409,7 +379,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="49" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="77" />
     <property name="project.structure.proportion" value="0.15" />
@@ -745,7 +715,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41095892" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -759,7 +729,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2126044" sideWeight="0.32363012" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958034" sideWeight="0.65923566" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39863327" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34168565" sideWeight="0.494863" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34168565" sideWeight="0.494863" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.50513697" sideWeight="0.49734244" order="2" side_tool="false" content_ui="tabs" x="124" y="296" width="736" height="409" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -891,24 +861,9 @@
         <state line="53" column="44" selection-start="1677" selection-end="1677" vertical-scroll-proportion="0.19585687" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Preamble.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="3" selection-start="324" selection-end="324" vertical-scroll-proportion="0.3357271" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/HTMLNode.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="3" selection-start="3308" selection-end="3308" vertical-scroll-proportion="3.4111311" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/war/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.7928572" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TestingServlet.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="34" selection-start="848" selection-end="848" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/InstapaperHandlerTest.scala">
@@ -916,39 +871,14 @@
         <state line="35" column="26" selection-start="1435" selection-end="1435" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/ReadBookmarksServlet.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="38" selection-start="553" selection-end="553" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/TwitterTimesNetworkHandler.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="73" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/org/pigsaw/wharfinger/TwitterTimesNetworkHandlerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="13" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="188" column="38" selection-start="6356" selection-end="6356" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/AdminServlet.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="14" selection-start="2343" selection-end="2343" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/pigsaw/wharfinger/Transaction.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="173" selection-end="293" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/war/WEB-INF/appengine-web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="338" selection-end="338" vertical-scroll-proportion="0.331384">
+        <state line="10" column="0" selection-start="338" selection-end="338" vertical-scroll-proportion="0.30520648">
           <folding />
         </state>
       </provider>
@@ -1017,12 +947,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Wharfinger Courier</last-edited>
+          <last-edited>Scala|Wharfinger Courier</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -1030,7 +959,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Scala</last-edited>
+          <last-edited>Google app engine</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

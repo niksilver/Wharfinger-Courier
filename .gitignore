@@ -1,4 +1,11 @@
+.cache
+.classpath
+.idea
+.project
+.settings
 out.unenhanced
+project
+target
 TwitterApp.scala
 war/WEB-INF/appengine-generated
 war/WEB-INF/classes/

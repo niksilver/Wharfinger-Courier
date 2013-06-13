@@ -2,8 +2,9 @@
 
     <property environment="env"/>
     <property name="base.dir" location="."/>
-    <property name="sources.dir" value="${base.dir}/src"/>
-    <property name="tests.dir" value="${base.dir}/tests"/>
+    <property name="java.sources.dir" value="${base.dir}/src/main/java"/>
+    <property name="scala.sources.dir" value="${base.dir}/src/main/scala"/>
+    <property name="tests.dir" value="${base.dir}/test/scala"/>
     <property name="build.dir" value="${base.dir}/out.unenhanced"/>
     <property name="intellijbuild.dir" value="${base.dir}/out"/>
     <property name="scala.home" value="${env.SCALA_HOME}"/>
@@ -47,7 +48,7 @@
             description="Compiles Java source and copies other source files to the WAR.">
         <mkdir dir="${build.dir}"/>
         <mkdir dir="war/WEB-INF/classes" />
-        <javac srcdir="${sources.dir}"
+        <javac srcdir="${java.sources.dir}"
                destdir="${build.dir}"
                classpathref="build.classpath">
             <include name="**/*.java"/>
@@ -56,7 +57,7 @@
 
     <target name="compile-scala-app" depends="init,compile-java">
         <mkdir dir="${build.dir}"/>
-        <scalac srcdir="${sources.dir}"
+        <scalac srcdir="${scala.sources.dir}"
                 destdir="${build.dir}"
                 classpathref="build.classpath">
             <include name="**/*.scala"/>

@@ -8,6 +8,4 @@ project/project
 project/target
 target
 TwitterApp.scala
-war/WEB-INF/appengine-generated
-war/WEB-INF/classes/
-war/WEB-INF/lib
+war

@@ -2,9 +2,10 @@
 
     <property environment="env"/>
     <property name="base.dir" location="."/>
+    <property name="webapp.sources.dir" value="${base.dir}/src/main/webapp"/>
     <property name="java.sources.dir" value="${base.dir}/src/main/java"/>
     <property name="scala.sources.dir" value="${base.dir}/src/main/scala"/>
-    <property name="tests.dir" value="${base.dir}/test/scala"/>
+    <property name="tests.sources.dir" value="${base.dir}/src/test/scala"/>
     <property name="build.dir" value="${base.dir}/out.unenhanced"/>
     <property name="intellijbuild.dir" value="${base.dir}/out"/>
     <property name="scala.home" value="${env.SCALA_HOME}"/>
@@ -48,7 +49,8 @@
             description="Compiles Java source and copies other source files to the WAR.">
         <mkdir dir="${build.dir}"/>
         <mkdir dir="war/WEB-INF/classes" />
-        <javac srcdir="${java.sources.dir}"
+        <javac includeantruntime="false"
+        	   srcdir="${java.sources.dir}"
                destdir="${build.dir}"
                classpathref="build.classpath">
             <include name="**/*.java"/>
@@ -66,7 +68,7 @@
 
     <target name="compile-tests" depends="init,compile-scala-app">
         <mkdir dir="${build.dir}"/>
-        <scalac srcdir="${tests.dir}"
+        <scalac srcdir="${tests.sources.dir}"
                 destdir="${build.dir}"
                 classpathref="build.classpath">
             <include name="**/*.scala"/>
@@ -76,8 +78,8 @@
     <target name="populate-war"
             depends="compile-java,compile-scala-app"
             description="Copies the app engine and other JARs to the WAR.">
-        <copy todir="${war.classes}">
-          <fileset dir="${sources.dir}">
+        <copy todir="${war.dir}">
+          <fileset dir="${webapp.sources.dir}">
               <exclude name="**/*.java" />
               <exclude name="**/*.scala" />
           </fileset>

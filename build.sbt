@@ -4,14 +4,10 @@ name := "Wharfinger Courier"
 
 version := "0.2"
 
-// Set JDK6, required for Google App Engine
-
-javaHome := Some(file("C:/Program Files (x86)/Java/jdk1.6.0_43"))
-
 // Google App Engine plugin from https://github.com/sbt/sbt-appengine
 
 unmanagedJars in Compile <++= baseDirectory map { base =>
-	val gaeLib = file("C:/Program Files/Google/appengine-java-sdk-1.6.4/lib")
+	val gaeLib = file("C:/Program Files/Google/appengine-java-sdk-1.8.1/lib")
 	val jarDirs = (gaeLib / "shared") +++
 		(gaeLib / "user" ) +++
 		(gaeLib / "user" / "orm") +++
@@ -22,7 +18,6 @@ unmanagedJars in Compile <++= baseDirectory map { base =>
 }
 
 scalacOptions += "-deprecation"
-
 
 libraryDependencies ++= Seq(
   "net.databinder" %% "unfiltered-filter" % "0.6.4",

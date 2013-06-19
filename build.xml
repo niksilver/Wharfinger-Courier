@@ -37,7 +37,7 @@
         </taskdef>
     </target>
     
-    <target name="clean-all"
+    <target name="clean"
             description="Clean out all the class files and copied JARs">
         <delete dir="${build.dir}" includes="**/*" includeemptydirs="true" quiet="true"/>
         <delete dir="${intellijbuild.dir}" includes="**/*" includeemptydirs="true" quiet="true"/>
@@ -57,7 +57,7 @@
         </javac>
     </target>
 
-    <target name="compile-scala-app" depends="init,compile-java">
+    <target name="compile-scala" depends="init,compile-java">
         <mkdir dir="${build.dir}"/>
         <scalac srcdir="${scala.sources.dir}"
                 destdir="${build.dir}"
@@ -66,7 +66,7 @@
         </scalac>
     </target>
 
-    <target name="compile-tests" depends="init,compile-scala-app">
+    <target name="compile-tests" depends="init,compile-scala">
         <mkdir dir="${build.dir}"/>
         <scalac srcdir="${tests.sources.dir}"
                 destdir="${build.dir}"
@@ -76,7 +76,7 @@
     </target>
 
     <target name="populate-war"
-            depends="compile-java,compile-scala-app"
+            depends="compile-java,compile-scala"
             description="Copies the app engine and other JARs to the WAR.">
         <copy todir="${war.dir}">
           <fileset dir="${webapp.sources.dir}">
@@ -110,7 +110,7 @@
     </target>
 
     <target name="prep-for-upload"
-            depends="compile-java,compile-scala-app,populate-war,datanucleus-enhance"/>
+            depends="compile-java,compile-scala,populate-war,datanucleus-enhance"/>
 
     <target name="compile-tests-and-prep-for-upload"
             depends="compile-tests,prep-for-upload"/>

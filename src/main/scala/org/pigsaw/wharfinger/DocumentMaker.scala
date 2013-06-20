@@ -12,28 +12,24 @@ import Preamble._
 class DocumentMaker(val title: String,
     val dateline: String,
     val articles: Seq[Article] = Nil,
-    val rejectedArticles: Seq[Article] = Nil) {
+    val rejected: Seq[Article] = Nil) {
 
   val maxArticlesLength = 740 * 1024
+  
+  private lazy val articles_length = articles.foldLeft(0)(_ + _.getContentLength)
 
-  def add(article: Article): (DocumentMaker, Boolean) = {
-    val articles_length = articles.foldLeft(0)(_ + _.getContentLength)
-    if (articles_length + article.getContentLength > maxArticlesLength) {
-      val dm = new DocumentMaker(title, dateline, articles, rejectedArticles :+ article)
-      (dm, false)
-    }
-    else {
-      val dm = new DocumentMaker(title, dateline, articles :+ article, rejectedArticles)
-      (dm, true)
-    }
-
+  def add(article: Article): DocumentMaker = {
+    if (articles_length + article.getContentLength > maxArticlesLength)
+      new DocumentMaker(title, dateline, articles, rejected :+ article)
+    else
+      new DocumentMaker(title, dateline, articles :+ article, rejected)
   }
 
   def articleSummary: String = {
     (articles.length match {
       case 1 => "1 article"
       case n => n + " articles"
-    }) + (rejectedArticles.length match {
+    }) + (rejected.length match {
       case 0 => ""
       case n => ", " + n + " remaining"
     })

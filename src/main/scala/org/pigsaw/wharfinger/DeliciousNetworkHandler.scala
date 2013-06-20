@@ -5,8 +5,8 @@ import java.io.Reader
 import collection.mutable.ListBuffer
 import xml.{Node, NodeSeq}
 
-abstract class BookmarkServiceNetworkHandler {
-  def parse: Unit
+abstract class BookmarkServiceNetworkHandler[T] {
+  def parse: Seq[T]
   def bookmarksPendingFetch: Seq[BookmarkPendingFetch]
 }
 
@@ -15,7 +15,7 @@ abstract class BookmarkServiceNetworkHandler {
  * articles to fetch
  */
 
-class DeliciousNetworkHandler(val reader: Reader) extends BookmarkServiceNetworkHandler {
+class DeliciousNetworkHandler(val reader: Reader) extends BookmarkServiceNetworkHandler[DeliciousBookmark] {
 
   val bookmarks = new ListBuffer[DeliciousBookmark]()
 
@@ -23,12 +23,13 @@ class DeliciousNetworkHandler(val reader: Reader) extends BookmarkServiceNetwork
 
   /**Parse the HTML to create the bookmarks.
    */
-  def parse() {
+  def parse(): Seq[DeliciousBookmark] = {
     val html = HTMLNode(reader)
     val bookmarks_div =  html findElementAttributeSubstring ("div", "@class", "bookmark ")
     for (bookmark_div <- bookmarks_div) {
       bookmarks += DeliciousNetworkHandler.makeBookmark(bookmark_div)
     }
+    bookmarks
   }
 
   def bookmarksPendingFetch: Seq[BookmarkPendingFetch] =

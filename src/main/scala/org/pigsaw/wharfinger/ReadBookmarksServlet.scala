@@ -30,6 +30,7 @@ class ReadBookmarksServlet extends HttpServlet {
       def parse = {
         resp.getWriter.println("Unknown bookmark service: " + service)
         log.warning("Unknown bookmark service: " + service)
+        Seq()
       }
       def bookmarksPendingFetch = Nil
     }

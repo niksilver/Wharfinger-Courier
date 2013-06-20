@@ -9,7 +9,7 @@ import xml.{Elem, Node, XML}
  * Read and parse the Twitter Times RSS feed
  */
 
-class TwitterTimesNetworkHandler(val reader: Reader) extends BookmarkServiceNetworkHandler {
+class TwitterTimesNetworkHandler(val reader: Reader) extends BookmarkServiceNetworkHandler[TwitterTimesBookmark] {
 
   val bookmarks = new ListBuffer[TwitterTimesBookmark]()
 
@@ -17,7 +17,7 @@ class TwitterTimesNetworkHandler(val reader: Reader) extends BookmarkServiceNetw
 
   /** Parse the RSS to create the bookmarks.
    */
-  def parse() {
+  def parse() = {
     val rss = XML.load(reader)
     bookmarks ++= (rss \ "channel" \ "item") map { new TwitterTimesBookmark(_) }
   }

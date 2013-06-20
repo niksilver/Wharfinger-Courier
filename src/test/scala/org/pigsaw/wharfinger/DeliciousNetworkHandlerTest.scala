@@ -21,7 +21,7 @@ class DeliciousNetworkHandlerTest extends FunSpec with ShouldMatchers {
 
     it("Should return a list of bookmarks") {
       val handler = new DeliciousNetworkHandler(new StringReader(Data.delicious_html))
-      val bookmarks = handler.parse
+      val bookmarks = handler.bookmarks
 
       bookmarks.size should be === (10)
 

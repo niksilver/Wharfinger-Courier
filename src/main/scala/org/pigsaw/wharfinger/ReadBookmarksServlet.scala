@@ -19,15 +19,15 @@ class ReadBookmarksServlet extends HttpServlet {
       case "twitter-times" => new TwitterTimesNetworkHandler
       case service => new UnknownServiceHandler(service, log)
     }
-    handler.parse
+    handler.bookmarks
     handler.bookmarksPendingFetch.foreach( b => {
       resp.getWriter.println("Saving for later fetching: " + b.url)
       val normalised_url = URLString(b.url).normalise.toString
       new BookmarkPendingFetch(normalised_url, b.title, b.getCitation).saveForLaterFetching
     })
 
-    class UnknownServiceHandler(service: String, log: Logger) extends BookmarkServiceNetworkHandler {
-      def parse = {
+    class UnknownServiceHandler(service: String, log: Logger) extends BookmarkServiceNetworkHandler[Nothing] {
+      def bookmarks = {
         resp.getWriter.println("Unknown bookmark service: " + service)
         log.warning("Unknown bookmark service: " + service)
         Seq()

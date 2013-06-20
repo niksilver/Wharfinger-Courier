@@ -14,7 +14,7 @@ class TwitterTimesNetworkHandlerTest extends FunSpec with ShouldMatchers {
   describe("TwitterTimesNetworkHandler") {
     it("Should return a list of bookmarks") {
       val handler = new TwitterTimesNetworkHandler(new FileReader("src/test/scala/org/pigsaw/wharfinger/twitter-times-rss.xml"))
-      val bookmarks = handler.parse
+      val bookmarks = handler.bookmarks
 
       bookmarks.size should be === (30)
 
@@ -25,7 +25,7 @@ class TwitterTimesNetworkHandlerTest extends FunSpec with ShouldMatchers {
 
     it("Should be able to parse the real Tweeted Times") {
       val handler = new TwitterTimesNetworkHandler()
-      handler.parse
+      handler.bookmarks
     }
   }
 }

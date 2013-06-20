@@ -11,21 +11,19 @@ import xml.{Elem, Node, XML}
 
 class TwitterTimesNetworkHandler(val reader: Reader) extends BookmarkServiceNetworkHandler[TwitterTimesBookmark] {
 
-  private val bookmarks = new ListBuffer[TwitterTimesBookmark]()
-
   def this() = this(new URLReader("http://tweetedtimes.com/pigsaw/rss.xml", "UTF-8"))
 
   /** Parse the RSS to create the bookmarks.
    */
-  def parse() = {
+  lazy val bookmarks = {
     val rss = XML.load(reader)
-    bookmarks ++= (rss \ "channel" \ "item") map { new TwitterTimesBookmark(_) }
+    (rss \ "channel" \ "item") map { new TwitterTimesBookmark(_) }
   }
 
   /** Get all the bookmarks pending fetch (as JDOs).
    */
   def bookmarksPendingFetch =
-    for (b <- bookmarks) yield new BookmarkPendingFetch(b.url, b.title, b.citation)
+    bookmarks map { b => new BookmarkPendingFetch(b.url, b.title, b.citation) }
 }
 
 class TwitterTimesBookmark (item: Node) {

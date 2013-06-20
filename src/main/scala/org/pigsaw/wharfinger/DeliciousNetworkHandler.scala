@@ -6,7 +6,8 @@ import collection.mutable.ListBuffer
 import xml.{Node, NodeSeq}
 
 abstract class BookmarkServiceNetworkHandler[T] {
-  def parse: Seq[T]
+  /** Get the bookmarks from the network service. */
+  def bookmarks: Seq[T]
   def bookmarksPendingFetch: Seq[BookmarkPendingFetch]
 }
 
@@ -17,23 +18,18 @@ abstract class BookmarkServiceNetworkHandler[T] {
 
 class DeliciousNetworkHandler(val reader: Reader) extends BookmarkServiceNetworkHandler[DeliciousBookmark] {
 
-  private val bookmarks = new ListBuffer[DeliciousBookmark]()
-
   def this() = this(new URLReader("http://delicious.com/network/nik.silver?setcount=50", "UTF-8"))
 
-  /**Parse the HTML to create the bookmarks.
+  /** Parse the HTML to create the bookmarks.
    */
-  def parse(): Seq[DeliciousBookmark] = {
+  lazy val bookmarks: Seq[DeliciousBookmark] = {
     val html = HTMLNode(reader)
     val bookmarks_div =  html findElementAttributeSubstring ("div", "@class", "bookmark ")
-    for (bookmark_div <- bookmarks_div) {
-      bookmarks += DeliciousNetworkHandler.makeBookmark(bookmark_div)
-    }
-    bookmarks
+    bookmarks_div map { DeliciousNetworkHandler.makeBookmark(_) }
   }
 
   def bookmarksPendingFetch: Seq[BookmarkPendingFetch] =
-    for (b <- bookmarks) yield b.bookmarkPendingFetch
+    bookmarks map { _.bookmarkPendingFetch }
 }
 
 object DeliciousNetworkHandler {

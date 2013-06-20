@@ -61,7 +61,8 @@
         <mkdir dir="${build.dir}"/>
         <scalac srcdir="${scala.sources.dir}"
                 destdir="${build.dir}"
-                classpathref="build.classpath">
+                classpathref="build.classpath"
+        		deprecation="true">
             <include name="**/*.scala"/>
         </scalac>
     </target>

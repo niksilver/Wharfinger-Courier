@@ -22,11 +22,13 @@ class DocumentMakerTest extends FunSpec with ShouldMatchers {
         "Spotted by someone",
         "The colour of cows",
         "<p>Brown, black and white</p>")
-      maker.add(article1)
-      maker.add(article2)
-      val document = XML.loadString(maker.document)
+      val (maker1, success1) = maker.add(article1)
+      val (maker2, success2) = maker1.add(article2)
+      val document = XML.loadString(maker2.document)
 
-      maker.articles.length should be (2)
+      success1 should be (true)
+      success2 should be (true)
+      maker2.articles.length should be (2)
 
       val tocs: Seq[Node] = document findElementAttributeText ("div", "@class", "wharfinger-toc")
       tocs.length should be === (1)
@@ -63,22 +65,32 @@ class DocumentMakerTest extends FunSpec with ShouldMatchers {
       val article8 = new Article("http://art.com/8","Cit 8", "Title 8", content("Content 8 ", 100*1024))
       val article9 = new Article("http://art.com/9","Cit 9", "Title 9", content("Content 9 ", 100*1024))
 
-      maker.add(article1) should be (true)
-      maker.add(article2) should be (true)
-      maker.add(article3) should be (true)
-      maker.add(article4) should be (true)
-      maker.add(article5) should be (true)
-      maker.add(article6) should be (true)
-      maker.add(article7) should be (true)
-      maker.add(article8) should be (false)
-      maker.add(article9) should be (false)
+      val (maker1, success1) = maker.add(article1)
+      val (maker2, success2) = maker1.add(article2)
+      val (maker3, success3) = maker2.add(article3)
+      val (maker4, success4) = maker3.add(article4)
+      val (maker5, success5) = maker4.add(article5)
+      val (maker6, success6) = maker5.add(article6)
+      val (maker7, success7) = maker6.add(article7)
+      val (maker8, success8) = maker7.add(article8)
+      val (maker9, success9) = maker8.add(article9)
+      
+      success1 should be (true)
+      success2 should be (true)
+      success3 should be (true)
+      success4 should be (true)
+      success5 should be (true)
+      success6 should be (true)
+      success7 should be (true)
+      success8 should be (false)
+      success9 should be (false)
 
-      maker.articles.length should be (7)
+      maker9.articles.length should be (7)
 
-      maker.rejectedArticles should contain (article8)
-      maker.rejectedArticles should contain (article9)
+      maker9.rejectedArticles should contain (article8)
+      maker9.rejectedArticles should contain (article9)
 
-      val document = XML.loadString(maker.document)
+      val document = XML.loadString(maker9.document)
       val tocs: Seq[Node] = document findElementAttributeText ("div", "@class", "wharfinger-toc")
       val toc = tocs(0).child
       // toc(0) is <a name="toc"></a>

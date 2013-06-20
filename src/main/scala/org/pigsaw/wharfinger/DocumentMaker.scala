@@ -9,21 +9,22 @@ import Preamble._
  * This is to cope with GAE datastore's max entity size.
  */
 
-class DocumentMaker(val title: String, val dateline: String) {
+class DocumentMaker(val title: String,
+    val dateline: String,
+    val articles: Seq[Article] = Nil,
+    val rejectedArticles: Seq[Article] = Nil) {
 
-  val articles = new ListBuffer[Article]
   val maxArticlesLength = 740 * 1024
-  val rejectedArticles = new ListBuffer[Article]
 
-  def add(article: Article): Boolean = {
+  def add(article: Article): (DocumentMaker, Boolean) = {
     val articles_length = articles.foldLeft(0)(_ + _.getContentLength)
     if (articles_length + article.getContentLength > maxArticlesLength) {
-      rejectedArticles += article
-      false
+      val dm = new DocumentMaker(title, dateline, articles, rejectedArticles :+ article)
+      (dm, false)
     }
     else {
-      articles += article
-      true
+      val dm = new DocumentMaker(title, dateline, articles :+ article, rejectedArticles)
+      (dm, true)
     }
 
   }

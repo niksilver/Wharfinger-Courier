@@ -21,22 +21,18 @@ class DeliciousNetworkHandlerTest extends FunSpec with ShouldMatchers {
 
     it("Should return a list of bookmarks") {
       val handler = new DeliciousNetworkHandler(new StringReader(Data.delicious_html))
-      handler.parse
+      val bookmarks = handler.parse
 
-      handler.bookmarks.size should be === (10)
+      bookmarks.size should be === (10)
 
-      val bookmark0 = handler.bookmarks(0)
-      val bookmark1 = handler.bookmarks(1)
-      val bookmark2 = handler.bookmarks(2)
+      bookmarks(0).url should be ("http://www.leedsunited-mad.co.uk/news/tmnw/leeds_40_lincoln_by_sean_markey_aged_11_545231/index.shtml")
+      bookmarks(0).popularity should be (1)
+      bookmarks(0).username should be ("currybet")
+      bookmarks(0).title should be ("Leeds 4-0 Lincoln (By Sean Markey, Aged 11) - LeedsUtdMAD")
+      bookmarks(0).description should be (Some("Very passable match report from an 11 year old :-)"))
 
-      bookmark0.url should be ("http://www.leedsunited-mad.co.uk/news/tmnw/leeds_40_lincoln_by_sean_markey_aged_11_545231/index.shtml")
-      bookmark0.popularity should be (1)
-      bookmark0.username should be ("currybet")
-      bookmark0.title should be ("Leeds 4-0 Lincoln (By Sean Markey, Aged 11) - LeedsUtdMAD")
-      bookmark0.description should be (Some("Very passable match report from an 11 year old :-)"))
-
-      bookmark2.url should be ("http://www.journalism.co.uk/young-journalists/?p=1094")
-      bookmark2.popularity should be (8)
+      bookmarks(2).url should be ("http://www.journalism.co.uk/young-journalists/?p=1094")
+      bookmarks(2).popularity should be (8)
 
     }
 

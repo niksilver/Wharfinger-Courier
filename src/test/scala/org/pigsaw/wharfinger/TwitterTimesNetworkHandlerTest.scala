@@ -14,17 +14,13 @@ class TwitterTimesNetworkHandlerTest extends FunSpec with ShouldMatchers {
   describe("TwitterTimesNetworkHandler") {
     it("Should return a list of bookmarks") {
       val handler = new TwitterTimesNetworkHandler(new FileReader("src/test/scala/org/pigsaw/wharfinger/twitter-times-rss.xml"))
-      handler.parse
+      val bookmarks = handler.parse
 
-      handler.bookmarks.size should be === (30)
+      bookmarks.size should be === (30)
 
-      val bookmark0 = handler.bookmarks(0)
-      val bookmark1 = handler.bookmarks(1)
-      val bookmark2 = handler.bookmarks(2)
-
-      bookmark0.url should be === ("http://www.chicagotribune.com")
-      bookmark1.url should be === ("http://www.niemanlab.org/2011/06/who-clicks-more-on-local-news-new-york-or-omaha-surprising-data-from-the-fcc-on-local-online-news")
-      bookmark2.url should be === ("http://www.guardian.co.uk/law/butterworth-and-bowcott-on-law/2011/jun/17/internet-freedom-matter-un")
+      bookmarks(0).url should be === ("http://www.chicagotribune.com")
+      bookmarks(1).url should be === ("http://www.niemanlab.org/2011/06/who-clicks-more-on-local-news-new-york-or-omaha-surprising-data-from-the-fcc-on-local-online-news")
+      bookmarks(2).url should be === ("http://www.guardian.co.uk/law/butterworth-and-bowcott-on-law/2011/jun/17/internet-freedom-matter-un")
     }
 
     it("Should be able to parse the real Tweeted Times") {

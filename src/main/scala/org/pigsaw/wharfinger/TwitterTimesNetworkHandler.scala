@@ -11,7 +11,7 @@ import xml.{Elem, Node, XML}
 
 class TwitterTimesNetworkHandler(val reader: Reader) extends BookmarkServiceNetworkHandler[TwitterTimesBookmark] {
 
-  val bookmarks = new ListBuffer[TwitterTimesBookmark]()
+  private val bookmarks = new ListBuffer[TwitterTimesBookmark]()
 
   def this() = this(new URLReader("http://tweetedtimes.com/pigsaw/rss.xml", "UTF-8"))
 

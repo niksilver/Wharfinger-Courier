@@ -17,7 +17,7 @@ abstract class BookmarkServiceNetworkHandler[T] {
 
 class DeliciousNetworkHandler(val reader: Reader) extends BookmarkServiceNetworkHandler[DeliciousBookmark] {
 
-  val bookmarks = new ListBuffer[DeliciousBookmark]()
+  private val bookmarks = new ListBuffer[DeliciousBookmark]()
 
   def this() = this(new URLReader("http://delicious.com/network/nik.silver?setcount=50", "UTF-8"))
 

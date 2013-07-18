@@ -115,7 +115,7 @@
             description="Create and enhance the war"
             depends="compile-java,compile-scala,populate-war,datanucleus-enhance"/>
 
-    <target name="run-server" depends="datanucleus-enhance"
+    <target name="run-server" depends="prep-for-upload"
             description="Start the development server">
         <dev_appserver war="${war.dir}" />
     </target>

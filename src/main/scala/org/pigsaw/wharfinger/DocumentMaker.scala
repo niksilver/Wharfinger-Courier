@@ -1,6 +1,5 @@
 package org.pigsaw.wharfinger
 
-import collection.mutable.ListBuffer
 import Preamble._
 
 /**

@@ -57,7 +57,8 @@
         </javac>
     </target>
 
-    <target name="compile-scala" depends="init,compile-java">
+    <target name="compile-scala" depends="init,compile-java"
+            description="Compile the Scala code">
         <mkdir dir="${build.dir}"/>
         <scalac srcdir="${scala.sources.dir}"
                 destdir="${build.dir}"
@@ -111,7 +112,13 @@
     </target>
 
     <target name="prep-for-upload"
+            description="Create and enhance the war"
             depends="compile-java,compile-scala,populate-war,datanucleus-enhance"/>
+
+    <target name="run-server" depends="datanucleus-enhance"
+            description="Start the development server">
+        <dev_appserver war="${war.dir}" />
+    </target>
 
     <target name="compile-tests-and-prep-for-upload"
             depends="compile-tests,prep-for-upload"/>

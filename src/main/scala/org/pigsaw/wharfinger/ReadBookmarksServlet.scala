@@ -15,7 +15,6 @@ class ReadBookmarksServlet extends HttpServlet {
     resp.setContentType("text/plain")
 
     lazy val handler = req.getPathInfo.tail.split('/')(0) match {
-      case "delicious" => new DeliciousNetworkHandler
       case "twitter-times" => new TwitterTimesNetworkHandler
       case service => new UnknownServiceHandler(service, log)
     }

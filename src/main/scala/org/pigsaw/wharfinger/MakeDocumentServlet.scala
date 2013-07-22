@@ -23,22 +23,17 @@ class MakeDocumentServlet extends HttpServlet with Transaction {
     val pm = PMF.get.getPersistenceManager
     persistAndClose(pm) {
       val query = pm.newQuery(classOf[Article])
-      val articles: Seq[Article] = query.execute.asInstanceOf[java.util.List[Article]]
-      val maker = new DocumentMaker("Wharfinger Courier", niceDate)
-      addArticles(articles, maker)
+      val articles: Seq[Article] = query.execute.asInstanceOf[java.util.List[Article]].toList
+      val maker0 = new DocumentMaker("Wharfinger Courier", niceDate)
+      val maker  = maker0.add(articles)
       val doc_str = maker.document
       val filename = "Wharfinger Courier " + niceDate + ".html"
       val document = new Document(filename, "text/html", doc_str)
       pm.makePersistent(document)
-      deleteArticles(articles)
-      resp.setContentType(document.contentType)
+      deleteArticles(maker.articles)
+      resp.setContentType("text/plain")
       resp.getWriter.print(document.getContent)
       queueMailingDocument(document.filename)
-    }
-
-    def addArticles(articles: Seq[Article], maker: DocumentMaker) {
-      for (article <- articles)
-        maker.add(article)
     }
 
     def deleteArticles(articles: Seq[Article]) {

@@ -24,6 +24,13 @@ class DocumentMaker(val title: String,
       new DocumentMaker(title, dateline, articles :+ article, rejected)
   }
 
+  def add(arts: Seq[Article]): DocumentMaker = {
+    arts.toList match {
+      case Nil => this
+      case article :: rest => this.add(article).add(rest)
+    }
+  }
+
   def articleSummary: String = {
     (articles.length match {
       case 1 => "1 article"

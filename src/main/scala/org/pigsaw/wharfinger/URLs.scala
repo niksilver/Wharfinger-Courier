@@ -38,5 +38,6 @@ class RedirectResolver(url: String) {
   private val connection = url_obj.openConnection.asInstanceOf[HttpURLConnection]
   connection.setRequestMethod("HEAD")
   connection.connect()
+  connection.getInputStream
   val URL = connection.getURL.toString
 }

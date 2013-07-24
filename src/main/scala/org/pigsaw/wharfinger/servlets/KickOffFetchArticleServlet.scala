@@ -8,10 +8,9 @@ import com.google.appengine.api.taskqueue.QueueFactory
 import com.google.appengine.api.taskqueue.TaskOptions.Builder._
 import java.util.logging.Logger
 import com.google.appengine.api.taskqueue.TaskOptions.Method
-import io.Source
-import util.parsing.json.{JSONObject, JSON, JSONType}
 import xml.{NodeSeq, Node}
-import org.pigsaw.wharfinger.{PastArticle, BookmarkPendingFetch, PMF, Transaction}
+import org.pigsaw.wharfinger._
+import org.pigsaw.wharfinger.Preamble._
 
 /**
  * Kick off fetching a pending article.
@@ -86,7 +85,7 @@ class KickOffFetchArticleServlet extends HttpServlet with Transaction {
 
       def markFetchAttempt() {
         log.info("Entering markFetchAttempt")
-        bookmark.incrementFetchAttempts
+        bookmark.incrementFetchAttempts()
         pm.makePersistent(bookmark)
       }
     }
@@ -94,114 +93,6 @@ class KickOffFetchArticleServlet extends HttpServlet with Transaction {
   }
 }
 
-class DoFetchArticleServlet extends HttpServlet with Transaction {
 
-  val log = Logger.getLogger(this.getClass.getName)
 
-  override def doPost(req: HttpServletRequest, resp: HttpServletResponse) = doGet(req, resp)
 
-  override def doGet(req: HttpServletRequest, resp: HttpServletResponse) {
-    resp.setContentType("text/plain")
-    val url = req.getParameter("url")
-    val title = req.getParameter("title")
-    val citation = req.getParameter("citation")
-    if (tooManyRetries)
-      findAndDeleteBookmark
-    else
-      fetchArticle
-
-    def tooManyRetries: Boolean = {
-      val retries_str = req.getHeader("X-AppEngine-TaskRetryCount")
-      log.warning("TaskRetryCount is '" + retries_str + "'")
-      retries_str match {
-        case null => false
-        case "" => false
-        case _ => retries_str.toInt > 10
-      }
-    }
-
-    def findAndDeleteBookmark {
-      log.warning("Too many retries. Deleting bookmark: " + url)
-      val pm = PMF.get.getPersistenceManager
-      persistAndClose(pm) {
-        deleteBookmark(pm)
-      }
-    }
-
-    def fetchArticle {
-      val handler = new InstapaperHandler(url)
-      val content_div_option = handler.getContentDiv
-      content_div_option match {
-        case Some(content_div) => recordArticle(content_div)
-        case None => {}
-      }
-    }
-
-    def vizLog(s: String) = println(s)
-    def println(s: String) = resp.getWriter.println(s)
-    def print(s: String) = resp.getWriter.print(s)
-
-    def recordArticle(content_div: Node) {
-      val pm: PersistenceManager = PMF.get.getPersistenceManager
-      println("Got article to persist: " + url)
-      persistAndClose(pm) {
-        pm.makePersistent(new Article(url,
-          citation.escapeForHTML,
-          title.escapeForHTML,
-          content_div.imagesToText.escapeForHTML.toString))
-        pm.makePersistent(new PastArticle(url))
-        deleteBookmark(pm)
-      }
-    }
-
-    def deleteBookmark(pm: PersistenceManager) {
-      val bookmark = pm.getObjectById(classOf[BookmarkPendingFetch], url)
-      println("Deleting bookmark: " + bookmark)
-      pm.deletePersistent(bookmark)
-    }
-  }
-}
-
-class InstapaperHandler(article_url: String) {
-  val log = Logger.getLogger(this.getClass.getName)
-  val url: String = "http://www.instapaper.com/text?u=" +
-          URLEncoder.encode(article_url, "UTF-8")
-
-  def getContentDiv(): Option[Node] = {
-    tryOrLogWarning {
-      val html = HTMLNode(new URLReader(url, "UTF-8"))
-      val story_div = html findDivWithId "story"
-      if (story_div exists { n: Node => n.text.trim == "" })
-        getSecondBody(html)
-      else
-        story_div
-    }
-  }
-
-  private def getSecondBody(html: Node): Option[Node] = {
-    val second_body = (html \\ "body")(1)
-    val story_div = second_body.bodyToStoryDiv
-    Some(story_div)
-  }
-
-  /** Get just what comes out of Instapaper, albeit processed by the Tag Soup XML loader
-   */
-  def getBasicHtml(): Option[Node] = {
-    tryOrLogWarning {
-      Some(HTMLNode(new URLReader(url, "UTF-8")))
-    }
-  }
-
-  def tryOrLogWarning(block: =>Option[Node]): Option[Node] = {
-    try { block }
-    catch {
-      case e => {
-        val str = new java.io.StringWriter
-        e.printStackTrace(new java.io.PrintWriter(str))
-        log.warning(str.toString)
-        None
-      }
-    }
-  }
-
-}

@@ -23,7 +23,7 @@ class ReadBookmarksServlet extends HttpServlet {
     handler.bookmarksPendingFetch.foreach( b => {
       resp.getWriter.println("Saving for later fetching: " + b.url)
       val normalised_url = URLString(b.url).normalise.toString
-      new BookmarkPendingFetch(normalised_url, b.title, b.getCitation).saveForLaterFetching
+      new BookmarkPendingFetch(normalised_url, b.title, b.getCitation).saveForLaterFetching()
     })
 
     class UnknownServiceHandler(service: String, log: Logger) extends BookmarkCollator[Nothing] {

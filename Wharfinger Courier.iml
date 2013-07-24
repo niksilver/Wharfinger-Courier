@@ -32,7 +32,7 @@
     <orderEntry type="library" name="Local lib" level="project" />
     <orderEntry type="library" name="Google app engine" level="project" />
     <orderEntry type="library" name="Scala" level="project" />
-    <orderEntry type="library" name="Local classes" level="project" />
+    <orderEntry type="library" name="Local sources" level="project" />
   </component>
 </module>
 

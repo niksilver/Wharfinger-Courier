@@ -2,7 +2,6 @@ package org.pigsaw.wharfinger.servlets
 
 import javax.servlet.http.{HttpServletResponse, HttpServletRequest, HttpServlet}
 import scala.collection.JavaConversions._
-import javax.jdo.PersistenceManager
 import org.pigsaw.wharfinger._
 
 /**

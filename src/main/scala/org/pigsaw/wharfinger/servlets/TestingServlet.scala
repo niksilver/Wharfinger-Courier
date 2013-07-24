@@ -5,10 +5,7 @@ import scala.collection.JavaConversions._
 import scala.util.Random
 import java.util.logging.Logger
 import org.pigsaw.wharfinger._
-import scala.Some
-import scala.Some
-import scala.Some
-import scala.Some
+import org.pigsaw.wharfinger.Preamble._
 
 /**
  * Created by IntelliJ IDEA.
@@ -25,26 +22,26 @@ class TestingServlet extends HttpServlet with Transaction {
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
 
     req.getPathInfo.tail.split('/')(0) match {
-      case "get-html" => testGetHtml
-      case "redirect-resolution" => testRedirectResolution
+      case "get-html" => testGetHtml()
+      case "redirect-resolution" => testRedirectResolution()
       case "save-message" => testSaveMessage(req.getPathInfo + ":" + req.getRequestURI)
-      case "load-message" => testLoadMessage
-      case "delete-message" => testDeleteMessage
-      case "mail-simple-message" => testMailSimpleMessage
-      case "mail-message-with-html-attachment" => testMailMessageWithHTMLAttachment
-      case "tag-soup" => testTagSoup
-      case "tag-soup-and-character-codes" => testTagSoupAndCharacterCodes
-      case "instapaper-html" => testInstapaperHtml
-      case "instapaper-content-extraction" => testInstapaperContentExtraction
-      case "instapaper-and-character-codes" => testInstapaperAndCharacterCodes
-      case "instapaper-and-transformation" => testInstapaperAndTransformation
-      case _ => testBasicOutput
+      case "load-message" => testLoadMessage()
+      case "delete-message" => testDeleteMessage()
+      case "mail-simple-message" => testMailSimpleMessage()
+      case "mail-message-with-html-attachment" => testMailMessageWithHTMLAttachment()
+      case "tag-soup" => testTagSoup()
+      case "tag-soup-and-character-codes" => testTagSoupAndCharacterCodes()
+      case "instapaper-html" => testInstapaperHtml()
+      case "instapaper-content-extraction" => testInstapaperContentExtraction()
+      case "instapaper-and-character-codes" => testInstapaperAndCharacterCodes()
+      case "instapaper-and-transformation" => testInstapaperAndTransformation()
+      case _ => testBasicOutput()
     }
 
     def println(s: String) = resp.getWriter.println(s)
     def print(s: String) = resp.getWriter.print(s)
 
-    def testBasicOutput: Unit = {
+    def testBasicOutput(): Unit = {
       resp.setContentType("text/plain")
       val num = Random.nextInt
       println("This is the testing servlet, basic test " + num)
@@ -52,14 +49,14 @@ class TestingServlet extends HttpServlet with Transaction {
       log.warning("This is a warning from testBasicOutput " + num)
     }
 
-    def testGetHtml: Unit = {
+    def testGetHtml(): Unit = {
       resp.setContentType("text/plain")
       val html = HTMLNode(new URLReader("http://www.google.com", "UTF-8"))
       val title = (html \\ "title").text
       println("Title of Google is '" + title + "'")
     }
 
-    def testRedirectResolution: Unit = {
+    def testRedirectResolution(): Unit = {
       resp.setContentType("text/plain")
       val bitly_url = "http://bit.ly/9NQcyA"
       val resolver = new RedirectResolver(bitly_url)
@@ -79,7 +76,7 @@ class TestingServlet extends HttpServlet with Transaction {
       }
     }
 
-    def testLoadMessage: Unit = {
+    def testLoadMessage(): Unit = {
       resp.setContentType("text/plain")
       val pm = PMF.get.getPersistenceManager
       val query = pm.newQuery(classOf[Message])
@@ -93,12 +90,12 @@ class TestingServlet extends HttpServlet with Transaction {
       }
     }
 
-    def testDeleteMessage: Unit = {
+    def testDeleteMessage(): Unit = {
       resp.setContentType("text/plain")
       val pm = PMF.get.getPersistenceManager
       val query = pm.newQuery(classOf[Message])
       transactionWithReporting (query, resp) {
-        query.deletePersistentAll
+        query.deletePersistentAll()
         println("Deleted message")
       }
     }
@@ -109,7 +106,7 @@ class TestingServlet extends HttpServlet with Transaction {
         from = "nik.silver@gmail.com", fromName = "Nik Silver",
         subject = "Simple test message " + random,
         bodyText = "Dear Nik,\nThis is a simple message with content " + random + ".\nYours\nNik\n")
-      mail.send
+      mail.send()
       resp.setContentType("text/plain")
       println("Sent simple message with random content " + random)
     }
@@ -123,7 +120,7 @@ class TestingServlet extends HttpServlet with Transaction {
                 random + ".\nYours\nNik\n")
       val html = HTMLNode(new URLReader("http://sharkysoft.com/tutorials/jsa/", "UTF-8"))
       mail.attachHTML("javascript-answers.html", html.toString)
-      mail.send
+      mail.send()
       resp.setContentType("text/plain")
       println("Sent message with attachment and random content " + random)
     }
@@ -146,7 +143,7 @@ class TestingServlet extends HttpServlet with Transaction {
 
     def testInstapaperHtml() {
       val url = req.getParameter("url")
-      val handler = new servlets.InstapaperHandler(url)
+      val handler = new InstapaperHandler(url)
       val Some(content_div) = handler.getBasicHtml
       resp.setContentType("text/html")
       print(content_div.toString)
@@ -154,7 +151,7 @@ class TestingServlet extends HttpServlet with Transaction {
 
     def testInstapaperContentExtraction() {
       val url = req.getParameter("url")
-      val handler = new servlets.InstapaperHandler(url)
+      val handler = new InstapaperHandler(url)
       val Some(content_div) = handler.getContentDiv
       resp.setContentType("text/html")
       print(content_div.toString)
@@ -162,7 +159,7 @@ class TestingServlet extends HttpServlet with Transaction {
 
     def testInstapaperAndCharacterCodes() {
       val url = req.getParameter("url")
-      val handler = new servlets.InstapaperHandler(url)
+      val handler = new InstapaperHandler(url)
       val Some(content_div) = handler.getContentDiv
       resp.setContentType("text/html")
       print(content_div.toString flatMap characterView)
@@ -170,7 +167,7 @@ class TestingServlet extends HttpServlet with Transaction {
 
     def testInstapaperAndTransformation() {
       val url = req.getParameter("url")
-      val handler = new servlets.InstapaperHandler(url)
+      val handler = new InstapaperHandler(url)
       val Some(content_div) = handler.getContentDiv
       resp.setContentType("text/html")
       print(content_div.imagesToText.escapeForHTML.toString)
@@ -178,7 +175,7 @@ class TestingServlet extends HttpServlet with Transaction {
 
     def testInstapaperAndTransformationWithCharacterCodes() {
       val url = req.getParameter("url")
-      val handler = new servlets.InstapaperHandler(url)
+      val handler = new InstapaperHandler(url)
       val Some(content_div) = handler.getContentDiv
       resp.setContentType("text/html")
       print(content_div.imagesToText.escapeForHTML.toString flatMap

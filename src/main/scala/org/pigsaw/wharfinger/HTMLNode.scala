@@ -29,15 +29,15 @@ object HTMLNode {
       }
   }
 
-  def apply(reader: Reader): Node = {
-    return TagSoupXMLLoader.get.load(reader)
-  }
+  def apply(reader: Reader): Node =
+    TagSoupXMLLoader.get().load(reader)
+
 
   def transform(n: Node, fn: (Node)=>Node): Node = {
     n match {
       case e: Elem => fn(e) match {
           case e2: Elem => transformChildren(e2, fn)
-          case n => n
+          case other => other
         }
       case _ => fn(n)
     }
@@ -126,7 +126,6 @@ class RedirectResolver(url: String) {
   private val url_obj = new URL(url)
   private val connection = url_obj.openConnection.asInstanceOf[HttpURLConnection]
   connection.setRequestMethod("HEAD")
-  connection.connect
-  private val is = connection.getInputStream
+  connection.connect()
   val URL = connection.getURL.toString
 }

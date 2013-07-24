@@ -49,12 +49,6 @@ class MakeDocumentServlet extends HttpServlet with Transaction {
       resp.getWriter.println("Queued task " + task.getUrl)
     }
 
-    def techDate: String = {
-      val formatter = new SimpleDateFormat("yyyy-MM-dd-HHmm")
-      val cal = Calendar.getInstance
-      formatter.format(cal.getTime)
-    }
-
     def niceDate: String = {
       val formatter = new SimpleDateFormat("EEE d MMM yyyy")
       val cal = Calendar.getInstance

@@ -1,7 +1,6 @@
 package org.pigsaw.wharfinger.servlets
 
 import javax.servlet.http.{HttpServletResponse, HttpServletRequest, HttpServlet}
-import javax.jdo.{PersistenceManagerFactory, PersistenceManager}
 import scala.collection.JavaConversions._
 import org.pigsaw.wharfinger.{EMail, PMF, Document}
 
@@ -15,7 +14,7 @@ class MailDocumentServlet extends HttpServlet {
     resp.setContentType("text/plain")
     val filename = req.getParameter("filename")
     getDocument match {
-      case None => noSuchDocument
+      case None => noSuchDocument()
       case Some(document) => mailDocument(document)
     }
 
@@ -31,7 +30,7 @@ class MailDocumentServlet extends HttpServlet {
       }
     }
 
-    def noSuchDocument {
+    def noSuchDocument() {
       resp.getWriter.println("No such document named " + filename)      
     }
 
@@ -43,7 +42,7 @@ class MailDocumentServlet extends HttpServlet {
         subject = document.filename,
         bodyText = "Your daily digest attached")
       email.attachHTML(document.filename, document.getContent)
-      email.send
+      email.send()
       resp.getWriter.println("Mailed " + filename)
     }
 

@@ -2,7 +2,7 @@ package org.pigsaw.wharfinger
 
 import org.scalatest.FunSpec
 import org.scalatest.matchers.ShouldMatchers
-import java.io.{FileReader}
+import java.io.FileReader
 import xml.Elem
 
 /**

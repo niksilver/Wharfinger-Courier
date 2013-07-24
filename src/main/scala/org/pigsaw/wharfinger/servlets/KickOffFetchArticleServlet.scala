@@ -92,7 +92,3 @@ class KickOffFetchArticleServlet extends HttpServlet with Transaction {
 
   }
 }
-
-
-
-

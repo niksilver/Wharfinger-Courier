@@ -25,19 +25,19 @@ class InstapaperHandlerTest extends FunSpec with ShouldMatchers {
 
     it("Should be able to find the content div") {
       val handler = new InstapaperHandler(wsj_url)
-      val Some(content) = handler.getContentDiv()
+      val Some(content) = handler.getContentDiv
       content.text.trim should include ("The largest U.S. websites")
     }
 
     it("Should get content by working around empty story div") {
       val handler = new InstapaperHandler(cif_america_url)
-      val Some(content) = handler.getContentDiv()
+      val Some(content) = handler.getContentDiv
       content.text.trim should startWith ("Sarah Palin reads the newspapers")
     }
 
     it("Should should put content from workaround in a story div") {
       val handler = new InstapaperHandler(cif_america_url)
-      val Some(content) = handler.getContentDiv()
+      val Some(content) = handler.getContentDiv
       content.toString should startWith ("""<div id="story">""")
     }
 

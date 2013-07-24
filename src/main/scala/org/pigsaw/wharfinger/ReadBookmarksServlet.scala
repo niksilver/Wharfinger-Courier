@@ -15,7 +15,7 @@ class ReadBookmarksServlet extends HttpServlet {
     resp.setContentType("text/plain")
 
     lazy val handler = req.getPathInfo.tail.split('/')(0) match {
-      case "twitter-times" => new TwitterTimesNetworkHandler
+      case "twitter-times" => new TwitterTimesCollator
       case service => new UnknownServiceHandler(service, log)
     }
     handler.bookmarks
@@ -25,7 +25,7 @@ class ReadBookmarksServlet extends HttpServlet {
       new BookmarkPendingFetch(normalised_url, b.title, b.getCitation).saveForLaterFetching
     })
 
-    class UnknownServiceHandler(service: String, log: Logger) extends BookmarkServiceNetworkHandler[Nothing] {
+    class UnknownServiceHandler(service: String, log: Logger) extends BookmarkCollator[Nothing] {
       def bookmarks = {
         resp.getWriter.println("Unknown bookmark service: " + service)
         log.warning("Unknown bookmark service: " + service)

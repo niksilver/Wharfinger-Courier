@@ -1,7 +1,8 @@
-package org.pigsaw.wharfinger
+package org.pigsaw.wharfinger.servlets
 
 import javax.servlet.http.{HttpServletResponse, HttpServletRequest, HttpServlet}
 import scala.collection.JavaConversions._
+import org.pigsaw.wharfinger.{Document, PMF, Transaction}
 
 /**
  * Handle requests to deliver a document or show all documents.

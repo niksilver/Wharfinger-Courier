@@ -7,17 +7,21 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\main\scala\org\pigsaw\wharfinger\BookmarkServiceNetworkHandler.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/BookmarkCollator.scala" />
-      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\main\scala\org\pigsaw\wharfinger\TwitterTimesNetworkHandler.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/TwitterTimesCollator.scala" />
-      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\test\scala\org\pigsaw\wharfinger\TwitterTimesNetworkHandlerTest.scala" afterPath="$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/TwitterTimesCollatorTest.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/ReadBookmarksServlet.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/ReadBookmarksServlet.scala" />
+    <list default="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="Started improving the naming">
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\main\scala\org\pigsaw\wharfinger\AdminServlet.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/AdminServlet.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\main\scala\org\pigsaw\wharfinger\KickOffFetchArticleServlet.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/KickOffFetchArticleServlet.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\main\scala\org\pigsaw\wharfinger\MailDocumentServlet.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/MailDocumentServlet.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\main\scala\org\pigsaw\wharfinger\MakeDocumentServlet.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/MakeDocumentServlet.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\main\scala\org\pigsaw\wharfinger\ReadBookmarksServlet.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/ReadBookmarksServlet.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\main\scala\org\pigsaw\wharfinger\ShowDocumentsServlet.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/ShowDocumentsServlet.scala" />
+      <change type="MOVED" beforePath="C:\cygwin\home\Nik\bin\Wharfinger-Courier\src\main\scala\org\pigsaw\wharfinger\TestingServlet.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/TestingServlet.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" afterPath="$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Wharfinger Courier.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1374696407832" ignored="false" />
+    <file path="/Dummy.txt" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1374697440593" ignored="false" />
     <file path="/DeliciousNetworkHandler.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1374186018325" ignored="false" />
     <file path="/a.dummy" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1374525200091" ignored="false" />
     <file path="/BookmarkServiceNetworkHandler.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1374696644373" ignored="false" />
@@ -363,35 +367,9 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger-Courier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemId" value="webapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wharfinger" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="URLString.scala" />
-              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -412,11 +390,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
+              <option name="myItemId" value="webapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="wharfinger" />
+              <option name="myItemId" value="WEB-INF" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -442,12 +420,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="wharfinger" />
+              <option name="myItemId" value="servlets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="KickOffFetchArticleServlet.scala" />
-              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wharfinger" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -499,6 +499,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1062,7 +1080,11 @@
       <created>1374439911430</created>
       <updated>1374439911430</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Started improving the naming">
+      <created>1374697218720</created>
+      <updated>1374697218720</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1154,7 +1176,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed all Delicious-related code, and renamed one class accordingly." />
+    <option name="LAST_COMMIT_MESSAGE" value="Started improving the naming" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1168,7 +1190,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Updated Twitter Times network handler to cope with format change from them.&#10;Also updated ClnMe test to be a bit more robust." />
     <MESSAGE value="Refactored TwitterTimesNetworkHandler." />
     <MESSAGE value="Tidied an import statement." />
     <MESSAGE value="Link to original now moved next to title." />
@@ -1193,6 +1214,7 @@
     <MESSAGE value="Migrated to Google App Engine HRD datastore." />
     <MESSAGE value="Moved IntelliJ config to App Engine 1.8.1. Corrected an (out of date) test." />
     <MESSAGE value="Removed all Delicious-related code, and renamed one class accordingly." />
+    <MESSAGE value="Started improving the naming" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1216,26 +1238,19 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/DocumentMakerTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="29" selection-start="4425" selection-end="4425" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="0" selection-start="83" selection-end="156" vertical-scroll-proportion="0.1574074" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/MailDocumentServlet.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/MailDocumentServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="39" selection-start="311" selection-end="311" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/AdminServlet.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/AdminServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="6" selection-start="237" selection-end="237" vertical-scroll-proportion="-1.7575758">
           <folding />
@@ -1256,10 +1271,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/EMail.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="6" selection-start="426" selection-end="426" vertical-scroll-proportion="-0.42424244" />
+        <state line="16" column="6" selection-start="426" selection-end="426" vertical-scroll-proportion="-0.42424244">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/MakeDocumentServlet.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/MakeDocumentServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="49" column="0" selection-start="1896" selection-end="1896" vertical-scroll-proportion="0.0">
           <folding />
@@ -1273,7 +1290,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/KickOffFetchArticleServlet.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/KickOffFetchArticleServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="104" column="6" selection-start="3770" selection-end="3770" vertical-scroll-proportion="0.0">
           <folding />
@@ -1285,7 +1302,7 @@
         <state line="9" column="7" selection-start="230" selection-end="230" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/TestingServlet.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/TestingServlet.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="19" selection-start="686" selection-end="686" vertical-scroll-proportion="0.0">
           <folding />
@@ -1309,6 +1326,13 @@
     <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/TwitterTimesCollator.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="16" selection-start="230" selection-end="230" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.72727275">
           <folding />
         </state>
       </provider>

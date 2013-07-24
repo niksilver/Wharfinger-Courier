@@ -6,35 +6,35 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet>
 		<servlet-name>TestingServlet</servlet-name>
-		<servlet-class>org.pigsaw.wharfinger.TestingServlet</servlet-class>
+		<servlet-class>org.pigsaw.wharfinger.servlets.TestingServlet</servlet-class>
 	</servlet>
     <servlet>
         <servlet-name>AdminServlet</servlet-name>
-        <servlet-class>org.pigsaw.wharfinger.AdminServlet</servlet-class>
+        <servlet-class>org.pigsaw.wharfinger.servlets.AdminServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ReadBookmarksServlet</servlet-name>
-        <servlet-class>org.pigsaw.wharfinger.ReadBookmarksServlet</servlet-class>
+        <servlet-class>org.pigsaw.wharfinger.servlets.ReadBookmarksServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>KickOffFetchArticleServlet</servlet-name>
-        <servlet-class>org.pigsaw.wharfinger.KickOffFetchArticleServlet</servlet-class>
+        <servlet-class>org.pigsaw.wharfinger.servlets.KickOffFetchArticleServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DoFetchArticleServlet</servlet-name>
-        <servlet-class>org.pigsaw.wharfinger.DoFetchArticleServlet</servlet-class>
+        <servlet-class>org.pigsaw.wharfinger.servlets.DoFetchArticleServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MakeDocumentServlet</servlet-name>
-        <servlet-class>org.pigsaw.wharfinger.MakeDocumentServlet</servlet-class>
+        <servlet-class>org.pigsaw.wharfinger.servlets.MakeDocumentServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MailDocumentServlet</servlet-name>
-        <servlet-class>org.pigsaw.wharfinger.MailDocumentServlet</servlet-class>
+        <servlet-class>org.pigsaw.wharfinger.servlets.MailDocumentServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ShowDocumentsServlet</servlet-name>
-        <servlet-class>org.pigsaw.wharfinger.ShowDocumentsServlet</servlet-class>
+        <servlet-class>org.pigsaw.wharfinger.servlets.ShowDocumentsServlet</servlet-class>
     </servlet>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->

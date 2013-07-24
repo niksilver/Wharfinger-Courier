@@ -1,7 +1,8 @@
-package org.pigsaw.wharfinger
+package org.pigsaw.wharfinger.servlets
 
 import javax.servlet.http.{HttpServletResponse, HttpServletRequest, HttpServlet}
 import java.util.logging.Logger
+import org.pigsaw.wharfinger.{BookmarkCollator, BookmarkPendingFetch, URLString, TwitterTimesCollator}
 
 /**
  * Read some bookmarks.

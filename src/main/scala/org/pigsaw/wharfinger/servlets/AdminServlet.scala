@@ -1,8 +1,9 @@
-package org.pigsaw.wharfinger
+package org.pigsaw.wharfinger.servlets
 
 import javax.servlet.http.{HttpServletResponse, HttpServletRequest, HttpServlet}
 import scala.collection.JavaConversions._
 import javax.jdo.PersistenceManager
+import org.pigsaw.wharfinger._
 
 /**
  * Handle core admin requests.

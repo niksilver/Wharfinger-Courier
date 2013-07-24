@@ -1,8 +1,9 @@
-package org.pigsaw.wharfinger
+package org.pigsaw.wharfinger.servlets
 
 import javax.servlet.http.{HttpServletResponse, HttpServletRequest, HttpServlet}
 import javax.jdo.{PersistenceManagerFactory, PersistenceManager}
 import scala.collection.JavaConversions._
+import org.pigsaw.wharfinger.{EMail, PMF, Document}
 
 /**
  * Mail out a Wharfinger Courier document.

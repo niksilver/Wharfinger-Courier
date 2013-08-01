@@ -7,16 +7,17 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="We now have a rather ugly extraction of logging from the ReadBookmarksServlet.">
+    <list default="true" id="ba11517d-1e14-4021-82ba-16623dc2cd99" name="Default" comment="Slight improvements around Instapaper handling.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/Logging.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/InstapaperHandler.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/InstapaperHandler.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" afterPath="$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/ReadBookmarksServlet.scala" afterPath="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/ReadBookmarksServlet.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Wharfinger Courier.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1375386334154" ignored="false" />
+    <file path="/Dummy.txt" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1375390436815" ignored="false" />
     <file path="/DeliciousNetworkHandler.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1374186018325" ignored="false" />
-    <file path="/a.dummy" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1375382948298" ignored="false" />
+    <file path="/a.dummy" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1375393764207" ignored="false" />
     <file path="/BookmarkServiceNetworkHandler.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1374696644373" ignored="false" />
     <file path="/MakeDocumentServlet.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1374529960478" ignored="false" />
     <file path="/DocumentMakerTest.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1374529875950" ignored="false" />
@@ -26,15 +27,16 @@
     <file path="/HTMLNode.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1374697884846" ignored="false" />
     <file path="/KickOffFetchArticleServlet.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1374698201349" ignored="false" />
     <file path="/fragment.java" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1375382112727" ignored="false" />
-    <file path="/InstapaperHandler.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1375387349685" ignored="false" />
+    <file path="/InstapaperHandler.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1375393210952" ignored="false" />
     <file path="/TestingServlet.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1374699857438" ignored="false" />
     <file path="/InstapaperHandlerTest.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1375387086621" ignored="false" />
     <file path="/URLReader.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1374701079753" ignored="false" />
     <file path="/Data.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1374785945928" ignored="false" />
     <file path="/RSSBookmarkCollator.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1374787211929" ignored="false" />
     <file path="/RSSBookmarkCollatorTest.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1374787142710" ignored="false" />
-    <file path="/ReadBookmarksServlet.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1375385071033" ignored="false" />
+    <file path="/ReadBookmarksServlet.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1375393594374" ignored="false" />
     <file path="/ReadBookmarksServletShellTest.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1375385198769" ignored="false" />
+    <file path="/Logging.scala" changelist="ba11517d-1e14-4021-82ba-16623dc2cd99" time="1375393562187" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,79 +104,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TwitterTimesCollatorTest.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/TwitterTimesCollatorTest.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="3" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#31#59#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TwitterTimesCollator.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/TwitterTimesCollator.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="6" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RSSBookmarkCollator.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/RSSBookmarkCollator.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="25" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReadBookmarksServlet.scala" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ReadBookmarksServlet.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/ReadBookmarksServlet.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="42" selection-start="1093" selection-end="1093" vertical-scroll-proportion="0.0">
+            <state line="19" column="17" selection-start="539" selection-end="539" vertical-scroll-proportion="0.21212122">
               <folding>
-                <element signature="e#40#120#0" expanded="true" />
+                <element signature="e#40#85#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReadBookmarksServletShellTest.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/servlets/ReadBookmarksServletShellTest.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="26" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#40#68#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InstapaperHandlerTest.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/InstapaperHandlerTest.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="27" selection-start="355" selection-end="355" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InstapaperHandler.scala" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="InstapaperHandler.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/InstapaperHandler.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="10" selection-start="602" selection-end="602" vertical-scroll-proportion="0.18888889">
+            <state line="29" column="3" selection-start="966" selection-end="966" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RSSBookmarkCollatorTest.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/RSSBookmarkCollatorTest.scala">
+      <file leaf-file-name="Transaction.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/Transaction.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="39" selection-start="446" selection-end="446" vertical-scroll-proportion="0.0">
+            <state line="9" column="9" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -204,7 +157,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/TestingServlet.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/KickOffFetchArticleServlet.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/URLReader.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/HTMLNode.scala" />
@@ -216,10 +168,11 @@
         <option value="$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/Data.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/RSSBookmarkCollatorTest.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/RSSBookmarkCollator.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/ReadBookmarksServlet.scala" />
-        <option value="$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/servlets/ReadBookmarksServletShellTest.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/InstapaperHandlerTest.scala" />
+        <option value="$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/servlets/ReadBookmarksServletShellTest.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/InstapaperHandler.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/Logging.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/ReadBookmarksServlet.scala" />
       </list>
     </option>
   </component>
@@ -701,6 +654,162 @@
               <option name="myItemId" value="wharfinger" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="URLString.scala" />
+              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wharfinger" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="URLs.scala" />
+              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wharfinger" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TwitterTimesCollator.scala" />
+              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wharfinger" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wharfinger" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RSSBookmarkCollator.scala" />
+              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wharfinger" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Logging.scala" />
+              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wharfinger-Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wharfinger" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HTML.scala" />
+              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1002,8 +1111,8 @@
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="ScalaTest.InstapaperHandlerTest" />
-        <item index="1" class="java.lang.String" itemvalue="ScalaTest.ReadBookmarksServletShellTest" />
+        <item index="0" class="java.lang.String" itemvalue="ScalaTest.ReadBookmarksServletShellTest" />
+        <item index="1" class="java.lang.String" itemvalue="ScalaTest.InstapaperHandlerTest" />
         <item index="2" class="java.lang.String" itemvalue="ScalaTest.RSSBookmarkCollatorTest" />
       </list>
     </recent_temporary>
@@ -1102,7 +1211,11 @@
       <created>1375385266093</created>
       <updated>1375385266093</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Slight improvements around Instapaper handling.">
+      <created>1375387445035</created>
+      <updated>1375387445035</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1132,6 +1245,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41095892" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32197616" sideWeight="0.32954547" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19166666" sideWeight="0.6132879" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39968154" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5451448" sideWeight="0.5030303" order="7" side_tool="true" content_ui="tabs" />
@@ -1146,7 +1260,6 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5451448" sideWeight="0.4969697" order="2" side_tool="false" content_ui="tabs" x="124" y="296" width="736" height="409" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32258064" sideWeight="0.32954547" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293718" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24974412" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1194,7 +1307,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="We now have a rather ugly extraction of logging from the ReadBookmarksServlet." />
+    <option name="LAST_COMMIT_MESSAGE" value="Slight improvements around Instapaper handling." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1208,7 +1321,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Simplified a bit of code." />
     <MESSAGE value="Target added to ant build to compile tests and prep the application for upload. This is now used as the test target to avoid the mistake of seeing the tests pass and then thinking what's there is okay to upload." />
     <MESSAGE value="Moved transaction methods into a trait to tidy up code." />
     <MESSAGE value="Finally added login authentication on all pages.&#10;Fiddled with some boilerplate removal code with exception trapping and printing. Not great, but it works." />
@@ -1233,6 +1345,7 @@
     <MESSAGE value="Corrected (non)running tests." />
     <MESSAGE value="Starting to add RSS reading." />
     <MESSAGE value="We now have a rather ugly extraction of logging from the ReadBookmarksServlet." />
+    <MESSAGE value="Slight improvements around Instapaper handling." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1256,100 +1369,9 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/RSSBookmarkCollatorTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="39" selection-start="446" selection-end="446" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/HTML.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="3" selection-start="2576" selection-end="2576" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/cron.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="26" selection-start="676" selection-end="676" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/scala/lib/scala-library.jar!/scala/Function0.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="6" selection-start="20" selection-end="20" vertical-scroll-proportion="0.032882012" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/URLs.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.18819188">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_17/src.zip!/java/util/logging/Logger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="166" column="13" selection-start="7174" selection-end="7174" vertical-scroll-proportion="-0.031365313" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/TwitterTimesCollator.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="6" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/RSSBookmarkCollator.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="25" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/Data.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="564" column="201" selection-start="44585" selection-end="44749" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/RSSBookmarkCollatorTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="39" selection-start="446" selection-end="446" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/ReadBookmarksServlet.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="42" selection-start="1093" selection-end="1093" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#40#120#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/servlets/ReadBookmarksServletShellTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="26" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#40#68#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/TwitterTimesCollatorTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="3" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0">
+        <state line="9" column="3" selection-start="226" selection-end="226" vertical-scroll-proportion="0.19354838">
           <folding>
             <element signature="e#31#59#0" expanded="true" />
           </folding>
@@ -1358,15 +1380,112 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/InstapaperHandlerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="27" selection-start="355" selection-end="355" vertical-scroll-proportion="0.0">
+        <state line="15" column="27" selection-start="355" selection-end="355" vertical-scroll-proportion="0.1551095">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/BookmarkCollator.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="6" selection-start="127" selection-end="127" vertical-scroll-proportion="0.121212125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/DocumentMaker.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="6" selection-start="222" selection-end="222" vertical-scroll-proportion="-2.5151515">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/EMail.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="6" selection-start="426" selection-end="426" vertical-scroll-proportion="0.36363637">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/HTML.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="7" selection-start="361" selection-end="361" vertical-scroll-proportion="-1.5454545">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/RSSBookmarkCollator.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="11" selection-start="645" selection-end="645" vertical-scroll-proportion="0.72727275">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/scala/org/pigsaw/wharfinger/servlets/ReadBookmarksServletShellTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="24" selection-start="493" selection-end="493" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#40#68#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/TwitterTimesCollator.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="6" selection-start="755" selection-end="755" vertical-scroll-proportion="-1.0164233">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/URLs.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="6" selection-start="1089" selection-end="1089" vertical-scroll-proportion="0.6363636">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/URLString.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="6" selection-start="267" selection-end="267" vertical-scroll-proportion="-0.3030303">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/Logging.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="21" selection-start="254" selection-end="269" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#31#78#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/InstapaperHandler.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="10" selection-start="602" selection-end="602" vertical-scroll-proportion="0.18888889">
+        <state line="29" column="3" selection-start="966" selection-end="966" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/AdminServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="26" selection-start="732" selection-end="732" vertical-scroll-proportion="0.9139785">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/Transaction.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="9" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/org/pigsaw/wharfinger/servlets/ReadBookmarksServlet.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="17" selection-start="539" selection-end="539" vertical-scroll-proportion="0.21212122">
+          <folding>
+            <element signature="e#40#85#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

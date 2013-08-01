@@ -13,21 +13,19 @@ class InstapaperHandler(article_url: String) {
    val url: String = "http://www.instapaper.com/text?u=" +
            URLEncoder.encode(article_url, "UTF-8")
 
+  /**
+   * There are several body tags in an Instapaper document. The first contains
+   * the Instapaper header. The one with the content is the first non-emtpy
+   * one after this.
+   */
    def getContentDiv: Option[Node] = {
      tryOrLogWarning {
        val html = HTMLNode(new URLReader(url, "UTF-8"))
-       val story_div = html findDivWithId "story"
-       if (story_div exists { n: Node => n.text.trim == "" })
-         getSecondBody(html)
-       else
-         story_div
+       val content_bodies = (html \\ "body").tail
+       val body_opt = content_bodies find { b => b.text.trim != "" }
+       val story_div_opt = body_opt map { bo => bo.bodyToStoryDiv }
+       story_div_opt
      }
-   }
-
-   private def getSecondBody(html: Node): Option[Node] = {
-     val second_body = (html \\ "body")(1)
-     val story_div = second_body.bodyToStoryDiv
-     Some(story_div)
    }
 
    /** Get just what comes out of Instapaper, albeit processed by the Tag Soup XML loader

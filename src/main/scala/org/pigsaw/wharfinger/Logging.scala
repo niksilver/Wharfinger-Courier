@@ -36,13 +36,13 @@ trait CombiLogger {
   /** Log a warning to the Java logger.
    */
   def warn(msg: String) {
-    oResp map { r => r.getWriter.println(msg) }
+    oLogger map { g => g.warning(msg)}
   }
 
   /** Print to the servlet.
    */
   def println(msg: String) {
-    oLogger map { g => g.warning(msg)}
+    oResp map { r => r.getWriter.println(msg) }
   }
 
   def withResponse(resp: HttpServletResponse): CombiLogger =

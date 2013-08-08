@@ -6,18 +6,20 @@ import javax.servlet.http.HttpServlet
 import java.util.logging.{Logger => JavaLogger}
 import org.pigsaw.wharfinger._
 import scala.Some
+import java.io.StringReader
 
 /**
  * Read some bookmarks.
  */
 
-class ReadBookmarksServlet extends ReadBookmarksServletShell with CombiLogger {
+class ReadBookmarksServlet extends ReadBookmarksServletShell
+    with CombiLogger with RSSXMLStringCollatorService {
   val oLogger = Some(JavaLogger.getLogger(this.getClass.getName))
   val oResp = None
 }
 
 trait ReadBookmarksServletShell extends HttpServlet {
-  this: CombiLogger =>
+  this: CombiLogger with RSSBookmarkCollatorService =>
 
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse) {
     resp.setContentType("text/plain")
@@ -36,13 +38,14 @@ trait ReadBookmarksServletShell extends HttpServlet {
    * @param pathInfo  The path info of the request, without the leading `/read`.
    *                  For example, if the request was a GET of `/read/twitter-times`
    *                  then this parameter will come in as `/twitter-times`
-   * @param sLogger  The [[org.pigsaw.wharfinger.CombiLogger]] for logging,
+   * @param cLogger  The [[org.pigsaw.wharfinger.CombiLogger]] for logging,
    *                 which will default to this object if omitted.
    */
-  def getHandler(pathInfo: String, sLogger: CombiLogger = this) =
+  def getHandler(pathInfo: String, cLogger: CombiLogger = this) =
     pathInfo.tail.split('/')(0) match {
       case "twitter-times" => new TwitterTimesCollator
-      case service => new UnknownServiceHandler(service, sLogger)
+      case "rss-feed" => collator("<x/>")
+      case service => new UnknownServiceHandler(service, cLogger)
     }
 }
 

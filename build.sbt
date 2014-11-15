@@ -4,6 +4,8 @@ name := "Wharfinger Courier"
 
 version := "0.2"
 
+scalaVersion := "2.11.2"
+
 // Google App Engine plugin from https://github.com/sbt/sbt-appengine
 
 unmanagedJars in Compile <++= baseDirectory map { base =>
@@ -17,10 +19,15 @@ unmanagedJars in Compile <++= baseDirectory map { base =>
 	jars.classpath
 }
 
-scalacOptions += "-deprecation"
+scalacOptions ++=
+	Seq("-deprecation", "-feature",
+		"-language:implicitConversions",
+		"-language:postfixOps")
 
 libraryDependencies ++= Seq(
-  "net.databinder" %% "unfiltered-filter" % "0.6.4",
+  // Use the Scala XML module (which came out of the core in 2.11)
+  "org.scala-lang.modules" %% "scala-xml" % "1.0.1",
+  // "net.databinder" %% "unfiltered-filter" % "0.6.4",
   "javax.servlet" % "servlet-api" % "2.5" % "provided",
   "org.eclipse.jetty" % "jetty-webapp" % "7.6.8.v20121106" % "container"
 )

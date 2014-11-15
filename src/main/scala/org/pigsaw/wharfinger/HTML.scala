@@ -41,7 +41,7 @@ object HTMLNode {
   }
 
   def transformChildren(e: Elem, fn: (Node)=>Node): Node =
-    e.copy(e.prefix, e.label, e.attributes, e.scope, e.child map { transform(_, fn) })
+    e.copy(e.prefix, e.label, e.attributes, e.scope, false, e.child map { transform(_, fn) })
 
   def escapeTrans(n: Node): Node = n match {
     case a:Atom[_] if needsEscaping(a.data.toString) => new Unparsed(escapeForHTML(a.data.toString))

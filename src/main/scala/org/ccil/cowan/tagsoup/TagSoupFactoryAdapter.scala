@@ -59,7 +59,7 @@ class TagSoupFactoryAdapter extends FactoryAdapter {
   */
   def createNode(pre:String, label: String, attrs: MetaData,
                  scpe: NamespaceBinding, children: List[Node] ): Elem = {
-    Elem( pre, label, attrs, scpe, children:_* );
+    Elem( pre, label, attrs, scpe, false, children:_* );
   }
 
   /** creates a text node

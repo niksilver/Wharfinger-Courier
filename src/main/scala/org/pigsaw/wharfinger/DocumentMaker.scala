@@ -84,7 +84,7 @@ class DocumentMaker(val title: String,
   implicit def stringBuilder2String(s: StringBuilder) = s.toString
 
   private def elt(name: String, content: String) = "<" + name + ">" + content + "</" + name + ">"
-  private def open(name: String, attr: Pair[String,String]*) = "<" + name +
+  private def open(name: String, attr: Tuple2[String,String]*) = "<" + name +
     (attr map { a => " " + a._1 + "=\"" + a._2 + "\"" }).mkString + ">"
   private def close(name: String) = "</" + name + ">"
 

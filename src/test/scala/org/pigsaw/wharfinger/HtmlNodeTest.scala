@@ -131,7 +131,7 @@ class HtmlNodeTest extends FunSpec with ShouldMatchers {
       def asToAsTrans(n: Node): Node = {
         n match {
           case e: Elem if (e.label == "a") =>
-            e.copy(e.prefix, "A", e.attributes, e.scope, e.child)
+            e.copy(e.prefix, "A", e.attributes, e.scope, false, e.child)
           case x => x
         }
       }

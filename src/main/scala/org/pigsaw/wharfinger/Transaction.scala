@@ -16,7 +16,7 @@ trait Transaction {
 
   def transactionWithReporting(query: javax.jdo.Query, resp: HttpServletResponse)(block: Unit): Unit = {
     try { block }
-    catch { case e => resp.getWriter.println("Exception: " + e.getMessage) }
+    catch { case e: Throwable => resp.getWriter.println("Exception: " + e.getMessage) }
     finally { query.closeAll }
   }
 

@@ -21,8 +21,10 @@ libraryDependencies ++= Seq(
   // Use the Scala XML module (which came out of the core in 2.11)
   "org.scala-lang.modules" %% "scala-xml" % "1.0.1",
   "javax.servlet" % "servlet-api" % "2.5" % "provided"
-  // "org.eclipse.jetty" % "jetty-webapp" % "7.6.8.v20121106" % "container"
 )
+
+// For Scalatest for Scala 2.11
+libraryDependencies += "org.scalatest" % "scalatest_2.11" % "2.2.1" % "test"
 
 /////////////////////////////////////////////////////
 

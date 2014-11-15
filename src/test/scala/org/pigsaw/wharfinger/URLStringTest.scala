@@ -1,13 +1,13 @@
 package org.pigsaw.wharfinger
 
 import org.scalatest.FunSpec
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.Matchers
 
 /**
  * Test URLString and related
  */
 
-class URLStringTest extends FunSpec with ShouldMatchers {
+class URLStringTest extends FunSpec with Matchers {
 
   describe("URLString") {
     it("Should separate a URL string") {

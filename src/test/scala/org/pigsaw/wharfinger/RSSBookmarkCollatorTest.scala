@@ -1,13 +1,13 @@
 package org.pigsaw.wharfinger
 
 import org.scalatest.FunSpec
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.Matchers
 import java.io.StringReader
 
 /**
  * To change this template use File | Settings | File Templates.
  */
-class RSSBookmarkCollatorTest extends FunSpec with ShouldMatchers {
+class RSSBookmarkCollatorTest extends FunSpec with Matchers {
   describe("RSSBookmarkCollator") {
 
     it ("Should return bookmarks") {

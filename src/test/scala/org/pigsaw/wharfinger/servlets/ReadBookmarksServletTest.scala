@@ -1,14 +1,14 @@
 package org.pigsaw.wharfinger.servlets
 
 import org.scalatest.FunSpec
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.Matchers
 
 import org.pigsaw.wharfinger._
 
 /**
  * To change this template use File | Settings | File Templates.
  */
-class ReadBookmarksServletTest extends FunSpec with ShouldMatchers {
+class ReadBookmarksServletTest extends FunSpec with Matchers {
 
   describe("ReadBookmarksServlet") {
     it("Should select the right handler for Twitter Times") {

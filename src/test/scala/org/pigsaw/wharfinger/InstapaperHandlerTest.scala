@@ -1,6 +1,6 @@
 package org.pigsaw.wharfinger
 
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.Matchers
 import org.scalatest.FunSpec
 
 /**
@@ -11,7 +11,7 @@ import org.scalatest.FunSpec
  * To change this template use File | Settings | File Templates.
  */
 
-class InstapaperHandlerTest extends FunSpec with ShouldMatchers {
+class InstapaperHandlerTest extends FunSpec with Matchers {
 
   describe("InstapaperHandler") {
 

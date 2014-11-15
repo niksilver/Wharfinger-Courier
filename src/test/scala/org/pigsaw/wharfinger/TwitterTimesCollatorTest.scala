@@ -1,7 +1,7 @@
 package org.pigsaw.wharfinger
 
 import org.scalatest.FunSpec
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.Matchers
 import java.io.FileReader
 import xml.Elem
 
@@ -9,18 +9,18 @@ import xml.Elem
  * Test the thing that fetches and parses a the Twitter Times RSS feed
  */
 
-class TwitterTimesCollatorTest extends FunSpec with ShouldMatchers {
+class TwitterTimesCollatorTest extends FunSpec with Matchers {
 
   describe("TwitterTimesCollator") {
     it("Should return a list of bookmarks") {
       val handler = new TwitterTimesCollator(new FileReader("src/test/scala/org/pigsaw/wharfinger/twitter-times-rss.xml"))
       val bookmarks = handler.bookmarks
 
-      bookmarks.size should be === (30)
+      bookmarks.size should be (30)
 
-      bookmarks(0).url should be === ("http://www.chicagotribune.com")
-      bookmarks(1).url should be === ("http://www.niemanlab.org/2011/06/who-clicks-more-on-local-news-new-york-or-omaha-surprising-data-from-the-fcc-on-local-online-news")
-      bookmarks(2).url should be === ("http://www.guardian.co.uk/law/butterworth-and-bowcott-on-law/2011/jun/17/internet-freedom-matter-un")
+      bookmarks(0).url should be ("http://www.chicagotribune.com")
+      bookmarks(1).url should be ("http://www.niemanlab.org/2011/06/who-clicks-more-on-local-news-new-york-or-omaha-surprising-data-from-the-fcc-on-local-online-news")
+      bookmarks(2).url should be ("http://www.guardian.co.uk/law/butterworth-and-bowcott-on-law/2011/jun/17/internet-freedom-matter-un")
     }
 
     it("Should be able to parse the real Tweeted Times") {
@@ -30,17 +30,17 @@ class TwitterTimesCollatorTest extends FunSpec with ShouldMatchers {
   }
 }
 
-class TwitterTimesBookmarkTest extends FunSpec with ShouldMatchers {
+class TwitterTimesBookmarkTest extends FunSpec with Matchers {
 
   describe("TwitterTimesBookmark") {
     it("Should extract the URL") {
       val bookmark = new TwitterTimesBookmark(Data.twitter_times_nieman_lab_item)
-      bookmark.url should be === ("http://www.niemanlab.org/2011/06/who-clicks-more-on-local-news-new-york-or-omaha-surprising-data-from-the-fcc-on-local-online-news")
+      bookmark.url should be ("http://www.niemanlab.org/2011/06/who-clicks-more-on-local-news-new-york-or-omaha-surprising-data-from-the-fcc-on-local-online-news")
     }
 
     it("Should extract the title") {
       val bookmark = new TwitterTimesBookmark(Data.twitter_times_nieman_lab_item)
-      bookmark.title should be === ("Who clicks more on local news, New York or Omaha? Surprising data from the FCC on local online news  \u00bb  Nieman Journalism Lab \u00bb Pushing to the Future of Journalism")
+      bookmark.title should be ("Who clicks more on local news, New York or Omaha? Surprising data from the FCC on local online news  \u00bb  Nieman Journalism Lab \u00bb Pushing to the Future of Journalism")
     }
 
     it("Should have a description which is XML") {
@@ -50,7 +50,7 @@ class TwitterTimesBookmarkTest extends FunSpec with ShouldMatchers {
 
     it("Should list friends and their tweets") {
       val bookmark = new TwitterTimesBookmark(Data.twitter_times_nieman_lab_item)
-      bookmark.tweets.length should be === (6)
+      bookmark.tweets.length should be (6)
 
       bookmark.tweets(0)(0) should be ("@steverubel")
       bookmark.tweets(1)(0) should be ("@Digidave")

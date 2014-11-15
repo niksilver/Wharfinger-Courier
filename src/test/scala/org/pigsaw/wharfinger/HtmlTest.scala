@@ -1,7 +1,7 @@
 package org.pigsaw.wharfinger
 
 import org.scalatest.FunSpec
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.Matchers
 
 import org.ccil.cowan.tagsoup.TagSoupFactoryAdapter
 
@@ -13,7 +13,7 @@ import org.ccil.cowan.tagsoup.TagSoupFactoryAdapter
  * To change this template use File | Settings | File Templates.
  */
 
-class HtmlTest extends FunSpec with ShouldMatchers {
+class HtmlTest extends FunSpec with Matchers {
 
   describe("Tagsoup") {
 

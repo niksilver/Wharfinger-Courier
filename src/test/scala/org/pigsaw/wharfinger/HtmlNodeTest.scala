@@ -1,7 +1,7 @@
 package org.pigsaw.wharfinger
 
 import org.scalatest.FunSpec
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.Matchers
 import Preamble._
 import java.io.{StringReader, IOException}
 import scala.xml._
@@ -14,7 +14,7 @@ import scala.xml._
  * To change this template use File | Settings | File Templates.
  */
 
-class HtmlNodeTest extends FunSpec with ShouldMatchers {
+class HtmlNodeTest extends FunSpec with Matchers {
 
   describe("SimpleHtmlHandler") {
 
@@ -52,7 +52,7 @@ class HtmlNodeTest extends FunSpec with ShouldMatchers {
 
     it("Should throw an exception reading from a problematic URL") {
       def readURL = HTMLNode(new URLReader("http://www.willnotresolve5432.com", "UTF-8"))
-      evaluating(readURL) should produce [IOException]
+      an [IOException] should be thrownBy { readURL }
     }
 
     it("Should be able to escaping special characters in XML") {
@@ -60,49 +60,49 @@ class HtmlNodeTest extends FunSpec with ShouldMatchers {
       val msg2 = "Message\u2014two"
       val xml = <outside class="clz" id="my\u2010id"><in1>{ msg1 }</in1><in2>{ msg2 }</in2></outside>
       val html = HTMLNode.escapeForHTML(xml)
-      (html \\ "@id").toString should be === ("my\u2010id")
-      (html \\ "in2").text should be === ("Message&#8212;two")
+      (html \\ "@id").toString should be ("my\u2010id")
+      (html \\ "in2").text should be ("Message&#8212;two")
     }
 
     it("Should be able to escape special characters in a string") {
       val msg = "Message\u2014two"
-      HTMLNode.escapeForHTML(msg) should be === ("Message&#8212;two")
+      HTMLNode.escapeForHTML(msg) should be ("Message&#8212;two")
     }
 
     it("Should not escape whitespace characters in a string") {
       val msg = "New\nline\tand so on"
-      HTMLNode.escapeForHTML(msg) should be === ("New\nline\tand so on")
+      HTMLNode.escapeForHTML(msg) should be ("New\nline\tand so on")
     }
 
     it("Should be able to replace images with text") {
       val xml = <p><a href="/hello.txt"><img src="hello.jpg" alt="Smiley"/></a><img src="underline.jpg" alt="Underline"/></p>
-      HTMLNode.imagesToText(xml).toString should be === (
+      HTMLNode.imagesToText(xml).toString should be (
         """<p><a href="/hello.txt">[Image: Smiley]</a>[Image: Underline]</p>""")
     }
 
     it("Should be able to replace images which have empty alt text") {
       val xml = <p><a href="/hello.txt"><img src="hello.jpg" alt=""/></a><img src="underline.jpg" alt=""/></p>
-      HTMLNode.imagesToText(xml).toString should be === (
+      HTMLNode.imagesToText(xml).toString should be (
         """<p><a href="/hello.txt"></a></p>""")
     }
 
     it("Should be able to replace images which have no text") {
       val xml = <p><a href="/hello.txt"><img src="hello.jpg"/></a><img src="underline.jpg"/></p>
-      HTMLNode.imagesToText(xml).toString should be === (
+      HTMLNode.imagesToText(xml).toString should be (
         """<p><a href="/hello.txt"></a></p>""")
     }
 
     it("Should be able to replace images which have non-empty Text nodes as alt text") {
       val text = new Text("Hello")
       val xml = <p><a href="/hello.txt"><img src="hello.jpg" alt={ text }/></a></p>
-      HTMLNode.imagesToText(xml).toString should be === (
+      HTMLNode.imagesToText(xml).toString should be (
         """<p><a href="/hello.txt">[Image: Hello]</a></p>""")
     }
 
     it("Should be able to replace images which have empty Text nodes as alt text") {
       val empty_text = new Text("")
       val xml = <p><a href="/hello.txt"><img src="hello.jpg" alt={ empty_text }/></a></p>
-      HTMLNode.imagesToText(xml).toString should be === (
+      HTMLNode.imagesToText(xml).toString should be (
         """<p><a href="/hello.txt"></a></p>""")
     }
 
@@ -110,13 +110,13 @@ class HtmlNodeTest extends FunSpec with ShouldMatchers {
       import Preamble._
       val msg = "Message\u2014again"
       val xml = <p><a href="/hello.txt">{ msg }<img src="hello.jpg" alt="Hello"/></a><img src="underline.jpg" alt="Under\u2014line"/></p>
-      xml.imagesToText.escapeForHTML.toString should be === (
+      xml.imagesToText.escapeForHTML.toString should be (
         """<p><a href="/hello.txt">Message&#8212;again[Image: Hello]</a>[Image: Under&#8212;line]</p>""")
     }
 
     it("Should be able to change a body into a story div") {
       val xml = <body>It's <out0></out0> and <out1>Out<in1>In 1</in1><in2>In 2</in2>side</out1></body>
-      HTMLNode.bodyToStoryDiv(xml).toString should be === (
+      HTMLNode.bodyToStoryDiv(xml).toString should be (
         """<div id="story">It's <out0></out0> and <out1>Out<in1>In 1</in1><in2>In 2</in2>side</out1></div>""")
     }
 
@@ -145,7 +145,7 @@ class HtmlNodeTest extends FunSpec with ShouldMatchers {
 
     it("Should tidy sloppy HTML-XML") {
       val xml = SloppyXMLNodeSeq(new StringReader("Back & forth"))
-      xml.toString should be === ("Back &amp; forth")
+      xml.toString should be ("Back &amp; forth")
     }
   }
 
@@ -157,7 +157,9 @@ class HtmlNodeTest extends FunSpec with ShouldMatchers {
     }
 
     it("Should throw an IOException if URL redirect cannot be resolved") {
-      evaluating(print("** URL is " + (new RedirectResolver("http://www.madeupdomain54321.com").URL))) should produce [IOException]
+      an [IOException] should be thrownBy {
+        print("** URL is " + (new RedirectResolver("http://www.madeupdomain54321.com").URL))
+      }
     }
 
     /* This will not work due to Java's security.
@@ -184,8 +186,8 @@ class HtmlNodeTest extends FunSpec with ShouldMatchers {
         </a>
       val extract = n findElementAttributeStartingWith ("b", "@id", "one")
       extract.size should be (2)
-      extract(0).attribute("id").get(0).toString should be === ("oneanother")
-      extract(1).attribute("id").get(0).toString should be === ("onegin")
+      extract(0).attribute("id").get(0).toString should be ("oneanother")
+      extract(1).attribute("id").get(0).toString should be ("onegin")
     }
   }
 }

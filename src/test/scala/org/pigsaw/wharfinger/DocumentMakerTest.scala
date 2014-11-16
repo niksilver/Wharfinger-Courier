@@ -34,20 +34,20 @@ class DocumentMakerTest extends FunSpec with Matchers {
       tocs.length should be (1)
 
       val toc = tocs(0).child
-      toc(0).toString should be ("""<a name="toc"></a>""")
-      toc(1).toString should be ("""<a name="start"></a>""")
-      toc(2).toString should be ("""<center><h3>Wharfinger Courier</h3><h4>25 Aug 2010</h4></center>""")
-      toc(3).toString should be ("""<p align="right"><small>2 articles</small></p>""")
+      toc(0) should be (<a name="toc"></a>)
+      toc(1) should be (<a name="start"></a>)
+      toc(2) should be (<center><h3>Wharfinger Courier</h3><h4>25 Aug 2010</h4></center>)
+      toc(3) should be (<p align="right"><small>2 articles</small></p>)
 
       val chapter_refs = (document findElementAttributeText ("div", "@class", "wharfinger-chapter")) \ "a"
       chapter_refs.length should be (2)
-      chapter_refs(0).toString should be ("""<a name="wharfinger-1"></a>""")
-      chapter_refs(1).toString should be ("""<a name="wharfinger-2"></a>""")
+      chapter_refs(0) should be (<a name="wharfinger-1"></a>)
+      chapter_refs(1) should be (<a name="wharfinger-2"></a>)
 
       val contents: Seq[Node] = document findElementAttributeText (
               "div", "@class", "wharfinger-content")
-      contents(0).toString should be ("""<div class="wharfinger-content"><div>I fought bravely</div></div>""")
-      contents(1).toString should be ("""<div class="wharfinger-content"><p>Brown, black and white</p></div>""")
+      contents(0) should be (<div class="wharfinger-content"><div>I fought bravely</div></div>)
+      contents(1) should be (<div class="wharfinger-content"><p>Brown, black and white</p></div>)
     }
 
     it("Should be able to add multiple articles") {
@@ -70,20 +70,20 @@ class DocumentMakerTest extends FunSpec with Matchers {
       tocs.length should be (1)
 
       val toc = tocs(0).child
-      toc(0).toString should be ("""<a name="toc"></a>""")
-      toc(1).toString should be ("""<a name="start"></a>""")
-      toc(2).toString should be ("""<center><h3>Wharfinger Courier</h3><h4>25 Aug 2010</h4></center>""")
-      toc(3).toString should be ("""<p align="right"><small>2 articles</small></p>""")
+      toc(0) should be (<a name="toc"></a>)
+      toc(1) should be (<a name="start"></a>)
+      toc(2) should be (<center><h3>Wharfinger Courier</h3><h4>25 Aug 2010</h4></center>)
+      toc(3) should be (<p align="right"><small>2 articles</small></p>)
 
       val chapter_refs = (document findElementAttributeText ("div", "@class", "wharfinger-chapter")) \ "a"
       chapter_refs.length should be (2)
-      chapter_refs(0).toString should be ("""<a name="wharfinger-1"></a>""")
-      chapter_refs(1).toString should be ("""<a name="wharfinger-2"></a>""")
+      chapter_refs(0) should be (<a name="wharfinger-1"></a>)
+      chapter_refs(1) should be (<a name="wharfinger-2"></a>)
 
       val contents: Seq[Node] = document findElementAttributeText (
         "div", "@class", "wharfinger-content")
-      contents(0).toString should be ("""<div class="wharfinger-content"><div>I fought bravely</div></div>""")
-      contents(1).toString should be ("""<div class="wharfinger-content"><p>Brown, black and white</p></div>""")
+      contents(0) should be (<div class="wharfinger-content"><div>I fought bravely</div></div>)
+      contents(1) should be (<div class="wharfinger-content"><p>Brown, black and white</p></div>)
     }
 
     it("Should be able to add multiple articles from Java List") {
@@ -149,7 +149,7 @@ class DocumentMakerTest extends FunSpec with Matchers {
       // toc(0) is <a name="toc"></a>
       // toc(1) is <a name="start"></a>
       // toc(2) is <center><h3>Wharfinger Courier</h3><h4>25 Aug 2010</h4></center>
-      toc(3).toString should be ("""<p align="right"><small>7 articles, 2 remaining</small></p>""")
+      toc(3) should be (<p align="right"><small>7 articles, 2 remaining</small></p>)
 
     }
 

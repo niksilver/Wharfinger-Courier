@@ -12,7 +12,6 @@ public class Message {
 	
 	@PrimaryKey
 	@Persistent
-	@SuppressWarnings("unused")
 	private String key = "1234";
 	
 	public Message() {

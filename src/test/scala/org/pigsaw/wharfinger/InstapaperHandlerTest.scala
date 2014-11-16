@@ -24,9 +24,9 @@ class InstapaperHandlerTest extends FunSpec with Matchers {
     }
 
     it("Should be able to find the content div") {
-      val handler = new InstapaperHandler(wsj_url)
+      val handler = new InstapaperHandler(cif_america_url)
       val Some(content) = handler.getContentDiv
-      content.text.trim should include ("The largest U.S. websites")
+      content.text.trim should include ("As far as I can tell")
     }
 
     it("Should get content by working around empty story div") {

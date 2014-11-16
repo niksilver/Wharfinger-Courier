@@ -22,7 +22,7 @@ class InstapaperHandler(article_url: String) extends WarningTrier[Node] {
   def getContentDiv: Option[Node] = {
     tryOrLogWarning {
       val html = HTMLNode(new URLReader(url, "UTF-8"))
-      val content_bodies = (html \\ "body").tail
+      val content_bodies = (html \\ "body") //.tail
       val body_opt = content_bodies find { b => b.text.trim != "" }
       val story_div_opt = body_opt map { bo => bo.bodyToStoryDiv }
       story_div_opt

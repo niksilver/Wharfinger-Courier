@@ -18,7 +18,7 @@ class RSSBookmarkCollatorTest extends FunSpec with Matchers {
 
       bookmarks(0).site should be ("PandoDaily")
       bookmarks(0).url should be ("http://pandodaily.com.feedsportal.com/c/35141/f/650422/s/2f29c9da/sc/1/l/0Lpandodaily0N0C20A130C0A70C250Cwhat0Ethe0Ehell0Eis0Ea0Epatent0Etroll0Eanyway0C/story01.htm")
-      bookmarks(0).title should be ("What the hell is a “patent troll” anyway?")
+      bookmarks(0).title should be ("What the hell is a â€œpatent trollâ€� anyway?")
       bookmarks(0).description should startWith ("What the hell is a patent troll anyways? And how")
 
       bookmarks(1).site should be ("PandoDaily")
@@ -28,7 +28,7 @@ class RSSBookmarkCollatorTest extends FunSpec with Matchers {
 
       bookmarks(2).site should be ("PandoDaily")
       bookmarks(2).url should be ("http://pandodaily.com.feedsportal.com/c/35141/f/650422/s/2f28ff81/sc/21/l/0Lpandodaily0N0C20A130C0A70C250Cbaby0Esteps0Emayers0Eacquistion0Espree0Edoesnt0Eturn0Eyahoo0Earound0Ebut0Eit0Estarts0Eto0Esolve0Ecore0Eproblems0C/story01.htm")
-      bookmarks(2).title should startWith ("Baby steps: Mayer’s acquistion spree")
+      bookmarks(2).title should startWith ("Baby steps: Mayerâ€™s acquistion spree")
       bookmarks(2).description should startWith ("At one point during the long, painful, multi-year talks")
     }
   }

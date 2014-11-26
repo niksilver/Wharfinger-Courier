@@ -2,6 +2,8 @@ package org.pigsaw.wharfinger
 
 import org.scalatest.Matchers
 import org.scalatest.FunSpec
+import java.net.URLEncoder
+import scala.xml.Node
 
 /**
  * Created by IntelliJ IDEA.
@@ -20,25 +22,25 @@ class InstapaperHandlerTest extends FunSpec with Matchers {
 
     it("Should create an appropriate URL") {
       val handler = new InstapaperHandler(wsj_url)
-      handler.url should be ("http://www.instapaper.com/text?u=http%3A%2F%2Fonline.wsj.com%2Farticle%2FSB10001424052748703977004575393173432219064.html")
+      handler.url should be(handler.prefix + "http%3A%2F%2Fonline.wsj.com%2Farticle%2FSB10001424052748703977004575393173432219064.html")
     }
 
     it("Should be able to find the content div") {
       val handler = new InstapaperHandler(cif_america_url)
       val Some(content) = handler.getContentDiv
-      content.text.trim should include ("As far as I can tell")
+      content.text.trim should include("As far as I can tell")
     }
 
     it("Should get content by working around empty story div") {
       val handler = new InstapaperHandler(cif_america_url)
       val Some(content) = handler.getContentDiv
-      content.text.trim should include ("Sarah Palin reads the newspapers")
+      content.text.trim should include("The visual joke was the real message.")
     }
 
     it("Should should put content from workaround in a story div") {
       val handler = new InstapaperHandler(cif_america_url)
       val Some(content) = handler.getContentDiv
-      content.toString should startWith ("""<div id="story">""")
+      content.toString should startWith("""<div id="story">""")
     }
 
   }

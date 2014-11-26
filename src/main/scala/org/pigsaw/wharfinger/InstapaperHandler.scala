@@ -11,8 +11,8 @@ import org.pigsaw.wharfinger.Preamble._
 class InstapaperHandler(article_url: String) extends WarningTrier[Node] {
 
   val log = Logger.getLogger(this.getClass.getName)
-  val url: String = "http://www.instapaper.com/text?u=" +
-    URLEncoder.encode(article_url, "UTF-8")
+  val prefix = "https://www.instapaper.com/text?u="
+  val url: String = prefix + URLEncoder.encode(article_url, "UTF-8")
 
   /**
    * There are several body tags in an Instapaper document. The first contains
@@ -21,8 +21,8 @@ class InstapaperHandler(article_url: String) extends WarningTrier[Node] {
    */
   def getContentDiv: Option[Node] = {
     tryOrLogWarning {
-      val html = HTMLNode(new URLReader(url, "UTF-8"))
-      val content_bodies = (html \\ "body") //.tail
+      val Some(html) = getBasicHtml
+      val content_bodies = (html \\ "body")
       val body_opt = content_bodies find { b => b.text.trim != "" }
       val story_div_opt = body_opt map { bo => bo.bodyToStoryDiv }
       story_div_opt

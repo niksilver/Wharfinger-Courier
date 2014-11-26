@@ -149,28 +149,6 @@ class HtmlNodeTest extends FunSpec with Matchers {
     }
   }
 
-  describe("RedirectResolver") {
-
-    it("Should allow URL redirects to be resolved") {
-      val resolver = new RedirectResolver("http://bit.ly/9NQcyA")
-      resolver.URL should be ("http://www.mobileuserexperience.com/?p=896")
-    }
-
-    it("Should throw an IOException if URL redirect cannot be resolved") {
-      an [IOException] should be thrownBy {
-        print("** URL is " + (new RedirectResolver("http://www.madeupdomain54321.com").URL))
-      }
-    }
-
-    /* This will not work due to Java's security.
-     *
-    it("Should resolve URLs across HTTP(S) boundaries") {
-      val resolver = new RedirectResolver("http://bit.ly/3hQYj")
-      resolver.URL should be ("https://www.google.com")
-    }
-    */
-  }
-
   describe("RichNodeSeq") {
     it("Should be able to find a single node by ID") {
       val html = HTMLNode(new StringReader(Data.instapaper_html))

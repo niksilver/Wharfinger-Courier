@@ -43,5 +43,10 @@ class InstapaperHandlerTest extends FunSpec with Matchers {
       content.toString should startWith("""<div id="story">""")
     }
 
+    it("Should should reject bad URL") {
+      val handler = new InstapaperHandler("http://completely-made-up-domain-0987.com")
+      handler.getContentDiv should be (None)
+    }
+
   }
 }

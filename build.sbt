@@ -27,7 +27,7 @@ libraryDependencies ++= Seq(
 libraryDependencies += "org.scalatest" % "scalatest_2.11" % "2.2.1" % "test"
 
 /////////////////////////////////////////////////////
-
+//
 // These two lines for sbt-appengine with sbt 0.13
 // From https://github.com/sbt/sbt-appengine
 
@@ -36,3 +36,12 @@ libraryDependencies += "org.mortbay.jetty" % "jetty" % "6.1.22" % "container"
 appengineSettings
 
 /////////////////////////////////////////////////////
+//
+// (Experimental for sbt-appengine 0.6.2...)
+// These lines will call the DataNucleus enhance when
+// we call packageWar.
+
+appengineDataNucleusSettings
+
+AppengineKeys.persistenceApi in AppengineKeys.enhance in Compile := "JDO"
+

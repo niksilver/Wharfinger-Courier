@@ -3,10 +3,6 @@ package org.pigsaw.wharfinger
 import scala.xml._
 import java.io.{StringReader, Reader}
 
-/**
- * To change this template use File | Settings | File Templates.
- */
-
 case class RSSBookmark(val site: String, val url: String, val title: String, val description: String)
 
 trait RSSBookmarkCollatorService {

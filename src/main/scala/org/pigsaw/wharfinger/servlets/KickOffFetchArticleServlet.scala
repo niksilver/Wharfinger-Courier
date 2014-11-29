@@ -19,7 +19,7 @@ import org.pigsaw.wharfinger.Preamble._
 class KickOffFetchArticleServlet extends HttpServlet {
 
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
-    val ds = new DataService(PMF.get.getPersistenceManager)
+    val ds = new GAEDataService(PMF.get.getPersistenceManager)
     val getter = new KickOffFetchArticleGetter(resp.getWriter, ds)
     resp.setContentType("text/plain")
     getter.doGetLogic
@@ -83,7 +83,24 @@ class KickOffFetchArticleGetter(pwriter: java.io.PrintWriter, ds: DataService) {
 /**
  * Business logic facade to the persistence layer.
  */
-class DataService(pm: PersistenceManager) {
+trait DataService {
+
+  /** Do some work, persist the results, and close the connection.
+   */
+  def persistAndClose(block: =>Unit): Unit
+
+  /**
+   * How many times has this bookmark been a past article?
+   */
+  def countPastArticle(bookmark: BookmarkPendingFetch): Integer
+
+  def delete(bookmark: BookmarkPendingFetch): Unit
+  def bookmarksToFetch(): Seq[BookmarkPendingFetch]
+  def markFetchAttempt(bookmark: BookmarkPendingFetch): Unit
+
+}
+
+class GAEDataService(pm: PersistenceManager) extends DataService {
 
   val log = Logger.getLogger(this.getClass.getName)
 

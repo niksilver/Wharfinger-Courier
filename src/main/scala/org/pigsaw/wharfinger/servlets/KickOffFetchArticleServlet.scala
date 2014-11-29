@@ -19,13 +19,14 @@ import org.pigsaw.wharfinger.Preamble._
 class KickOffFetchArticleServlet extends HttpServlet {
 
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
-    val getter = new KickOffFetchArticleGetter(resp.getWriter, PMF.get.getPersistenceManager)
+    val ds = new DataService(PMF.get.getPersistenceManager)
+    val getter = new KickOffFetchArticleGetter(resp.getWriter, ds)
     resp.setContentType("text/plain")
     getter.doGetLogic
   }
 }
 
-class KickOffFetchArticleGetter(pwriter: java.io.PrintWriter, pm: PersistenceManager) extends Transaction {
+class KickOffFetchArticleGetter(pwriter: java.io.PrintWriter, ds: DataService) {
 
   val log = Logger.getLogger(this.getClass.getName)
 
@@ -33,25 +34,17 @@ class KickOffFetchArticleGetter(pwriter: java.io.PrintWriter, pm: PersistenceMan
   def print(s: String) { pwriter.print(s) }
 
   def doGetLogic {
-    persistAndClose(pm) {
-      bookmarksToFetch() find fetchableBookmark map queueFetchBookmark
+    ds.persistAndClose {
+      ds.bookmarksToFetch find fetchableBookmark map queueFetchBookmark
     }
     println("Done kick-off")
 
   }
 
-  def shouldNotFetch(bookmark: BookmarkPendingFetch): Boolean =
-    tooManyFetchAttempts(bookmark) || isPastArticle(bookmark)
-
   def tooManyFetchAttempts(bookmark: BookmarkPendingFetch): Boolean = (bookmark.getFetchAttempts >= 10)
 
   def isPastArticle(bookmark: BookmarkPendingFetch): Boolean = {
-    log.info("Entering isPastArticle")
-    val query = pm.newQuery(classOf[PastArticle])
-    query.setFilter("url == urlParam")
-    query.declareParameters("String urlParam")
-    val results = query.execute(bookmark.url).asInstanceOf[java.util.List[BookmarkPendingFetch]]
-    val num_found = results.size
+    val num_found = ds.countPastArticle(bookmark)
     num_found >= 1
   }
 
@@ -69,15 +62,7 @@ class KickOffFetchArticleGetter(pwriter: java.io.PrintWriter, pm: PersistenceMan
     log.warning("Reason for rejection: " + reason)
     println("Rejecting bookmark: " + bookmark.url)
     println("Reason for rejection: " + reason)
-    pm.deletePersistent(bookmark)
-  }
-
-  def bookmarksToFetch(): Seq[BookmarkPendingFetch] = {
-    log.info("Entering bookmarksToFetch")
-    val query = pm.newQuery(classOf[BookmarkPendingFetch])
-    query.setOrdering("fetchAttempts asc")
-    query.setRange(0, 5)
-    query.execute().asInstanceOf[java.util.List[BookmarkPendingFetch]]
+    ds.delete(bookmark)
   }
 
   def queueFetchBookmark(bookmark: BookmarkPendingFetch) = {
@@ -90,13 +75,49 @@ class KickOffFetchArticleGetter(pwriter: java.io.PrintWriter, pm: PersistenceMan
       param("citation", bookmark.getCitation).
       method(Method.GET)
     queue.add(task)
-    markFetchAttempt()
+    ds.markFetchAttempt(bookmark)
+  }
 
-    def markFetchAttempt() {
-      log.info("Entering markFetchAttempt")
-      bookmark.incrementFetchAttempts()
-      pm.makePersistent(bookmark)
-    }
+}
+
+/**
+ * Business logic facade to the persistence layer.
+ */
+class DataService(pm: PersistenceManager) {
+
+  val log = Logger.getLogger(this.getClass.getName)
+
+  def persistAndClose(block: =>Unit) {
+    try { block }
+    finally { if (!pm.isClosed) pm.close }
+  }
+
+  /**
+   * How many times has this bookmark been a past article?
+   */
+  def countPastArticle(bookmark: BookmarkPendingFetch): Integer = {
+    val query = pm.newQuery(classOf[PastArticle])
+    query.setFilter("url == urlParam")
+    query.declareParameters("String urlParam")
+    val results = query.execute(bookmark.url).asInstanceOf[java.util.List[BookmarkPendingFetch]]
+    results.size
+  }
+
+  def delete(bookmark: BookmarkPendingFetch) {
+    pm.deletePersistent(bookmark)
+  }
+
+  def bookmarksToFetch(): Seq[BookmarkPendingFetch] = {
+    log.info("Entering bookmarksToFetch")
+    val query = pm.newQuery(classOf[BookmarkPendingFetch])
+    query.setOrdering("fetchAttempts asc")
+    query.setRange(0, 5)
+    query.execute().asInstanceOf[java.util.List[BookmarkPendingFetch]]
+  }
+
+  def markFetchAttempt(bookmark: BookmarkPendingFetch) {
+    bookmark.incrementFetchAttempts()
+    pm.makePersistent(bookmark)
   }
 
 }

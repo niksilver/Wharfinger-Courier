@@ -1,18 +1,18 @@
 package org.pigsaw.wharfinger
 
-class TwitterURL(url: String) extends URLString(url) {
+object TwitterURL {
   
-  def isFromTwitter = { (domain endsWith ".twitter.com") || (domain == "twitter.com") }
+  def isFromTwitter(url: String) = {
+    val u = URLString(url)
+    (u.domain endsWith ".twitter.com") || (u.domain == "twitter.com")
+  }
   
-  def isTwitterStatus = {
-    domain == "twitter.com" &&
+  def isTwitterStatus(url: String) = {
+    val u = URLString(url)
+    u.domain == "twitter.com" &&
     {
-      val parts = path split "/"
+      val parts = u.path split "/"
       parts.size >= 4 && parts(0) == "" && parts(2) == "status" && parts(3).nonEmpty
     }
   }
-}
-
-object TwitterURL {
-  def apply(url: String) = new TwitterURL(url)
 }

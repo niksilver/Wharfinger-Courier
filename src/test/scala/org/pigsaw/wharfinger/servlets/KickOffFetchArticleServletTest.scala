@@ -28,7 +28,7 @@ class KickOffFetchArticleGetterTest extends FunSpec with Matchers with MockFacto
         override def isPastArticle(b: BookmarkPendingFetch) = false
         override def tooManyFetchAttempts(b: BookmarkPendingFetch) = false
       }
-      getter.fetchableBookmark(bookmark0) should be(true)
+      getter.fetchableBookmark(bookmark0) should be (true)
     }
 
     it("Should not fetch article if used before") {
@@ -40,7 +40,7 @@ class KickOffFetchArticleGetterTest extends FunSpec with Matchers with MockFacto
         override def isPastArticle(b: BookmarkPendingFetch) = true
         override def tooManyFetchAttempts(b: BookmarkPendingFetch) = false
       }
-      getter.fetchableBookmark(bookmark0) should be(false)
+      getter.fetchableBookmark(bookmark0) should be (false)
     }
 
     it("Should not fetch article if too many fetch attempts") {
@@ -52,7 +52,7 @@ class KickOffFetchArticleGetterTest extends FunSpec with Matchers with MockFacto
         override def isPastArticle(b: BookmarkPendingFetch) = false
         override def tooManyFetchAttempts(b: BookmarkPendingFetch) = true
       }
-      getter.fetchableBookmark(bookmark0) should be(false)
+      getter.fetchableBookmark(bookmark0) should be (false)
     }
 
   }

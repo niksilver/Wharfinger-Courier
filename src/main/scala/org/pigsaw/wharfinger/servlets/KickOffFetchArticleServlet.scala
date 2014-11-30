@@ -47,12 +47,18 @@ class KickOffFetchArticleGetter(pwriter: java.io.PrintWriter, ds: DataService) {
     val num_found = ds.countPastArticle(bookmark)
     num_found >= 1
   }
+  
+  /** URLs that shouldn't be followed as articles: YouTube, Twitter statuses, etc.
+   */
+  def shouldNotFollow(url: String) = TwitterURL.isTwitterStatus(url)
 
   def fetchableBookmark(bookmark: BookmarkPendingFetch): Boolean = {
     if (isPastArticle(bookmark)) {
       rejectBookmark(bookmark, "Have published this before"); false
     } else if (tooManyFetchAttempts(bookmark)) {
       rejectBookmark(bookmark, "Too many fetch attempts"); false
+    } else if (shouldNotFollow(bookmark.url)) {
+      rejectBookmark(bookmark, "Not the kind of URL to follow"); false
     } else
       true
   }

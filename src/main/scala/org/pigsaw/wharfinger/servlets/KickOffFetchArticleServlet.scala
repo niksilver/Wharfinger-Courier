@@ -50,7 +50,10 @@ class KickOffFetchArticleGetter(pwriter: java.io.PrintWriter, ds: DataService) e
   
   /** URLs that shouldn't be followed as articles: YouTube, Twitter statuses, etc.
    */
-  def shouldNotFollow(url: String) = URLTool.isTwitterStatus(url)
+  def shouldNotFollow(url: String) =
+    URLTool.isTwitterStatus(url) ||
+    URLTool.isYouTubeVideo(url) ||
+    URLTool.isVimeoVideo(url)
 
   def fetchableBookmark(bookmark: BookmarkPendingFetch): Boolean = {
     if (isPastArticle(bookmark)) {

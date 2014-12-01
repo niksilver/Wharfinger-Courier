@@ -9,7 +9,7 @@ import org.scalatest.Matchers
 
 class URLToolTest extends FunSpec with Matchers {
 
-  describe("URLTool") {
+  describe("Twitter recognition") {
     it("Should recognise the Twitter home page as from Twitter") {
       URLTool.isFromTwitter("http://twitter.com/") should be (true)
       URLTool.isFromTwitter("https://twitter.com/") should be (true)
@@ -51,5 +51,35 @@ class URLToolTest extends FunSpec with Matchers {
       URLTool.isTwitterStatus("https://blog.twitter.com/qwghlm/status/539062683908440065") should be (false)      
     }
     
+  }
+  
+  describe("YouTube video recognition") {
+    it("Should recognise a YouTube video") {
+      URLTool.isYouTubeVideo("https://www.youtube.com/watch?v=qjbFc_XFVek") should be (true)
+      URLTool.isYouTubeVideo("https://www.youtube.com/watch?v=QR7Ze0dNClo") should be (true)
+    }
+    
+    it("Should recognise not-a-YouTube-video as such") {
+      URLTool.isYouTubeVideo("https://www.youtube.com/feed/subscriptions") should be (false)
+      URLTool.isYouTubeVideo("http://blog.youtube.com/watch?v=QR7Ze0dNClo") should be (false)
+      URLTool.isYouTubeVideo("https://www.nottube.com/watch?v=QR7Ze0dNClo") should be (false)
+    }
+  }
+  
+  describe("Vimeo video recognition") {
+    it("Should recognise a Vimeo video") {
+      URLTool.isVimeoVideo("http://vimeo.com/97012707") should be (true)
+      URLTool.isVimeoVideo("http://vimeo.com/88769226") should be (true)
+      URLTool.isVimeoVideo("http://vimeo.com/88769226?") should be (true)
+      URLTool.isVimeoVideo("http://vimeo.com/88769226#") should be (true)
+      URLTool.isVimeoVideo("http://vimeo.com/88769226/") should be (true)
+    }
+    
+    it("Should recognise not-a-Vimeo-video as such") {
+      URLTool.isVimeoVideo("http://vimeo.com/create") should be (false)
+      URLTool.isVimeoVideo("http://twitter.com/88769226") should be (false)
+      URLTool.isVimeoVideo("http://blog.vimeo.com/88769226") should be (false)
+      URLTool.isVimeoVideo("http://vimeo.com/88769226X") should be (false)
+    }
   }
 }

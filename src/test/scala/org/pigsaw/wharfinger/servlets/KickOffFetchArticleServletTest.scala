@@ -51,13 +51,31 @@ class KickOffFetchArticleGetterTest extends FunSpec with Matchers with MockFacto
       getter.fetchableBookmark(bookmark0) should be (false)
     }
 
-    it("Should not follow Twitter status URL") {
+    it("Should not follow a Twitter status URL") {
 
       val pwriter = new PrintWriter(new StringWriter)
       val ds = stub[DataService]
 
       val getter = new KickOffFetchArticleGetter(pwriter, ds) with NoLogging
       getter.shouldNotFollow("https://twitter.com/blangry/status/539156600221863936") should be (true)
+    }
+
+    it("Should not follow a YouTube video URL") {
+
+      val pwriter = new PrintWriter(new StringWriter)
+      val ds = stub[DataService]
+
+      val getter = new KickOffFetchArticleGetter(pwriter, ds) with NoLogging
+      getter.shouldNotFollow("https://www.youtube.com/watch?v=qjbFc_XFVek") should be (true)
+    }
+
+    it("Should not follow a Vimeo video URL") {
+
+      val pwriter = new PrintWriter(new StringWriter)
+      val ds = stub[DataService]
+
+      val getter = new KickOffFetchArticleGetter(pwriter, ds) with NoLogging
+      getter.shouldNotFollow("http://vimeo.com/97012707") should be (true)
     }
 
     it("Should follow ordinary URL") {

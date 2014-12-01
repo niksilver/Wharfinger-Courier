@@ -82,4 +82,21 @@ class URLToolTest extends FunSpec with Matchers {
       URLTool.isVimeoVideo("http://vimeo.com/88769226X") should be (false)
     }
   }
+  
+  describe("Vine video recognition") {
+    it("Should recognise a Vimeo video") {
+      URLTool.isVineVideo("https://vine.co/v/b6wxtwrwP7P") should be (true)
+      URLTool.isVineVideo("https://vine.co/v/MZeH3Kx5hhe") should be (true)
+      URLTool.isVineVideo("https://vine.co/v/b6wxtwrwP7P?") should be (true)
+      URLTool.isVineVideo("https://vine.co/v/b6wxtwrwP7P#") should be (true)
+      URLTool.isVineVideo("https://vine.co/v/b6wxtwrwP7P/") should be (true)
+    }
+    
+    it("Should recognise not-a-Vine-video as such") {
+      URLTool.isVineVideo("https://vine.co/Zach.King") should be (false)
+      URLTool.isVineVideo("http://twitter.com/v/b6wxtwrwP7P/") should be (false)
+      URLTool.isVineVideo("https://blog.vine.co/v/b6wxtwrwP7P") should be (false)
+      URLTool.isVineVideo("https://vine.co/vx/b6wxtwrwP7P") should be (false)
+    }
+  }
 }

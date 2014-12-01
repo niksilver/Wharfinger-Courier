@@ -30,4 +30,9 @@ object URLTool {
       (parts(0) == "") &&
       (digits findFirstIn parts(1)).nonEmpty
   }
+
+  def isVineVideo(url: String) = {
+    val u = URLString(url)
+    (u.domain == "vine.co") && (u.path startsWith "/v/")
+  }
 }

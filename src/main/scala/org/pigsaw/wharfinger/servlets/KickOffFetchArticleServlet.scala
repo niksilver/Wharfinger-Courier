@@ -53,7 +53,8 @@ class KickOffFetchArticleGetter(pwriter: java.io.PrintWriter, ds: DataService) e
   def shouldNotFollow(url: String) =
     URLTool.isTwitterStatus(url) ||
     URLTool.isYouTubeVideo(url) ||
-    URLTool.isVimeoVideo(url)
+    URLTool.isVimeoVideo(url) ||
+    URLTool.isVineVideo(url)
 
   def fetchableBookmark(bookmark: BookmarkPendingFetch): Boolean = {
     if (isPastArticle(bookmark)) {

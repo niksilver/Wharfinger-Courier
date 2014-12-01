@@ -78,6 +78,15 @@ class KickOffFetchArticleGetterTest extends FunSpec with Matchers with MockFacto
       getter.shouldNotFollow("http://vimeo.com/97012707") should be (true)
     }
 
+    it("Should not follow a Vine video URL") {
+
+      val pwriter = new PrintWriter(new StringWriter)
+      val ds = stub[DataService]
+
+      val getter = new KickOffFetchArticleGetter(pwriter, ds) with NoLogging
+      getter.shouldNotFollow("https://vine.co/v/MZeH3Kx5hhe") should be (true)
+    }
+
     it("Should follow ordinary URL") {
 
       val pwriter = new PrintWriter(new StringWriter)

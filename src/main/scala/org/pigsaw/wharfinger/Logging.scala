@@ -3,6 +3,15 @@ package org.pigsaw.wharfinger
 import java.util.logging.{Logger => JavaLogger}
 import javax.servlet.http.HttpServletResponse
 
+trait Logging {
+  val log = JavaLogger.getLogger(super.getClass.getName)
+}
+
+trait NoLogging {
+  this: Logging =>
+  log.setUseParentHandlers(false)
+}
+
 /**
  * Try to do something and return `Option[T]`, else return `None`.
  */

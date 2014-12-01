@@ -26,9 +26,9 @@ class KickOffFetchArticleServlet extends HttpServlet {
   }
 }
 
-class KickOffFetchArticleGetter(pwriter: java.io.PrintWriter, ds: DataService) {
+class KickOffFetchArticleGetter(pwriter: java.io.PrintWriter, ds: DataService) extends Logging {
 
-  val log = Logger.getLogger(this.getClass.getName)
+  //val log = Logger.getLogger(this.getClass.getName)
 
   def println(s: String) { pwriter.println(s) }
   def print(s: String) { pwriter.print(s) }
@@ -50,7 +50,7 @@ class KickOffFetchArticleGetter(pwriter: java.io.PrintWriter, ds: DataService) {
   
   /** URLs that shouldn't be followed as articles: YouTube, Twitter statuses, etc.
    */
-  def shouldNotFollow(url: String) = TwitterURL.isTwitterStatus(url)
+  def shouldNotFollow(url: String) = URLTool.isTwitterStatus(url)
 
   def fetchableBookmark(bookmark: BookmarkPendingFetch): Boolean = {
     if (isPastArticle(bookmark)) {

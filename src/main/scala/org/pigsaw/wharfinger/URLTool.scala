@@ -1,6 +1,6 @@
 package org.pigsaw.wharfinger
 
-object TwitterURL {
+object URLTool {
   
   def isFromTwitter(url: String) = {
     val u = URLString(url)

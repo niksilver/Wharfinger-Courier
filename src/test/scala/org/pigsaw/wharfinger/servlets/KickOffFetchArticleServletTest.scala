@@ -11,11 +11,6 @@ import java.util.logging.Logger
 class KickOffFetchArticleGetterTest extends FunSpec with Matchers with MockFactory {
 
   val bookmark0 = new BookmarkPendingFetch("http://something", "My title", "My citation")
-  
-  trait NoConsoleLogging {
-    this: { val log: Logger } =>
-    log.setUseParentHandlers(false)
-  }
 
   describe("KickOffFetchArticleGetter") {
 
@@ -24,7 +19,7 @@ class KickOffFetchArticleGetterTest extends FunSpec with Matchers with MockFacto
       val pwriter = new PrintWriter(new StringWriter)
       val ds = stub[DataService]
 
-      val getter = new KickOffFetchArticleGetter(pwriter, ds) {
+      val getter = new KickOffFetchArticleGetter(pwriter, ds) with NoLogging {
         override def isPastArticle(b: BookmarkPendingFetch) = false
         override def tooManyFetchAttempts(b: BookmarkPendingFetch) = false
         override def shouldNotFollow(url: String) = false
@@ -37,7 +32,7 @@ class KickOffFetchArticleGetterTest extends FunSpec with Matchers with MockFacto
       val pwriter = new PrintWriter(new StringWriter)
       val ds = stub[DataService]
 
-      val getter = new KickOffFetchArticleGetter(pwriter, ds) {
+      val getter = new KickOffFetchArticleGetter(pwriter, ds) with NoLogging {
         override def isPastArticle(b: BookmarkPendingFetch) = true
         override def tooManyFetchAttempts(b: BookmarkPendingFetch) = false
       }
@@ -49,7 +44,7 @@ class KickOffFetchArticleGetterTest extends FunSpec with Matchers with MockFacto
       val pwriter = new PrintWriter(new StringWriter)
       val ds = stub[DataService]
 
-      val getter = new KickOffFetchArticleGetter(pwriter, ds) {
+      val getter = new KickOffFetchArticleGetter(pwriter, ds) with NoLogging {
         override def isPastArticle(b: BookmarkPendingFetch) = false
         override def tooManyFetchAttempts(b: BookmarkPendingFetch) = true
       }
@@ -61,7 +56,7 @@ class KickOffFetchArticleGetterTest extends FunSpec with Matchers with MockFacto
       val pwriter = new PrintWriter(new StringWriter)
       val ds = stub[DataService]
 
-      val getter = new KickOffFetchArticleGetter(pwriter, ds)
+      val getter = new KickOffFetchArticleGetter(pwriter, ds) with NoLogging
       getter.shouldNotFollow("https://twitter.com/blangry/status/539156600221863936") should be (true)
     }
 
@@ -79,7 +74,7 @@ class KickOffFetchArticleGetterTest extends FunSpec with Matchers with MockFacto
       val pwriter = new PrintWriter(new StringWriter)
       val ds = stub[DataService]
 
-      val getter = new KickOffFetchArticleGetter(pwriter, ds) {
+      val getter = new KickOffFetchArticleGetter(pwriter, ds) with NoLogging {
         override def isPastArticle(b: BookmarkPendingFetch) = false
         override def tooManyFetchAttempts(b: BookmarkPendingFetch) = false
         override def shouldNotFollow(url: String) = true

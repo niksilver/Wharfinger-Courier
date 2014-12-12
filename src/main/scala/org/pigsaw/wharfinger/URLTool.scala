@@ -24,11 +24,15 @@ object URLTool {
   def isVimeoVideo(url: String) = {
     val u = URLString(url)
     val parts = u.path split Array('/', '#', '?')
-    val digits = """^\d+$""".r
     (u.domain == "vimeo.com") &&
       (parts.size >= 2) &&
       (parts(0) == "") &&
-      (digits findFirstIn parts(1)).nonEmpty
+      isJustDigits(parts(1))
+  }
+  
+  def isJustDigits(str: String) = {
+    val digits = """^\d+$""".r
+    (digits findFirstIn str).nonEmpty
   }
 
   def isVineVideo(url: String) = {

@@ -62,7 +62,7 @@ class KickOffFetchArticleGetter(pwriter: java.io.PrintWriter, ds: DataService) e
     } else if (tooManyFetchAttempts(bookmark)) {
       rejectBookmark(bookmark, "Too many fetch attempts"); false
     } else if (shouldNotFollow(bookmark.url)) {
-      rejectBookmark(bookmark, "Not the kind of URL to follow"); false
+      rejectBookmark(bookmark, "Will not follow this kind of URL"); false
     } else
       true
   }

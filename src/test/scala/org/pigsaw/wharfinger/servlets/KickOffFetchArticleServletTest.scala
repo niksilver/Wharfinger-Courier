@@ -2,6 +2,7 @@ package org.pigsaw.wharfinger.servlets
 
 import org.scalatest.FunSpec
 import org.scalatest.Matchers
+import org.scalatest.Inspectors._
 import org.scalamock.scalatest.MockFactory
 import org.pigsaw.wharfinger._
 import java.io.StringWriter
@@ -107,6 +108,20 @@ class KickOffFetchArticleGetterTest extends FunSpec with Matchers with MockFacto
         override def shouldNotFollow(url: String) = true
       }
       getter.fetchableBookmark(bookmark0) should be (false)
+    }
+
+    it("Should log appropriate message if URL should not be followed") {
+
+      val pwriter = new PrintWriter(new StringWriter)
+      val ds = stub[DataService]
+
+      val getter = new KickOffFetchArticleGetter(pwriter, ds) with StringLogging {
+        override def isPastArticle(b: BookmarkPendingFetch) = false
+        override def tooManyFetchAttempts(b: BookmarkPendingFetch) = false
+        override def shouldNotFollow(url: String) = true
+      }
+      getter.fetchableBookmark(bookmark0) should be (false)
+      forAtLeast (1, getter.logs) { msg => msg should include ("not follow") }
     }
 
   }

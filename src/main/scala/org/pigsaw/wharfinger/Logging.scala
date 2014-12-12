@@ -2,6 +2,13 @@ package org.pigsaw.wharfinger
 
 import java.util.logging.{Logger => JavaLogger}
 import javax.servlet.http.HttpServletResponse
+import java.util.logging.StreamHandler
+import java.io.ByteArrayOutputStream
+import java.io.OutputStream
+import java.util.logging.ConsoleHandler
+import java.util.logging.SimpleFormatter
+import java.util.logging.LogRecord
+import scala.collection.mutable.MutableList
 
 trait Logging {
   val log = JavaLogger.getLogger(super.getClass.getName)
@@ -10,6 +17,23 @@ trait Logging {
 trait NoLogging {
   this: Logging =>
   log.setUseParentHandlers(false)
+}
+
+/**
+ * Sends the logs to a `Seq` of `String`s which is accessed
+ * via the `logs` method.
+ */
+trait StringLogging extends NoLogging {
+  this: Logging =>
+
+  private val logStrings = MutableList[String]()
+  def logs = logStrings.toSeq
+  
+  log.addHandler(new StreamHandler() {
+    override def publish(rec: LogRecord) {
+      logStrings += rec.getMessage
+    }
+  })
 }
 
 /**

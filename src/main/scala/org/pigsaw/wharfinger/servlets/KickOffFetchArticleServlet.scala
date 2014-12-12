@@ -26,12 +26,12 @@ class KickOffFetchArticleServlet extends HttpServlet {
   }
 }
 
-class KickOffFetchArticleGetter(pwriter: java.io.PrintWriter, ds: DataService) extends Logging {
+class KickOffFetchArticleGetter(out: java.io.PrintWriter, ds: DataService) extends Logging {
 
   //val log = Logger.getLogger(this.getClass.getName)
 
-  def println(s: String) { pwriter.println(s) }
-  def print(s: String) { pwriter.print(s) }
+  def println(s: String) { out.println(s) }
+  def print(s: String) { out.print(s) }
 
   def doGetLogic {
     ds.persistAndClose {
@@ -57,14 +57,15 @@ class KickOffFetchArticleGetter(pwriter: java.io.PrintWriter, ds: DataService) e
     URLTool.isVineVideo(url)
 
   def fetchableBookmark(bookmark: BookmarkPendingFetch): Boolean = {
-    if (isPastArticle(bookmark)) {
-      rejectBookmark(bookmark, "Have published this before"); false
-    } else if (tooManyFetchAttempts(bookmark)) {
-      rejectBookmark(bookmark, "Too many fetch attempts"); false
-    } else if (shouldNotFollow(bookmark.url)) {
-      rejectBookmark(bookmark, "Will not follow this kind of URL"); false
-    } else
-      true
+    val failure =
+      if (isPastArticle(bookmark))        { Some("Have published this before") } else
+      if (tooManyFetchAttempts(bookmark)) { Some("Too many fetch attempts")    } else
+      if (shouldNotFollow(bookmark.url))  { Some("Will not follow this kind of URL") } else
+      { None }
+    failure match {
+      case Some(reason) => rejectBookmark(bookmark, reason); false
+      case None => true
+    }
   }
 
   def rejectBookmark(bookmark: BookmarkPendingFetch, reason: String) {

@@ -54,6 +54,12 @@ class InstapaperHandlerTest extends FunSpec with Matchers {
       val Some(content) = handler.getContentDiv
       content.toString should not include("helvetica")
     }
+    
+    it("Should remove Instapaper footer controls") {
+      val handler = new InstapaperHandler(scala_tour_url)
+      val Some(content) = handler.getContentDiv
+      content.text should not include("Evernote")
+    }
 
   }
 }

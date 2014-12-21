@@ -93,13 +93,17 @@ object HTMLNode {
       n
   }
 
-  //    n match {
-  //    case e: Elem if (e.label.toLowerCase == "div" && e.attribute("class") == Some("page_header_read")) => Text("")
-  //    case e: Elem if (e.label.toLowerCase == "div") => { println("Found div "+e.label+" class "+e.attribute("class")) }; e
-  //    case x => x
-  //  }
-
   def removeFontControls(node: Node) = transform(node, removeFontControlsTrans)
+
+  def removeFooterControlsTrans(n: Node): Node = {
+    val cls = n \ "@id"
+    if (cls.length == 1 && cls(0).toString == "evernote_modal")
+      Text("")
+    else
+      n
+  }
+
+  def removeFooterControls(node: Node) = transform(node, removeFooterControlsTrans)
 }
 
 /**

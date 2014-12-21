@@ -10,6 +10,7 @@ object Preamble {
     def imagesToText: Node = HTMLNode.imagesToText(n)
     def bodyToStoryDiv: Node = HTMLNode.bodyToStoryDiv(n)
     def removeFontControls: Node = HTMLNode.removeFontControls(n)
+    def removeFooterControls: Node = HTMLNode.removeFooterControls(n)
   }
 
   class RichNodeSeq(ns:Seq[Node]) {

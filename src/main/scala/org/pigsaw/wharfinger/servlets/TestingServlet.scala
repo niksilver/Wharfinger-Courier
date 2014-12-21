@@ -51,7 +51,7 @@ class TestingServlet extends HttpServlet with Transaction {
 
     def testGetHtml(): Unit = {
       resp.setContentType("text/plain")
-      val html = HTMLNode(new URLReader("http://www.google.com", "UTF-8"))
+      val html = HTMLNode.toNode(new URLReader("http://www.google.com", "UTF-8"))
       val title = (html \\ "title").text
       println("Title of Google is '" + title + "'")
     }
@@ -118,7 +118,7 @@ class TestingServlet extends HttpServlet with Transaction {
         subject = "Test message with HTML attachment and " + random,
         bodyText = "Dear Nik,\nThis is a message with an HTML attachment and " +
                 random + ".\nYours\nNik\n")
-      val html = HTMLNode(new URLReader("http://sharkysoft.com/tutorials/jsa/", "UTF-8"))
+      val html = HTMLNode.toNode(new URLReader("http://sharkysoft.com/tutorials/jsa/", "UTF-8"))
       mail.attachHTML("javascript-answers.html", html.toString)
       mail.send()
       resp.setContentType("text/plain")
@@ -127,7 +127,7 @@ class TestingServlet extends HttpServlet with Transaction {
 
     def testTagSoup() {
       val url = req.getParameter("url")
-      val html = HTMLNode(new URLReader(url, "UTF-8"))
+      val html = HTMLNode.toNode(new URLReader(url, "UTF-8"))
       resp.setContentType("text/html")
       print(html.toString)
     }
@@ -136,7 +136,7 @@ class TestingServlet extends HttpServlet with Transaction {
 
     def testTagSoupAndCharacterCodes() {
       val url = req.getParameter("url")
-      val html = HTMLNode(new URLReader(url, "UTF-8"))
+      val html = HTMLNode.toNode(new URLReader(url, "UTF-8"))
       resp.setContentType("text/html")
       print(html.toString flatMap characterView)
     }

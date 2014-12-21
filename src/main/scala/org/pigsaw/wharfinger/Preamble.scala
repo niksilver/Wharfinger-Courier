@@ -5,15 +5,6 @@ import com.google.appengine.api.datastore.Text
 
 object Preamble {
 
-  class RichNode(n: Node) {
-    def escapeForHTML: Node = HTMLNode.escapeForHTML(n)
-    def imagesToText: Node = HTMLNode.imagesToText(n)
-    def bodyToStoryDiv: Node = HTMLNode.bodyToStoryDiv(n)
-    def removeFontControls: Node = HTMLNode.removeFontControls(n)
-    def removeFooterControls: Node = HTMLNode.removeFooterControls(n)
-    def removeScriptTags: Node = HTMLNode.removeScriptTags(n)
-  }
-
   class RichNodeSeq(ns:Seq[Node]) {
 
     def containing(nodeBuilder: Node => NodeSeq): Seq[Node] = {
@@ -51,7 +42,7 @@ object Preamble {
 
   implicit def nodeSeq2RichNodeSeq(ns: NodeSeq) = new RichNodeSeq(ns)
 
-  implicit def node2RichNode(n: Node) = new RichNode(n)
+  implicit def node2HTMLNode(n: Node) = new HTMLNode(n)
   implicit def node2RichNodeSeq(n: Node) = new RichNodeSeq(n.theSeq)
 
   implicit def string2RichStringForHTML(str: String) = new RichStringForHTML(str)

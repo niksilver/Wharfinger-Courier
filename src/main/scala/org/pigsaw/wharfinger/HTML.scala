@@ -3,6 +3,7 @@ package org.pigsaw.wharfinger
 import org.ccil.cowan.tagsoup._
 import xml._
 import java.io.Reader
+import org.pigsaw.wharfinger.Preamble._
 
 /**
  * Object with a factory method to return an HTML document
@@ -27,26 +28,11 @@ object HTMLNode {
     }
   }
 
-  def apply(reader: Reader): Node =
+  def toNode(reader: Reader): Node =
     TagSoupXMLLoader.get().load(reader)
 
-  def transform(n: Node, fn: (Node) => Node): Node = {
-    n match {
-      case e: Elem => fn(e) match {
-        case e2: Elem => transformChildren(e2, fn)
-        case other => other
-      }
-      case _ => fn(n)
-    }
-  }
-
   def transformChildren(e: Elem, fn: (Node) => Node): Node =
-    e.copy(e.prefix, e.label, e.attributes, e.scope, false, e.child map { transform(_, fn) })
-
-  def escapeTrans(n: Node): Node = n match {
-    case a: Atom[_] if needsEscaping(a.data.toString) => new Unparsed(escapeForHTML(a.data.toString))
-    case x => x
-  }
+    e.copy(e.prefix, e.label, e.attributes, e.scope, false, e.child map { _.transform(fn) })
 
   def needsEscaping(s: String) = s exists charNeedsEscaping
 
@@ -57,17 +43,31 @@ object HTMLNode {
       c.toString
   }
 
-  def escapeForHTML(node: Node): Node = transform(node, escapeTrans)
-
   def escapeForHTML(str: String): String = {
     str flatMap escapeChar
   }
 
   private def charNeedsEscaping(c: Char) =
     (c > 0x7F || Character.isISOControl(c)) && !Character.isWhitespace(c)
+}
 
-  def imagesToTextTrans(n: Node): Node = n match {
-    case e: Elem if (e.label.toLowerCase == "img") => new Text(altText(e))
+class HTMLNode(n: Node) {
+  import HTMLNode._
+    
+  def transform(fn: (Node) => Node): Node = {
+    n match {
+      case e: Elem => fn(e) match {
+        case e2: Elem => transformChildren(e2, fn)
+        case other => other
+      }
+      case _ => fn(n)
+    }
+  }
+
+  def escapeForHTML: Node = n.transform(_.escapeTrans)
+
+  def escapeTrans: Node = n match {
+    case a: Atom[_] if needsEscaping(a.data.toString) => new Unparsed(HTMLNode.escapeForHTML(a.data.toString))
     case x => x
   }
 
@@ -76,16 +76,17 @@ object HTMLNode {
     case _ => ""
   }
 
-  def imagesToText(node: Node): Node = transform(node, imagesToTextTrans)
+  def imagesToText: Node = n.transform(_ match {
+    case e: Elem if (e.label.toLowerCase == "img") => new Text(altText(e))
+    case x => x
+  })
 
-  def bodyToStoryDivTrans(n: Node): Node = n match {
+  def bodyToStoryDiv: Node = n.transform(_ match {
     case e: Elem if (e.label.toLowerCase == "body") => <div id="story">{ e.child }</div>
     case x => x
-  }
+  })
 
-  def bodyToStoryDiv(node: Node): Node = transform(node, bodyToStoryDivTrans)
-
-  def removeFontControlsTrans(n: Node): Node = {
+  private def removeFontControlsTrans(n: Node): Node = {
     val cls = n \ "@class"
     if (cls.length == 1 && cls(0).toString == "page_header_read")
       Text("")
@@ -93,9 +94,9 @@ object HTMLNode {
       n
   }
 
-  def removeFontControls(node: Node) = transform(node, removeFontControlsTrans)
+  def removeFontControls: Node = n.transform(removeFontControlsTrans)
 
-  def removeFooterControlsTrans(n: Node): Node = {
+  private def removeFooterControlsTrans(n: Node): Node = {
     val cls = n \ "@id"
     if (cls.length == 1 && (
         cls(0).toString == "evernote_modal" ||
@@ -106,14 +107,12 @@ object HTMLNode {
       n
   }
 
-  def removeFooterControls(node: Node) = transform(node, removeFooterControlsTrans)
+  def removeFooterControls = n.transform(removeFooterControlsTrans)
 
-  def removeScriptTagsTrans(n: Node): Node = n match {
+  def removeScriptTags = n.transform(_ match {
     case e: Elem if (e.label.toLowerCase == "script") => Text("")
     case x => x
-  }
-
-  def removeScriptTags(node: Node) = transform(node, removeScriptTagsTrans)
+  })
 }
 
 /**
@@ -121,5 +120,5 @@ object HTMLNode {
  */
 object SloppyXMLNodeSeq {
 
-  def apply(reader: Reader): NodeSeq = (HTMLNode(reader) \\ "body")(0).child
+  def apply(reader: Reader): NodeSeq = (HTMLNode.toNode(reader) \\ "body")(0).child
 }

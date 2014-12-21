@@ -20,19 +20,19 @@ class HtmlNodeTest extends FunSpec with Matchers {
 
     it("Should read HTML text") {
       val str = "<a>This is the first level<b>This is the second level</b></a>"
-      val html = HTMLNode(new StringReader(str));
+      val html = HTMLNode.toNode(new StringReader(str));
       val message = (html \\ "b").text
       message should be ("This is the second level")
     }
 
     it("Should be able to handle non-HTML text") {
       val str = "<<?!"
-      val html = HTMLNode(new StringReader(str));
+      val html = HTMLNode.toNode(new StringReader(str));
       html should not be (null)
     }
 
     it("Should be able to use 'containing' to limit to nodes which contain certain other node sequences") {
-      val html = HTMLNode(new StringReader(Data.instapaper_html))
+      val html = HTMLNode.toNode(new StringReader(Data.instapaper_html))
       val nodes = html \\ "li" containing (_ \\ "@accesskey")
       
       nodes should have length (3)
@@ -45,13 +45,13 @@ class HtmlNodeTest extends FunSpec with Matchers {
     }
 
     it("Should read HTML from a URL") {
-      val html = HTMLNode(new URLReader("http://www.google.com", "UTF-8"))
+      val html = HTMLNode.toNode(new URLReader("http://www.google.com", "UTF-8"))
       val title = (html \\ "title").text
       title should be ("Google")
     }
 
     it("Should throw an exception reading from a problematic URL") {
-      def readURL = HTMLNode(new URLReader("http://www.willnotresolve5432.com", "UTF-8"))
+      def readURL = HTMLNode.toNode(new URLReader("http://www.willnotresolve5432.com", "UTF-8"))
       an [IOException] should be thrownBy { readURL }
     }
 
@@ -59,7 +59,7 @@ class HtmlNodeTest extends FunSpec with Matchers {
       val msg1 = "Message... one"
       val msg2 = "Message\u2014two"
       val xml = <outside class="clz" id="my\u2010id"><in1>{ msg1 }</in1><in2>{ msg2 }</in2></outside>
-      val html = HTMLNode.escapeForHTML(xml)
+      val html = xml.escapeForHTML
       (html \\ "@id").toString should be ("my\u2010id")
       (html \\ "in2").text should be ("Message&#8212;two")
     }
@@ -76,33 +76,33 @@ class HtmlNodeTest extends FunSpec with Matchers {
 
     it("Should be able to replace images with text") {
       val xml = <p><a href="/hello.txt"><img src="hello.jpg" alt="Smiley"/></a><img src="underline.jpg" alt="Underline"/></p>
-      HTMLNode.imagesToText(xml).toString should be (
+      xml.imagesToText.toString should be (
         """<p><a href="/hello.txt">[Image: Smiley]</a>[Image: Underline]</p>""")
     }
 
     it("Should be able to replace images which have empty alt text") {
       val xml = <p><a href="/hello.txt"><img src="hello.jpg" alt=""/></a><img src="underline.jpg" alt=""/></p>
-      HTMLNode.imagesToText(xml).toString should be (
+      xml.imagesToText.toString should be (
         """<p><a href="/hello.txt"></a></p>""")
     }
 
     it("Should be able to replace images which have no text") {
       val xml = <p><a href="/hello.txt"><img src="hello.jpg"/></a><img src="underline.jpg"/></p>
-      HTMLNode.imagesToText(xml).toString should be (
+      xml.imagesToText.toString should be (
         """<p><a href="/hello.txt"></a></p>""")
     }
 
     it("Should be able to replace images which have non-empty Text nodes as alt text") {
       val text = new Text("Hello")
       val xml = <p><a href="/hello.txt"><img src="hello.jpg" alt={ text }/></a></p>
-      HTMLNode.imagesToText(xml).toString should be (
+      xml.imagesToText.toString should be (
         """<p><a href="/hello.txt">[Image: Hello]</a></p>""")
     }
 
     it("Should be able to replace images which have empty Text nodes as alt text") {
       val empty_text = new Text("")
       val xml = <p><a href="/hello.txt"><img src="hello.jpg" alt={ empty_text }/></a></p>
-      HTMLNode.imagesToText(xml).toString should be (
+      xml.imagesToText.toString should be (
         """<p><a href="/hello.txt"></a></p>""")
     }
 
@@ -116,12 +116,12 @@ class HtmlNodeTest extends FunSpec with Matchers {
 
     it("Should be able to change a body into a story div") {
       val xml = <body>It's <out0></out0> and <out1>Out<in1>In 1</in1><in2>In 2</in2>side</out1></body>
-      HTMLNode.bodyToStoryDiv(xml).toString should be (
+      xml.bodyToStoryDiv.toString should be (
         """<div id="story">It's <out0></out0> and <out1>Out<in1>In 1</in1><in2>In 2</in2>side</out1></div>""")
     }
 
     it("Should read HTML from a redirected URL") {
-      val html = HTMLNode(new URLReader("http://bit.ly/9NQcyA", "UTF-8"))
+      val html = HTMLNode.toNode(new URLReader("http://bit.ly/9NQcyA", "UTF-8"))
       val title = (html \\ "title").text
       title should include ("A mobile developer day too far")
     }
@@ -136,7 +136,7 @@ class HtmlNodeTest extends FunSpec with Matchers {
         }
       }
 
-      val nested_As = HTMLNode.transform(nested_as, asToAsTrans)
+      val nested_As = nested_as.transform(asToAsTrans)
       nested_As should be (<A level="one"><A level="two"></A><b><A level="three"><A>4</A></A></b></A>)
     }
   }
@@ -151,7 +151,7 @@ class HtmlNodeTest extends FunSpec with Matchers {
 
   describe("RichNodeSeq") {
     it("Should be able to find a single node by ID") {
-      val html = HTMLNode(new StringReader(Data.instapaper_html))
+      val html = HTMLNode.toNode(new StringReader(Data.instapaper_html))
       val Some(div) = html findDivWithId "story"
       div.toString should startWith ("""<div id="story">""")
     }

@@ -32,7 +32,7 @@ class TwitterTimesBookmark (item: Node) {
 
   val title = (item \ "title").text
 
-  val description = HTMLNode(new StringReader(item \ "description" text))
+  val description = HTMLNode.toNode(new StringReader(item \ "description" text))
 
   private val tweets_html = description findElementAttributeText
     ("div", "@style", "margin: 0px 0px 0px 48px")

@@ -24,10 +24,10 @@ class InstapaperHandler(article_url: String) extends WarningTrier[Node] {
       val Some(html) = getBasicHtml
       val content_bodies = (html \\ "body")
       val body_opt = content_bodies find { b => b.text.trim != "" }
-      val story_div_opt = body_opt map { bo => bo.bodyToStoryDiv }
-      val story_div_opt2 = story_div_opt map { bo => bo.removeFontControls }
-      val story_div_opt3 = story_div_opt2 map { bo => bo.removeFooterControls }
-      val story_div_opt4 = story_div_opt3 map { bo => bo.removeScriptTags }
+      val story_div_opt = body_opt map { _.bodyToStoryDiv }
+      val story_div_opt2 = story_div_opt map { _.removeFontControls }
+      val story_div_opt3 = story_div_opt2 map { _.removeFooterControls }
+      val story_div_opt4 = story_div_opt3 map { _.removeScriptTags }
       story_div_opt4
     }
   }
@@ -36,7 +36,7 @@ class InstapaperHandler(article_url: String) extends WarningTrier[Node] {
     */
   def getBasicHtml: Option[Node] = {
     tryOrLogWarning {
-      Some(HTMLNode(new URLReader(url, "UTF-8")))
+      Some(HTMLNode.toNode(new URLReader(url, "UTF-8")))
     }
   }
 

@@ -97,7 +97,10 @@ object HTMLNode {
 
   def removeFooterControlsTrans(n: Node): Node = {
     val cls = n \ "@id"
-    if (cls.length == 1 && cls(0).toString == "evernote_modal")
+    if (cls.length == 1 && (
+        cls(0).toString == "evernote_modal" ||
+        cls(0).toString == "highlight_create_popover" ||
+        cls(0).toString == "highlight_delete_popover"))
       Text("")
     else
       n

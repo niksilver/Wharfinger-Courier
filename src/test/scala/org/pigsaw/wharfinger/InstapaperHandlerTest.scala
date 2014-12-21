@@ -59,6 +59,8 @@ class InstapaperHandlerTest extends FunSpec with Matchers {
       val handler = new InstapaperHandler(scala_tour_url)
       val Some(content) = handler.getContentDiv
       content.text should not include("Evernote")
+      content.toString should not include("highlight_create_popover")
+      content.text should not include("Remove Highlight")
     }
 
   }

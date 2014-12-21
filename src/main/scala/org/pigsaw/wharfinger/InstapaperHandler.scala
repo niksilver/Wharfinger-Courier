@@ -25,7 +25,8 @@ class InstapaperHandler(article_url: String) extends WarningTrier[Node] {
       val content_bodies = (html \\ "body")
       val body_opt = content_bodies find { b => b.text.trim != "" }
       val story_div_opt = body_opt map { bo => bo.bodyToStoryDiv }
-      story_div_opt
+      val story_div_opt2 = story_div_opt map { bo => bo.removeFontControls }
+      story_div_opt2
     }
   }
 

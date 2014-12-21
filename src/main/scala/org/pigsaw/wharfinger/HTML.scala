@@ -14,37 +14,37 @@ import java.io.Reader
  */
 
 object HTMLNode {
-  import scala.xml.{Elem, XML}
+  import scala.xml.{ Elem, XML }
   import scala.xml.factory.XMLLoader
   import org.ccil.cowan.tagsoup.jaxp.SAXFactoryImpl
 
   // From http://blog.dub.podval.org/2010/08/scala-and-tag-soup.html
   object TagSoupXMLLoader {
-      private val factory = new SAXFactoryImpl()
-      def get(): XMLLoader[Elem] = {
-        factory.setFeature(Parser.defaultAttributesFeature, false)
-        XML.withSAXParser(factory.newSAXParser())
-      }
+    private val factory = new SAXFactoryImpl()
+    def get(): XMLLoader[Elem] = {
+      factory.setFeature(Parser.defaultAttributesFeature, false)
+      XML.withSAXParser(factory.newSAXParser())
+    }
   }
 
   def apply(reader: Reader): Node =
     TagSoupXMLLoader.get().load(reader)
 
-  def transform(n: Node, fn: (Node)=>Node): Node = {
+  def transform(n: Node, fn: (Node) => Node): Node = {
     n match {
       case e: Elem => fn(e) match {
-          case e2: Elem => transformChildren(e2, fn)
-          case other => other
-        }
+        case e2: Elem => transformChildren(e2, fn)
+        case other => other
+      }
       case _ => fn(n)
     }
   }
 
-  def transformChildren(e: Elem, fn: (Node)=>Node): Node =
+  def transformChildren(e: Elem, fn: (Node) => Node): Node =
     e.copy(e.prefix, e.label, e.attributes, e.scope, false, e.child map { transform(_, fn) })
 
   def escapeTrans(n: Node): Node = n match {
-    case a:Atom[_] if needsEscaping(a.data.toString) => new Unparsed(escapeForHTML(a.data.toString))
+    case a: Atom[_] if needsEscaping(a.data.toString) => new Unparsed(escapeForHTML(a.data.toString))
     case x => x
   }
 
@@ -84,6 +84,22 @@ object HTMLNode {
   }
 
   def bodyToStoryDiv(node: Node): Node = transform(node, bodyToStoryDivTrans)
+
+  def removeFontControlsTrans(n: Node): Node = {
+    val cls = n \ "@class"
+    if (cls.length == 1 && cls(0).toString == "page_header_read")
+      Text("")
+    else
+      n
+  }
+
+  //    n match {
+  //    case e: Elem if (e.label.toLowerCase == "div" && e.attribute("class") == Some("page_header_read")) => Text("")
+  //    case e: Elem if (e.label.toLowerCase == "div") => { println("Found div "+e.label+" class "+e.attribute("class")) }; e
+  //    case x => x
+  //  }
+
+  def removeFontControls(node: Node) = transform(node, removeFontControlsTrans)
 }
 
 /**

@@ -19,6 +19,7 @@ class InstapaperHandlerTest extends FunSpec with Matchers {
 
     val wsj_url = "http://online.wsj.com/article/SB10001424052748703977004575393173432219064.html"
     val cif_america_url = "http://www.guardian.co.uk/commentisfree/cifamerica/2012/apr/03/sarah-palin-unreality-tv-show-today"
+    val scala_tour_url = "http://www.scala-lang.org/node/128"
 
     it("Should create an appropriate URL") {
       val handler = new InstapaperHandler(wsj_url)
@@ -46,6 +47,12 @@ class InstapaperHandlerTest extends FunSpec with Matchers {
     it("Should should reject bad URL") {
       val handler = new InstapaperHandler("http://completely-made-up-domain-0987.com")
       handler.getContentDiv should be (None)
+    }
+    
+    it("Should exclude font options") {
+      val handler = new InstapaperHandler(scala_tour_url)
+      val Some(content) = handler.getContentDiv
+      content.toString should not include("helvetica")
     }
 
   }

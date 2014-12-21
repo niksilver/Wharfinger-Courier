@@ -9,7 +9,7 @@ import org.pigsaw.wharfinger.Preamble._
  * Object with a factory method to return an HTML document
  * from a reader. Use it as
  * <code>
- * val html: Node = HTMLNode(new URLReader("http://www.guardian.co.uk"))
+ * val html: Node = HTMLNode.toNode(new URLReader("http://www.guardian.co.uk"))
  * </code>
  * Returns content in an <html> tag, and <body> tag within that.
  */
@@ -51,6 +51,9 @@ object HTMLNode {
     (c > 0x7F || Character.isISOControl(c)) && !Character.isWhitespace(c)
 }
 
+/**
+ * Useful HTML-related methods for an XML Node.
+ */
 class HTMLNode(n: Node) {
   import HTMLNode._
     

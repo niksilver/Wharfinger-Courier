@@ -27,7 +27,8 @@ class InstapaperHandler(article_url: String) extends WarningTrier[Node] {
       val story_div_opt = body_opt map { bo => bo.bodyToStoryDiv }
       val story_div_opt2 = story_div_opt map { bo => bo.removeFontControls }
       val story_div_opt3 = story_div_opt2 map { bo => bo.removeFooterControls }
-      story_div_opt3
+      val story_div_opt4 = story_div_opt3 map { bo => bo.removeScriptTags }
+      story_div_opt4
     }
   }
 

@@ -107,6 +107,13 @@ object HTMLNode {
   }
 
   def removeFooterControls(node: Node) = transform(node, removeFooterControlsTrans)
+
+  def removeScriptTagsTrans(n: Node): Node = n match {
+    case e: Elem if (e.label.toLowerCase == "script") => Text("")
+    case x => x
+  }
+
+  def removeScriptTags(node: Node) = transform(node, removeScriptTagsTrans)
 }
 
 /**

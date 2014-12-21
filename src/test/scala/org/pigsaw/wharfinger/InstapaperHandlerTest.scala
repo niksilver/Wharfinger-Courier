@@ -49,7 +49,7 @@ class InstapaperHandlerTest extends FunSpec with Matchers {
       handler.getContentDiv should be (None)
     }
     
-    it("Should exclude font options") {
+    it("Should exclude Instapaper font controls") {
       val handler = new InstapaperHandler(scala_tour_url)
       val Some(content) = handler.getContentDiv
       content.toString should not include("helvetica")
@@ -61,6 +61,12 @@ class InstapaperHandlerTest extends FunSpec with Matchers {
       content.text should not include("Evernote")
       content.toString should not include("highlight_create_popover")
       content.text should not include("Remove Highlight")
+    }
+    
+    it("Should remove script tags") {
+      val handler = new InstapaperHandler(cif_america_url)
+      val Some(content) = handler.getContentDiv
+      content.toString should not include("<script")
     }
 
   }

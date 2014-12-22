@@ -34,6 +34,11 @@ object HTMLNode {
   def transformChildren(e: Elem, fn: (Node) => Node): Node =
     e.copy(e.prefix, e.label, e.attributes, e.scope, false, e.child map { _.transform(fn) })
 
+  def altText(e: Elem): String = e.attribute("alt") match {
+    case Some(seq) if seq.mkString.length > 0 => "[Image: " + seq.mkString + "]"
+    case _ => ""
+  }
+
   def needsEscaping(s: String) = s exists charNeedsEscaping
 
   def escapeChar(c: Char): String = {
@@ -74,20 +79,16 @@ class HTMLNode(n: Node) {
     case x => x
   }
 
-  def altText(e: Elem): String = e.attribute("alt") match {
-    case Some(seq) if seq.mkString.length > 0 => "[Image: " + seq.mkString + "]"
-    case _ => ""
-  }
-
-  def imagesToText: Node = n.transform(_ match {
-    case e: Elem if (e.label.toLowerCase == "img") => new Text(altText(e))
+  /** Translate every element with a given label into another node.
+   */
+  def elemToNode(label: String, f: (Elem)=>Node): Node = n.transform(_ match {
+    case e: Elem if (e.label.toLowerCase == label) => f(e)
     case x => x
   })
+  
+  def imagesToText: Node = elemToNode("img", { e => new Text(altText(e)) })
 
-  def bodyToStoryDiv: Node = n.transform(_ match {
-    case e: Elem if (e.label.toLowerCase == "body") => <div id="story">{ e.child }</div>
-    case x => x
-  })
+  def bodyToStoryDiv: Node = elemToNode("body", { e => <div id="story">{ e.child }</div> })
 
   private def removeFontControlsTrans(n: Node): Node = {
     val cls = n \ "@class"

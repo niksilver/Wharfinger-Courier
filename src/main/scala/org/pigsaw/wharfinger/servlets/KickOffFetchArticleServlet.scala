@@ -28,16 +28,11 @@ class KickOffFetchArticleServlet extends HttpServlet {
 
 class KickOffFetchArticleGetter(out: java.io.PrintWriter, ds: DataService) extends Logging {
 
-  //val log = Logger.getLogger(this.getClass.getName)
-
-  def println(s: String) { out.println(s) }
-  def print(s: String) { out.print(s) }
-
   def doGetLogic {
     ds.persistAndClose {
       ds.bookmarksToFetch find fetchableBookmark map queueFetchBookmark
     }
-    println("Done kick-off")
+    out.println("Done kick-off")
 
   }
 
@@ -71,14 +66,14 @@ class KickOffFetchArticleGetter(out: java.io.PrintWriter, ds: DataService) exten
   def rejectBookmark(bookmark: BookmarkPendingFetch, reason: String) {
     log.warning("Rejecting bookmark: " + bookmark.url)
     log.warning("Reason for rejection: " + reason)
-    println("Rejecting bookmark: " + bookmark.url)
-    println("Reason for rejection: " + reason)
+    out.println("Rejecting bookmark: " + bookmark.url)
+    out.println("Reason for rejection: " + reason)
     ds.delete(bookmark)
   }
 
   def queueFetchBookmark(bookmark: BookmarkPendingFetch) = {
     log.info("Queueing task to fetch bookmark: " + bookmark.url)
-    println("Queueing task to fetch bookmark: " + bookmark.url)
+    out.println("Queueing task to fetch bookmark: " + bookmark.url)
     val queue = QueueFactory.getDefaultQueue
     val task = withUrl("/do-fetch-article").
       param("url", bookmark.url).

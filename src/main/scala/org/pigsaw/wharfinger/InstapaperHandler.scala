@@ -16,7 +16,7 @@ class InstapaperHandler(article_url: String) extends WarningTrier[Node] {
 
   /**
    * There are several body tags in an Instapaper document. The first contains
-   * the Instapaper header. The one with the content is the first non-emtpy
+   * the Instapaper header. The one with the content is the first non-empty
    * one after this.
    */
   def getContentDiv: Option[Node] = {

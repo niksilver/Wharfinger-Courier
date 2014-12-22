@@ -90,33 +90,24 @@ class HTMLNode(n: Node) {
 
   def bodyToStoryDiv: Node = elemToNode("body", { e => <div id="story">{ e.child }</div> })
 
-  private def removeFontControlsTrans(n: Node): Node = {
-    val cls = n \ "@class"
-    if (cls.length == 1 && cls(0).toString == "page_header_read")
+  def convertIfAttrOf(attr_name: String, attr_val: String): Node = {
+    val meta = n \ ("@"+attr_name)
+    if (meta.length == 1 && meta(0).toString == attr_val)
       Text("")
     else
       n
   }
+  
+  def transformIfAttrOf(attr_name: String, attr_val: String): Node =
+    n.transform(_.convertIfAttrOf(attr_name, attr_val))
 
-  def removeFontControls: Node = n.transform(removeFontControlsTrans)
+  def removeFontControls: Node = n.transformIfAttrOf("class", "page_header_read")
 
-  private def removeFooterControlsTrans(n: Node): Node = {
-    val cls = n \ "@id"
-    if (cls.length == 1 && (
-        cls(0).toString == "evernote_modal" ||
-        cls(0).toString == "highlight_create_popover" ||
-        cls(0).toString == "highlight_delete_popover"))
-      Text("")
-    else
-      n
-  }
+  def removeFooterControls = n.transformIfAttrOf("id", "evernote_modal").
+    transformIfAttrOf("id", "highlight_create_popover").
+    transformIfAttrOf("id", "highlight_delete_popover")
 
-  def removeFooterControls = n.transform(removeFooterControlsTrans)
-
-  def removeScriptTags = n.transform(_ match {
-    case e: Elem if (e.label.toLowerCase == "script") => Text("")
-    case x => x
-  })
+  def removeScriptTags = elemToNode("script", { _ => Text("") })
 }
 
 /**

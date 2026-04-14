@@ -1,11 +1,4 @@
-.cache
-.classpath
-.idea
-.project
-.settings
-out.unenhanced
-project/project
-project/target
-target
-TwitterApp.scala
-war
+.worktrees
+.venv/
+**/*.sw?
+**/__pycache__

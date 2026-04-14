@@ -25,6 +25,7 @@ wharfinger-courier/
     ├── __init__.py
     ├── pinboard.py       # Fetch bookmarks from Pinboard RSS feed
     ├── scraper.py        # Fetch page + extract article content
+    ├── store.py          # Read and write all work/ files (articles, progress)
     └── compiler.py       # Assemble articles into Kindle XHTML
 ```
 
@@ -32,8 +33,17 @@ wharfinger-courier/
 
 1. `main.py` parses CLI args
 2. `pinboard.py` fetches the public RSS feed at `https://feeds.pinboard.in/rss/u:niksilver/t:toread/` and returns bookmarks (title + URL) added within the last N days (capped at 50 items — the RSS feed limit)
-3. For each bookmark, `scraper.py` fetches the page, extracts the main article content using `trafilatura`, and saves the result to `work/articles/`
-4. `compiler.py` reads all article files from `work/articles/` and writes the Kindle XHTML output file
+3. For each bookmark, `scraper.py` fetches the page and extracts the main article content using `trafilatura`; `store.py` saves the result to `work/articles/` and updates `progress.json`
+4. `compiler.py` calls `store.py` to read all article files from `work/articles/` and writes the Kindle XHTML output file
+
+## Store Module
+
+`store.py` is the sole module responsible for reading and writing the `work/` directory. No other module touches the filesystem directly. It exposes functions for:
+
+- Clearing the `work/` directory when needed (not necessarily at the start of every run — a future retry mode may wish to preserve it)
+- Writing an article JSON file
+- Reading all article JSON files, in index order
+- Writing and reading `progress.json`
 
 ## Work Directory and Logging
 
@@ -74,7 +84,6 @@ work/
 
 `last_fetched_index` is updated after each successful article fetch, enabling future retry logic to resume from where it left off.
 
-The `work/` directory is overwritten on each fresh run of `main.py`.
 
 ## Output Document Structure
 
@@ -112,5 +121,6 @@ Failed articles are omitted from both the TOC and the body.
 
 - `pinboard.py` — unit tests with a mock RSS response covering date filtering and the 50-item cap
 - `scraper.py` — unit tests with mock HTTP responses; at least one test for extraction failure handling
+- `store.py` — unit tests using a temporary directory: round-trip write/read for articles and progress, ordering of article files
 - `compiler.py` — unit tests asserting correct TOC structure, page breaks, and that failed articles are excluded
 - One integration test running the full pipeline against a small fixture RSS feed and mock pages

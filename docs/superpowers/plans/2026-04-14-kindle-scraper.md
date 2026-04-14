@@ -60,12 +60,14 @@ Empty file.
 - [ ] **Step 4: Create `tests/conftest.py`**
 
 ```python
+from pathlib import Path
+
 import pytest
 import courier.store as store
 
 
 @pytest.fixture
-def work_dir(monkeypatch, tmp_path):
+def work_dir(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> Path:
     """Redirect store.WORK_DIR to a temporary directory."""
     work = tmp_path / "work"
     monkeypatch.setattr(store, "WORK_DIR", work)
@@ -105,10 +107,12 @@ git commit -m "feat: project setup — package structure and dependencies"
 
 ```python
 # tests/test_store.py
+from pathlib import Path
+
 import courier.store as store
 
 
-def test_clear_creates_articles_dir(work_dir):
+def test_clear_creates_articles_dir(work_dir: Path) -> None:
     store.clear()
     assert (work_dir / "articles").is_dir()
 ```
@@ -160,7 +164,7 @@ Expected: PASSED.
 Add to `tests/test_store.py`:
 
 ```python
-def test_save_article_creates_file_with_padded_index(work_dir):
+def test_save_article_creates_file_with_padded_index(work_dir: Path) -> None:
     store.clear()
     store.save_article({
         "index": 3,
@@ -229,7 +233,7 @@ Expected: 2 tests PASSED.
 Add to `tests/test_store.py`:
 
 ```python
-def test_load_articles_returns_saved_article(work_dir):
+def test_load_articles_returns_saved_article(work_dir: Path) -> None:
     store.clear()
     article = {
         "index": 1,
@@ -287,7 +291,7 @@ Expected: 3 tests PASSED.
 Add to `tests/test_store.py`:
 
 ```python
-def test_load_articles_returns_in_index_order(work_dir):
+def test_load_articles_returns_in_index_order(work_dir: Path) -> None:
     store.clear()
     for i in [3, 1, 2]:
         store.save_article({
@@ -323,7 +327,7 @@ Expected: 4 tests PASSED. (The sort-by-filename approach from Task 2.3 already h
 Add to `tests/test_store.py`:
 
 ```python
-def test_save_and_load_progress_round_trip(work_dir):
+def test_save_and_load_progress_round_trip(work_dir: Path) -> None:
     store.clear()
     progress = {
         "run_started_at": "2026-04-14T10:00:00+00:00",
@@ -404,7 +408,7 @@ def _make_entry(title: str, url: str, days_ago: float) -> MagicMock:
     return entry
 
 
-def _make_feed(entries: list, bozo: bool = False) -> MagicMock:
+def _make_feed(entries: list[MagicMock], bozo: bool = False) -> MagicMock:
     feed = MagicMock()
     feed.entries = entries
     feed.bozo = bozo
@@ -412,7 +416,7 @@ def _make_feed(entries: list, bozo: bool = False) -> MagicMock:
     return feed
 
 
-def test_returns_recent_bookmarks_with_correct_fields():
+def test_returns_recent_bookmarks_with_correct_fields() -> None:
     feed = _make_feed([_make_entry("Recent", "https://recent.com", days_ago=2)])
     with patch("courier.pinboard.feedparser.parse", return_value=feed):
         bookmarks = fetch_bookmarks(days=7)
@@ -483,7 +487,7 @@ Expected: PASSED.
 Add to `tests/test_pinboard.py`:
 
 ```python
-def test_excludes_bookmarks_outside_date_range():
+def test_excludes_bookmarks_outside_date_range() -> None:
     feed = _make_feed([
         _make_entry("Recent", "https://recent.com", days_ago=2),
         _make_entry("Old", "https://old.com", days_ago=10),
@@ -517,7 +521,7 @@ Add to `tests/test_pinboard.py`:
 import pytest
 
 
-def test_raises_on_unreachable_feed():
+def test_raises_on_unreachable_feed() -> None:
     feed = _make_feed(entries=[], bozo=True)
     feed.bozo_exception = Exception("Connection refused")
     with patch("courier.pinboard.feedparser.parse", return_value=feed):
@@ -564,7 +568,7 @@ def _mock_response(text: str) -> MagicMock:
     return response
 
 
-def test_returns_ok_with_content_on_success():
+def test_returns_ok_with_content_on_success() -> None:
     with patch("courier.scraper.requests.get", return_value=_mock_response("<html><body><p>Body</p></body></html>")):
         with patch("courier.scraper.trafilatura.extract", return_value="<p>Body</p>"):
             result = fetch_article("https://example.com/article")
@@ -628,7 +632,7 @@ Expected: PASSED.
 Add to `tests/test_scraper.py`:
 
 ```python
-def test_returns_failed_when_trafilatura_returns_none():
+def test_returns_failed_when_trafilatura_returns_none() -> None:
     with patch("courier.scraper.requests.get", return_value=_mock_response("<html></html>")):
         with patch("courier.scraper.trafilatura.extract", return_value=None):
             result = fetch_article("https://example.com/article")
@@ -656,7 +660,7 @@ Expected: 2 tests PASSED.
 Add to `tests/test_scraper.py`:
 
 ```python
-def test_returns_failed_on_http_error():
+def test_returns_failed_on_http_error() -> None:
     bad_response = MagicMock()
     bad_response.raise_for_status.side_effect = Exception("404 Not Found")
     with patch("courier.scraper.requests.get", return_value=bad_response):
@@ -665,7 +669,7 @@ def test_returns_failed_on_http_error():
     assert "content_html" not in result
 
 
-def test_returns_failed_on_network_exception():
+def test_returns_failed_on_network_exception() -> None:
     with patch("courier.scraper.requests.get", side_effect=Exception("Connection timeout")):
         result = fetch_article("https://example.com/article")
     assert result["status"] == "failed"
@@ -692,7 +696,7 @@ Expected: 4 tests PASSED.
 Add to `tests/test_scraper.py`:
 
 ```python
-def test_strips_outer_document_tags_from_content():
+def test_strips_outer_document_tags_from_content() -> None:
     raw = "<html><body><p>Clean content</p></body></html>"
     with patch("courier.scraper.requests.get", return_value=_mock_response("<html><p>x</p></html>")):
         with patch("courier.scraper.trafilatura.extract", return_value=raw):
@@ -733,15 +737,15 @@ git commit -m "feat: scraper module — fetch and extract article content"
 from courier.compiler import compile_xhtml
 
 
-def _ok(index, title, url="https://example.com", content="<p>Body</p>"):
+def _ok(index: int, title: str, url: str = "https://example.com", content: str = "<p>Body</p>") -> dict:
     return {"index": index, "title": title, "url": url, "status": "ok", "content_html": content}
 
 
-def _failed(index, title, url="https://example.com"):
+def _failed(index: int, title: str, url: str = "https://example.com") -> dict:
     return {"index": index, "title": title, "url": url, "status": "failed"}
 
 
-def test_output_is_valid_xhtml_skeleton():
+def test_output_is_valid_xhtml_skeleton() -> None:
     xhtml = compile_xhtml([_ok(1, "A")], days=7)
     assert xhtml.startswith("<?xml")
     assert "<html" in xhtml
@@ -833,7 +837,7 @@ Expected: PASSED.
 Add to `tests/test_compiler.py`:
 
 ```python
-def test_title_page_shows_days_count():
+def test_title_page_shows_days_count() -> None:
     xhtml = compile_xhtml([_ok(1, "A")], days=14)
     assert "14" in xhtml
 ```
@@ -858,7 +862,7 @@ Expected: 2 tests PASSED.
 Add to `tests/test_compiler.py`:
 
 ```python
-def test_toc_links_to_successful_articles():
+def test_toc_links_to_successful_articles() -> None:
     xhtml = compile_xhtml([_ok(1, "First"), _ok(2, "Second")], days=7)
     assert 'href="#article-1"' in xhtml
     assert "First" in xhtml
@@ -886,7 +890,7 @@ Expected: 3 tests PASSED.
 Add to `tests/test_compiler.py`:
 
 ```python
-def test_toc_excludes_failed_articles():
+def test_toc_excludes_failed_articles() -> None:
     xhtml = compile_xhtml([_ok(1, "Good"), _failed(2, "Bad")], days=7)
     assert 'href="#article-1"' in xhtml
     assert "Good" in xhtml
@@ -914,7 +918,7 @@ Expected: 4 tests PASSED.
 Add to `tests/test_compiler.py`:
 
 ```python
-def test_article_has_anchor_title_url_and_content():
+def test_article_has_anchor_title_url_and_content() -> None:
     xhtml = compile_xhtml(
         [_ok(1, "My Article", url="https://mysite.com", content="<p>Text here</p>")],
         days=7,
@@ -945,7 +949,7 @@ Expected: 5 tests PASSED.
 Add to `tests/test_compiler.py`:
 
 ```python
-def test_failed_articles_absent_from_body():
+def test_failed_articles_absent_from_body() -> None:
     xhtml = compile_xhtml([_ok(1, "Good"), _failed(2, "Bad")], days=7)
     assert 'name="article-1"' in xhtml
     assert 'name="article-2"' not in xhtml
@@ -971,7 +975,7 @@ Expected: 6 tests PASSED.
 Add to `tests/test_compiler.py`:
 
 ```python
-def test_page_breaks_appear_between_sections():
+def test_page_breaks_appear_between_sections() -> None:
     xhtml = compile_xhtml([_ok(1, "A"), _ok(2, "B")], days=7)
     # Minimum: after title page, after TOC, after each article (2)
     assert xhtml.count("<MBP:PAGEBREAK/>") >= 4
@@ -997,7 +1001,7 @@ Expected: 7 tests PASSED.
 Add to `tests/test_compiler.py`:
 
 ```python
-def test_special_chars_in_title_are_escaped():
+def test_special_chars_in_title_are_escaped() -> None:
     xhtml = compile_xhtml([_ok(1, "AT&T > Others")], days=7)
     assert "AT&amp;T" in xhtml
     assert "&gt;" in xhtml
@@ -1039,7 +1043,7 @@ from datetime import datetime, timezone
 from courier import compiler, pinboard, scraper, store
 
 
-def _parse_args():
+def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Fetch recent Pinboard bookmarks and compile them for Kindle."
     )
@@ -1054,7 +1058,7 @@ def _parse_args():
     return parser.parse_args()
 
 
-def main():
+def main() -> None:
     args = _parse_args()
 
     store.clear()
@@ -1142,6 +1146,7 @@ git commit -m "feat: main.py — CLI entry point and pipeline orchestration"
 # tests/test_integration.py
 import sys
 from datetime import datetime, timezone, timedelta
+from pathlib import Path
 from unittest.mock import patch, MagicMock
 
 import pytest
@@ -1158,7 +1163,7 @@ def _make_feed_entry(title: str, url: str, days_ago: float = 1) -> MagicMock:
     return entry
 
 
-def test_full_pipeline_produces_output_file(monkeypatch, tmp_path, work_dir):
+def test_full_pipeline_produces_output_file(monkeypatch: pytest.MonkeyPatch, tmp_path: Path, work_dir: Path) -> None:
     output_file = tmp_path / "reading.html"
     monkeypatch.setattr(sys, "argv", ["main.py", "--days", "7", "--output", str(output_file)])
 
@@ -1219,7 +1224,7 @@ Expected: PASSED.
 Add to `tests/test_integration.py`:
 
 ```python
-def test_failed_article_excluded_from_output(monkeypatch, tmp_path, work_dir):
+def test_failed_article_excluded_from_output(monkeypatch: pytest.MonkeyPatch, tmp_path: Path, work_dir: Path) -> None:
     output_file = tmp_path / "reading.html"
     monkeypatch.setattr(sys, "argv", ["main.py", "--days", "7", "--output", str(output_file)])
 
@@ -1235,7 +1240,7 @@ def test_failed_article_excluded_from_output(monkeypatch, tmp_path, work_dir):
     good_response.text = "<html><body><p>Good content.</p></body></html>"
     good_response.raise_for_status.return_value = None
 
-    def mock_get(url, **kwargs):
+    def mock_get(url: str, **kwargs) -> MagicMock:
         if "bad" in url:
             raise Exception("Simulated failure")
         return good_response
@@ -1271,7 +1276,7 @@ Expected: 2 tests PASSED.
 Add to `tests/test_integration.py`:
 
 ```python
-def test_exits_with_error_when_all_articles_fail(monkeypatch, tmp_path, work_dir):
+def test_exits_with_error_when_all_articles_fail(monkeypatch: pytest.MonkeyPatch, tmp_path: Path, work_dir: Path) -> None:
     output_file = tmp_path / "reading.html"
     monkeypatch.setattr(sys, "argv", ["main.py", "--days", "7", "--output", str(output_file)])
 

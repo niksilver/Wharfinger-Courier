@@ -92,6 +92,11 @@ Nik runs `courier` with no flags (or with no archive/dry-run flags).
 2. Per-article statuses (e.g. EXTRACTED) that were set during this run are persisted in status.json. The next run will re-attempt compilation from the EXTRACTED state without re-fetching those articles.
 3. Use case ends in failure. No output document is produced, but status.json reflects the article extraction outcomes.
 
+**7b. Process is interrupted (SIGINT, kill signal) after the output file is written but before status.json is updated:**
+1. The output file exists on disk but the articles within it are not yet marked COMPILED in status.json.
+2. On the next run, the system treats those articles as uncompiled (still in EXTRACTED state) and re-compiles them into a new document, overwriting the previous file per BR-6.
+3. No data is lost: cached article content is reused without re-fetching (per BR-3).
+
 ## Postconditions
 
 **Success guarantee:** A new XHTML document exists in the configured output directory containing all successfully extracted articles. status.json reflects the current state of every article (COMPILED for successes, FETCH_FAILED or PERMANENTLY_SKIPPED for failures). courier.log contains entries for this run.
@@ -106,6 +111,7 @@ Nik runs `courier` with no flags (or with no archive/dry-run flags).
 - BR-4: An article is marked PERMANENTLY_SKIPPED after 10 cumulative failed fetch attempts across runs.
 - BR-5: status.json is written atomically to prevent corruption from interrupted writes.
 - BR-6: If the tool runs twice on the same day, the second run overwrites the output file from the first run. This is intentional: status.json is updated to reflect the current state, and the new document supersedes the previous one. UC-006 follows this same policy.
+- BR-7: If the process is interrupted mid-run (SIGINT, kill signal), status.json is never left in a partially-written state because all writes are atomic (BR-5). Articles in CACHED or EXTRACTED state at the time of interruption retain those statuses and can be resumed on the next run without re-fetching.
 
 ## Related Use Cases
 

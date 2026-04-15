@@ -35,9 +35,7 @@ An orchestrating use case (UC-001, UC-002, or UC-007) invokes the feed fetch ste
 2. The system sends an HTTP GET request to the feed URL.
 3. Pinboard responds with an HTTP 200 and a JSON array of bookmark objects (each containing `href`, `description`, `time`, and `toread` fields).
 4. The system parses the JSON response into a list of bookmark records.
-5. The system loads the existing `status.json` file from the state directory to determine which bookmark URLs are already known.
-6. The system partitions the bookmarks into two sets: (a) new bookmarks whose URLs do not appear in `status.json`, and (b) all bookmarks from the feed.
-7. The system returns both sets to the orchestrating use case.
+5. The system returns the parsed bookmark list to the orchestrating use case. All filtering, partitioning, and status cross-referencing is the orchestrator's responsibility.
 
 ## Extensions
 
@@ -56,21 +54,16 @@ An orchestrating use case (UC-001, UC-002, or UC-007) invokes the feed fetch ste
 2. The current run is aborted.
 3. Use case ends in failure.
 
-**5a. No `status.json` file exists (first run after configuration):**
-1. The system treats all bookmarks in the feed as new.
-2. The system returns both sets (new and all are identical) to the orchestrating use case.
-3. Rejoin at step 7.
-
 ## Postconditions
 
-**Success guarantee:** The orchestrating use case receives two bookmark sets: new bookmarks and all bookmarks. No state files are modified by this use case.
+**Success guarantee:** The orchestrating use case receives the full parsed bookmark list from the feed. No state files are modified by this use case.
 **Minimal guarantee:** No state files are modified regardless of outcome. If the fetch fails, the orchestrating use case receives a fatal error indication.
 
 ## Business Rules
 
 - Exactly one HTTP GET request is made per invocation; the system does not retry within this use case.
 - Any feed-level failure (network, HTTP error, malformed JSON) is fatal to the current run because no subsequent steps can proceed without bookmark data.
-- The `status.json` file is read but never written by this use case; state updates are the responsibility of the orchestrating use case.
+- UC-004 does not read or write `status.json`. All cross-referencing of feed bookmarks against known article state (e.g. identifying uncompiled or date-windowed articles) is performed by the orchestrating use case after receiving the feed list.
 
 ## Related Use Cases
 

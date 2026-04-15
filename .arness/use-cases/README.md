@@ -26,6 +26,7 @@ The behavioral scope covers the full pipeline from initial configuration through
 | [UC-005](./UC-005-fetch-and-extract-article.md) | Fetch and extract article | System | Subfunction | Must-have |
 | [UC-006](./UC-006-compile-kindle-document.md) | Compile Kindle document | System | Subfunction | Must-have |
 | [UC-007](./UC-007-preview-run-without-changes.md) | Preview run without changes | Nik | User Goal | Should-have |
+| [UC-008](./UC-008-inspect-run-status.md) | Inspect run status | Nik | User Goal | Could-have |
 
 ## Use Case Diagram
 
@@ -43,11 +44,13 @@ graph TB
     UC005[UC-005: Fetch and extract article]
     UC006[UC-006: Compile Kindle document]
     UC007[UC-007: Preview run without changes]
+    UC008[UC-008: Inspect run status]
 
     Nik --> UC001
     Nik --> UC002
     Nik --> UC003
     Nik --> UC007
+    Nik --> UC008
 
     UC001 -.includes.-> UC004
     UC001 -.includes.-> UC005
@@ -73,6 +76,7 @@ graph TB
     click UC005 "./UC-005-fetch-and-extract-article.md" "Open use case"
     click UC006 "./UC-006-compile-kindle-document.md" "Open use case"
     click UC007 "./UC-007-preview-run-without-changes.md" "Open use case"
+    click UC008 "./UC-008-inspect-run-status.md" "Open use case"
 ```
 
 ### Relationship Summary
@@ -81,6 +85,7 @@ graph TB
 - **UC-002** (Compile archive reading list) extends UC-001; includes UC-004, UC-005, UC-006
 - **UC-003** (Configure the tool for first use) precedes UC-001
 - **UC-007** (Preview run without changes) includes UC-004
+- **UC-008** (Inspect run status) reads state written by UC-001 and UC-002
 
 ## Coverage Notes
 
@@ -88,6 +93,7 @@ graph TB
 - **Pinboard** is covered through UC-004 (Fetch bookmark feed), which is included by both main compilation paths and the preview mode.
 - **Article websites** are covered through UC-005 (Fetch and extract article), included by both compilation use cases.
 - **Filesystem** is covered through UC-006 (Compile Kindle document) for output, and implicitly through caching and state in the compilation flows.
+- **UC-008** (Inspect run status) covers the state inspection need identified during review: Nik can review PERMANENTLY_SKIPPED articles and per-status counts without running a full compile.
 
 ## Guidance
 

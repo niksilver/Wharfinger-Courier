@@ -41,12 +41,18 @@ The orchestrator signals that all per-article processing is complete and invokes
 ## Extensions
 
 **1a. Run is in archive mode:**
-1. The system also includes articles with status COMPILED that fall within the archive date range.
-2. The system continues from step 2 with the combined set.
+1. The orchestrator (UC-002) has already applied the date-range filter and passes the combined article list — including previously COMPILED articles within the window — to UC-006 directly. UC-006 processes whatever list it receives and is not aware of selection policy or date ranges.
+2. The system continues from step 2 with the orchestrator-provided list.
 
 **2a. Zero articles are available (all failed or none match):**
 1. The system does not write a document.
 2. The system returns a summary to the orchestrator noting zero compiled articles. Use case ends.
+
+**3a. An individual article's content causes a template rendering error:**
+1. The system logs a warning identifying the article title and URL.
+2. The system skips that article and continues rendering the remaining articles.
+3. The skipped article's status is set to EXTRACTION_FAILED with a note indicating rendering failure.
+4. Rejoin step 3 (next article).
 
 ## Postconditions
 
@@ -59,7 +65,7 @@ The orchestrator signals that all per-article processing is complete and invokes
 - Exactly one document is produced per run, regardless of article count.
 - The output filename always uses today's date in `YYYY-MM-DD` format.
 - The compiled document must be valid XHTML with Kindle-compatible metadata.
-- Articles appear in the document in the same order they were collected from the feed.
+- Articles appear in the document in the same order they were passed by the orchestrator. The orchestrating use case is responsible for ordering (UC-001 uses feed order; UC-002 uses most-recently-bookmarked-first order per BR-4).
 - The zero-articles case is not treated as an error; the run completes normally with a summary.
 
 ## Related Use Cases

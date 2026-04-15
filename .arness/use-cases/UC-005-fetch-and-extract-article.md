@@ -23,7 +23,7 @@ graph LR
 
 - The orchestrator has a valid article URL and its corresponding URL hash (SHA-256, hex-encoded)
 - The cache directory exists and is writable
-- HTTP timeout and minimum word-count threshold are configured
+- `http_timeout`, `min_word_count`, and `max_response_size` are available from the validated configuration (UC-003)
 
 ## Trigger
 
@@ -57,6 +57,14 @@ The orchestrator passes an uncompiled article URL to the extraction pipeline.
 1. The system records the article status as FETCH_FAILED, along with any available HTTP status code.
 2. The system returns the failure to the orchestrator. Use case ends. The orchestrator continues with the next article.
 
+**4b. The response Content-Type is not an HTML type (e.g. PDF, image, video, binary):**
+1. The system records the article status as UNSUPPORTED_CONTENT_TYPE.
+2. The system returns the failure to the orchestrator. Use case ends. The orchestrator continues with the next article.
+
+**4c. The response body exceeds the configured maximum response size:**
+1. The system records the article status as FETCH_FAILED with a note indicating response size exceeded the limit.
+2. The system returns the failure to the orchestrator. Use case ends. The orchestrator continues with the next article.
+
 **8a. Extracted body falls below the minimum word-count threshold:**
 1. The system marks the article as suspect.
 2. The system runs the fallback content extractor against the raw HTML.
@@ -64,6 +72,10 @@ The orchestrator passes an uncompiled article URL to the extraction pipeline.
 
 **8a.2a. Fallback extractor also returns insufficient content:**
 1. The system records the article status as EXTRACTION_FAILED, along with word count.
+2. The system returns the failure to the orchestrator. Use case ends. The orchestrator continues with the next article.
+
+**9a. XHTML sanitisation fails (extracted content cannot be converted to valid XHTML):**
+1. The system records the article status as EXTRACTION_FAILED with a note indicating sanitisation failure.
 2. The system returns the failure to the orchestrator. Use case ends. The orchestrator continues with the next article.
 
 ## Postconditions
@@ -78,6 +90,8 @@ The orchestrator passes an uncompiled article URL to the extraction pipeline.
 - Cache hits at any level (raw or extracted) skip the corresponding earlier steps; the system never re-fetches or re-extracts content that is already cached.
 - Extraction failures are isolated per article and do not abort the run.
 - The suspect flag is set whenever the primary extractor's output falls below the minimum word-count threshold, even if the fallback extractor succeeds.
+- The system only attempts extraction for HTML content types (Content-Type matching `text/html` or `application/xhtml+xml`). Any other content type results in UNSUPPORTED_CONTENT_TYPE (ext 4b) without writing to cache.
+- The system enforces a maximum response body size (configurable, default 10 MB). Responses exceeding this limit are treated as FETCH_FAILED without writing to cache (ext 4c).
 
 ## Related Use Cases
 

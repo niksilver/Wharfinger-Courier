@@ -1,3 +1,18 @@
 .claude/settings.local.json
 .claude/*.local.md
 .arness/*.local.yaml
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+dist/
+build/
+.venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Project runtime
+config.toml

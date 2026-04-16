@@ -1,0 +1,37 @@
+{
+  "recordType": "change-record",
+  "version": 1,
+  "ceremonyTier": "standard",
+  "projectName": "pipeline-orchestrator-us001",
+  "changePath": ".arness/plans/STANDARD_pipeline-orchestrator-us001/",
+  "timestamp": "2026-04-16T00:00:00+00:00",
+  "tierSelection": {
+    "recommended": "standard",
+    "selected": "standard",
+    "overrideReason": null
+  },
+  "specRef": ".arness/plans/STANDARD_pipeline-orchestrator-us001/STANDARD_pipeline-orchestrator-us001.md",
+  "planRef": ".arness/plans/STANDARD_pipeline-orchestrator-us001/STANDARD_pipeline-orchestrator-us001.md",
+  "reportRef": ".arness/plans/STANDARD_pipeline-orchestrator-us001/STANDARD_REPORT.json",
+  "filesModified": [
+    "courier/fetcher.py",
+    "courier/orchestrator.py"
+  ],
+  "filesCreated": [
+    "tests/test_fetcher.py",
+    "tests/test_orchestrator.py"
+  ],
+  "commitHash": "",
+  "commitMessage": "",
+  "review": {
+    "verdict": "pass",
+    "findingCount": {
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "sketchRef": "",
+  "nextSteps": [
+    "US-002: Implement since_days filtering in _filter_articles"
+  ]
+}

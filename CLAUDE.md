@@ -8,7 +8,7 @@
 - **Reports directory:** .arness/reports
 - **Git:** yes
 - **Platform:** github
-- **Issue tracker:** github
+- **Issue tracker:** none
 - **Plans directory:** .arness/plans
 - **Specs directory:** .arness/specs
 - **Report templates:** default

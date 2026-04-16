@@ -6,7 +6,7 @@
 |-------|-----------|-----------|
 | Runtime | **Python 3.10+** | Primary language; perfect fit for a synchronous I/O-bound batch pipeline; no performance requirements that would push elsewhere |
 | HTTP client | **`requests` 2.33.x** | Clean exception hierarchy for per-article retry logic; synchronous API matches the batch pipeline; well-known and stable |
-| Feed parsing | **`requests` + stdlib `json`** | Pinboard JSON feed is a flat array of objects; `feedparser` solves problems (multi-format RSS, namespaces, encoding edge cases) this project doesn't have |
+| Feed parsing | **`requests` + stdlib `xml.etree.ElementTree`** | Pinboard exposes a private RSS feed (RDF/RSS 1.0) authenticated by a secret token in the URL. Spike 003 confirmed it is parseable with stdlib ElementTree using namespace-qualified field access; no third-party XML library needed. |
 | Content extraction | **`readability-lxml` 0.8.x** (primary) + **`trafilatura` 2.0.x** (fallback) | `readability-lxml` returns structured HTML (headings, paragraphs, lists) via `doc.summary()` / `doc.title()` — direct input to the XHTML pipeline. `trafilatura` has higher overall extraction accuracy (F1 0.958 vs 0.922) and is invoked when readability returns insufficient content |
 | XHTML generation | **`jinja2` 3.x** + **`lxml` 5.x** | Jinja2 template captures the Kindle document structure readably; `lxml` sanitises extracted HTML to valid XHTML (`tostring(method="xml")`) before template insertion — required because HTML allows unclosed tags, XHTML does not |
 | State / cache | **JSON files** (stdlib `json`) | Filesystem-only per pillar. `status.json` captures per-run outcomes and is the resumption checkpoint; `cache/<url-hash>/` stores raw and extracted article HTML. Human-readable, `cat`-inspectable, no schema migrations |
@@ -217,7 +217,7 @@ Or via `pyproject.toml` / `requirements.txt` in the project root. A `pyproject.t
 A single config file (TOML or JSON) in the project directory or a conventional location (e.g., `~/.config/courier/config.toml`). Required fields:
 
 ```toml
-pinboard_feed_url = "https://feeds.pinboard.in/json/u:niksilver/t:toread/"
+pinboard_feed_url = "https://feeds.pinboard.in/rss/secret:YOUR_SECRET/u:niksilver/toread/"
 cache_dir = "/home/nik/.local/share/courier/cache"
 output_dir = "/home/nik/Documents/courier-output"
 max_fetch_attempts = 10
@@ -254,11 +254,9 @@ max_articles_per_run = 30
 
 ### Risk 3: Pinboard JSON feed format differs from expected
 
-**Description:** The Pinboard JSON feed field names and structure have not been verified against the actual endpoint. If the fields differ from the expected schema (`href`, `description`, `time`, `toread`), feed parsing breaks silently or raises unhandled exceptions.
+**Description:** The Pinboard JSON feed field names and structure had not been verified against the actual endpoint.
 
-**Mitigation:** Fetch Nik's actual Pinboard `toread` JSON feed (`https://feeds.pinboard.in/json/u:niksilver/t:toread/`) before implementing the feed parser. Confirm field names, data types, datetime format, and the structure of the `toread` flag.
-
-**Fallback:** Pinboard also exposes an RSS feed; `feedparser` handles it cleanly. Switching from JSON to RSS parsing is a <30-minute change.
+**Resolution (Spike 002 + 003):** The JSON feed uses abbreviated single-letter field names (`u`, `d`, `dt`) incompatible with the original design. The project switched to the private Pinboard RSS feed (`feeds.pinboard.in/rss/secret:…/u:niksilver/toread/`), which is RDF/RSS 1.0 parseable with stdlib `xml.etree.ElementTree`. Feed URL (including secret token) is stored in `config.toml` (gitignored). **Risk resolved.**
 
 ---
 

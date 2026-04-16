@@ -37,6 +37,10 @@ def main(argv: list[str] | None = None) -> int:
 
     args = parser.parse_args(argv)
 
+    if args.since is not None and args.since < 1:
+        print("Error: --since requires a positive integer.", file=sys.stderr)
+        return 1
+
     log_level = logging.DEBUG if args.verbose else logging.INFO
     logging.basicConfig(
         level=log_level,

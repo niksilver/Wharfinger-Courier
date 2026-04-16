@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import logging
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from courier import compiler, extractor, fetcher, store
@@ -12,7 +12,8 @@ from courier.config import Config
 
 logger = logging.getLogger(__name__)
 
-_SKIP_STATUSES = frozenset({"COMPILED", "PERMANENTLY_SKIPPED", "UNSUPPORTED_CONTENT_TYPE"})
+_SKIP_STATUSES         = frozenset({"COMPILED", "PERMANENTLY_SKIPPED", "UNSUPPORTED_CONTENT_TYPE"})
+_ARCHIVE_SKIP_STATUSES = frozenset({"PERMANENTLY_SKIPPED", "UNSUPPORTED_CONTENT_TYPE"})
 
 
 def run_pipeline(
@@ -23,16 +24,12 @@ def run_pipeline(
     """Run the full courier pipeline. Returns True on success."""
     logger.info("Starting courier pipeline (dry_run=%s, since_days=%s)", dry_run, since_days)
 
-    if since_days is not None:
-        logger.warning("since_days parameter received but filtering is not yet implemented")
-        # TODO: US-002
-
     feed_items = _fetch_and_parse_feed(config)
     if feed_items is None:
         return False
 
     status_data = store.read_status(config.cache_dir)
-    articles_to_process = _filter_articles(feed_items, status_data, config)
+    articles_to_process = _filter_articles(feed_items, status_data, config, since_days)
 
     if dry_run:
         print(f"Dry run — {len(articles_to_process)} articles would be processed:")
@@ -78,8 +75,17 @@ def _filter_articles(
     feed_items: list[dict],
     status_data: dict,
     config: Config,
+    since_days: int | None = None,
+    _now: datetime | None = None,
 ) -> list[dict]:
-    """Exclude already-processed articles and cap at max_articles_per_run."""
+    """Exclude already-processed articles and cap at max_articles_per_run.
+
+    When since_days is set (archive mode): includes COMPILED articles, filters
+    by bookmark date, and returns results sorted most-recently-bookmarked first.
+    """
+    if since_days is not None:
+        return _filter_archive(feed_items, status_data, config, since_days, _now)
+
     articles = status_data.get("articles", {})
     result = []
     for item in feed_items:
@@ -92,6 +98,50 @@ def _filter_articles(
     return result
 
 
+def _filter_archive(
+    feed_items: list[dict],
+    status_data: dict,
+    config: Config,
+    since_days: int,
+    _now: datetime | None,
+) -> list[dict]:
+    """Archive-mode filter: date window, most-recent-first sort, cap with message."""
+    now         = _now or datetime.now(timezone.utc)
+    cutoff_date = (now.date() - timedelta(days=since_days - 1))
+
+    articles   = status_data.get("articles", {})
+    candidates = []
+    for item in feed_items:
+        url = item.get("url", "")
+        if articles.get(url, {}).get("status") in _ARCHIVE_SKIP_STATUSES:
+            continue
+        dt = _parse_timestamp(item.get("timestamp", ""))
+        if dt is not None and dt.date() < cutoff_date:
+            continue
+        sort_key = dt if dt is not None else datetime.min.replace(tzinfo=timezone.utc)
+        candidates.append((sort_key, item))
+
+    candidates.sort(key=lambda x: x[0], reverse=True)
+
+    result   = [item for _, item in candidates[: config.max_articles_per_run]]
+    excluded = len(candidates) - len(result)
+    if excluded > 0:
+        noun = "article" if excluded == 1 else "articles"
+        print(f"{excluded} {noun} excluded by the article cap.")
+
+    return result
+
+
+def _parse_timestamp(timestamp: str) -> datetime | None:
+    """Parse an ISO 8601 timestamp string. Returns None if absent or unparseable."""
+    if not timestamp:
+        return None
+    try:
+        return datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+
+
 def _process_article(
     item: dict,
     config: Config,
@@ -102,25 +152,25 @@ def _process_article(
     Updates status_data in-place. Writes status atomically after each article.
     Returns an Article on success, None on fetch/extraction failure.
     """
-    url = item["url"]
+    url   = item["url"]
     title = item.get("title", "")
 
     articles = status_data.setdefault("articles", {})
-    entry = articles.setdefault(url, {
-        "title": title,
-        "status": "PENDING",
+    entry    = articles.setdefault(url, {
+        "title":           title,
+        "status":          "PENDING",
         "fetch_fail_count": 0,
-        "last_updated": "",
-        "word_count": 0,
-        "last_error": "",
+        "last_updated":    "",
+        "word_count":      0,
+        "last_error":      "",
     })
 
     try:
         raw_html = fetcher.fetch_article(url)
     except Exception as exc:
         entry["fetch_fail_count"] = entry.get("fetch_fail_count", 0) + 1
-        entry["last_error"] = str(exc)
-        entry["last_updated"] = _now_iso()
+        entry["last_error"]       = str(exc)
+        entry["last_updated"]     = _now_iso()
         if entry["fetch_fail_count"] >= config.max_fetch_attempts:
             logger.warning(
                 "Permanently skipping %s after %d fetch failures", url, entry["fetch_fail_count"]
@@ -139,17 +189,17 @@ def _process_article(
         extracted_title, content = extractor.extract_article(raw_html, url)
     except Exception as exc:
         logger.warning("Extraction failed for %s: %s", url, exc)
-        entry["status"] = "EXTRACTION_FAILED"
-        entry["last_error"] = str(exc)
+        entry["status"]       = "EXTRACTION_FAILED"
+        entry["last_error"]   = str(exc)
         entry["last_updated"] = _now_iso()
         store.write_status(config.cache_dir, status_data)
         return None
 
-    entry["title"] = extracted_title or title
-    entry["status"] = "COMPILED"
-    entry["word_count"] = len(content.split())
+    entry["title"]        = extracted_title or title
+    entry["status"]       = "COMPILED"
+    entry["word_count"]   = len(content.split())
     entry["last_updated"] = _now_iso()
-    entry["last_error"] = ""
+    entry["last_error"]   = ""
     store.write_status(config.cache_dir, status_data)
     return Article(title=entry["title"], content=content, url=url)
 

@@ -9,6 +9,14 @@
 - **Git:** yes
 - **Platform:** github
 - **Issue tracker:** github
+- **Plans directory:** .arness/plans
+- **Specs directory:** .arness/specs
+- **Report templates:** default
+- **Template path:** .arness/templates
+- **Template version:** 3.2.0
+- **Template updates:** ask
+- **Code patterns:** .arness
+- **Docs directory:** .arness/docs
 - **Folder preference:** defaults
 
 ### Dev Environment

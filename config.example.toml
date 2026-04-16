@@ -1,0 +1,5 @@
+pinboard_feed_url = "https://feeds.pinboard.in/json/u:YOURUSER/t:toread/"
+cache_dir = "~/tmp/courier/cache"
+output_dir = "~/tmp/courier/output"
+max_fetch_attempts = 10
+max_articles_per_run = 30

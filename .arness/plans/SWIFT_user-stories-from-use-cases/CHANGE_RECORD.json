@@ -1,0 +1,39 @@
+{
+  "recordType": "change-record",
+  "version": 1,
+  "ceremonyTier": "swift",
+  "projectName": "user-stories-from-use-cases",
+  "changePath": ".arness/plans/SWIFT_user-stories-from-use-cases/",
+  "timestamp": "2026-04-16T00:00:00Z",
+  "tierSelection": {
+    "recommended": "swift",
+    "selected": "swift",
+    "overrideReason": null
+  },
+  "specRef": "",
+  "planRef": ".arness/plans/SWIFT_user-stories-from-use-cases/SWIFT_user-stories-from-use-cases.md",
+  "reportRef": ".arness/plans/SWIFT_user-stories-from-use-cases/SWIFT_REPORT.json",
+  "filesModified": [],
+  "filesCreated": [
+    ".arness/user-stories/README.md",
+    ".arness/user-stories/stories-from-UC-001.md",
+    ".arness/user-stories/stories-from-UC-002.md",
+    ".arness/user-stories/stories-from-UC-003.md",
+    ".arness/user-stories/stories-from-UC-004.md",
+    ".arness/user-stories/stories-from-UC-005.md",
+    ".arness/user-stories/stories-from-UC-006.md",
+    ".arness/user-stories/stories-from-UC-007.md",
+    ".arness/user-stories/stories-from-UC-008.md"
+  ],
+  "commitHash": "",
+  "commitMessage": "",
+  "review": {
+    "verdict": "pass",
+    "findingCount": {
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "sketchRef": "",
+  "nextSteps": []
+}

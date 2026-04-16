@@ -10,3 +10,10 @@
 - **Platform:** github
 - **Issue tracker:** github
 - **Folder preference:** defaults
+
+### Dev Environment
+- **Type:** native
+- **Platforms:** linux
+- **CI provider:** none
+- **Setup doc:** .arness/vision/dev-setup.md
+- **Setup script:** scripts/setup.sh

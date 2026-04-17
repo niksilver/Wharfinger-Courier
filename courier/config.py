@@ -29,10 +29,7 @@ def load_config(path: str | None = None) -> Config:
 
     Searches for config.toml in the current directory if no path is given.
     """
-    if path is not None:
-        config_path = Path(path)
-    else:
-        config_path = Path("config.toml")
+    config_path = Path(path) if path is not None else Path("config.toml")
 
     if not config_path.exists():
         raise FileNotFoundError(f"Config file not found: {config_path}")
@@ -47,7 +44,7 @@ def load_config(path: str | None = None) -> Config:
         )
 
     return Config(
-        pinboard_feed_url=data["pinboard_feed_url"],
+        pinboard_feed_url=url,
         cache_dir=Path(data["cache_dir"]).expanduser(),
         output_dir=Path(data["output_dir"]).expanduser(),
         max_fetch_attempts=data.get("max_fetch_attempts", 10),

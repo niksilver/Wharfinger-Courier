@@ -11,7 +11,7 @@ import logging
 import pytest
 
 from courier.compiler import Article
-from courier.config import Config
+from courier.config import Config, load_config
 from courier.orchestrator import filter_articles, run_pipeline
 
 # Fixed "now" used in since_days tests: 2026-04-16 12:00 UTC
@@ -69,13 +69,7 @@ def test_happy_path(mock_fetcher, mock_extractor, mock_compiler, mock_store, con
 @patch("courier.orchestrator.fetcher")
 def test_article_cap_enforced(mock_fetcher, mock_extractor, mock_compiler, mock_store, tmp_path):
     """Only max_articles_per_run articles are processed, regardless of feed length."""
-    cfg = Config(
-        pinboard_feed_url="https://feeds.pinboard.in/rss/secret/",
-        cache_dir=tmp_path / "cache",
-        output_dir=tmp_path / "output",
-        max_fetch_attempts=3,
-        max_articles_per_run=2,
-    )
+    cfg = _make_config(tmp_path, max_articles=2)
     mock_fetcher.fetch_feed.return_value = [_item(f"https://example.com/{i}") for i in range(5)]
     mock_fetcher.fetch_article.return_value = "<html>x</html>"
     mock_extractor.extract_article.return_value = ("T", "<p>x</p>")
@@ -217,7 +211,7 @@ def test_dry_run_prints_list_without_writing(mock_fetcher, mock_extractor, mock_
 @patch("courier.orchestrator.extractor")
 @patch("courier.orchestrator.fetcher")
 def test_status_written_after_each_article(mock_fetcher, mock_extractor, mock_compiler, mock_store, config, tmp_path):
-    """store.write_status is called once per article processed plus once at run end."""
+    """store.write_status is called once per article processed."""
     mock_fetcher.fetch_feed.return_value = [
         _item("https://example.com/a1"),
         _item("https://example.com/a2"),
@@ -230,8 +224,8 @@ def test_status_written_after_each_article(mock_fetcher, mock_extractor, mock_co
 
     run_pipeline(config)
 
-    # At minimum: 1 write per article + 1 final write = 3
-    assert mock_store.write_status.call_count >= 3
+    # 1 write per article = 2 writes for 2 articles
+    assert mock_store.write_status.call_count >= 2
 
 
 # ---------------------------------------------------------------------------
@@ -348,7 +342,7 @@ def test_since_days_cap_message_when_articles_excluded(tmp_path, caplog):
     with caplog.at_level(logging.INFO, logger="courier.orchestrator"):
         result = filter_articles(feed, {}, _make_config(tmp_path, max_articles=3), since_days=7, _now=_NOW)
     assert len(result) == 3
-    assert "2" in caplog.text  # 5 - 3 = 2 excluded
+    assert "2 articles excluded" in caplog.text
     assert "excluded" in caplog.text.lower()
 
 
@@ -362,9 +356,6 @@ def test_since_days_no_timestamp_article_included(tmp_path):
 # ---------------------------------------------------------------------------
 # Config validation (Phase 2)
 # ---------------------------------------------------------------------------
-
-from courier.config import load_config
-
 
 def test_load_config_rejects_empty_url(tmp_path):
     """load_config() raises ValueError when pinboard_feed_url is empty."""

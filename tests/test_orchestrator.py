@@ -48,6 +48,7 @@ def test_happy_path(mock_fetcher, mock_extractor, mock_compiler, mock_store, con
     mock_extractor.extract_article.return_value = ("Article Title", "<p>content</p>")
     mock_compiler.compile_document.return_value = tmp_path / "output" / "doc.xhtml"
     mock_store.read_status.return_value = {}
+    mock_store.read_cached_html.return_value = None
 
     result = run_pipeline(config)
 
@@ -80,6 +81,7 @@ def test_article_cap_enforced(mock_fetcher, mock_extractor, mock_compiler, mock_
     mock_extractor.extract_article.return_value = ("T", "<p>x</p>")
     mock_compiler.compile_document.return_value = Path("/out/doc.xhtml")
     mock_store.read_status.return_value = {}
+    mock_store.read_cached_html.return_value = None
 
     run_pipeline(cfg)
 
@@ -100,6 +102,7 @@ def test_compiled_articles_skipped(mock_fetcher, mock_extractor, mock_compiler, 
     mock_store.read_status.return_value = {
         "articles": {"https://example.com/a1": {"status": "COMPILED"}}
     }
+    mock_store.read_cached_html.return_value = None
 
     run_pipeline(config)
 
@@ -117,6 +120,7 @@ def test_permanently_skipped_articles_skipped(mock_fetcher, mock_extractor, mock
     mock_store.read_status.return_value = {
         "articles": {"https://example.com/a1": {"status": "PERMANENTLY_SKIPPED"}}
     }
+    mock_store.read_cached_html.return_value = None
 
     run_pipeline(config)
 
@@ -136,6 +140,7 @@ def test_fetch_failure_increments_fail_count(mock_fetcher, mock_extractor, mock_
     mock_fetcher.fetch_feed.return_value = [_item("https://example.com/a1")]
     mock_fetcher.fetch_article.side_effect = Exception("Connection error")
     mock_store.read_status.return_value = {}
+    mock_store.read_cached_html.return_value = None
 
     run_pipeline(config)
 
@@ -153,6 +158,7 @@ def test_permanent_skip_after_max_attempts(mock_fetcher, mock_extractor, mock_co
     """Article is permanently skipped once fetch_fail_count reaches max_fetch_attempts."""
     mock_fetcher.fetch_feed.return_value = [_item("https://example.com/a1")]
     mock_fetcher.fetch_article.side_effect = Exception("Timeout")
+    mock_store.read_cached_html.return_value = None
     mock_store.read_status.return_value = {
         "articles": {
             "https://example.com/a1": {
@@ -182,23 +188,24 @@ def test_permanent_skip_after_max_attempts(mock_fetcher, mock_extractor, mock_co
 @patch("courier.orchestrator.compiler")
 @patch("courier.orchestrator.extractor")
 @patch("courier.orchestrator.fetcher")
-def test_dry_run_prints_list_without_writing(mock_fetcher, mock_extractor, mock_compiler, mock_store, config, capsys):
-    """dry_run=True prints article list without fetching articles, compiling, or writing."""
+def test_dry_run_prints_list_without_writing(mock_fetcher, mock_extractor, mock_compiler, mock_store, config, caplog):
+    """dry_run=True logs article list without fetching articles, compiling, or writing."""
     mock_fetcher.fetch_feed.return_value = [
         _item("https://example.com/a1"),
         _item("https://example.com/a2"),
     ]
     mock_store.read_status.return_value = {}
+    mock_store.read_cached_html.return_value = None
 
-    result = run_pipeline(config, dry_run=True)
+    with caplog.at_level(logging.INFO, logger="courier.orchestrator"):
+        result = run_pipeline(config, dry_run=True)
 
     assert result is True
     mock_fetcher.fetch_article.assert_not_called()
     mock_compiler.compile_document.assert_not_called()
     mock_store.write_status.assert_not_called()
-    out = capsys.readouterr().out
-    assert "https://example.com/a1" in out
-    assert "https://example.com/a2" in out
+    assert "https://example.com/a1" in caplog.text
+    assert "https://example.com/a2" in caplog.text
 
 
 # ---------------------------------------------------------------------------
@@ -219,6 +226,7 @@ def test_status_written_after_each_article(mock_fetcher, mock_extractor, mock_co
     mock_extractor.extract_article.return_value = ("T", "<p>x</p>")
     mock_compiler.compile_document.return_value = tmp_path / "doc.xhtml"
     mock_store.read_status.return_value = {}
+    mock_store.read_cached_html.return_value = None
 
     run_pipeline(config)
 
@@ -240,6 +248,7 @@ def test_extraction_failure_sets_status(mock_fetcher, mock_extractor, mock_compi
     mock_fetcher.fetch_article.return_value = "<html>content</html>"
     mock_extractor.extract_article.side_effect = Exception("Extraction error")
     mock_store.read_status.return_value = {}
+    mock_store.read_cached_html.return_value = None
 
     run_pipeline(config)
 
@@ -260,6 +269,7 @@ def test_extraction_failure_sets_status(mock_fetcher, mock_extractor, mock_compi
 def test_feed_fetch_failure_exits_gracefully(mock_fetcher, mock_extractor, mock_compiler, mock_store, config):
     """Feed fetch failure returns False without touching store or compiler."""
     mock_fetcher.fetch_feed.side_effect = Exception("Network error")
+    mock_store.read_cached_html.return_value = None
 
     result = run_pipeline(config)
 
@@ -329,17 +339,17 @@ def test_since_days_sorts_most_recent_first(tmp_path):
     ]
 
 
-def test_since_days_cap_message_when_articles_excluded(tmp_path, capsys):
+def test_since_days_cap_message_when_articles_excluded(tmp_path, caplog):
     """When the cap is reached, a message states how many articles were excluded."""
     feed = [
         {"url": f"https://example.com/{i}", "title": f"T{i}", "timestamp": "2026-04-14T10:00:00+00:00"}
         for i in range(5)
     ]
-    result = filter_articles(feed, {}, _make_config(tmp_path, max_articles=3), since_days=7, _now=_NOW)
+    with caplog.at_level(logging.INFO, logger="courier.orchestrator"):
+        result = filter_articles(feed, {}, _make_config(tmp_path, max_articles=3), since_days=7, _now=_NOW)
     assert len(result) == 3
-    out = capsys.readouterr().out
-    assert "2" in out  # 5 - 3 = 2 excluded
-    assert "excluded" in out.lower()
+    assert "2" in caplog.text  # 5 - 3 = 2 excluded
+    assert "excluded" in caplog.text.lower()
 
 
 def test_since_days_no_timestamp_article_included(tmp_path):
@@ -347,3 +357,30 @@ def test_since_days_no_timestamp_article_included(tmp_path):
     feed = [{"url": "https://example.com/notimestamp", "title": "T", "timestamp": ""}]
     result = filter_articles(feed, {}, _make_config(tmp_path), since_days=7, _now=_NOW)
     assert len(result) == 1
+
+
+# ---------------------------------------------------------------------------
+# Config validation (Phase 2)
+# ---------------------------------------------------------------------------
+
+from courier.config import load_config
+
+
+def test_load_config_rejects_empty_url(tmp_path):
+    """load_config() raises ValueError when pinboard_feed_url is empty."""
+    config_file = tmp_path / "config.toml"
+    config_file.write_text(
+        'pinboard_feed_url = ""\ncache_dir = "/tmp/c"\noutput_dir = "/tmp/o"\n'
+    )
+    with pytest.raises(ValueError, match="pinboard_feed_url"):
+        load_config(str(config_file))
+
+
+def test_load_config_rejects_non_http_url(tmp_path):
+    """load_config() raises ValueError for a non-HTTP URL."""
+    config_file = tmp_path / "config.toml"
+    config_file.write_text(
+        'pinboard_feed_url = "ftp://example.com/feed"\ncache_dir = "/tmp/c"\noutput_dir = "/tmp/o"\n'
+    )
+    with pytest.raises(ValueError, match="pinboard_feed_url"):
+        load_config(str(config_file))

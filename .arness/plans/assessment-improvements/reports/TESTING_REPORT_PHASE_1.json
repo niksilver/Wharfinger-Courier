@@ -1,0 +1,101 @@
+{
+  "reportType": "testing",
+  "projectName": "assessment-improvements",
+  "phaseNumber": 1,
+  "planFile": "plans/PHASE_1_PLAN.md",
+  "reportDate": "2026-04-17",
+  "reportVersion": 1,
+  "summary": "All Phase 1 code hygiene changes verified. Logger presence confirmed in config.py and __main__.py. The filter_articles rename verified in orchestrator and test imports. Full regression suite (19 tests) passes. Two bugs discovered and fixed during testing: (1) IndentationError in orchestrator.py except block after cache wiring was added, (2) missing mock_store.read_cached_html.return_value = None in two test functions causing false cache hits.",
+  "testEnvironment": {
+    "framework": "pytest 9.0.3",
+    "configuration": "pyproject.toml (testpaths = [\"tests\"])"
+  },
+  "testSummary": {
+    "totalTests": 21,
+    "passing": 21,
+    "failing": 0,
+    "skipped": 0,
+    "passRate": "100%"
+  },
+  "patternsFollowed": [
+    {
+      "patternName": "Plain assertions without fixtures",
+      "referenceFile": "tests/test_smoke.py",
+      "applied": true,
+      "notes": "TEST-P1-001 and TEST-P1-002 run as inline verification (no permanent test file created per task instructions)"
+    },
+    {
+      "patternName": "Mocking pipeline modules in orchestrator tests",
+      "referenceFile": "tests/test_orchestrator.py",
+      "applied": true,
+      "notes": "Verified mock_store.read_cached_html.return_value = None is set in all tests that mock store, per INTRODUCTION.md Testing Pattern 2"
+    }
+  ],
+  "testCases": [
+    {
+      "testId": "TEST-P1-001",
+      "testName": "test_config_module_has_logger",
+      "description": "Import courier.config and verify the module has a logger attribute of type logging.Logger",
+      "type": "unit",
+      "status": "pass",
+      "filePath": "inline verification (no permanent test file)",
+      "markers": [],
+      "errorMessage": "",
+      "notes": "Verified: courier.config.logger exists and is a logging.Logger instance"
+    },
+    {
+      "testId": "TEST-P1-002",
+      "testName": "test_main_module_has_logger",
+      "description": "Import courier.__main__ and verify the module has a logger attribute of type logging.Logger",
+      "type": "unit",
+      "status": "pass",
+      "filePath": "inline verification (no permanent test file)",
+      "markers": [],
+      "errorMessage": "",
+      "notes": "Verified: courier.__main__.logger exists and is a logging.Logger instance"
+    },
+    {
+      "testId": "TEST-P1-003",
+      "testName": "full_regression_suite",
+      "description": "Run pytest tests/test_smoke.py tests/test_orchestrator.py -v to confirm all existing tests pass with no regressions",
+      "type": "integration",
+      "status": "pass",
+      "filePath": "tests/test_smoke.py, tests/test_orchestrator.py",
+      "markers": [],
+      "errorMessage": "",
+      "notes": "19 tests collected and all passed: 3 smoke tests + 16 orchestrator tests"
+    }
+  ],
+  "failingTests": [],
+  "bugsFixed": [
+    {
+      "bugId": "BUG-P1-001",
+      "description": "FIXED: IndentationError in courier/orchestrator.py except block — the except clause body at line 175 was not indented under the except statement after cache wiring code was added around the fetch call",
+      "rootCause": "When cache-check code (store.read_cached_html) was added wrapping the try/except for fetcher.fetch_article, the except block body was left at the original indentation level instead of being indented one additional level to be inside the new else clause",
+      "fixDescription": "Indented the entire except block body (lines 175-190) by one additional level to be properly nested under the except clause within the else branch",
+      "filesModified": ["courier/orchestrator.py"],
+      "testsReRun": true,
+      "allPassingAfterFix": true
+    },
+    {
+      "bugId": "BUG-P1-002",
+      "description": "FIXED: Missing mock_store.read_cached_html.return_value = None in test_permanent_skip_after_max_attempts — without this, mock_store.read_cached_html returns a truthy MagicMock, causing the code to skip the fetch path entirely and go to extraction",
+      "rootCause": "After cache wiring was added to _process_article(), tests that mock store need to explicitly set read_cached_html.return_value = None to force the fetch-from-network path (per INTRODUCTION.md Testing Pattern 2). This test was missing that setup line.",
+      "fixDescription": "Added mock_store.read_cached_html.return_value = None to the test setup",
+      "filesModified": ["tests/test_orchestrator.py"],
+      "testsReRun": true,
+      "allPassingAfterFix": true
+    }
+  ],
+  "coverage": {
+    "statements": "",
+    "branches": "",
+    "functions": "",
+    "lines": ""
+  },
+  "nextSteps": [
+    "Phase 2 implementation: CLI error handling, config validation, remaining print->logger conversion",
+    "Phase 2 testing: verify CLI error handling, config validation, caplog-based tests"
+  ],
+  "additionalNotes": "The Phase 1 implementation task also applied changes from later phases (cache wiring from Phase 2, module-level Jinja2 env, trust boundary comment, print->logger in orchestrator, capsys->caplog in tests). These changes are already in place and all tests pass against them. The filter_articles rename is confirmed — no references to _filter_articles remain in the codebase."
+}

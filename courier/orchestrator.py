@@ -165,25 +165,30 @@ def _process_article(
         "last_error":      "",
     })
 
-    try:
-        raw_html = fetcher.fetch_article(url)
-    except Exception as exc:
-        entry["fetch_fail_count"] = entry.get("fetch_fail_count", 0) + 1
-        entry["last_error"]       = str(exc)
-        entry["last_updated"]     = _now_iso()
-        if entry["fetch_fail_count"] >= config.max_fetch_attempts:
-            logger.warning(
-                "Permanently skipping %s after %d fetch failures", url, entry["fetch_fail_count"]
-            )
-            entry["status"] = "PERMANENTLY_SKIPPED"
-        else:
-            logger.warning(
-                "Fetch failed for %s (%d/%d): %s",
-                url, entry["fetch_fail_count"], config.max_fetch_attempts, exc,
-            )
-            entry["status"] = "FETCH_FAILED"
-        store.write_status(config.cache_dir, status_data)
-        return None
+    raw_html = store.read_cached_html(config.cache_dir, url, "raw")
+    if raw_html is not None:
+        logger.info("Cache hit for %s (raw)", url)
+    else:
+        try:
+            raw_html = fetcher.fetch_article(url)
+        except Exception as exc:
+            entry["fetch_fail_count"] = entry.get("fetch_fail_count", 0) + 1
+            entry["last_error"]       = str(exc)
+            entry["last_updated"]     = _now_iso()
+            if entry["fetch_fail_count"] >= config.max_fetch_attempts:
+                logger.warning(
+                    "Permanently skipping %s after %d fetch failures", url, entry["fetch_fail_count"]
+                )
+                entry["status"] = "PERMANENTLY_SKIPPED"
+            else:
+                logger.warning(
+                    "Fetch failed for %s (%d/%d): %s",
+                    url, entry["fetch_fail_count"], config.max_fetch_attempts, exc,
+                )
+                entry["status"] = "FETCH_FAILED"
+            store.write_status(config.cache_dir, status_data)
+            return None
+        store.write_cached_html(config.cache_dir, url, "raw", raw_html)
 
     try:
         extracted_title, content = extractor.extract_article(raw_html, url)
@@ -194,6 +199,8 @@ def _process_article(
         entry["last_updated"] = _now_iso()
         store.write_status(config.cache_dir, status_data)
         return None
+
+    store.write_cached_html(config.cache_dir, url, "extracted", content)
 
     entry["title"]        = extracted_title or title
     entry["status"]       = "COMPILED"

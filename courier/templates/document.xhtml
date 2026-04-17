@@ -18,6 +18,7 @@
   <div id="article-{{ loop.index }}">
     <h2>{{ article.title }}</h2>
     <p><small>Source: {{ article.url }}</small></p>
+    {# Content is pre-sanitised XHTML from extractor._sanitise_to_xhtml() -- | safe is intentional #}
     {{ article.content | safe }}
   </div>
   {% if not loop.last %}<hr />{% endif %}

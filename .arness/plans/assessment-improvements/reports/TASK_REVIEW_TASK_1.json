@@ -1,0 +1,122 @@
+{
+  "reportType": "task-review",
+  "projectName": "assessment-improvements",
+  "taskId": "1",
+  "taskDescription": "Phase 1 Implementation - Code Hygiene: Add future annotations and loggers to config.py and __main__.py, rename _filter_articles to filter_articles",
+  "phaseNumber": 1,
+  "planFile": "plans/PHASE_1_PLAN.md",
+  "reviewDate": "2026-04-17",
+  "reportVersion": 1,
+  "summary": {
+    "totalChecks": 14,
+    "errors": 0,
+    "warnings": 0,
+    "filesInspected": 4,
+    "patternsChecked": 4,
+    "testsReRun": 19,
+    "testsPassedOnReview": 19
+  },
+  "acceptanceCriteria": [
+    {
+      "criterion": "courier/config.py has from __future__ import annotations and logger = logging.getLogger(__name__)",
+      "status": "pass",
+      "evidence": "courier/config.py line 3: from __future__ import annotations; line 15: logger = logging.getLogger(__name__)",
+      "notes": ""
+    },
+    {
+      "criterion": "courier/__main__.py has from __future__ import annotations and logger = logging.getLogger(__name__)",
+      "status": "pass",
+      "evidence": "courier/__main__.py line 3: from __future__ import annotations; line 12: logger = logging.getLogger(__name__)",
+      "notes": ""
+    },
+    {
+      "criterion": "courier/orchestrator.py defines filter_articles (not _filter_articles)",
+      "status": "pass",
+      "evidence": "courier/orchestrator.py line 74: def filter_articles(",
+      "notes": "Call site at line 32 also updated to filter_articles"
+    },
+    {
+      "criterion": "tests/test_orchestrator.py imports filter_articles (not _filter_articles)",
+      "status": "pass",
+      "evidence": "tests/test_orchestrator.py line 13: from courier.orchestrator import filter_articles, run_pipeline",
+      "notes": ""
+    },
+    {
+      "criterion": "No other references to _filter_articles remain in the codebase",
+      "status": "pass",
+      "evidence": "Grep for _filter_articles across all .py files returned zero matches",
+      "notes": ""
+    },
+    {
+      "criterion": "Codebase patterns followed (module-level logger, import ordering)",
+      "status": "pass",
+      "evidence": "All modified files follow the documented import order (future, stdlib, third-party, local) and place logger after imports before first class/function",
+      "notes": ""
+    },
+    {
+      "criterion": "Implementation report generated",
+      "status": "pass",
+      "evidence": ".arness/plans/assessment-improvements/reports/IMPLEMENTATION_REPORT_PHASE_1.json exists and is well-formed",
+      "notes": ""
+    }
+  ],
+  "patternCompliance": [
+    {
+      "patternName": "Module-level logger and constants",
+      "sourceFile": "code-patterns.md",
+      "status": "compliant",
+      "filesChecked": ["courier/config.py", "courier/__main__.py", "courier/orchestrator.py"],
+      "notes": "All modified modules have logger = logging.getLogger(__name__) placed after imports and before first class/function definition"
+    },
+    {
+      "patternName": "Import ordering (future, stdlib, third-party, local)",
+      "sourceFile": "code-patterns.md",
+      "status": "compliant",
+      "filesChecked": ["courier/config.py", "courier/__main__.py", "courier/orchestrator.py", "tests/test_orchestrator.py"],
+      "notes": "All files follow from __future__ import annotations as first import, then stdlib, then third-party/local"
+    },
+    {
+      "patternName": "Private helper functions with underscore prefix",
+      "sourceFile": "code-patterns.md",
+      "status": "compliant",
+      "filesChecked": ["courier/orchestrator.py"],
+      "notes": "filter_articles correctly made public per pattern: it has a stable, tested contract. Internal helpers like _filter_archive, _process_article, _print_summary retain underscore prefix"
+    },
+    {
+      "patternName": "snake_case naming",
+      "sourceFile": "code-patterns.md",
+      "status": "compliant",
+      "filesChecked": ["courier/config.py", "courier/__main__.py", "courier/orchestrator.py", "tests/test_orchestrator.py"],
+      "notes": "All function and variable names use snake_case"
+    }
+  ],
+  "testVerification": {
+    "testsReRun": [
+      "tests/test_smoke.py::test_version",
+      "tests/test_smoke.py::test_config_dataclass",
+      "tests/test_smoke.py::test_url_hash_deterministic",
+      "tests/test_orchestrator.py::test_happy_path",
+      "tests/test_orchestrator.py::test_article_cap_enforced",
+      "tests/test_orchestrator.py::test_compiled_articles_skipped",
+      "tests/test_orchestrator.py::test_permanently_skipped_articles_skipped",
+      "tests/test_orchestrator.py::test_fetch_failure_increments_fail_count",
+      "tests/test_orchestrator.py::test_permanent_skip_after_max_attempts",
+      "tests/test_orchestrator.py::test_dry_run_prints_list_without_writing",
+      "tests/test_orchestrator.py::test_status_written_after_each_article",
+      "tests/test_orchestrator.py::test_extraction_failure_sets_status",
+      "tests/test_orchestrator.py::test_feed_fetch_failure_exits_gracefully",
+      "tests/test_orchestrator.py::test_since_days_excludes_old_articles",
+      "tests/test_orchestrator.py::test_since_days_includes_compiled_articles",
+      "tests/test_orchestrator.py::test_since_days_still_excludes_permanently_skipped",
+      "tests/test_orchestrator.py::test_since_days_sorts_most_recent_first",
+      "tests/test_orchestrator.py::test_since_days_cap_message_when_articles_excluded",
+      "tests/test_orchestrator.py::test_since_days_no_timestamp_article_included"
+    ],
+    "allPassed": true,
+    "failures": []
+  },
+  "findings": [],
+  "verdict": "pass",
+  "reviewerAction": "none",
+  "feedbackSummary": "All 7 acceptance criteria met. All 4 applicable code patterns are compliant. All 19 tests pass on re-run with zero failures. No remaining references to _filter_articles in Python source files. The implementation is clean and complete."
+}

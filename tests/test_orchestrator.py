@@ -6,11 +6,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
+import logging
+
 import pytest
 
 from courier.compiler import Article
 from courier.config import Config
-from courier.orchestrator import _filter_articles, run_pipeline
+from courier.orchestrator import filter_articles, run_pipeline
 
 # Fixed "now" used in since_days tests: 2026-04-16 12:00 UTC
 _NOW = datetime(2026, 4, 16, 12, 0, 0, tzinfo=timezone.utc)
@@ -268,7 +270,7 @@ def test_feed_fetch_failure_exits_gracefully(mock_fetcher, mock_extractor, mock_
 
 # ---------------------------------------------------------------------------
 # since_days filtering (UC-002 / US-005)
-# All tests use _filter_articles directly with a fixed _now for determinism.
+# All tests use filter_articles directly with a fixed _now for determinism.
 # ---------------------------------------------------------------------------
 
 def _make_config(tmp_path, max_articles=10):
@@ -289,7 +291,7 @@ def test_since_days_excludes_old_articles(tmp_path):
         {"url": "https://example.com/recent", "title": "R", "timestamp": "2026-04-14T10:00:00+00:00"},
         {"url": "https://example.com/old",    "title": "O", "timestamp": "2026-03-01T10:00:00+00:00"},
     ]
-    result = _filter_articles(feed, {}, _make_config(tmp_path), since_days=7, _now=_NOW)
+    result = filter_articles(feed, {}, _make_config(tmp_path), since_days=7, _now=_NOW)
     urls = [i["url"] for i in result]
     assert "https://example.com/recent" in urls
     assert "https://example.com/old"    not in urls
@@ -299,7 +301,7 @@ def test_since_days_includes_compiled_articles(tmp_path):
     """Articles with COMPILED status are included in archive mode (unlike normal mode)."""
     feed = [{"url": "https://example.com/a1", "title": "T", "timestamp": "2026-04-14T10:00:00+00:00"}]
     status_data = {"articles": {"https://example.com/a1": {"status": "COMPILED"}}}
-    result = _filter_articles(feed, status_data, _make_config(tmp_path), since_days=7, _now=_NOW)
+    result = filter_articles(feed, status_data, _make_config(tmp_path), since_days=7, _now=_NOW)
     assert len(result) == 1
 
 
@@ -307,7 +309,7 @@ def test_since_days_still_excludes_permanently_skipped(tmp_path):
     """PERMANENTLY_SKIPPED articles are excluded even in archive mode."""
     feed = [{"url": "https://example.com/a1", "title": "T", "timestamp": "2026-04-14T10:00:00+00:00"}]
     status_data = {"articles": {"https://example.com/a1": {"status": "PERMANENTLY_SKIPPED"}}}
-    result = _filter_articles(feed, status_data, _make_config(tmp_path), since_days=7, _now=_NOW)
+    result = filter_articles(feed, status_data, _make_config(tmp_path), since_days=7, _now=_NOW)
     assert len(result) == 0
 
 
@@ -318,7 +320,7 @@ def test_since_days_sorts_most_recent_first(tmp_path):
         {"url": "https://example.com/newest", "title": "B", "timestamp": "2026-04-15T20:00:00+00:00"},
         {"url": "https://example.com/middle", "title": "C", "timestamp": "2026-04-13T14:00:00+00:00"},
     ]
-    result = _filter_articles(feed, {}, _make_config(tmp_path), since_days=7, _now=_NOW)
+    result = filter_articles(feed, {}, _make_config(tmp_path), since_days=7, _now=_NOW)
     urls = [i["url"] for i in result]
     assert urls == [
         "https://example.com/newest",
@@ -333,7 +335,7 @@ def test_since_days_cap_message_when_articles_excluded(tmp_path, capsys):
         {"url": f"https://example.com/{i}", "title": f"T{i}", "timestamp": "2026-04-14T10:00:00+00:00"}
         for i in range(5)
     ]
-    result = _filter_articles(feed, {}, _make_config(tmp_path, max_articles=3), since_days=7, _now=_NOW)
+    result = filter_articles(feed, {}, _make_config(tmp_path, max_articles=3), since_days=7, _now=_NOW)
     assert len(result) == 3
     out = capsys.readouterr().out
     assert "2" in out  # 5 - 3 = 2 excluded
@@ -343,5 +345,5 @@ def test_since_days_cap_message_when_articles_excluded(tmp_path, capsys):
 def test_since_days_no_timestamp_article_included(tmp_path):
     """Articles without a parseable timestamp are included (err on the side of inclusion)."""
     feed = [{"url": "https://example.com/notimestamp", "title": "T", "timestamp": ""}]
-    result = _filter_articles(feed, {}, _make_config(tmp_path), since_days=7, _now=_NOW)
+    result = filter_articles(feed, {}, _make_config(tmp_path), since_days=7, _now=_NOW)
     assert len(result) == 1

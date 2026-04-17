@@ -1,11 +1,15 @@
 """CLI entry point for the Courier pipeline."""
 
+from __future__ import annotations
+
 import argparse
 import logging
 import sys
 
 from courier.config import load_config
 from courier.orchestrator import run_pipeline
+
+logger = logging.getLogger(__name__)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -48,7 +52,18 @@ def main(argv: list[str] | None = None) -> int:
         stream=sys.stderr,
     )
 
-    config = load_config(args.config)
+    try:
+        config = load_config(args.config)
+    except FileNotFoundError as exc:
+        print(f"Error: {exc}", file=sys.stderr)
+        return 1
+    except KeyError as exc:
+        print(f"Configuration error: missing required key {exc}", file=sys.stderr)
+        return 1
+    except ValueError as exc:
+        print(f"Configuration error: {exc}", file=sys.stderr)
+        return 1
+
     result = run_pipeline(config, since_days=args.since, dry_run=args.dry_run)
 
     return 0 if result else 1

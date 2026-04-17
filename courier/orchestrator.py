@@ -29,12 +29,12 @@ def run_pipeline(
         return False
 
     status_data = store.read_status(config.cache_dir)
-    articles_to_process = _filter_articles(feed_items, status_data, config, since_days)
+    articles_to_process = filter_articles(feed_items, status_data, config, since_days)
 
     if dry_run:
-        print(f"Dry run — {len(articles_to_process)} articles would be processed:")
+        logger.info("Dry run -- %d articles would be processed:", len(articles_to_process))
         for item in articles_to_process:
-            print(f"  {item['url']}")
+            logger.info("  %s", item["url"])
         return True
 
     compiled_articles: list[Article] = []
@@ -58,7 +58,7 @@ def run_pipeline(
         output_path = compiler.compile_document(compiled_articles, config.output_dir)
 
     store.write_status(config.cache_dir, status_data)
-    _print_summary(len(compiled_articles), failed_count, skipped_count, output_path)
+    _log_summary(len(compiled_articles), failed_count, skipped_count, output_path)
     return True
 
 
@@ -71,7 +71,7 @@ def _fetch_and_parse_feed(config: Config) -> list[dict] | None:
         return None
 
 
-def _filter_articles(
+def filter_articles(
     feed_items: list[dict],
     status_data: dict,
     config: Config,
@@ -127,7 +127,7 @@ def _filter_archive(
     excluded = len(candidates) - len(result)
     if excluded > 0:
         noun = "article" if excluded == 1 else "articles"
-        print(f"{excluded} {noun} excluded by the article cap.")
+        logger.info("%d %s excluded by the article cap.", excluded, noun)
 
     return result
 
@@ -204,11 +204,11 @@ def _process_article(
     return Article(title=entry["title"], content=content, url=url)
 
 
-def _print_summary(compiled: int, failed: int, skipped: int, output_path: Path | None) -> None:
-    """Print the run summary to stdout."""
-    print(f"Compiled: {compiled}  Failed: {failed}  Skipped: {skipped}")
+def _log_summary(compiled: int, failed: int, skipped: int, output_path: Path | None) -> None:
+    """Log the run summary."""
+    logger.info("Compiled: %d  Failed: %d  Skipped: %d", compiled, failed, skipped)
     if output_path:
-        print(f"Output: {output_path}")
+        logger.info("Output: %s", output_path)
 
 
 def _now_iso() -> str:

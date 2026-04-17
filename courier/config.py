@@ -1,5 +1,8 @@
 """Configuration loading from TOML files."""
 
+from __future__ import annotations
+
+import logging
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -8,6 +11,8 @@ if sys.version_info >= (3, 11):
     import tomllib
 else:
     import tomli as tomllib
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -34,6 +39,12 @@ def load_config(path: str | None = None) -> Config:
 
     with open(config_path, "rb") as f:
         data = tomllib.load(f)
+
+    url = data["pinboard_feed_url"]
+    if not url or not url.startswith(("http://", "https://")):
+        raise ValueError(
+            f"pinboard_feed_url must be a URL starting with http:// or https://, got: {url!r}"
+        )
 
     return Config(
         pinboard_feed_url=data["pinboard_feed_url"],

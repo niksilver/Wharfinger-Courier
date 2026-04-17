@@ -18,6 +18,7 @@
 - **Code patterns:** .arness
 - **Docs directory:** .arness/docs
 - **Folder preference:** defaults
+- **Task list ID:** wharfinger-courier-arness
 
 ### Dev Environment
 - **Type:** native

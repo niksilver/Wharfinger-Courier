@@ -26,6 +26,7 @@
 10. `read_cached_html()` and `write_cached_html()` in `store.py` are wired into `_process_article()` in `orchestrator.py`: check cache before fetching, write to cache after fetching and after extraction. Existing orchestrator tests are updated to set `mock_store.read_cached_html.return_value = None`.
 11. `from __future__ import annotations` is added to `config.py` and `__main__.py`.
 12. `logger = logging.getLogger(__name__)` is added to `config.py` and `__main__.py`.
+13. `_filter_articles` in `courier/orchestrator.py` is renamed to `filter_articles` (public, no underscore). The import in `tests/test_orchestrator.py` is updated accordingly.
 
 ### Non-Functional Requirements
 
@@ -78,11 +79,10 @@ Apply fixes in three phases ordered by risk and dependency. Phase 1 covers mecha
 ## Scope & Boundaries
 
 **In Scope:**
-- All 11 assessment findings listed in Requirements (ASSESS-TEST-001, ASSESS-TEST-002, ASSESS-ARCH-001 through ASSESS-ARCH-004, ASSESS-MAINT-001 through ASSESS-MAINT-004, ASSESS-PERF-001)
-- Updating existing orchestrator tests affected by the print→logger and cache wiring changes
+- All 12 assessment findings listed in Requirements (ASSESS-TEST-001, ASSESS-TEST-002, ASSESS-ARCH-001 through ASSESS-ARCH-004, ASSESS-MAINT-001 through ASSESS-MAINT-005, ASSESS-PERF-001)
+- Updating existing orchestrator tests affected by the print→logger, cache wiring, and `_filter_articles` rename changes
 
 **Out of Scope:**
-- ASSESS-MAINT-005 (`_filter_articles` naming) — excluded by user decision
 - Adding a test for `fetcher.py` (not in the assessment selection)
 - Changing the cache storage format or adding a title sidecar file
 - Any new features or behavioral changes beyond what the assessment findings specify
@@ -100,7 +100,7 @@ Apply fixes in three phases ordered by risk and dependency. Phase 1 covers mecha
 
 ## Decisions Log
 
-1. Exclude ASSESS-MAINT-005 (`_filter_articles` rename) — user decision, out of scope for this spec.
+1. Include ASSESS-MAINT-005 (`_filter_articles` → `filter_articles` rename) — user revised decision: the fix is trivial (make public) so include it in Phase 1 hygiene.
 2. Wire cache functions rather than remove them — architecture doc lists caching as a key decision; functions are well-implemented and wiring provides real value (skip re-fetch on retry runs).
 3. Use feed title from `item`/`status_data` when serving extracted content from cache — avoids changing the cache storage format.
 4. Replace `print()` with `logger.info()` (not return structured results from `run_pipeline`) — simpler change; CLI already routes logging to stderr.

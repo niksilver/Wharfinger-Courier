@@ -1,4 +1,4 @@
-"""HTTP fetching for Pinboard feed and article URLs."""
+"""HTTP fetching for RDF/RSS feed and article URLs."""
 
 from __future__ import annotations
 
@@ -18,8 +18,8 @@ _DC_NS    = "http://purl.org/dc/elements/1.1/"
 
 
 def fetch_feed(feed_url: str, timeout: int = DEFAULT_TIMEOUT) -> list[dict[str, Any]]:
-    """Fetch the Pinboard RDF/RSS 1.0 feed and return bookmark dicts with url, title, timestamp."""
-    logger.info("Fetching Pinboard feed")
+    """Fetch the RDF/RSS 1.0 feed and return bookmark dicts with url, title, timestamp."""
+    logger.info("Fetching RDF/RSS feed")
     response = requests.get(feed_url, timeout=timeout)
     response.raise_for_status()
     return _parse_rdf_feed(response.content)

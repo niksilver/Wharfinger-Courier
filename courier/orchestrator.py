@@ -65,6 +65,7 @@ def _fetch_and_parse_feed(config: Config) -> list[dict] | None:
     """Fetch and parse all configured RSS feeds. Returns None on failure."""
     items = []
     for url in config.feed_urls:
+        logger.info("Trying feed URL %s", url)
         try:
             items.extend(fetcher.fetch_feed(url))
         except Exception:

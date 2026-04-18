@@ -27,8 +27,8 @@ mkdir -p ~/.config/courier
 cp config.example.toml ~/.config/courier/config.toml
 ```
 
-You will need your Pinboard RSS feed URL, which includes a secret token.
-Get it from <https://pinboard.in/settings/password>.
+You will need your RSS feed URL, which may include a secret token.
+For Pinboard, get it from <https://pinboard.in/settings/password>.
 
 Set your preferred output directory in the config as well.
 
@@ -59,7 +59,7 @@ ruff format courier/ tests/ # format
 courier/           # main package
   __main__.py      # CLI entry point
   config.py        # config loading
-  fetcher.py       # Pinboard RSS feed + article HTTP fetching
+  fetcher.py       # RSS feed + article HTTP fetching
   extractor.py     # readability-lxml content extraction
   compiler.py      # Jinja2 XHTML compilation
   store.py         # status.json and cache filesystem operations

@@ -11,7 +11,7 @@ from courier.config import Config
 def config(tmp_path: Path) -> Config:
     """Default Config for tests using tmp_path directories."""
     return Config(
-        feed_urls="https://feeds.pinboard.in/rss/secret/u:user/",
+        feed_urls=["https://feeds.pinboard.in/rss/secret/u:user/"],
         cache_dir=tmp_path / "cache",
         output_dir=tmp_path / "output",
         max_fetch_attempts=3,
@@ -24,7 +24,7 @@ def make_config(tmp_path: Path):
     """Factory fixture for Config — accepts keyword overrides."""
     def _make(**overrides) -> Config:
         defaults = dict(
-            feed_urls="https://feeds.pinboard.in/rss/secret/u:user/",
+            feed_urls=["https://feeds.pinboard.in/rss/secret/u:user/"],
             cache_dir=tmp_path / "cache",
             output_dir=tmp_path / "output",
             max_fetch_attempts=3,

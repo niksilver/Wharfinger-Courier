@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class Config:
-    feed_urls: str
+    feed_urls: list[str]
     cache_dir: Path
     output_dir: Path
     max_fetch_attempts: int = 10
@@ -37,14 +37,17 @@ def load_config(path: str | None = None) -> Config:
     with open(config_path, "rb") as f:
         data = tomllib.load(f)
 
-    url = data["feed_urls"]
-    if not url or not url.startswith(("http://", "https://")):
-        raise ValueError(
-            f"feed_urls must be a URL starting with http:// or https://, got: {url!r}"
-        )
+    urls = data["feed_urls"]
+    if not urls:
+        raise ValueError("feed_urls must not be empty")
+    for url in urls:
+        if not url or not url.startswith(("http://", "https://")):
+            raise ValueError(
+                f"feed_urls must contain URLs starting with http:// or https://, got: {url!r}"
+            )
 
     return Config(
-        feed_urls=url,
+        feed_urls=urls,
         cache_dir=Path(data["cache_dir"]).expanduser(),
         output_dir=Path(data["output_dir"]).expanduser(),
         max_fetch_attempts=data.get("max_fetch_attempts", 10),

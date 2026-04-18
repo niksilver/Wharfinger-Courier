@@ -13,7 +13,7 @@ def test_config_dataclass():
     from pathlib import Path
 
     config = Config(
-        feed_urls="https://example.com/feed",
+        feed_urls=["https://example.com/feed"],
         cache_dir=Path("/tmp/test-cache"),
         output_dir=Path("/tmp/test-output"),
     )

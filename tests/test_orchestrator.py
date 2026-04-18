@@ -50,6 +50,30 @@ def test_happy_path(mock_fetcher, mock_extractor, mock_compiler, mock_store, con
     assert articles_arg[0].url == "https://example.com/a1"
 
 
+@patch("courier.orchestrator.store")
+@patch("courier.orchestrator.compiler")
+@patch("courier.orchestrator.extractor")
+@patch("courier.orchestrator.fetcher")
+def test_multiple_feed_urls_combined(mock_fetcher, mock_extractor, mock_compiler, mock_store, make_config, tmp_path):
+    """Articles from all feed_urls are combined and processed."""
+    cfg = make_config(feed_urls=["https://example.com/feed1", "https://example.com/feed2"])
+    mock_fetcher.fetch_feed.side_effect = [
+        [_item("https://example.com/a1")],
+        [_item("https://example.com/a2")],
+    ]
+    mock_fetcher.fetch_article.return_value = "<html>content</html>"
+    mock_extractor.extract_article.return_value = ("Title", "<p>content</p>")
+    mock_compiler.compile_document.return_value = tmp_path / "output" / "doc.xhtml"
+    mock_store.read_status.return_value = {}
+    mock_store.read_cached_html.return_value = None
+
+    run_pipeline(cfg)
+
+    assert mock_fetcher.fetch_feed.call_count == 2
+    articles_arg = mock_compiler.compile_document.call_args[0][0]
+    assert len(articles_arg) == 2
+
+
 # ---------------------------------------------------------------------------
 # Article cap
 # ---------------------------------------------------------------------------
@@ -339,21 +363,32 @@ def test_since_days_no_timestamp_article_included(make_config, tmp_path):
 # Config validation (Phase 2)
 # ---------------------------------------------------------------------------
 
-def test_load_config_rejects_empty_url(tmp_path):
-    """load_config() raises ValueError when feed_urls is empty."""
+def test_load_config_loads_feed_urls_list(tmp_path):
+    """load_config() reads feed_urls as a list of URLs."""
     config_file = tmp_path / "config.toml"
     config_file.write_text(
-        'feed_urls = ""\ncache_dir = "/tmp/c"\noutput_dir = "/tmp/o"\n'
+        'feed_urls = ["https://example.com/feed1", "https://example.com/feed2"]\n'
+        'cache_dir = "/tmp/c"\noutput_dir = "/tmp/o"\n'
+    )
+    cfg = load_config(str(config_file))
+    assert cfg.feed_urls == ["https://example.com/feed1", "https://example.com/feed2"]
+
+
+def test_load_config_rejects_empty_list(tmp_path):
+    """load_config() raises ValueError when feed_urls is an empty list."""
+    config_file = tmp_path / "config.toml"
+    config_file.write_text(
+        'feed_urls = []\ncache_dir = "/tmp/c"\noutput_dir = "/tmp/o"\n'
     )
     with pytest.raises(ValueError, match="feed_urls"):
         load_config(str(config_file))
 
 
 def test_load_config_rejects_non_http_url(tmp_path):
-    """load_config() raises ValueError for a non-HTTP URL."""
+    """load_config() raises ValueError for a non-HTTP URL in the list."""
     config_file = tmp_path / "config.toml"
     config_file.write_text(
-        'feed_urls = "ftp://example.com/feed"\ncache_dir = "/tmp/c"\noutput_dir = "/tmp/o"\n'
+        'feed_urls = ["ftp://example.com/feed"]\ncache_dir = "/tmp/c"\noutput_dir = "/tmp/o"\n'
     )
     with pytest.raises(ValueError, match="feed_urls"):
         load_config(str(config_file))

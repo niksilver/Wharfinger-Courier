@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import logging
 
+import lxml
 from lxml.html import fromstring as html_fromstring
 from lxml.html import tostring as html_tostring
 from readability import Document
@@ -32,9 +33,15 @@ def extract_article(raw_html: str, url: str = "") -> tuple[str, str]:
 
 
 def _extract_with_readability(raw_html: str) -> tuple[str, str]:
-    """Extract using readability-lxml. Returns (title, html_content)."""
-    doc = Document(raw_html)
-    return doc.title(), doc.summary()
+    """Extract using readability-lxml. Returns (title, html_content).
+
+    If it encounters a parsing error it just return empty strings.
+    """
+    try:
+        doc = Document(raw_html)
+        return doc.title(), doc.summary()
+    except lxml.etree.ParserError:
+        return "", ""
 
 
 def _extract_with_trafilatura(raw_html: str, url: str = "") -> str:

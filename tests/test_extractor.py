@@ -37,3 +37,10 @@ def test_readability_fallback_to_trafilatura(mock_extract_with_readability, mock
     mock_extract_with_readability.assert_called_once()
     mock_extract_with_trafilatura.assert_called_once()
     assert len(xhtml) > MIN_CONTENT_LENGTH
+
+
+def test_extract_article_empty_input():
+    (title, xhtml) = extract_article("")
+    # Should not raise an error.
+    assert len(title) >= 0
+    assert len(xhtml) >= 0

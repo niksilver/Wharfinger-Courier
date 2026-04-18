@@ -10,7 +10,7 @@ import logging
 
 import pytest
 
-from tests.conftest import config
+from tests.conftest import config, make_config
 
 from courier.compiler import Article
 from courier.config import Config, load_config
@@ -58,9 +58,9 @@ def test_happy_path(mock_fetcher, mock_extractor, mock_compiler, mock_store, con
 @patch("courier.orchestrator.compiler")
 @patch("courier.orchestrator.extractor")
 @patch("courier.orchestrator.fetcher")
-def test_article_cap_enforced(mock_fetcher, mock_extractor, mock_compiler, mock_store, tmp_path):
+def test_article_cap_enforced(mock_fetcher, mock_extractor, mock_compiler, mock_store, make_config, tmp_path):
     """Only max_articles_per_run articles are processed, regardless of feed length."""
-    cfg = _make_config(tmp_path, max_articles=2)
+    cfg = make_config(max_articles_per_run=2)
     mock_fetcher.fetch_feed.return_value = [_item(f"https://example.com/{i}") for i in range(5)]
     mock_fetcher.fetch_article.return_value = "<html>x</html>"
     mock_extractor.extract_article.return_value = ("T", "<p>x</p>")
@@ -268,17 +268,8 @@ def test_feed_fetch_failure_exits_gracefully(mock_fetcher, mock_extractor, mock_
 # All tests use filter_articles directly with a fixed _now for determinism.
 # ---------------------------------------------------------------------------
 
-def _make_config(tmp_path, max_articles=10):
-    return Config(
-        pinboard_feed_url    = "https://feeds.pinboard.in/rss/secret/",
-        cache_dir            = tmp_path / "cache",
-        output_dir           = tmp_path / "output",
-        max_fetch_attempts   = 3,
-        max_articles_per_run = max_articles,
-    )
 
-
-def test_since_days_excludes_old_articles(tmp_path):
+def test_since_days_excludes_old_articles(make_config, tmp_path):
     """Articles outside the N-day window are excluded."""
     # _NOW = 2026-04-16; since_days=7 → cutoff date = 2026-04-10
     # recent (2026-04-14) is within window; old (2026-03-01) is not
@@ -286,36 +277,36 @@ def test_since_days_excludes_old_articles(tmp_path):
         {"url": "https://example.com/recent", "title": "R", "timestamp": "2026-04-14T10:00:00+00:00"},
         {"url": "https://example.com/old",    "title": "O", "timestamp": "2026-03-01T10:00:00+00:00"},
     ]
-    result = filter_articles(feed, {}, _make_config(tmp_path), since_days=7, _now=_NOW)
+    result = filter_articles(feed, {}, make_config(), since_days=7, _now=_NOW)
     urls = [i["url"] for i in result]
     assert "https://example.com/recent" in urls
     assert "https://example.com/old"    not in urls
 
 
-def test_since_days_includes_compiled_articles(tmp_path):
+def test_since_days_includes_compiled_articles(make_config, tmp_path):
     """Articles with COMPILED status are included in archive mode (unlike normal mode)."""
     feed = [{"url": "https://example.com/a1", "title": "T", "timestamp": "2026-04-14T10:00:00+00:00"}]
     status_data = {"articles": {"https://example.com/a1": {"status": "COMPILED"}}}
-    result = filter_articles(feed, status_data, _make_config(tmp_path), since_days=7, _now=_NOW)
+    result = filter_articles(feed, status_data, make_config(), since_days=7, _now=_NOW)
     assert len(result) == 1
 
 
-def test_since_days_still_excludes_permanently_skipped(tmp_path):
+def test_since_days_still_excludes_permanently_skipped(make_config, tmp_path):
     """PERMANENTLY_SKIPPED articles are excluded even in archive mode."""
     feed = [{"url": "https://example.com/a1", "title": "T", "timestamp": "2026-04-14T10:00:00+00:00"}]
     status_data = {"articles": {"https://example.com/a1": {"status": "PERMANENTLY_SKIPPED"}}}
-    result = filter_articles(feed, status_data, _make_config(tmp_path), since_days=7, _now=_NOW)
+    result = filter_articles(feed, status_data, make_config(), since_days=7, _now=_NOW)
     assert len(result) == 0
 
 
-def test_since_days_sorts_most_recent_first(tmp_path):
+def test_since_days_sorts_most_recent_first(make_config, tmp_path):
     """Results are ordered most-recently-bookmarked first."""
     feed = [
         {"url": "https://example.com/older",  "title": "A", "timestamp": "2026-04-12T08:00:00+00:00"},
         {"url": "https://example.com/newest", "title": "B", "timestamp": "2026-04-15T20:00:00+00:00"},
         {"url": "https://example.com/middle", "title": "C", "timestamp": "2026-04-13T14:00:00+00:00"},
     ]
-    result = filter_articles(feed, {}, _make_config(tmp_path), since_days=7, _now=_NOW)
+    result = filter_articles(feed, {}, make_config(), since_days=7, _now=_NOW)
     urls = [i["url"] for i in result]
     assert urls == [
         "https://example.com/newest",
@@ -324,23 +315,23 @@ def test_since_days_sorts_most_recent_first(tmp_path):
     ]
 
 
-def test_since_days_cap_message_when_articles_excluded(tmp_path, caplog):
+def test_since_days_cap_message_when_articles_excluded(make_config, tmp_path, caplog):
     """When the cap is reached, a message states how many articles were excluded."""
     feed = [
         {"url": f"https://example.com/{i}", "title": f"T{i}", "timestamp": "2026-04-14T10:00:00+00:00"}
         for i in range(5)
     ]
     with caplog.at_level(logging.INFO, logger="courier.orchestrator"):
-        result = filter_articles(feed, {}, _make_config(tmp_path, max_articles=3), since_days=7, _now=_NOW)
+        result = filter_articles(feed, {}, make_config(max_articles_per_run=3), since_days=7, _now=_NOW)
     assert len(result) == 3
     assert "2 articles excluded" in caplog.text
     assert "excluded" in caplog.text.lower()
 
 
-def test_since_days_no_timestamp_article_included(tmp_path):
+def test_since_days_no_timestamp_article_included(make_config, tmp_path):
     """Articles without a parseable timestamp are included (err on the side of inclusion)."""
     feed = [{"url": "https://example.com/notimestamp", "title": "T", "timestamp": ""}]
-    result = filter_articles(feed, {}, _make_config(tmp_path), since_days=7, _now=_NOW)
+    result = filter_articles(feed, {}, make_config(), since_days=7, _now=_NOW)
     assert len(result) == 1
 
 

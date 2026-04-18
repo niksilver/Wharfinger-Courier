@@ -44,3 +44,11 @@ def test_extract_article_empty_input():
     # Should not raise an error.
     assert len(title) >= 0
     assert len(xhtml) >= 0
+
+
+@patch("courier.extractor._extract_with_trafilatura")
+def test_no_fallback_when_readability_sufficient(mock_extract_with_trafilatura, sample_html):
+    (title, xhtml) = extract_article(sample_html)
+    assert len(title) > 0
+    assert len(xhtml) > 0
+    mock_extract_with_trafilatura.assert_not_called()

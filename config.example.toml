@@ -1,5 +1,5 @@
 # Get your RSS secret from https://pinboard.in/settings/password
-pinboard_feed_url = "https://feeds.pinboard.in/rss/secret:YOUR_SECRET/u:YOURUSER/toread/"
+feed_urls = "https://feeds.pinboard.in/rss/secret:YOUR_SECRET/u:YOURUSER/toread/"
 cache_dir = "~/tmp/courier/cache"
 output_dir = "~/tmp/courier/output"
 max_fetch_attempts = 10

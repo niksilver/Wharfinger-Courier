@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class Config:
-    pinboard_feed_url: str
+    feed_urls: str
     cache_dir: Path
     output_dir: Path
     max_fetch_attempts: int = 10
@@ -37,14 +37,14 @@ def load_config(path: str | None = None) -> Config:
     with open(config_path, "rb") as f:
         data = tomllib.load(f)
 
-    url = data["pinboard_feed_url"]
+    url = data["feed_urls"]
     if not url or not url.startswith(("http://", "https://")):
         raise ValueError(
-            f"pinboard_feed_url must be a URL starting with http:// or https://, got: {url!r}"
+            f"feed_urls must be a URL starting with http:// or https://, got: {url!r}"
         )
 
     return Config(
-        pinboard_feed_url=url,
+        feed_urls=url,
         cache_dir=Path(data["cache_dir"]).expanduser(),
         output_dir=Path(data["output_dir"]).expanduser(),
         max_fetch_attempts=data.get("max_fetch_attempts", 10),

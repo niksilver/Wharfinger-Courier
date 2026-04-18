@@ -64,7 +64,7 @@ def run_pipeline(
 def _fetch_and_parse_feed(config: Config) -> list[dict] | None:
     """Fetch and parse the Pinboard RSS feed. Returns None on failure."""
     try:
-        return fetcher.fetch_feed(config.pinboard_feed_url)
+        return fetcher.fetch_feed(config.feed_urls)
     except Exception:
         logger.exception("Failed to fetch feed")
         return None

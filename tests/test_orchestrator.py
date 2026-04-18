@@ -340,12 +340,12 @@ def test_since_days_no_timestamp_article_included(make_config, tmp_path):
 # ---------------------------------------------------------------------------
 
 def test_load_config_rejects_empty_url(tmp_path):
-    """load_config() raises ValueError when pinboard_feed_url is empty."""
+    """load_config() raises ValueError when feed_urls is empty."""
     config_file = tmp_path / "config.toml"
     config_file.write_text(
-        'pinboard_feed_url = ""\ncache_dir = "/tmp/c"\noutput_dir = "/tmp/o"\n'
+        'feed_urls = ""\ncache_dir = "/tmp/c"\noutput_dir = "/tmp/o"\n'
     )
-    with pytest.raises(ValueError, match="pinboard_feed_url"):
+    with pytest.raises(ValueError, match="feed_urls"):
         load_config(str(config_file))
 
 
@@ -353,7 +353,7 @@ def test_load_config_rejects_non_http_url(tmp_path):
     """load_config() raises ValueError for a non-HTTP URL."""
     config_file = tmp_path / "config.toml"
     config_file.write_text(
-        'pinboard_feed_url = "ftp://example.com/feed"\ncache_dir = "/tmp/c"\noutput_dir = "/tmp/o"\n'
+        'feed_urls = "ftp://example.com/feed"\ncache_dir = "/tmp/c"\noutput_dir = "/tmp/o"\n'
     )
-    with pytest.raises(ValueError, match="pinboard_feed_url"):
+    with pytest.raises(ValueError, match="feed_urls"):
         load_config(str(config_file))

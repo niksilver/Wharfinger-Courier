@@ -41,6 +41,13 @@ def test_compile_document_empty_list(tmp_path):
     etree.parse(str(output_path), parser)
 
 
+def test_compile_document_has_pagebreak_before_each_article(tmp_path):
+    articles    = [_article(title="First"), _article(title="Second")]
+    output_path = compile_document(articles, tmp_path)
+    content     = output_path.read_text(encoding="utf-8")
+    assert content.count("<mbp:pagebreak/>") == 2
+
+
 def test_compile_document_creates_output_dir(tmp_path):
     output_dir  = tmp_path / "new" / "nested" / "dir"
     output_path = compile_document([_article()], output_dir)

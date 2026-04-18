@@ -1,6 +1,7 @@
 .claude/settings.local.json
 .claude/*.local.md
 .arness/*.local.yaml
+*.sw?
 
 # Python
 __pycache__/

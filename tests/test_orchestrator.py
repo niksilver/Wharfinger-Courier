@@ -10,23 +10,14 @@ import logging
 
 import pytest
 
+from tests.conftest import config
+
 from courier.compiler import Article
 from courier.config import Config, load_config
 from courier.orchestrator import filter_articles, run_pipeline
 
 # Fixed "now" used in since_days tests: 2026-04-16 12:00 UTC
 _NOW = datetime(2026, 4, 16, 12, 0, 0, tzinfo=timezone.utc)
-
-
-@pytest.fixture()
-def config(tmp_path):
-    return Config(
-        pinboard_feed_url="https://feeds.pinboard.in/rss/secret/u:user/",
-        cache_dir=tmp_path / "cache",
-        output_dir=tmp_path / "output",
-        max_fetch_attempts=3,
-        max_articles_per_run=10,
-    )
 
 
 def _item(url: str, title: str = "Article Title") -> dict:

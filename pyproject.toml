@@ -1,7 +1,7 @@
 [project]
 name = "wharfinger-courier"
 version = "0.1.0"
-description = "Fetches RDF/RSS articles and compiles them into Kindle XHTML"
+description = "Fetches RSS articles and compiles them into Kindle XHTML"
 requires-python = ">=3.10"
 dependencies = [
     "requests>=2.33",

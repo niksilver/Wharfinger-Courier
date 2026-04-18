@@ -54,6 +54,24 @@ def test_fetch_feed_raises_on_http_error():
             fetcher.fetch_feed("https://example.com/feed")
 
 
+def test_fetch_feed_parses_rss2_xml(sample_rss2_feed: bytes):
+    """Valid RSS 2.0 XML is parsed into a list of dicts with url, title, timestamp."""
+    mock_response = MagicMock()
+    mock_response.content = sample_rss2_feed
+    mock_response.raise_for_status = MagicMock()
+
+    with patch("requests.get", return_value=mock_response):
+        result = fetcher.fetch_feed("https://spacebiff.com/rss")
+
+    assert len(result) == 2
+    assert result[0]["url"] == "https://spacebiff.com/article-1"
+    assert result[0]["title"] == "Test Article"
+    assert result[0]["timestamp"] == "2024-01-15T10:00:00+00:00"
+    assert result[1]["url"] == "https://spacebiff.com/article-2"
+    assert result[1]["title"] == "Second Article"
+    assert result[1]["timestamp"] == "2024-01-16T12:00:00+00:00"
+
+
 def test_fetch_feed_raises_on_malformed_xml():
     """Malformed XML content raises ET.ParseError."""
     mock_response = MagicMock()

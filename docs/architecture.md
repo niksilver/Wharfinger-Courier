@@ -26,7 +26,7 @@
 ## Dependencies
 
 ### External
-- **requests >= 2.33** — HTTP fetching for RDF/RSS feed and article URLs
+- **requests >= 2.33** — HTTP fetching for RSS feed and article URLs
 - **readability-lxml >= 0.8** — Primary article content extraction from HTML
 - **trafilatura >= 2.0** — Fallback article content extraction
 - **jinja2 >= 3** — Templating engine for XHTML document compilation
@@ -72,7 +72,7 @@ wharfinger-courier/
 |------|-----------|---------|
 | Entry point | `courier/__main__.py` | CLI argument parsing, logging setup, pipeline invocation |
 | Configuration | `courier/config.py` | Loads TOML config into a Config dataclass |
-| HTTP layer | `courier/fetcher.py` | Fetches RDF/RSS feed and article HTML |
+| HTTP layer | `courier/fetcher.py` | Fetches RSS feed and article HTML |
 | Extraction | `courier/extractor.py` | Extracts article content using readability-lxml with trafilatura fallback |
 | Compilation | `courier/compiler.py` | Renders articles into a single XHTML document via Jinja2 |
 | Cache/store | `courier/store.py` | Filesystem-based caching with SHA-256 URL hashing and atomic status writes |

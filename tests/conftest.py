@@ -50,6 +50,28 @@ def sample_html() -> str:
 
 
 @pytest.fixture()
+def sample_rss2_feed() -> bytes:
+    """Minimal RSS 2.0 feed bytes for feed parsing tests."""
+    return b"""<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Space Biff!</title>
+    <link>https://spacebiff.com</link>
+    <item>
+      <title>Test Article</title>
+      <link>https://spacebiff.com/article-1</link>
+      <pubDate>Mon, 15 Jan 2024 10:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Second Article</title>
+      <link>https://spacebiff.com/article-2</link>
+      <pubDate>Tue, 16 Jan 2024 12:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>"""
+
+
+@pytest.fixture()
 def sample_feed_xml() -> bytes:
     """Minimal RSS 1.0 (RDF) feed bytes for feed parsing tests."""
     return b"""<?xml version="1.0" encoding="UTF-8"?>

@@ -13,7 +13,7 @@ import pytest
 from tests.conftest import config, make_config
 
 from courier.compiler import Article
-from courier.config import Config, load_config
+from courier.config import load_config
 from courier.orchestrator import filter_articles, run_pipeline
 
 # Fixed "now" used in since_days tests: 2026-04-16 12:00 UTC

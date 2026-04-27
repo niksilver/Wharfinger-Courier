@@ -34,13 +34,13 @@ def compile_document(articles: list[Article], output_dir: Path) -> Path:
 
     Returns the path to the written output file.
     """
-    today = date.today().isoformat()
-    filename = f"wharfinger-courier-{today}.xhtml"
+    today       = date.today()
+    title       = f"Wharfinger Courier, {today.day} {today.strftime('%B %Y')}"
+    filename    = f"wharfinger-courier-{today.isoformat()}.xhtml"
     output_path = output_dir / filename
 
     rendered = _template.render(
-        title=f"Wharfinger Courier - {today}",
-        date=today,
+        title=title,
         articles=articles,
     )
 

@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 import logging
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-from courier import compiler, extractor, fetcher, store
+from courier import compiler, converter, extractor, fetcher, store
 from courier.compiler import Article
 from courier.config import Config
 
@@ -56,6 +56,13 @@ def run_pipeline(
     output_path: Path | None = None
     if compiled_articles:
         output_path = compiler.compile_document(compiled_articles, config.output_dir)
+        today       = date.today()
+        title       = f"Wharfinger Courier, {today.day} {today.strftime('%B %Y')}"
+        try:
+            converter.convert_to_azw3(output_path, title)
+        except Exception as exc:
+            logger.error("AZW3 conversion failed: %s", exc)
+            return False
 
     _log_summary(len(compiled_articles), failed_count, skipped_count, output_path)
     return True

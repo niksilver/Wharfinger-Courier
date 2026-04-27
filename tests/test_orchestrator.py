@@ -28,16 +28,18 @@ def _item(url: str, title: str = "Article Title") -> dict:
 # Happy path
 # ---------------------------------------------------------------------------
 
+@patch("courier.orchestrator.converter")
 @patch("courier.orchestrator.store")
 @patch("courier.orchestrator.compiler")
 @patch("courier.orchestrator.extractor")
 @patch("courier.orchestrator.fetcher")
-def test_happy_path(mock_fetcher, mock_extractor, mock_compiler, mock_store, config, tmp_path):
+def test_happy_path(mock_fetcher, mock_extractor, mock_compiler, mock_store, mock_converter, config, tmp_path):
     """Feed -> extract -> compile -> output file created; run_pipeline returns True."""
     mock_fetcher.fetch_feed.return_value = [_item("https://example.com/a1")]
     mock_fetcher.fetch_article.return_value = "<html>content</html>"
     mock_extractor.extract_article.return_value = ("Article Title", "<p>content</p>")
     mock_compiler.compile_document.return_value = tmp_path / "output" / "doc.xhtml"
+    mock_converter.convert_to_azw3.return_value = tmp_path / "output" / "doc.azw3"
     mock_store.read_status.return_value = {}
     mock_store.read_cached_html.return_value = None
 
@@ -50,11 +52,12 @@ def test_happy_path(mock_fetcher, mock_extractor, mock_compiler, mock_store, con
     assert articles_arg[0].url == "https://example.com/a1"
 
 
+@patch("courier.orchestrator.converter")
 @patch("courier.orchestrator.store")
 @patch("courier.orchestrator.compiler")
 @patch("courier.orchestrator.extractor")
 @patch("courier.orchestrator.fetcher")
-def test_multiple_feed_urls_combined(mock_fetcher, mock_extractor, mock_compiler, mock_store, make_config, tmp_path):
+def test_multiple_feed_urls_combined(mock_fetcher, mock_extractor, mock_compiler, mock_store, mock_converter, make_config, tmp_path):
     """Articles from all feed_urls are combined and processed."""
     cfg = make_config(feed_urls=["https://example.com/feed1", "https://example.com/feed2"])
     mock_fetcher.fetch_feed.side_effect = [
@@ -64,6 +67,7 @@ def test_multiple_feed_urls_combined(mock_fetcher, mock_extractor, mock_compiler
     mock_fetcher.fetch_article.return_value = "<html>content</html>"
     mock_extractor.extract_article.return_value = ("Title", "<p>content</p>")
     mock_compiler.compile_document.return_value = tmp_path / "output" / "doc.xhtml"
+    mock_converter.convert_to_azw3.return_value = tmp_path / "output" / "doc.azw3"
     mock_store.read_status.return_value = {}
     mock_store.read_cached_html.return_value = None
 
@@ -78,17 +82,19 @@ def test_multiple_feed_urls_combined(mock_fetcher, mock_extractor, mock_compiler
 # Article cap
 # ---------------------------------------------------------------------------
 
+@patch("courier.orchestrator.converter")
 @patch("courier.orchestrator.store")
 @patch("courier.orchestrator.compiler")
 @patch("courier.orchestrator.extractor")
 @patch("courier.orchestrator.fetcher")
-def test_article_cap_enforced(mock_fetcher, mock_extractor, mock_compiler, mock_store, make_config, tmp_path):
+def test_article_cap_enforced(mock_fetcher, mock_extractor, mock_compiler, mock_store, mock_converter, make_config, tmp_path):
     """Only max_articles_per_run articles are processed, regardless of feed length."""
     cfg = make_config(max_articles_per_run=2)
     mock_fetcher.fetch_feed.return_value = [_item(f"https://example.com/{i}") for i in range(5)]
     mock_fetcher.fetch_article.return_value = "<html>x</html>"
     mock_extractor.extract_article.return_value = ("T", "<p>x</p>")
     mock_compiler.compile_document.return_value = Path("/out/doc.xhtml")
+    mock_converter.convert_to_azw3.return_value = Path("/out/doc.azw3")
     mock_store.read_status.return_value = {}
     mock_store.read_cached_html.return_value = None
 
@@ -221,11 +227,12 @@ def test_dry_run_prints_list_without_writing(mock_fetcher, mock_extractor, mock_
 # Atomic writes
 # ---------------------------------------------------------------------------
 
+@patch("courier.orchestrator.converter")
 @patch("courier.orchestrator.store")
 @patch("courier.orchestrator.compiler")
 @patch("courier.orchestrator.extractor")
 @patch("courier.orchestrator.fetcher")
-def test_status_written_after_each_article(mock_fetcher, mock_extractor, mock_compiler, mock_store, config, tmp_path):
+def test_status_written_after_each_article(mock_fetcher, mock_extractor, mock_compiler, mock_store, mock_converter, config, tmp_path):
     """store.write_status is called once per article processed."""
     mock_fetcher.fetch_feed.return_value = [
         _item("https://example.com/a1"),
@@ -234,6 +241,7 @@ def test_status_written_after_each_article(mock_fetcher, mock_extractor, mock_co
     mock_fetcher.fetch_article.return_value = "<html>x</html>"
     mock_extractor.extract_article.return_value = ("T", "<p>x</p>")
     mock_compiler.compile_document.return_value = tmp_path / "doc.xhtml"
+    mock_converter.convert_to_azw3.return_value = tmp_path / "doc.azw3"
     mock_store.read_status.return_value = {}
     mock_store.read_cached_html.return_value = None
 
@@ -241,6 +249,32 @@ def test_status_written_after_each_article(mock_fetcher, mock_extractor, mock_co
 
     # 1 write per article = 2 writes for 2 articles
     assert mock_store.write_status.call_count >= 2
+
+
+# ---------------------------------------------------------------------------
+# Converter failure
+# ---------------------------------------------------------------------------
+
+@patch("courier.orchestrator.converter")
+@patch("courier.orchestrator.store")
+@patch("courier.orchestrator.compiler")
+@patch("courier.orchestrator.extractor")
+@patch("courier.orchestrator.fetcher")
+def test_converter_failure_returns_false(
+    mock_fetcher, mock_extractor, mock_compiler, mock_store, mock_converter, config, tmp_path
+):
+    """AZW3 conversion failure causes run_pipeline to return False."""
+    mock_fetcher.fetch_feed.return_value = [_item("https://example.com/a1")]
+    mock_fetcher.fetch_article.return_value = "<html>content</html>"
+    mock_extractor.extract_article.return_value = ("Article Title", "<p>content</p>")
+    mock_compiler.compile_document.return_value = tmp_path / "output" / "doc.xhtml"
+    mock_store.read_status.return_value = {}
+    mock_store.read_cached_html.return_value = None
+    mock_converter.convert_to_azw3.side_effect = RuntimeError("ebook-convert failed")
+
+    result = run_pipeline(config)
+
+    assert result is False
 
 
 # ---------------------------------------------------------------------------

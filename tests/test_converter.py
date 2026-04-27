@@ -39,5 +39,8 @@ def test_nonzero_exit_raises_with_output(tmp_path):
     mock_result.stdout = "some stdout"
     mock_result.stderr = "some error detail"
     with patch("courier.converter.subprocess.run", return_value=mock_result):
-        with pytest.raises(RuntimeError, match="some error detail"):
+        with pytest.raises(RuntimeError) as exc_info:
             convert_to_azw3(xhtml, "Wharfinger Courier, 30 April 2026")
+    msg = str(exc_info.value)
+    assert "some stdout" in msg
+    assert "some error detail" in msg

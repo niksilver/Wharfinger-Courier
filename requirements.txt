@@ -1,5 +1,0 @@
-requests>=2.33
-readability-lxml>=0.8
-trafilatura>=2.0
-jinja2>=3
-tomli>=2.0; python_version < "3.11"

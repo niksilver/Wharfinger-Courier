@@ -19,7 +19,7 @@
 | Project layout | Flat package (`courier/`) | Small single-package project; no need for src layout |
 | Content extraction | Dual extractor (readability-lxml + trafilatura) | Readability as primary with trafilatura fallback for robustness |
 | Configuration format | TOML | Python 3.11 has built-in tomllib; tomli backport for 3.10 |
-| Output format | XHTML 1.1 | Kindle-compatible document format |
+| Output format | AZW3 | Kindle-compatible format which can be generated from XHTML |
 | Caching strategy | Filesystem-based with SHA-256 URL hashing | Simple, no database dependency; deterministic cache paths |
 | Pipeline architecture | Orchestrator pattern | Single `run_pipeline` function coordinates fetch, extract, and compile stages |
 
@@ -33,6 +33,7 @@
 - **tomli >= 2.0** — TOML config parsing (Python < 3.11 only)
 - **pytest** — Test runner (test dependency)
 - **pytest-cov** — Coverage reporting (test dependency)
+- **ebook-convert** - Command line conversion from XHTML to AZW3
 
 ### Internal
 - **courier.config** — TOML configuration loading into a Config dataclass

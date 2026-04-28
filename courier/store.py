@@ -5,8 +5,10 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
+import re
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 logger = logging.getLogger(__name__)
 
@@ -14,6 +16,23 @@ logger = logging.getLogger(__name__)
 def url_hash(url: str) -> str:
     """Return the SHA-256 hex digest of a URL, used as the cache directory name."""
     return hashlib.sha256(url.encode("utf-8")).hexdigest()
+
+
+def url_cache_path(cache_dir: Path, url: str) -> Path:
+    """Return the cache directory path for an article URL.
+
+    Structure: {cache_dir}/cache/{domain}/{slug}--{hash8}
+    """
+    parsed = urlparse(url)
+    domain = parsed.netloc
+    if domain.startswith("www."):
+        domain = domain[4:]
+    raw = parsed.path
+    if parsed.query:
+        raw += "_" + parsed.query
+    slug = re.sub(r"[^a-z0-9]+", "_", raw.lower()).strip("_")[:60]
+    hash8 = url_hash(url)[:8]
+    return cache_dir / "cache" / domain / f"{slug}--{hash8}"
 
 
 def read_status(cache_dir: Path) -> dict[str, Any]:
@@ -36,7 +55,7 @@ def write_status(cache_dir: Path, status: dict[str, Any]) -> None:
 
 def read_cached_html(cache_dir: Path, article_url: str, stage: str) -> str | None:
     """Read cached HTML for an article. Stage is 'raw' or 'extracted'."""
-    path = cache_dir / "cache" / url_hash(article_url) / f"{stage}.html"
+    path = url_cache_path(cache_dir, article_url) / f"{stage}.html"
     if path.exists():
         return path.read_text(encoding="utf-8")
     return None
@@ -44,7 +63,7 @@ def read_cached_html(cache_dir: Path, article_url: str, stage: str) -> str | Non
 
 def write_cached_html(cache_dir: Path, article_url: str, stage: str, content: str) -> None:
     """Write HTML to the article cache. Stage is 'raw' or 'extracted'."""
-    article_dir = cache_dir / "cache" / url_hash(article_url)
+    article_dir = url_cache_path(cache_dir, article_url)
     article_dir.mkdir(parents=True, exist_ok=True)
     path = article_dir / f"{stage}.html"
     path.write_text(content, encoding="utf-8")

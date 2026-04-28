@@ -40,7 +40,6 @@ def test_success_passes_chapter_structure_options(tmp_path):
         convert_to_azw3(xhtml, "Wharfinger Courier, 27 April 2026")
     cmd = mock_run.call_args[0][0]
     assert "--chapter=//h:h1[@class = \"chapter\"]" in cmd
-    assert "--chapter-mark=pagebreak" in cmd
     assert "--page-breaks-before=//h:div[@class = \"document\"]" in cmd
     assert "--mobi-toc-at-start" in cmd
 

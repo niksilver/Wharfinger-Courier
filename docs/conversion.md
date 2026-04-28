@@ -12,7 +12,6 @@ For each fetched article:
 We invoke `ebook-convert` with the following options.
 This gives good chapter names, page breaks in the right place, and the TOC
 at the start rather than the end:
-- `--chapter='//h:h1[@class = "chapter"]'`
-- `--chapter-mark=pagebreak`
-- `--page-breaks-before='//h:div[@class = "document"]'`
-- `--mobi-toc-at-start`
+- `--chapter='//h:h1[@class = "chapter"]'` (identifies each chapter)
+- `--page-breaks-before='//h:div[@class = "document"]'` (page breaks only before each chapter)
+- `--mobi-toc-at-start` (change default of TOC at end of document(!))

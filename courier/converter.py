@@ -21,7 +21,6 @@ def convert_to_azw3(xhtml_path: Path, title: str) -> Path:
                 str(azw3_path),
                 "--title",                title,
                 "--chapter=//h:h1[@class = \"chapter\"]",
-                "--chapter-mark=pagebreak",
                 "--page-breaks-before=//h:div[@class = \"document\"]",
                 "--mobi-toc-at-start",
             ],

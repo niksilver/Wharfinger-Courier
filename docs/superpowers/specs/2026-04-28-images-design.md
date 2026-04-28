@@ -26,7 +26,7 @@ fetch → extract → download images → compile XHTML → convert to AZW3
 Single public function:
 
 ```python
-def download_article_images(content: str, images_dir: Path, article_url: str) -> str
+def localise_article_images(content: str, images_dir: Path, article_url: str) -> str
 ```
 
 Steps:
@@ -64,7 +64,7 @@ In `_process_article`, after `extractor.extract_article`:
 
 ```python
 images_dir = config.output_dir / "images"
-content = images.download_article_images(content, images_dir, url)
+content = images.localise_article_images(content, images_dir, url)
 ```
 
 ### `courier/compiler.py` and template
@@ -83,7 +83,7 @@ No changes.
 
 ## Testing
 
-- Unit tests for `download_article_images` with mocked HTTP calls:
+- Unit tests for `localise_article_images` with mocked HTTP calls:
   - Src rewriting to `images/filename.ext`
   - srcset stripping
   - Size filtering (< 10×10 → removed silently)

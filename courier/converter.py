@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import subprocess
+from datetime import date
 from pathlib import Path
 
 
@@ -13,6 +14,8 @@ def convert_to_azw3(xhtml_path: Path, title: str) -> Path:
     Raises RuntimeError with captured output if ebook-convert exits non-zero.
     """
     azw3_path = xhtml_path.with_suffix(".azw3")
+    today     = date.today()
+    pubdate   = f"{today.day} {today.strftime('%B %Y')}"
     try:
         result = subprocess.run(
             [
@@ -23,6 +26,8 @@ def convert_to_azw3(xhtml_path: Path, title: str) -> Path:
                 "--chapter=//h:h1[@class = \"chapter\"]",
                 "--page-breaks-before=//h:div[@class = \"document\"]",
                 "--mobi-toc-at-start",
+                "--authors=Various",
+                f"--pubdate={pubdate}",
             ],
             capture_output=True,
             text=True,

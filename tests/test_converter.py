@@ -32,6 +32,17 @@ def test_tool_not_found_raises_descriptive_error(tmp_path):
             convert_to_azw3(xhtml, "Wharfinger Courier, 30 April 2026")
 
 
+def test_success_passes_authors_and_pubdate(tmp_path):
+    xhtml = tmp_path / "doc.xhtml"
+    mock_result = MagicMock()
+    mock_result.returncode = 0
+    with patch("courier.converter.subprocess.run", return_value=mock_result) as mock_run:
+        convert_to_azw3(xhtml, "Wharfinger Courier, 30 April 2026")
+    cmd = mock_run.call_args[0][0]
+    assert "--authors=Various" in cmd
+    assert any(a.startswith("--pubdate=") for a in cmd)
+
+
 def test_success_passes_chapter_structure_options(tmp_path):
     xhtml = tmp_path / "doc.xhtml"
     mock_result = MagicMock()

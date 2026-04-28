@@ -15,3 +15,7 @@ at the start rather than the end:
 - `--chapter='//h:h1[@class = "chapter"]'` (identifies each chapter)
 - `--page-breaks-before='//h:div[@class = "document"]'` (page breaks only before each chapter)
 - `--mobi-toc-at-start` (change default of TOC at end of document(!))
+
+It's nice to add the following options, too:
+- `--authors='Various'` (so that it's not 'Uknown')
+- `--pubdate='DD Month YYYY'` (just for friendliness)

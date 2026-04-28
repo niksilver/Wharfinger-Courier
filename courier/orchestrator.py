@@ -6,7 +6,7 @@ import logging
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-from courier import compiler, converter, extractor, fetcher, store
+from courier import compiler, converter, extractor, fetcher, images, store
 from courier.compiler import Article
 from courier.config import Config
 
@@ -233,6 +233,9 @@ def _process_article(
         return None
 
     store.write_cached_html(config.cache_dir, url, "extracted", content)
+
+    images_dir = config.output_dir / "images"
+    content    = images.localise_article_images(content, images_dir, url)
 
     entry["title"]        = extracted_title or title
     entry["status"]       = "COMPILED"

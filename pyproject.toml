@@ -9,6 +9,7 @@ dependencies = [
     "trafilatura>=2.0",
     "jinja2>=3",
     "tomli>=2.0; python_version < '3.11'",
+    "Pillow>=10",
 ]
 
 [project.optional-dependencies]

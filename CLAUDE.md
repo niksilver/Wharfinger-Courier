@@ -1,0 +1,2 @@
+- Concept: @docs/concept.md
+- Architecture: @docs/architecture.md

@@ -52,3 +52,9 @@ def test_no_fallback_when_readability_sufficient(mock_extract_with_trafilatura, 
     assert len(title) > 0
     assert len(xhtml) > 0
     mock_extract_with_trafilatura.assert_not_called()
+
+
+def test_extract_article_content_has_no_html_or_body_tags(sample_html):
+    (title, xhtml) = extract_article(sample_html)
+    assert "<html" not in xhtml
+    assert "<body" not in xhtml

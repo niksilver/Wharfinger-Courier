@@ -53,8 +53,14 @@ def _extract_with_trafilatura(raw_html: str, url: str = "") -> str:
 
 
 def _sanitise_to_xhtml(html_content: str) -> str:
-    """Sanitise HTML content to valid XHTML."""
+    """Sanitise HTML content to valid XHTML, returning only body contents."""
     if not html_content.strip():
         return ""
     tree = html_fromstring(html_content)
+    bodies = tree.xpath(".//body")
+    if bodies:
+        body = bodies[0]
+        return (body.text or "") + "".join(
+            html_tostring(child, method="xml", encoding="unicode") for child in body
+        )
     return html_tostring(tree, method="xml", encoding="unicode")
